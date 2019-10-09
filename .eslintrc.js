@@ -1,12 +1,10 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  extends: [
-    'airbnb',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -22,7 +20,9 @@ module.exports = {
     'no-empty-pattern': 0,
     '@typescript-eslint/no-empty-interface': 0,
     'no-undef': 0,
+    'no-unused-vars': 0,
     'import/no-unresolved': 0,
+    'no-shadow': 0,
   },
   settings: {
     react: {
