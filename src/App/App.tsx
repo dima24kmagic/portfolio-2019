@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import GlobalStyle from './GlobalStyles'
-import SideNav from '../components/SideNav/SideNav'
+import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 
