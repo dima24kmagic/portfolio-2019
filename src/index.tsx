@@ -4,12 +4,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 import App from './App/App'
+import ThemeModeContextProvider from './theme/ThemeModeContextProvider'
 
 ReactDOM.render(
   <BrowserRouter>
-    <ThemeProvider>
+    <ThemeModeContextProvider>
       <App />
-    </ThemeProvider>
+    </ThemeModeContextProvider>
   </BrowserRouter>,
   document.getElementById('root'),
 )
