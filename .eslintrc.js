@@ -21,6 +21,8 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'no-empty-pattern': 0,
     '@typescript-eslint/no-empty-interface': 0,
+    'no-undef': 0,
+    'import/no-unresolved': 0,
   },
   settings: {
     react: {
