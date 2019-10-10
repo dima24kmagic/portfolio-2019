@@ -41,29 +41,16 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
     },
   )
 
-  const changeThemeRef = useRef()
-  const changeThemeStyles = useSpring({
-    ref: changeThemeRef,
-    from: {
-      opacity: 0,
-      transform: 'translateX(20px)',
-    },
-    to: {
-      opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'translateX(0)' : 'translateX(20px)',
-    },
-  })
   useChain(
     isOpen
-      ? [bgRef, wrapperRef, meuOptionsRef, changeThemeRef]
-      : [meuOptionsRef, changeThemeRef, wrapperRef, bgRef],
-    isOpen ? [0, 0, 0.2, 0.4] : [0, 0.25, 0.6, 0.6],
+      ? [bgRef, wrapperRef, meuOptionsRef]
+      : [meuOptionsRef, wrapperRef, bgRef],
+    isOpen ? [0, 0, 0.2] : [0, 0.6, 0.6],
   )
   return {
     wrapperStyleProps,
     menuOptionTransitions,
     bgBlurTransforms,
-    changeThemeStyles,
   }
 }
 

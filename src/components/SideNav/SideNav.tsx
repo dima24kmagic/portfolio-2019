@@ -20,9 +20,7 @@ function SideNav({ isOpen, onToggleNav, menuOptions }: Props) {
     bgBlurTransforms,
     menuOptionTransitions,
     wrapperStyleProps,
-    changeThemeStyles,
   } = useSideNavAnimation(isOpen, menuOptions)
-  const toggleTheme = useToggleTheme()
   return (
     <>
       <HamburgerStyled isActive={isOpen} toggleButton={onToggleNav} />
@@ -37,9 +35,6 @@ function SideNav({ isOpen, onToggleNav, menuOptions }: Props) {
           onToggleNav={onToggleNav}
           menuOptionTransitions={menuOptionTransitions}
         />
-        <ChangeTheme style={changeThemeStyles} onClick={toggleTheme}>
-          Change Theme
-        </ChangeTheme>
       </Wrapper>
     </>
   )
