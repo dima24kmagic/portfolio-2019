@@ -6,6 +6,7 @@ import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import useTheme from '../theme/theme'
+import Home from '../screens/Home/Home'
 
 interface Props {}
 
@@ -24,7 +25,7 @@ function App(props: Props) {
   const theme = useTheme()
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <>
         <GlobalStyle />
         <SideNav
           menuOptions={menuOptions}
@@ -33,13 +34,10 @@ function App(props: Props) {
         />
         <AnimatedSwitch isNavOpen={isNavOpen}>
           <Route exact path="/">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
-            aliquam animi beatae debitis doloribus eaque eum fugit harum hic
-            libero maiores necessitatibus nemo, neque numquam perferendis
-            provident recusandae ut voluptatem!
+            <Home />
           </Route>
         </AnimatedSwitch>
-      </div>
+      </>
     </ThemeProvider>
   )
 }

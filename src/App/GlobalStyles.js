@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Chivo:900&display=swap');
   *{
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
-      segoe ui, arial, sans-serif;
+    segoe ui, arial, sans-serif;
     background: #f0f0f0;
   }
   

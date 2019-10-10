@@ -1,11 +1,17 @@
-import React, { ReactNode } from 'react'
-import { config, useTransition, animated } from 'react-spring'
-import { useLocation, Switch, SwitchProps } from 'react-router-dom'
+import React from 'react'
+import { animated, config, useTransition } from 'react-spring'
+import { Switch, SwitchProps, useLocation } from 'react-router-dom'
+import styled from 'styled-components'
 
 interface Props extends SwitchProps {
   children: any
   isNavOpen: boolean
 }
+
+const Root = styled(animated.div)`
+  width: 100%;
+  height: 100%;
+`
 
 /**
  * Switch that animating routers
@@ -13,6 +19,7 @@ interface Props extends SwitchProps {
 function AnimatedSwitch({ children, isNavOpen }: Props) {
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
+    initial: { opacity: 1, transform: 'translate3d(0%,0,0)' },
     from: {
       opacity: 0,
       transform: 'translate3d(25%,0,0)',
@@ -32,9 +39,9 @@ function AnimatedSwitch({ children, isNavOpen }: Props) {
     <>
       {transitions.map(({ item, props, key }) => {
         return (
-          <animated.div key={key} style={{ ...props }}>
+          <Root key={key} style={props}>
             <Switch location={item}>{children}</Switch>
-          </animated.div>
+          </Root>
         )
       })}
     </>
