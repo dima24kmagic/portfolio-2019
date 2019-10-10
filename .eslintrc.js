@@ -23,6 +23,7 @@ module.exports = {
     'no-unused-vars': 0,
     'import/no-unresolved': 0,
     'no-shadow': 0,
+    'react/jsx-props-no-spreading': 0,
   },
   settings: {
     react: {

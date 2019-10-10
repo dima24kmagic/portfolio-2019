@@ -16,7 +16,7 @@ const getConvertedTheme = (mode: ThemeMode) => {
       primaryHover: getModeValue(mode, '#00051d', '#fff'),
       secondary: getModeValue(mode, '#f0f0f0', '#d8d8d8'),
       secondaryHover: getModeValue(mode, 'hotpink', '#ffb7ef'),
-      accent: getModeValue(mode, 'red', 'hotpink'),
+      accent: getModeValue(mode, '#ba004e', 'hotpink'),
     },
   }
 }

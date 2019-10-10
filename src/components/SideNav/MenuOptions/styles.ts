@@ -17,18 +17,13 @@ export const MenuOption = styled(NavLink)`
   font-weight: 100;
   transition: color 0.15s;
   padding-right: 8px;
+  padding-left: 5px;
   &.active {
     color: ${({
       theme: {
         color: { secondaryHover },
       },
     }) => secondaryHover};
-    border-bottom: 2px solid
-      ${({
-        theme: {
-          color: { secondaryHover },
-        },
-      }) => secondaryHover};
   }
   &:hover {
     color: ${({

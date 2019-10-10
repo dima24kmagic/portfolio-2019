@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
+import {ThemeProvider, withTheme} from 'styled-components'
 import GlobalStyle from './GlobalStyles'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
 import { useTheme } from '../theme/theme'
+import { Root } from '../screens/Home/styles'
 
 interface Props {}
 
@@ -37,7 +38,7 @@ function App(props: Props) {
             <Home />
           </Route>
           <Route>
-            <div>Nothing Here!</div>
+            <Root>Nothing Here!</Root>
           </Route>
         </AnimatedSwitch>
       </>
@@ -45,4 +46,4 @@ function App(props: Props) {
   )
 }
 
-export default App
+export default withTheme(App)

@@ -2,16 +2,18 @@ import { animated, config, useTrail } from 'react-spring'
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled('div')`
+const OverflowWrapper = styled('div')`
   height: auto;
   overflow: hidden;
 `
 
 const H1 = styled(animated.h1)`
-  font-size: 4rem;
+  font-size: 68px;
+  line-height: 60px;
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   text-align: center;
+  margin-bottom: 10px;
   color: ${({
     theme: {
       color: { accent },
@@ -20,10 +22,11 @@ const H1 = styled(animated.h1)`
 `
 
 const H2 = styled(animated.h2)`
-  font-size: 3rem;
-  font-weight: 900;
+  font-size: 20px;
+  font-weight: 100;
   font-family: 'Chivo', sans-serif;
   text-align: center;
+  margin-bottom: 10px;
   color: ${({
     theme: {
       color: { primary },
@@ -35,7 +38,7 @@ const useNameAnimation = () => {
   const introComponents = [H1, H2]
   const introText = ['Frontend Web-Dev', 'Dima Baranov']
 
-  const introTextTrails = useTrail(introText.length, {
+  const introTextTrails = useTrail(introComponents.length, {
     delay: 400,
     from: {
       opacity: 0,
@@ -52,15 +55,15 @@ const useNameAnimation = () => {
     introTextTrails.map((value, index) => {
       const Text = introComponents[index]
       return (
-        <Wrapper>
+        <OverflowWrapper>
           <Text key={introText[index]} style={value}>
             {introText[index]}
           </Text>
-        </Wrapper>
+        </OverflowWrapper>
       )
     })
 
-  return renderName
+  return { renderName }
 }
 
 export default useNameAnimation
