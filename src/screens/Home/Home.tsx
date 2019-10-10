@@ -1,8 +1,9 @@
 import React from 'react'
 import { withTheme } from 'styled-components'
-import { useSpring, animated, config } from 'react-spring'
+import { config, useSpring } from 'react-spring'
 import { ContentHolder, PlainText, Root, TextDivider } from './styles'
 import AnimatedName from '../../components/AnimatedName'
+import { useToggleTheme } from '../../theme/theme'
 
 interface Props {}
 
@@ -22,8 +23,10 @@ function Home(props: Props) {
     },
     config: config.slow,
   })
+
+  const toggleTheme = useToggleTheme()
   return (
-    <Root>
+    <Root onClick={toggleTheme}>
       <AnimatedName />
       <ContentHolder style={contentSpring}>
         <PlainText>

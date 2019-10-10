@@ -7,7 +7,7 @@ import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
 import { useTheme, useToggleTheme } from '../theme/theme'
-import { Root } from '../screens/Home/styles'
+import { PlainText, Root } from '../screens/Home/styles'
 import useThemeBasedOnTime from './useThemeBasedOnTime'
 
 interface Props {}
@@ -40,7 +40,9 @@ function App(props: Props) {
             <Home />
           </Route>
           <Route>
-            <Root>Nothing Here!</Root>
+            <Root>
+              <PlainText>Nothing Here!</PlainText>
+            </Root>
           </Route>
         </AnimatedSwitch>
       </>
