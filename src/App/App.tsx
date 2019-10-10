@@ -5,8 +5,8 @@ import GlobalStyle from './GlobalStyles'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
-import useTheme from '../theme/theme'
 import Home from '../screens/Home/Home'
+import { useTheme } from '../theme/theme'
 
 interface Props {}
 
@@ -35,6 +35,9 @@ function App(props: Props) {
         <AnimatedSwitch isNavOpen={isNavOpen}>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route>
+            <div>Nothing Here!</div>
           </Route>
         </AnimatedSwitch>
       </>

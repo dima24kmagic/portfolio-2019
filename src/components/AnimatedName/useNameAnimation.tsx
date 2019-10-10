@@ -3,24 +3,24 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled('div')`
-  height: 60px;
+  height: auto;
   overflow: hidden;
 `
 
 const H1 = styled(animated.h1)`
-  color: aliceblue;
   font-size: 4rem;
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   text-align: center;
+  color: ${({ theme: { accentColor } }) => accentColor};
 `
 
 const H2 = styled(animated.h2)`
-  color: aliceblue;
   font-size: 3rem;
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   text-align: center;
+  color: ${({ theme: { color } }) => color}};
 `
 
 const useNameAnimation = () => {

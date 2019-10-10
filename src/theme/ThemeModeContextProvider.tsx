@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react'
 
-enum ThemeMode {
+export enum ThemeMode {
   DARK,
   LIGHT,
 }

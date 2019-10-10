@@ -1,4 +1,5 @@
 import React from 'react'
+import { withTheme } from 'styled-components'
 import { Root } from './styles'
 import AnimatedName from '../../components/AnimatedName'
 
@@ -15,4 +16,4 @@ function Home(props: Props) {
   )
 }
 
-export default Home
+export default withTheme(Home)

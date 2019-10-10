@@ -1,4 +1,5 @@
 import React from 'react'
+import { withTheme } from 'styled-components'
 import useNameAnimation from './useNameAnimation'
 
 interface Props {}
@@ -11,4 +12,4 @@ function AnimatedName() {
   return <>{renderName()}</>
 }
 
-export default AnimatedName
+export default withTheme(AnimatedName)

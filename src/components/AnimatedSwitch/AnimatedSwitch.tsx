@@ -19,7 +19,11 @@ const Root = styled(animated.div)`
 function AnimatedSwitch({ children, isNavOpen }: Props) {
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
-    initial: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    initial: {
+      opacity: 1,
+      transform: 'translate3d(0%,0,0)',
+      filter: 'blur(0px)',
+    },
     from: {
       opacity: 0,
       transform: 'translate3d(25%,0,0)',
