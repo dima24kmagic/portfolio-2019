@@ -12,7 +12,11 @@ const H1 = styled(animated.h1)`
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   text-align: center;
-  color: ${({ theme: { accentColor } }) => accentColor};
+  color: ${({
+    theme: {
+      color: { accent },
+    },
+  }) => accent};
 `
 
 const H2 = styled(animated.h2)`
@@ -20,7 +24,11 @@ const H2 = styled(animated.h2)`
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   text-align: center;
-  color: ${({ theme: { color } }) => color}};
+  color: ${({
+    theme: {
+      color: { primary },
+    },
+  }) => primary}};
 `
 
 const useNameAnimation = () => {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { withTheme } from 'styled-components'
 import { MenuOption, MenuOptionWrapper } from './styles'
 
 interface Props {
@@ -22,4 +23,4 @@ function MenuOptions(props) {
   })
 }
 
-export default MenuOptions
+export default withTheme(MenuOptions)

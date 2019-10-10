@@ -7,5 +7,9 @@ export const Root = styled('div')`
   width: 100%;
   min-height: 100%;
   padding: 40px 20px;
-  background: ${({ theme: { bg } }) => bg};
+  background: ${({
+    theme: {
+      bg: { primary },
+    },
+  }) => primary};
 `

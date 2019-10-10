@@ -14,7 +14,11 @@ export const Wrapper = styled(animated.div)`
   min-width: 200px;
   max-width: 300px;
   height: 100vh;
-  background: #000;
+  background: ${({
+    theme: {
+      bg: { secondary },
+    },
+  }) => secondary};
   z-index: 9999;
   transform: translateX(100%);
 `
@@ -46,8 +50,13 @@ export const HamburgerStyled = styled(HamburgerSpin)`
   & span::before {
     width: 20px;
     height: 1px;
-    background-color: ${({ isActive, theme: { bg, color } }) =>
-      isActive ? bg : color};
+    background-color: ${({
+      isActive,
+      theme: {
+        bg: { secondary },
+        color: { secondary: secondaryColor },
+      },
+    }) => (isActive ? secondaryColor : secondary)};
     transition: bottom 0.3s ease-out,
       transform 0.4s 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
