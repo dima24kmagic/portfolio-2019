@@ -25,6 +25,10 @@ export const PlainText = styled('p')`
     },
   }) => primary};
   transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  @media (min-width: 650px) {
+    letter-spacing: 1px;
+    font-size: 18px;
+  }
 `
 
 export const TextDivider = styled('div')`

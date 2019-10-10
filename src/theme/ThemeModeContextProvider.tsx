@@ -11,7 +11,10 @@ export const ThemeModeContext = React.createContext({
 })
 
 const ThemeModeContextProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState(ThemeMode.LIGHT)
+  const currHours = new Date().getHours()
+  const [mode, setMode] = useState(
+    currHours > 19 || currHours < 6 ? ThemeMode.DARK : ThemeMode.LIGHT,
+  )
   const toggleMode = () => {
     setMode(mode === ThemeMode.LIGHT ? ThemeMode.DARK : ThemeMode.LIGHT)
   }
