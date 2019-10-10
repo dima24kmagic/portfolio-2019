@@ -21,7 +21,7 @@ export const Wrapper = styled(animated.div)`
   }) => secondary};
   z-index: 9999;
   transform: translateX(100%);
-  transition: background 1s;
+  transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
 export const BackdropFilter = styled(animated.div)`
@@ -59,7 +59,7 @@ export const HamburgerStyled = styled(HamburgerSpin)`
       },
     }) => (isActive ? secondaryColor : secondary)};
     transition: bottom 0.3s ease-out,
-      transform 0.4s 0.35s cubic-bezier(0.215, 0.61, 0.355, 1), background 1s;
+      transform 0.4s 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   & span::before {
     top: -7px;
@@ -76,7 +76,8 @@ export const ChangeTheme = styled(animated.div)`
     },
   }) => themeColor};
   padding-left: 5px;
-  transition: color 1s;
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
   margin-top: 20px;
   font-weight: 900;
+  cursor: pointer;
 `

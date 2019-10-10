@@ -14,7 +14,7 @@ export const Root = styled('div')`
       bg: { primary },
     },
   }) => primary};
-  transition: background 1s;
+  transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
 export const PlainText = styled('p')`
@@ -24,7 +24,7 @@ export const PlainText = styled('p')`
       color: { primary },
     },
   }) => primary};
-  transition: color 1s;
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
 export const TextDivider = styled('div')`

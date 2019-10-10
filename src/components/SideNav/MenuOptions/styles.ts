@@ -15,7 +15,7 @@ export const MenuOption = styled(NavLink)`
   }) => secondary};
   font-size: 18px;
   font-weight: 100;
-  transition: color 0.15s;
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
   padding-right: 8px;
   padding-left: 5px;
   &.active {
@@ -24,6 +24,7 @@ export const MenuOption = styled(NavLink)`
         color: { secondaryHover },
       },
     }) => secondaryHover};
+    font-weight: 900;
   }
   &:hover {
     color: ${({

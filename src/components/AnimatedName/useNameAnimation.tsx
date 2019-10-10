@@ -58,10 +58,8 @@ const useNameAnimation = () => {
     introTextTrails.map((value, index) => {
       const Text = introComponents[index]
       return (
-        <OverflowWrapper>
-          <Text key={introText[index]} style={value}>
-            {introText[index]}
-          </Text>
+        <OverflowWrapper key={introText[index]}>
+          <Text style={value}>{introText[index]}</Text>
         </OverflowWrapper>
       )
     })

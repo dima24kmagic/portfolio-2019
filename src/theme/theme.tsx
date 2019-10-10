@@ -9,16 +9,17 @@ const getConvertedTheme = (mode: ThemeMode) => {
   return {
     bg: {
       primary: getModeValue(mode, '#f0f0f0', '#000'),
-      secondary: getModeValue(mode, '#000', '#a20051'),
+      secondary: getModeValue(mode, '#050505', '#a20051'),
     },
     color: {
-      primary: getModeValue(mode, '#000', '#f0f0f0'),
+      primary: getModeValue(mode, '#050505', '#f0f0f0'),
       primaryHover: getModeValue(mode, '#00051d', '#fff'),
-      secondary: getModeValue(mode, '#f0f0f0', '#d8d8d8'),
-      secondaryHover: getModeValue(mode, 'hotpink', '#ffb7ef'),
+      secondary: getModeValue(mode, '#f0f0f0', '#f0f0f0'),
+      secondaryHover: getModeValue(mode, 'hotpink', '#ff00a6'),
       accent: getModeValue(mode, '#ba004e', 'hotpink'),
-      themeColor: getModeValue(mode, '#fff', '#000'),
+      themeColor: getModeValue(mode, '#fff', '#050505'),
     },
+    transitionSpeed: '0.5s',
   }
 }
 
