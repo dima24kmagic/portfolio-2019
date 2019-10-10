@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { animated } from "react-spring";
-import { HamburgerSpin } from "react-animated-burgers";
+import styled from 'styled-components'
+import { animated } from 'react-spring'
+import { HamburgerSpin } from 'react-animated-burgers'
 
 export const Wrapper = styled(animated.div)`
   display: flex;
@@ -17,7 +17,7 @@ export const Wrapper = styled(animated.div)`
   background: #000;
   z-index: 9999;
   transform: translateX(100%);
-`;
+`
 
 export const BackdropFilter = styled(animated.div)`
   position: fixed;
@@ -29,7 +29,7 @@ export const BackdropFilter = styled(animated.div)`
   cursor: pointer;
   outline: none;
   z-index: 9998;
-`;
+`
 
 export const HamburgerStyled = styled(HamburgerSpin)`
   position: fixed;
@@ -46,7 +46,8 @@ export const HamburgerStyled = styled(HamburgerSpin)`
   & span::before {
     width: 20px;
     height: 1px;
-    background-color: ${({ isActive }) => (isActive ? "white" : "black")};
+    background-color: ${({ isActive, theme: { bg, color } }) =>
+      isActive ? bg : color};
     transition: bottom 0.3s ease-out,
       transform 0.4s 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
@@ -54,7 +55,6 @@ export const HamburgerStyled = styled(HamburgerSpin)`
     top: -7px;
   }
   & span::after {
-    bottom: ${({ isActive }) => (isActive ? "0px" : "-7px")};
+    bottom: ${({ isActive }) => (isActive ? '0px' : '-7px')};
   }
-`;
-
+`

@@ -3,6 +3,7 @@ import MenuOptions from './MenuOptions/MenuOptions'
 import useSideNavAnimation from './hooks/useSideNavAnimation'
 import { BackdropFilter, HamburgerStyled, Wrapper } from './styles'
 import { MenuLink } from '../../types/MenuLink'
+import { withTheme } from 'styled-components'
 
 interface Props {
   isOpen: boolean
@@ -38,4 +39,4 @@ function SideNav({ isOpen, onToggleNav, menuOptions }: Props) {
   )
 }
 
-export default SideNav
+export default withTheme(SideNav)
