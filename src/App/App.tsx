@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
-import {ThemeProvider, withTheme} from 'styled-components'
+import { ThemeProvider, withTheme } from 'styled-components'
 import GlobalStyle from './GlobalStyles'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
@@ -15,6 +15,7 @@ const menuOptions: MenuLink[] = [
   { to: '/', text: 'About' },
   { to: '/contact', text: 'Contact Me' },
 ]
+
 /**
  * App
  */

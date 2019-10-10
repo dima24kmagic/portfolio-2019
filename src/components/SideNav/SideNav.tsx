@@ -2,8 +2,9 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import MenuOptions from './MenuOptions/MenuOptions'
 import useSideNavAnimation from './hooks/useSideNavAnimation'
-import { BackdropFilter, HamburgerStyled, Wrapper } from './styles'
+import { BackdropFilter, ChangeTheme, HamburgerStyled, Wrapper } from './styles'
 import { MenuLink } from '../../types/MenuLink'
+import { useToggleTheme } from '../../theme/theme'
 
 interface Props {
   isOpen: boolean
@@ -19,7 +20,9 @@ function SideNav({ isOpen, onToggleNav, menuOptions }: Props) {
     bgBlurTransforms,
     menuOptionTransitions,
     wrapperStyleProps,
+    changeThemeStyles,
   } = useSideNavAnimation(isOpen, menuOptions)
+  const toggleTheme = useToggleTheme()
   return (
     <>
       <HamburgerStyled isActive={isOpen} toggleButton={onToggleNav} />
@@ -34,6 +37,9 @@ function SideNav({ isOpen, onToggleNav, menuOptions }: Props) {
           onToggleNav={onToggleNav}
           menuOptionTransitions={menuOptionTransitions}
         />
+        <ChangeTheme style={changeThemeStyles} onClick={toggleTheme}>
+          Change Theme
+        </ChangeTheme>
       </Wrapper>
     </>
   )

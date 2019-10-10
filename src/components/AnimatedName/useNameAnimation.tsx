@@ -8,7 +8,7 @@ const OverflowWrapper = styled('div')`
 `
 
 const H1 = styled(animated.h1)`
-  font-size: 68px;
+  font-size: 62px;
   line-height: 60px;
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
@@ -19,6 +19,9 @@ const H1 = styled(animated.h1)`
       color: { accent },
     },
   }) => accent};
+  @media (min-width: 650px) {
+    font-size: 68px;
+  }
 `
 
 const H2 = styled(animated.h2)`

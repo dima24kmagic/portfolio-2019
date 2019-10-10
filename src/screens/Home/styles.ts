@@ -7,12 +7,14 @@ export const Root = styled('div')`
   align-items: center;
   width: 100%;
   min-height: 100%;
-  padding: 48px 20px;
+  padding: 64px 32px;
+  overflow: auto;
   background: ${({
     theme: {
       bg: { primary },
     },
   }) => primary};
+  transition: background 1s;
 `
 
 export const PlainText = styled('p')`
@@ -22,6 +24,11 @@ export const PlainText = styled('p')`
       color: { primary },
     },
   }) => primary};
+  transition: color 1s;
+`
+
+export const TextDivider = styled('div')`
+  margin-bottom: 8px;
 `
 
 export const ContentHolder = styled(animated.div)`

@@ -11,6 +11,7 @@ interface Props extends SwitchProps {
 const Root = styled(animated.div)`
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 `
 
 /**
