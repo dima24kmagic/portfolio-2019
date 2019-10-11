@@ -58,8 +58,8 @@ export const HamburgerStyled = styled(HamburgerSpin)`
         color: { secondary: secondaryColor },
       },
     }) => (isActive ? secondaryColor : secondary)};
-    transition: bottom 0.3s ease-out,
-      transform 0.4s 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: bottom 0.3s ease-in,
+      transform 0.4s 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   & span::before {
     top: -7px;

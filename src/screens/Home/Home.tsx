@@ -4,6 +4,7 @@ import { config, useSpring } from 'react-spring'
 import { ContentHolder, PlainText, Root, TextDivider } from './styles'
 import AnimatedName from '../../components/AnimatedName'
 import { useToggleTheme } from '../../theme/theme'
+import { easeExpOut } from 'd3-ease'
 
 interface Props {}
 
@@ -12,7 +13,7 @@ interface Props {}
  */
 function Home(props: Props) {
   const contentSpring = useSpring({
-    delay: 1000,
+    delay: 1200,
     from: {
       opacity: 0,
       transform: 'translateY(-8px)',
@@ -21,7 +22,9 @@ function Home(props: Props) {
       opacity: 1,
       transform: 'translateY(0px)',
     },
-    config: config.slow,
+    config: {
+      easing: easeExpOut,
+    },
   })
 
   const toggleTheme = useToggleTheme()

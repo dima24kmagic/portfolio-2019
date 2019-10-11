@@ -43,7 +43,7 @@ const useNameAnimation = () => {
   const introText = ['Frontend Web-Dev', 'Dima Baranov']
 
   const introTextTrails = useTrail(introComponents.length, {
-    delay: 400,
+    delay: 0,
     from: {
       opacity: 0,
       transform: 'translateY(100%)',
