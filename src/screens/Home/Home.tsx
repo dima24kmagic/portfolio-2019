@@ -1,10 +1,10 @@
 import React from 'react'
 import { withTheme } from 'styled-components'
 import { config, useSpring } from 'react-spring'
-import { ContentHolder, PlainText, Root, TextDivider } from './styles'
+import {ContentHolder, ContentName, PlainText, Root, TextDivider} from './styles'
 import AnimatedName from '../../components/AnimatedName'
 import { useToggleTheme } from '../../theme/theme'
-import { easeExpOut } from 'd3-ease'
+import { easeExpInOut, easeExpOut } from 'd3-ease'
 
 interface Props {}
 
@@ -13,7 +13,7 @@ interface Props {}
  */
 function Home(props: Props) {
   const contentSpring = useSpring({
-    delay: 1200,
+    delay: 1450,
     from: {
       opacity: 0,
       transform: 'translateY(-8px)',
@@ -23,6 +23,7 @@ function Home(props: Props) {
       transform: 'translateY(0px)',
     },
     config: {
+      duration: 2000,
       easing: easeExpOut,
     },
   })
@@ -32,6 +33,7 @@ function Home(props: Props) {
     <Root onClick={toggleTheme}>
       <AnimatedName />
       <ContentHolder style={contentSpring}>
+        <ContentName>About Me</ContentName>
         <PlainText>
           Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
         </PlainText>

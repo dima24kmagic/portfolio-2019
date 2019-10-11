@@ -17,6 +17,18 @@ export const Root = styled('div')`
   transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
+export const ContentName = styled('h1')`
+  font-family: 'Chivo', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  margin-bottom: 28px;
+  color: ${({
+    theme: {
+      color: { primary },
+    },
+  }) => primary};
+`
+
 export const PlainText = styled('p')`
   width: 100%;
   color: ${({

@@ -26,11 +26,10 @@ const H1 = styled(animated.h1)`
 `
 
 const H2 = styled(animated.h2)`
-  font-size: 20px;
-  font-weight: 100;
-  font-family: 'Chivo', sans-serif;
+  font-size: 28px;
+  font-weight: 300;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 36px;
   color: ${({
     theme: {
       color: { primary },

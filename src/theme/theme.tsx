@@ -8,13 +8,13 @@ function getModeValue(mode: ThemeMode, lightVal: string, darkVal: string) {
 const getConvertedTheme = (mode: ThemeMode) => {
   return {
     bg: {
-      primary: getModeValue(mode, '#f0f0f0', '#000'),
+      primary: getModeValue(mode, '#f6f6f6', '#101010'),
       secondary: getModeValue(mode, '#050505', '#a20051'),
     },
     color: {
-      primary: getModeValue(mode, '#050505', '#f0f0f0'),
+      primary: getModeValue(mode, '#050505', '#f6f6f6'),
       primaryHover: getModeValue(mode, '#00051d', '#fff'),
-      secondary: getModeValue(mode, '#f0f0f0', '#f0f0f0'),
+      secondary: getModeValue(mode, '#f6f6f6', '#f6f6f6'),
       secondaryHover: getModeValue(mode, 'hotpink', '#ff00a6'),
       accent: getModeValue(mode, '#ba004e', 'hotpink'),
       themeColor: getModeValue(mode, '#fff', '#050505'),
