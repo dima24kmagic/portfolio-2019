@@ -1,6 +1,7 @@
 import { animated, config, useTrail } from 'react-spring'
 import React from 'react'
 import styled from 'styled-components'
+import { easeExpInOut } from 'd3-ease'
 
 const OverflowWrapper = styled('div')`
   height: auto;
@@ -51,7 +52,10 @@ const useNameAnimation = () => {
       opacity: 1,
       transform: 'translateY(0%)',
     },
-    config: config.slow,
+    config: {
+      duration: 2000,
+      easing: easeExpInOut,
+    },
   })
 
   const renderName = () =>
