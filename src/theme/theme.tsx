@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { ThemeMode, ThemeModeContext } from './ThemeModeContextProvider'
 
 function getModeValue(mode: ThemeMode, lightVal: string, darkVal: string) {

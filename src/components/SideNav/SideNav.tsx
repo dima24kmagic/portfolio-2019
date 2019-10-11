@@ -2,9 +2,8 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import MenuOptions from './MenuOptions/MenuOptions'
 import useSideNavAnimation from './hooks/useSideNavAnimation'
-import { BackdropFilter, ChangeTheme, HamburgerStyled, Wrapper } from './styles'
+import { BackdropFilter, HamburgerStyled, Wrapper } from './styles'
 import { MenuLink } from '../../types/MenuLink'
-import { useToggleTheme } from '../../theme/theme'
 
 interface Props {
   isOpen: boolean

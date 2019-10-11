@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
 import { ThemeProvider, withTheme } from 'styled-components'
 import GlobalStyle from './GlobalStyles'
@@ -6,9 +6,8 @@ import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
-import { useTheme, useToggleTheme } from '../theme/theme'
+import { useTheme } from '../theme/theme'
 import { PlainText, Root } from '../screens/Home/styles'
-import useThemeBasedOnTime from './useThemeBasedOnTime'
 
 interface Props {}
 

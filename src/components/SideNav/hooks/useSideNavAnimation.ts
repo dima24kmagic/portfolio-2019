@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useChain, useSpring, useTransition } from 'react-spring'
+import { easeExpInOut } from 'd3-ease'
 
 const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
   const wrapperRef = useRef()
@@ -8,6 +9,10 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
     from: { transform: 'translateX(100%)' },
     to: {
       transform: isOpen ? 'translateX(0%)' : 'translateX(100%)',
+    },
+    config: {
+      easing: easeExpInOut,
+      duration: isOpen ? 1400 : 600,
     },
   })
   const bgRef = useRef()
@@ -45,7 +50,7 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
     isOpen
       ? [bgRef, wrapperRef, meuOptionsRef]
       : [meuOptionsRef, wrapperRef, bgRef],
-    isOpen ? [0, 0, 0.2] : [0, 0.6, 0.6],
+    isOpen ? [0, 0, 0.7] : [0, 0.6, 0.6],
   )
   return {
     wrapperStyleProps,
