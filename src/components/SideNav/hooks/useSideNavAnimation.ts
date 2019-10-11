@@ -12,7 +12,7 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
     },
     config: {
       easing: easeExpInOut,
-      duration: isOpen ? 1400 : 600,
+      duration: isOpen ? 1400 : 800,
     },
   })
   const bgRef = useRef()
