@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
+import meLandscapeImg from '../../images/Me Landscape.jpg'
 
 export const Root = styled('div')`
   display: flex;
@@ -9,11 +10,8 @@ export const Root = styled('div')`
   min-height: 100%;
   padding: 64px 32px;
   overflow: auto;
-  background: ${({
-    theme: {
-      bg: { primary },
-    },
-  }) => primary};
+  background-image: url("${meLandscapeImg}");
+  background-size: cover;
   transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
