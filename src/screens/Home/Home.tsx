@@ -23,7 +23,7 @@ function Home(props: Props) {
       transform: 'translateY(0px)',
     },
     config: {
-      duration: 2000,
+      duration: 1300,
       easing: easeExpOut,
     },
   })
