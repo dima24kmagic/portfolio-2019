@@ -59,7 +59,7 @@ export const HamburgerStyled = styled(HamburgerSpin)`
       },
     }) => (isActive ? secondaryColor : secondary)};
     transition: bottom 0.3s ease-in,
-      transform 0.4s 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform 0.4s 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   & span::before {
     top: -7px;
