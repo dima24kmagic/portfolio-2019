@@ -1,7 +1,8 @@
 import { animated, config, useTrail } from 'react-spring'
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { easeExpInOut } from 'd3-ease'
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
 
 const OverflowWrapper = styled('div')`
   height: auto;
@@ -9,42 +10,41 @@ const OverflowWrapper = styled('div')`
 `
 
 const H1 = styled(animated.h1)`
-  font-size: 62px;
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
   color: ${({
     theme: {
-      color: { black },
+      color: { secondary },
     },
-  }) => black};
+  }) => secondary};
   text-shadow: 3px 3px 0px red, -3px -3px 0px hotpink;
-  padding-left: 64px;
-  @media (min-width: 650px) {
-    font-size: 120px;
-  }
-`
+  margin-bottom: 15px;
 
-const H1Name = styled(animated.h2)`
-  font-size: 62px;
-  font-weight: 900;
-  font-family: 'Chivo', sans-serif;
-  text-shadow: 3px 3px 0px hotpink, -3px -3px 0px red;
-  padding-left: 64px;
-  color: ${({
-    theme: {
-      color: { black },
-    },
-  }) => black};
+  font-size: 42px;
+  @media (min-width: 375px) {
+    font-size: 54px;
+  }
+  @media (min-width: 450px) {
+    font-size: 54px;
+    letter-spacing: 3px;
+    line-height: 54px;
+  }
   @media (min-width: 650px) {
-    font-size: 120px;
+    font-size: 92px;
+    letter-spacing: 3px;
+    line-height: 70px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 140px;
+    letter-spacing: 3px;
+    line-height: 118px;
   }
 `
 
 const useNameAnimation = () => {
-  const introComponents = [H1, H1Name]
   const introText = ['Frontend Web-Dev', 'Dima Baranov']
 
-  const introTextTrails = useTrail(introComponents.length, {
+  const introTextTrails = useTrail(introText.length, {
     from: {
       opacity: 0,
       transform: 'translateY(100%)',
@@ -61,10 +61,9 @@ const useNameAnimation = () => {
 
   const renderName = () =>
     introTextTrails.map((value, index) => {
-      const Text = introComponents[index]
       return (
         <OverflowWrapper key={introText[index]}>
-          <Text style={value}>{introText[index]}</Text>
+          <H1 style={value}>{introText[index]}</H1>
         </OverflowWrapper>
       )
     })

@@ -41,7 +41,6 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
         opacity: 0,
         transform: 'translateX(20px)',
       },
-      unique: true,
       trail: isOpen ? 100 : 120,
     },
   )
