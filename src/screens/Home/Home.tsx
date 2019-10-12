@@ -1,18 +1,16 @@
 import React from 'react'
 import { withTheme } from 'styled-components'
-import { config, useSpring } from 'react-spring'
+import { useSpring } from 'react-spring'
+import { easeExpOut } from 'd3-ease'
 import {
   ContentHolder,
   ContentName,
-  FullSizeImg,
   PlainText,
   Root,
   TextDivider,
 } from './styles'
-import AnimatedName from '../../components/AnimatedName'
 import { useToggleTheme } from '../../theme/theme'
-import { easeExpInOut, easeExpOut } from 'd3-ease'
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
+import HomePreview from '../../components/Preview/HomePreview/HomePreview'
 
 interface Props {}
 
@@ -39,9 +37,7 @@ function Home(props: Props) {
   const toggleTheme = useToggleTheme()
   return (
     <>
-      <FullSizeImg>
-        <AnimatedName />
-      </FullSizeImg>
+      <HomePreview />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
           <ContentName>About Me</ContentName>
