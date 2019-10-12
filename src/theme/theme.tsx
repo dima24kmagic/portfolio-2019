@@ -12,6 +12,8 @@ const getConvertedTheme = (mode: ThemeMode) => {
       secondary: getModeValue(mode, '#050505', '#a20051'),
     },
     color: {
+      white: '#fcfcfc',
+      black: '#050505',
       primary: getModeValue(mode, '#050505', '#f6f6f6'),
       primaryHover: getModeValue(mode, '#00051d', '#fff'),
       secondary: getModeValue(mode, '#f6f6f6', '#f6f6f6'),
