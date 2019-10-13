@@ -4,7 +4,7 @@ import mePortraitImg from '../../images/Me Portrait.jpg'
 import meLandscapeImg from '../../images/Me Landscape.jpg'
 
 export const PreviewContent = styled('div')`
-  position:relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,14 +12,12 @@ export const PreviewContent = styled('div')`
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  
+
   padding: 64px 15px 0 15px;
-  background-image: url("${mePortraitImg}");
   @media (min-width: 375px) {
     padding: 64px 32px 0 32px;
   }
   @media (min-width: 480px) {
-   background-image: url("${meLandscapeImg}");
     padding: 64px 32px 0 32px;
   }
   @media (min-width: 900px) {
@@ -30,9 +28,25 @@ export const PreviewContent = styled('div')`
   }
 `
 
+export const PreviewImage = styled('img')`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: ${({
+    theme: {
+      bg: { primary },
+    },
+  }) => primary};
+  transition: background 0.5s;
+`
+
 export const NavigateMoreButton = styled(animated.div)`
   position: absolute;
-  bottom: 80px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   color: ${({
@@ -49,4 +63,7 @@ export const NavigateMoreButton = styled(animated.div)`
   }
   cursor: pointer;
   transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  @media (min-width: 480px) {
+    bottom: 80px;
+  }
 `

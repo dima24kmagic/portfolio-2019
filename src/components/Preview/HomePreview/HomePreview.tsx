@@ -1,8 +1,14 @@
-import React from 'react'
-import { NavigateMoreButton, PreviewContent } from '../PreviewContent'
-import AnimatedName from '../../AnimatedName'
+import React, { useState } from 'react'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
+import {
+  NavigateMoreButton,
+  PreviewContent,
+  PreviewImage,
+} from '../PreviewContent'
+import AnimatedName from '../../AnimatedName'
+import mePortraitImg from '../../../images/Me Portrait.jpg'
+import meLandscapeImg from '../../../images/Me Landscape.jpg'
 
 interface Props {}
 
@@ -11,6 +17,11 @@ interface Props {}
  */
 function HomePreview(props: Props) {
   const {} = props
+  const [isImgLoaded, setImgLoaded] = useState(false)
+  const handleImgLoaded = () => {
+    console.log('LOADED')
+    setImgLoaded(true)
+  }
   const showMoreButtonStyled = useSpring({
     delay: 1600,
     from: {
@@ -28,6 +39,7 @@ function HomePreview(props: Props) {
   })
   return (
     <PreviewContent>
+      <PreviewImage src={meLandscapeImg} />
       <AnimatedName />
       <NavigateMoreButton style={showMoreButtonStyled}>
         Read More

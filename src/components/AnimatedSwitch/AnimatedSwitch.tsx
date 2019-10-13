@@ -1,6 +1,6 @@
 import React from 'react'
-import { animated, config, useTransition } from 'react-spring'
-import { Switch, SwitchProps, useLocation } from 'react-router-dom'
+import {animated, config, useTransition} from 'react-spring'
+import {Switch, SwitchProps, useLocation} from 'react-router-dom'
 import styled from 'styled-components'
 
 interface Props extends SwitchProps {

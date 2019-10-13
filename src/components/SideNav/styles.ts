@@ -31,6 +31,7 @@ export const BackdropFilter = styled(animated.div)`
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
   cursor: pointer;
   outline: none;
   z-index: 9998;
@@ -67,17 +68,4 @@ export const HamburgerStyled = styled(HamburgerSpin)`
   & span::after {
     bottom: ${({ isActive }) => (isActive ? '0px' : '-7px')};
   }
-`
-
-export const ChangeTheme = styled(animated.div)`
-  color: ${({
-    theme: {
-      color: { themeColor },
-    },
-  }) => themeColor};
-  padding-left: 5px;
-  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
-  margin-top: 20px;
-  font-weight: 900;
-  cursor: pointer;
 `
