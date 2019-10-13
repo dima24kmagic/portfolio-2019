@@ -22,11 +22,11 @@ function Home(props: Props) {
     delay: 1450,
     from: {
       opacity: 0,
-      transform: 'translateY(-8px)',
+      transform: 'translate3d(0px, -8px, 0px)',
     },
     to: {
       opacity: 1,
-      transform: 'translateY(0px)',
+      transform: 'translate3d(0px, 0px, 0px)',
     },
     config: {
       duration: 1300,

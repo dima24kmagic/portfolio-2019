@@ -20,8 +20,9 @@ export const Wrapper = styled(animated.div)`
     },
   }) => secondary};
   z-index: 9999;
-  transform: translateX(100%);
+  transform: translate3d(100%, 0px, 0px);
   transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  will-change: transform;
 `
 
 export const BackdropFilter = styled(animated.div)`

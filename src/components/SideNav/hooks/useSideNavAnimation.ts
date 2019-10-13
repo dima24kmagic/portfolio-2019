@@ -6,9 +6,11 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
   const wrapperRef = useRef()
   const wrapperStyleProps = useSpring({
     ref: wrapperRef,
-    from: { transform: 'translateX(100%)' },
+    from: { transform: 'translate3d(100%, 0px, 0px)' },
     to: {
-      transform: isOpen ? 'translateX(0%)' : 'translateX(100%)',
+      transform: isOpen
+        ? 'translate3d(0%, 0px, 0px)'
+        : 'translate3d(100%, 0px, 0px)',
     },
     config: {
       easing: easeExpInOut,
@@ -31,15 +33,15 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
       ref: meuOptionsRef,
       from: {
         opacity: 0,
-        transform: 'translateX(20px)',
+        transform: 'translate3d(20px, 0px ,0px)',
       },
       enter: {
         opacity: 1,
-        transform: 'translateX(0)',
+        transform: 'translate3d(0px, 0px ,0px)',
       },
       leave: {
         opacity: 0,
-        transform: 'translateX(20px)',
+        transform: 'translate3d(20px, 0px ,0px)',
       },
       trail: isOpen ? 100 : 120,
     },

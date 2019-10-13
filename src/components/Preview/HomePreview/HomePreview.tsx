@@ -17,20 +17,15 @@ interface Props {}
  */
 function HomePreview(props: Props) {
   const {} = props
-  const [isImgLoaded, setImgLoaded] = useState(false)
-  const handleImgLoaded = () => {
-    console.log('LOADED')
-    setImgLoaded(true)
-  }
   const showMoreButtonStyled = useSpring({
     delay: 1600,
     from: {
       opacity: 0,
-      transform: 'translateX(-80%)',
+      transform: 'translate3d(-80%, 0px, 0px)',
     },
     to: {
       opacity: 1,
-      transform: 'translateX(-50%)',
+      transform: 'translate3d(-50%, 0px, 0px)',
     },
     config: {
       duration: 1900,

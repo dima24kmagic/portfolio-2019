@@ -1,8 +1,7 @@
-import { animated, config, useTrail } from 'react-spring'
-import React, { useRef } from 'react'
+import { animated, useTrail } from 'react-spring'
+import React from 'react'
 import styled from 'styled-components'
 import { easeExpInOut } from 'd3-ease'
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons'
 
 const OverflowWrapper = styled('div')`
   height: auto;
@@ -48,11 +47,11 @@ const useNameAnimation = () => {
   const introTextTrails = useTrail(introText.length, {
     from: {
       opacity: 0,
-      transform: 'translateY(100%)',
+      transform: 'translate3d(0px, 100%, 0px)',
     },
     to: {
       opacity: 1,
-      transform: 'translateY(0%)',
+      transform: 'translate3d(0px, 0%, 0px)',
     },
     config: {
       duration: 2000,
