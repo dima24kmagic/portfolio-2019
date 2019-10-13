@@ -1,13 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { ThemeProvider, withTheme } from 'styled-components'
+import { withTheme } from 'styled-components'
 import GlobalStyle from './GlobalStyles'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
-import { useTheme } from '../theme/theme'
-import { PlainText, Root } from '../screens/Home/styles'
 import SmoothScroll from '../components/SmoothScroll'
 import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
 
@@ -22,28 +20,23 @@ const menuOptions: MenuLink[] = [
  * App
  */
 function App(props: Props) {
-  const theme = useTheme()
   return (
-    <ThemeProvider theme={theme}>
-      <SideNavContextProvider>
-        <GlobalStyle />
-        <SideNav menuOptions={menuOptions} />
-        <AnimatedSwitch>
-          <Route exact path="/">
-            <SmoothScroll>
-              <Home />
-            </SmoothScroll>
-          </Route>
-          <Route>
-            <Root>
-              <SmoothScroll>
-                <PlainText>Nothing Here!</PlainText>
-              </SmoothScroll>
-            </Root>
-          </Route>
-        </AnimatedSwitch>
-      </SideNavContextProvider>
-    </ThemeProvider>
+    <SideNavContextProvider>
+      <GlobalStyle />
+      <SideNav menuOptions={menuOptions} />
+      <AnimatedSwitch>
+        <Route exact path="/">
+          <SmoothScroll>
+            <Home />
+          </SmoothScroll>
+        </Route>
+        <Route>
+          <SmoothScroll>
+            <div>Nothing Here!</div>
+          </SmoothScroll>
+        </Route>
+      </AnimatedSwitch>
+    </SideNavContextProvider>
   )
 }
 

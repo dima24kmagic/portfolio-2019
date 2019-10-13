@@ -31,6 +31,7 @@ export const ContentName = styled('h1')`
       color: { primary },
     },
   }) => primary};
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
 export const PlainText = styled('p')`

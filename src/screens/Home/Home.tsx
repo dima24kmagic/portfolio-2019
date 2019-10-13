@@ -1,5 +1,5 @@
 import React from 'react'
-import { withTheme } from 'styled-components'
+import { ThemeProvider, withTheme } from 'styled-components'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
 import {
@@ -9,8 +9,9 @@ import {
   Root,
   TextDivider,
 } from './styles'
-import { useToggleTheme } from '../../theme/theme'
+import { useTheme, useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
+import { log } from 'util'
 
 interface Props {}
 
@@ -35,8 +36,10 @@ function Home(props: Props) {
   })
 
   const toggleTheme = useToggleTheme()
+  const theme = useTheme()
+  console.log('HOME!')
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <HomePreview />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
@@ -77,7 +80,7 @@ function Home(props: Props) {
           </PlainText>
         </ContentHolder>
       </Root>
-    </>
+    </ThemeProvider>
   )
 }
 

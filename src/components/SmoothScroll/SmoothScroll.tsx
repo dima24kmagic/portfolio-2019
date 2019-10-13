@@ -28,7 +28,6 @@ function SmoothScroll(props: Props) {
   const { children } = props
   const scrollWrapperRef = useRef()
   const { handleScroll, scrollProps } = useSmoothScroll(scrollWrapperRef)
-  console.log({ scrollWrapperRef })
   return (
     <Scrollable
       ref={scrollWrapperRef}

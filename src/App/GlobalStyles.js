@@ -23,11 +23,7 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
     segoe ui, arial, sans-serif;
-    background: ${({
-      theme: {
-        bg: { primary },
-      },
-    }) => primary};
+    background: #020202,
   }
   
   #root {

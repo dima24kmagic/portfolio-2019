@@ -1,8 +1,13 @@
 import React from 'react'
 import { animated, config, useSpring, useTransition } from 'react-spring'
 import { Switch, SwitchProps, useLocation } from 'react-router-dom'
-import styled from 'styled-components'
-import { useSideNavContext } from '../SideNav/SideNavContext'
+import styled, { ThemeProvider } from 'styled-components'
+import {
+  SideNavContextProvider,
+  useSideNavContext,
+} from '../SideNav/SideNavContext'
+import GlobalStyle from '../../App/GlobalStyles'
+import { useTheme } from '../../theme/theme'
 
 interface Props extends SwitchProps {
   children: any
@@ -21,7 +26,7 @@ const Root = styled(animated.div)`
  * Switch that animating routers
  */
 function AnimatedSwitch({ children }: Props) {
-  const { isOpen: isNavOpen } = useSideNavContext()
+  const theme = useTheme()
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
     delay: 2000,
