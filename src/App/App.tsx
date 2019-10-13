@@ -8,6 +8,7 @@ import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
 import { useTheme } from '../theme/theme'
 import { PlainText, Root } from '../screens/Home/styles'
+import SmoothScroll from '../components/SmoothScroll'
 
 interface Props {}
 
@@ -34,18 +35,18 @@ function App(props: Props) {
           isOpen={isNavOpen}
           onToggleNav={handleNavToggle}
         />
-        <div>
-          <AnimatedSwitch isNavOpen={isNavOpen}>
-            <Route exact path="/">
+        <AnimatedSwitch isNavOpen={isNavOpen}>
+          <Route exact path="/">
+            <SmoothScroll>
               <Home />
-            </Route>
-            <Route>
-              <Root>
-                <PlainText>Nothing Here!</PlainText>
-              </Root>
-            </Route>
-          </AnimatedSwitch>
-        </div>
+            </SmoothScroll>
+          </Route>
+          <Route>
+            <Root>
+              <PlainText>Nothing Here!</PlainText>
+            </Root>
+          </Route>
+        </AnimatedSwitch>
       </>
     </ThemeProvider>
   )

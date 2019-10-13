@@ -5,15 +5,6 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App/App'
 import ThemeModeContextProvider from './theme/ThemeModeContextProvider'
 
-// document.addEventListener(
-//   'wheel',
-//   e => {
-//     e.preventDefault()
-//     console.log(e)
-//   },
-//   { passive: false },
-// )
-
 ReactDOM.render(
   <BrowserRouter>
     <ThemeModeContextProvider>

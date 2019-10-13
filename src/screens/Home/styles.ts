@@ -9,6 +9,7 @@ export const Root = styled('div')`
   align-items: center;
   width: 100%;
   min-height: 100%;
+  height: 100%;
   padding: 0px 32px;
   overflow: auto;
   background: ${({

@@ -2,6 +2,7 @@ import React from 'react'
 import { animated, config, useTransition } from 'react-spring'
 import { Switch, SwitchProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import SmoothScroll from '../SmoothScroll'
 
 interface Props extends SwitchProps {
   children: any
@@ -11,6 +12,10 @@ interface Props extends SwitchProps {
 const Root = styled(animated.div)`
   width: 100%;
   height: auto;
+  // use default scroll behaviour on mobiles
+  @media (hover: none) and (pointer: coarse) {
+    height: 100%;
+  }
 `
 
 /**
