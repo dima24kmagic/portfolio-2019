@@ -1,6 +1,6 @@
 import React from 'react'
-import {animated, config, useTransition} from 'react-spring'
-import {Switch, SwitchProps, useLocation} from 'react-router-dom'
+import { animated, config, useTransition } from 'react-spring'
+import { Switch, SwitchProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 interface Props extends SwitchProps {
@@ -10,8 +10,7 @@ interface Props extends SwitchProps {
 
 const Root = styled(animated.div)`
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  height: auto;
 `
 
 /**
@@ -40,6 +39,7 @@ function AnimatedSwitch({ children, isNavOpen }: Props) {
     update: { filter: isNavOpen ? 'blur(3px)' : 'blur(0px)' },
     config: config.slow,
   })
+
   return (
     <>
       {transitions.map(({ item, props, key }) => {

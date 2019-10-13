@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
   }
   ::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    //width: 0px;  /* Remove scrollbar space */
+    //background: transparent;  /* Optional: just make scrollbar invisible */
   }
   html,
   body {
@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
   #root {
     width: 100%;
     height: 100%;
+    //overflow-y: auto;
   }
 `
 export default GlobalStyle

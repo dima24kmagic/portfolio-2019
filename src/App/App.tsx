@@ -34,16 +34,18 @@ function App(props: Props) {
           isOpen={isNavOpen}
           onToggleNav={handleNavToggle}
         />
-        <AnimatedSwitch isNavOpen={isNavOpen}>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route>
-            <Root>
-              <PlainText>Nothing Here!</PlainText>
-            </Root>
-          </Route>
-        </AnimatedSwitch>
+        <div>
+          <AnimatedSwitch isNavOpen={isNavOpen}>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route>
+              <Root>
+                <PlainText>Nothing Here!</PlainText>
+              </Root>
+            </Route>
+          </AnimatedSwitch>
+        </div>
       </>
     </ThemeProvider>
   )
