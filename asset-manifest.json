@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/portfolio-2019/static/js/main.b924f4b0.chunk.js",
+    "main.js.map": "/portfolio-2019/static/js/main.b924f4b0.chunk.js.map",
+    "runtime-main.js": "/portfolio-2019/static/js/runtime-main.c9a70aae.js",
+    "runtime-main.js.map": "/portfolio-2019/static/js/runtime-main.c9a70aae.js.map",
+    "static/js/2.b78b10be.chunk.js": "/portfolio-2019/static/js/2.b78b10be.chunk.js",
+    "static/js/2.b78b10be.chunk.js.map": "/portfolio-2019/static/js/2.b78b10be.chunk.js.map",
+    "index.html": "/portfolio-2019/index.html",
+    "precache-manifest.462a12a183cd7cd5d74b43f83701a70f.js": "/portfolio-2019/precache-manifest.462a12a183cd7cd5d74b43f83701a70f.js",
+    "service-worker.js": "/portfolio-2019/service-worker.js",
+    "static/media/Me Landscape.jpg": "/portfolio-2019/static/media/Me Landscape.49d60055.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c9a70aae.js",
+    "static/js/2.b78b10be.chunk.js",
+    "static/js/main.b924f4b0.chunk.js"
+  ]
+}
