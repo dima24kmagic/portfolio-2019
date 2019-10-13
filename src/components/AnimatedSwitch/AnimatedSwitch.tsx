@@ -2,11 +2,10 @@ import React from 'react'
 import { animated, config, useTransition } from 'react-spring'
 import { Switch, SwitchProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import SmoothScroll from '../SmoothScroll'
+import { useSideNavContext } from '../SideNav/SideNavContext'
 
 interface Props extends SwitchProps {
   children: any
-  isNavOpen: boolean
 }
 
 const Root = styled(animated.div)`
@@ -21,7 +20,8 @@ const Root = styled(animated.div)`
 /**
  * Switch that animating routers
  */
-function AnimatedSwitch({ children, isNavOpen }: Props) {
+function AnimatedSwitch({ children }: Props) {
+  const { isOpen: isNavOpen } = useSideNavContext()
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
     initial: {

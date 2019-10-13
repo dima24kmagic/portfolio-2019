@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import { ThemeProvider, withTheme } from 'styled-components'
 import GlobalStyle from './GlobalStyles'
@@ -9,6 +9,7 @@ import Home from '../screens/Home/Home'
 import { useTheme } from '../theme/theme'
 import { PlainText, Root } from '../screens/Home/styles'
 import SmoothScroll from '../components/SmoothScroll'
+import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
 
 interface Props {}
 
@@ -22,20 +23,12 @@ const menuOptions: MenuLink[] = [
  */
 function App(props: Props) {
   const theme = useTheme()
-  const [isNavOpen, setNavOpen] = useState(false)
-  const handleNavToggle = () => {
-    setNavOpen(!isNavOpen)
-  }
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <SideNavContextProvider>
         <GlobalStyle />
-        <SideNav
-          menuOptions={menuOptions}
-          isOpen={isNavOpen}
-          onToggleNav={handleNavToggle}
-        />
-        <AnimatedSwitch isNavOpen={isNavOpen}>
+        <SideNav menuOptions={menuOptions} />
+        <AnimatedSwitch>
           <Route exact path="/">
             <SmoothScroll>
               <Home />
@@ -47,7 +40,7 @@ function App(props: Props) {
             </Root>
           </Route>
         </AnimatedSwitch>
-      </>
+      </SideNavContextProvider>
     </ThemeProvider>
   )
 }
