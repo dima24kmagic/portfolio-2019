@@ -13,9 +13,10 @@ const H1 = styled(animated.h1)`
   font-family: 'Chivo', sans-serif;
   color: ${({
     theme: {
-      color: { secondary },
+      color: { primary },
     },
-  }) => secondary};
+  }) => primary};
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
   text-shadow: 1px 1px 0px red, -1px -1px 0px hotpink;
   margin-bottom: 15px;
 

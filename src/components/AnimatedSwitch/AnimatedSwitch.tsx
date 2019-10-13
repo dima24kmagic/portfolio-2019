@@ -1,5 +1,5 @@
 import React from 'react'
-import { animated, config, useTransition } from 'react-spring'
+import { animated, config, useSpring, useTransition } from 'react-spring'
 import { Switch, SwitchProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { useSideNavContext } from '../SideNav/SideNavContext'
@@ -24,24 +24,20 @@ function AnimatedSwitch({ children }: Props) {
   const { isOpen: isNavOpen } = useSideNavContext()
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
+    delay: 2000,
     initial: {
       opacity: 1,
       transform: 'translate3d(0%,0,0)',
-      filter: 'blur(0px)',
     },
     from: {
       opacity: 0,
-      transform: 'translate3d(25%,0,0)',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      filter: 'blur(0px)',
     },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-25%,0,0)' },
-    update: { filter: isNavOpen ? 'blur(3px)' : 'blur(0px)' },
+    enter: {
+      opacity: 1,
+    },
+    leave: {
+      opacity: 0,
+    },
     config: config.slow,
   })
 

@@ -34,7 +34,7 @@ function HomePreview(props: Props) {
   })
   return (
     <PreviewContent>
-      <PreviewImage src={meLandscapeImg} />
+      <PreviewImage src={mePortraitImg} />
       <AnimatedName />
       <NavigateMoreButton style={showMoreButtonStyled}>
         Read More

@@ -28,20 +28,20 @@ export const PreviewContent = styled('div')`
   }
 `
 
-export const PreviewImage = styled('img')`
+export const PreviewImage = styled('div')`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
   background: ${({
     theme: {
       bg: { primary },
     },
   }) => primary};
-  transition: background 0.5s;
+  transition: background-color
+    ${({ theme: { transitionSpeed } }) => transitionSpeed};
 `
 
 export const NavigateMoreButton = styled(animated.div)`
@@ -51,9 +51,9 @@ export const NavigateMoreButton = styled(animated.div)`
   transform: translateX(-50%);
   color: ${({
     theme: {
-      color: { secondary },
+      color: { primary },
     },
-  }) => secondary};
+  }) => primary};
   &:hover {
     color: ${({
       theme: {

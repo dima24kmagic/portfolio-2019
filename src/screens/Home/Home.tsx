@@ -40,8 +40,8 @@ function Home(props: Props) {
       <HomePreview />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
-          <ContentName>About Me</ContentName>
-          <PlainText>
+          <ContentName>Lorem Iplsum</ContentName>
+          {/*<PlainText>
             Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
           </PlainText>
           <PlainText>
@@ -56,6 +56,24 @@ function Home(props: Props) {
           </PlainText>
           <PlainText>
             I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>*/}
+          <PlainText>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
+            commodi inventore iste laborum libero magni maxime officia officiis
+            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
+            modi nesciunt qui veritatis? lorem
+          </PlainText>
+          <PlainText>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
+            commodi inventore iste laborum libero magni maxime officia officiis
+            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
+            modi nesciunt qui veritatis? lorem
+          </PlainText>
+          <PlainText>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
+            commodi inventore iste laborum libero magni maxime officia officiis
+            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
+            modi nesciunt qui veritatis? lorem
           </PlainText>
         </ContentHolder>
       </Root>

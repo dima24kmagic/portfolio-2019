@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import App from './App/App'
 import ThemeModeContextProvider from './theme/ThemeModeContextProvider'
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <ThemeModeContextProvider>
       <App />
     </ThemeModeContextProvider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 )

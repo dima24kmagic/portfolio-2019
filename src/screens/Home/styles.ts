@@ -25,6 +25,7 @@ export const ContentName = styled('h1')`
   font-weight: 700;
   font-size: 21px;
   margin-bottom: 28px;
+  margin-top: 64px;
   color: ${({
     theme: {
       color: { primary },

@@ -31,7 +31,7 @@ export const BackdropFilter = styled(animated.div)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   opacity: 0;
   cursor: pointer;
   outline: none;
