@@ -36,7 +36,9 @@ function App(props: Props) {
           </Route>
           <Route>
             <Root>
-              <PlainText>Nothing Here!</PlainText>
+              <SmoothScroll>
+                <PlainText>Nothing Here!</PlainText>
+              </SmoothScroll>
             </Root>
           </Route>
         </AnimatedSwitch>

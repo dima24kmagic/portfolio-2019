@@ -33,7 +33,7 @@ function SideNav({ menuOptions }: Props) {
       )}
       <Wrapper style={wrapperStyleProps}>
         <MenuOptions
-          handleNavToggle={handleToggle}
+          onToggleNav={handleToggle}
           menuOptionTransitions={menuOptionTransitions}
         />
       </Wrapper>

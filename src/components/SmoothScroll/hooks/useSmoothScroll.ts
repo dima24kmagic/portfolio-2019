@@ -7,7 +7,6 @@ const useSmoothScroll = (
   let scrollDeltaY = 0
 
   const windowHeight = window.innerHeight
-  console.log(window.innerHeight, window.outerHeight)
 
   let wrapperHeight = 0
   useEffect(() => {
@@ -24,7 +23,6 @@ const useSmoothScroll = (
   const handleScroll = (e: WheelEvent) => {
     const newScrollValue = scrollDeltaY - e.deltaY
     if (newScrollValue <= 0) {
-      console.log({ wrapperHeight })
       if (Math.abs(newScrollValue) > wrapperHeight - windowHeight) {
         scrollDeltaY = (wrapperHeight - windowHeight) * -1
       } else {
