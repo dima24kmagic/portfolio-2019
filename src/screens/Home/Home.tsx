@@ -12,6 +12,7 @@ import {
 import { useTheme, useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
 import { log } from 'util'
+import SmoothScroll from '../../components/SmoothScroll'
 
 interface Props {}
 
@@ -37,14 +38,14 @@ function Home(props: Props) {
 
   const toggleTheme = useToggleTheme()
   const theme = useTheme()
-  console.log('HOME!')
   return (
     <ThemeProvider theme={theme}>
-      <HomePreview />
-      <Root onClick={toggleTheme}>
-        <ContentHolder style={contentSpring}>
-          <ContentName>Lorem Iplsum</ContentName>
-          {/*<PlainText>
+      <SmoothScroll>
+        <HomePreview />
+        <Root onClick={toggleTheme}>
+          <ContentHolder style={contentSpring}>
+            <ContentName>Lorem Iplsum</ContentName>
+            {/*<PlainText>
             Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
           </PlainText>
           <PlainText>
@@ -60,26 +61,27 @@ function Home(props: Props) {
           <PlainText>
             I would like to solve trash issue in the world, because I'm cool.
           </PlainText>*/}
-          <PlainText>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
-            commodi inventore iste laborum libero magni maxime officia officiis
-            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
-            modi nesciunt qui veritatis? lorem
-          </PlainText>
-          <PlainText>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
-            commodi inventore iste laborum libero magni maxime officia officiis
-            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
-            modi nesciunt qui veritatis? lorem
-          </PlainText>
-          <PlainText>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda,
-            commodi inventore iste laborum libero magni maxime officia officiis
-            perspiciatis repellendus reprehenderit saepe soluta veniam! Enim eos
-            modi nesciunt qui veritatis? lorem
-          </PlainText>
-        </ContentHolder>
-      </Root>
+            <PlainText>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Assumenda, commodi inventore iste laborum libero magni maxime
+              officia officiis perspiciatis repellendus reprehenderit saepe
+              soluta veniam! Enim eos modi nesciunt qui veritatis? lorem
+            </PlainText>
+            <PlainText>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Assumenda, commodi inventore iste laborum libero magni maxime
+              officia officiis perspiciatis repellendus reprehenderit saepe
+              soluta veniam! Enim eos modi nesciunt qui veritatis? lorem
+            </PlainText>
+            <PlainText>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Assumenda, commodi inventore iste laborum libero magni maxime
+              officia officiis perspiciatis repellendus reprehenderit saepe
+              soluta veniam! Enim eos modi nesciunt qui veritatis? lorem
+            </PlainText>
+          </ContentHolder>
+        </Root>
+      </SmoothScroll>
     </ThemeProvider>
   )
 }

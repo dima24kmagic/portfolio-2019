@@ -3,8 +3,8 @@ import { MutableRefObject, useEffect, useState } from 'react'
 
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
-  windowHeight: number,
 ) => {
+  const [scrollDeltaY, setScrollDeltaY] = useState(0)
   const [wrapperHeight, setWrapperHeight] = useState(0)
   const [scrollProps, setScrollProps] = useSpring(() => {
     return {
@@ -12,35 +12,39 @@ const useSmoothScroll = (
     }
   })
 
-  let scrollDeltaY = 0
-
+  // Add on screen resize adjustments
+  const handleWindowResize = () => {
+    setWrapperHeight(scrollWrapperRef.current.clientHeight)
+  }
   useEffect(() => {
     if (scrollWrapperRef.current) {
       setWrapperHeight(scrollWrapperRef.current.clientHeight)
     }
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
   }, [scrollWrapperRef])
 
-  const handleScroll = (e: WheelEvent) => {
-    const newScrollValue = scrollDeltaY - e.deltaY
+  const handleMouseWheel = (e: WheelEvent) => {
+    let newScrollValue = scrollDeltaY - e.deltaY
     // if scroll down
     if (newScrollValue <= 0) {
       // When about to scroll to the very bottom
-      if (Math.abs(newScrollValue) > wrapperHeight - windowHeight) {
-        scrollDeltaY = (wrapperHeight - windowHeight) * -1
-        //  Usual scroll
-      } else {
-        scrollDeltaY = newScrollValue
+      if (Math.abs(newScrollValue) > wrapperHeight - window.innerHeight) {
+        newScrollValue = (wrapperHeight - window.innerHeight) * -1
       }
+      //  when wanna scroll more than bottom
     } else {
-      scrollDeltaY = 0
+      newScrollValue = 0
     }
+    setScrollDeltaY(newScrollValue)
     setScrollProps({
-      transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
+      transform: `translate3d(0px, ${newScrollValue}px, 0px)`,
     })
   }
   return {
-    handleScroll,
+    handleMouseWheel,
     scrollProps,
+    scrollDeltaY,
   }
 }
 

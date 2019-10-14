@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
+import React, { ReactNode, useRef } from 'react'
+import styled, { withTheme } from 'styled-components'
 import { animated } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
+import useScrollBarStyles from './hooks/useScrollBarStyles'
 
 interface Props {
   children: ReactNode
@@ -20,48 +21,48 @@ const Scrollable = styled(animated.div)`
     height: 100%;
   }
 `
+const Scroll = styled(animated.div)`
+  position: fixed;
+  top: 8px;
+  right: 5px;
+  width: 8px;
+  height: ${({ height }) => `${height}px`};
+  background: ${({
+    theme: {
+      color: { primary },
+    },
+  }) => primary};
+  opacity: 0.4;
+  border-radius: 8px;
+  z-index: 2;
+  &:hover {
+    opacity: 0.8;
+  }
+  transition: opacity 0.15s;
+  @media (hover: none) and (pointer: coarse) {
+    display: none;
+  }
+`
 
 /**
  * Smooth scroll wrapper
  */
 function SmoothScroll(props: Props) {
-  const Scroll = styled(animated.div)`
-    position: fixed;
-    top: 8px;
-    right: 5px;
-    width: 8px;
-    height: ${({ height }) => `${height}px`};
-    background: red;
-    opacity: 0.4;
-    border-radius: 8px;
-    z-index: 2;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
-    transition: opacity 0.15s;
-  `
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
-  const windowHeight = window.innerHeight
-  const { handleScroll, scrollProps } = useSmoothScroll(
+  const { handleMouseWheel, scrollProps, scrollDeltaY } = useSmoothScroll(
     scrollWrapperRef,
-    windowHeight,
   )
-
-  const [scrollHeight, setScrollHeight] = useState(200)
-  useEffect(() => {
-    if (scrollWrapperRef.current) {
-      const { current } = scrollWrapperRef
-      setScrollHeight(windowHeight * (windowHeight / current.clientHeight))
-    }
-  }, [scrollWrapperRef])
+  const { scrollHeight, scrollStyles } = useScrollBarStyles(
+    scrollDeltaY,
+    scrollWrapperRef,
+  )
   return (
     <>
-      <Scroll height={40} />
+      <Scroll height={scrollHeight} style={scrollStyles} />
       <Scrollable
         ref={scrollWrapperRef}
-        onWheel={handleScroll}
+        onWheel={handleMouseWheel}
         style={scrollProps}
       >
         {children}
@@ -70,4 +71,4 @@ function SmoothScroll(props: Props) {
   )
 }
 
-export default SmoothScroll
+export default withTheme(SmoothScroll)

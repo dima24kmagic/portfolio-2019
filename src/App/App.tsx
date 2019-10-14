@@ -26,14 +26,10 @@ function App(props: Props) {
       <SideNav menuOptions={menuOptions} />
       <AnimatedSwitch>
         <Route exact path="/">
-          <SmoothScroll>
             <Home />
-          </SmoothScroll>
         </Route>
         <Route>
-          <SmoothScroll>
             <div>Nothing Here!</div>
-          </SmoothScroll>
         </Route>
       </AnimatedSwitch>
     </SideNavContextProvider>
