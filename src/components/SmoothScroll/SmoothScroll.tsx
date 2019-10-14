@@ -52,7 +52,6 @@ const Scroll = styled(animated.div)`
 function SmoothScroll(props: Props) {
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
-  const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
     handleMouseWheel,
     scrollProps,
@@ -63,10 +62,14 @@ function SmoothScroll(props: Props) {
     scrollDeltaY,
     scrollWrapperRef,
   )
-  useScrollDrag(scrollBarRef, handleOnScrollDrag)
+  const handleMouseDown = useScrollDrag(handleOnScrollDrag)
   return (
     <>
-      <Scroll ref={scrollBarRef} height={scrollHeight} style={scrollStyles} />
+      <Scroll
+        onMouseDown={handleMouseDown}
+        height={scrollHeight}
+        style={scrollStyles}
+      />
       <Scrollable
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}
