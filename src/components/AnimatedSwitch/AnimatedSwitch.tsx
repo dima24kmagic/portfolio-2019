@@ -2,7 +2,6 @@ import React from 'react'
 import { animated, config, useTransition } from 'react-spring'
 import { Switch, SwitchProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { useTheme } from '../../theme/theme'
 
 interface Props extends SwitchProps {
   children: any
@@ -21,7 +20,6 @@ const Root = styled(animated.div)`
  * Switch that animating routers
  */
 function AnimatedSwitch({ children }: Props) {
-  const theme = useTheme()
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
     delay: 2000,

@@ -1,13 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { withTheme } from 'styled-components'
-import GlobalStyle from './GlobalStyles'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
-import SmoothScroll from '../components/SmoothScroll'
 import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
+import GlobalStyle from './GlobalStyles'
 
 interface Props {}
 
@@ -26,10 +25,10 @@ function App(props: Props) {
       <SideNav menuOptions={menuOptions} />
       <AnimatedSwitch>
         <Route exact path="/">
-            <Home />
+          <Home />
         </Route>
         <Route>
-            <div>Nothing Here!</div>
+          <div>Nothing Here!</div>
         </Route>
       </AnimatedSwitch>
     </SideNavContextProvider>

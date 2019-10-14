@@ -1,6 +1,10 @@
-import { createGlobalStyle } from 'styled-components'
+import React from 'react'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { useTheme } from '../theme/theme'
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = () => {
+  const theme = useTheme()
+  const Inject = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Chivo:300,700,900&display=swap');
   *{
@@ -23,7 +27,11 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
     segoe ui, arial, sans-serif;
-    background: #020202,
+    background: ${({
+      theme: {
+        bg: { primary },
+      },
+    }) => primary};
   }
   
   #root {
@@ -32,4 +40,10 @@ const GlobalStyle = createGlobalStyle`
     //overflow-y: auto;
   }
 `
+  return (
+    <ThemeProvider theme={theme}>
+      <Inject />
+    </ThemeProvider>
+  )
+}
 export default GlobalStyle

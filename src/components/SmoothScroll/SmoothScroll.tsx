@@ -3,6 +3,7 @@ import styled, { withTheme } from 'styled-components'
 import { animated } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollBarStyles from './hooks/useScrollBarStyles'
+import useScrollDrag from './hooks/useScrollDrag'
 
 interface Props {
   children: ReactNode
@@ -51,6 +52,7 @@ const Scroll = styled(animated.div)`
 function SmoothScroll(props: Props) {
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
+  const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
     handleMouseWheel,
     scrollProps,
@@ -61,30 +63,10 @@ function SmoothScroll(props: Props) {
     scrollDeltaY,
     scrollWrapperRef,
   )
-
-  let dragStartY = 0
-  const handleMouseMove = (e: MouseEvent) => {
-    const deltaY = dragStartY - e.clientY
-    handleOnScrollDrag(deltaY)
-  }
-  const handleMouseUp = () => {
-    document.removeEventListener('mousemove', handleMouseMove)
-    document.removeEventListener('mouseup', handleMouseMove)
-  }
-  const handleMouseDown = (e: MouseEvent) => {
-    dragStartY = e.clientY
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseup', handleMouseUp)
-  }
-
-  // TODO: Implement scroll drag functionality
+  useScrollDrag(scrollBarRef, handleOnScrollDrag)
   return (
     <>
-      <Scroll
-        onMouseDown={handleMouseDown}
-        height={scrollHeight}
-        style={scrollStyles}
-      />
+      <Scroll ref={scrollBarRef} height={scrollHeight} style={scrollStyles} />
       <Scrollable
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}
