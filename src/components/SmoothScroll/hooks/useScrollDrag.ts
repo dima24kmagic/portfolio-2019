@@ -1,8 +1,15 @@
-const useScrollDrag = (handleOnScrollDrag: (number) => void) => {
+import { MutableRefObject } from 'react'
+
+const useScrollDrag = (
+  scrollWrapperRef: MutableRefObject<HTMLDivElement>,
+  handleOnScrollDrag: (number) => void,
+) => {
   let dragStartY = 0
   const handleMouseMove = (e: MouseEvent) => {
     const deltaY = dragStartY - e.clientY
-    handleOnScrollDrag(deltaY)
+    handleOnScrollDrag(
+      deltaY * (scrollWrapperRef.current.clientHeight /window.innerHeight ),
+    )
   }
   const handleMouseUp = () => {
     document.removeEventListener('mousemove', handleMouseMove)

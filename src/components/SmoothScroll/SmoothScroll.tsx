@@ -62,7 +62,7 @@ function SmoothScroll(props: Props) {
     scrollDeltaY,
     scrollWrapperRef,
   )
-  const handleMouseDown = useScrollDrag(handleOnScrollDrag)
+  const handleMouseDown = useScrollDrag(scrollWrapperRef, handleOnScrollDrag)
   return (
     <>
       <Scroll

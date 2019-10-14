@@ -11,6 +11,7 @@ export const Root = styled('div')`
   min-height: 100%;
   height: 100%;
   padding: 0px 32px;
+  padding-bottom: 64px;
   overflow: auto;
   background: ${({
     theme: {
