@@ -1,5 +1,6 @@
 import { useSpring } from 'react-spring'
 import { MutableRefObject, useEffect, useState } from 'react'
+import { createVerify } from 'crypto'
 
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
@@ -27,8 +28,8 @@ const useSmoothScroll = (
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
-  const handleMouseWheel = (e: WheelEvent) => {
-    let newScrollValue = scrollDeltaY - e.deltaY
+  const handleScroll = (valueToScroll: number) => {
+    let newScrollValue = valueToScroll
     // if scroll down
     if (newScrollValue <= 0) {
       // When about to scroll to the very bottom
@@ -44,10 +45,21 @@ const useSmoothScroll = (
       transform: `translate3d(0px, ${newScrollValue}px, 0px)`,
     })
   }
+
+  const handleMouseWheel = (e: WheelEvent) => {
+    const valueToScroll = scrollDeltaY - e.deltaY
+    handleScroll(valueToScroll)
+  }
+
+  const handleOnScrollDrag = deltaY => {
+    const valueToScroll = scrollDeltaY + deltaY
+    handleScroll(valueToScroll)
+  }
   return {
     handleMouseWheel,
     scrollProps,
     scrollDeltaY,
+    handleOnScrollDrag,
   }
 }
 
