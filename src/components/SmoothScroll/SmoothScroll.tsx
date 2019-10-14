@@ -23,7 +23,7 @@ const Scrollable = styled(animated.div)`
 `
 const Scroll = styled(animated.div)`
   position: fixed;
-  top: 8px;
+  top: 0px;
   right: 5px;
   width: 8px;
   height: ${({ height }) => `${height}px`};

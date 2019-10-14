@@ -20,9 +20,12 @@ const useSmoothScroll = (
     if (scrollWrapperRef.current) {
       setWrapperHeight(scrollWrapperRef.current.clientHeight)
     }
+  }, [scrollWrapperRef])
+
+  useEffect(() => {
     window.addEventListener('resize', handleWindowResize)
     return () => window.removeEventListener('resize', handleWindowResize)
-  }, [scrollWrapperRef])
+  }, [])
 
   const handleMouseWheel = (e: WheelEvent) => {
     let newScrollValue = scrollDeltaY - e.deltaY
