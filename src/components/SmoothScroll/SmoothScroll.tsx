@@ -36,10 +36,6 @@ const Scroll = styled(animated.div)`
   opacity: 0.4;
   border-radius: 8px;
   z-index: 2;
-  &:hover {
-    opacity: 0.8;
-  }
-  transition: opacity 0.15s,
     color ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
     display: none;
@@ -74,6 +70,10 @@ function SmoothScroll(props: Props) {
     <>
       <Scroll
         onMouseDown={handleMouseDown}
+        onMouseOver={handleScrollMouseDown}
+        onBlur={handleScrollMouseUp}
+        onFocus={handleScrollMouseDown}
+        onMouseOut={handleScrollMouseUp}
         height={scrollHeight}
         style={scrollStyles}
       />
