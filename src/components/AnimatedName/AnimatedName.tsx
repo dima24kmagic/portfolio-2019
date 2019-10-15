@@ -16,7 +16,8 @@ const Wrapper = styled('div')`
  * Animated Name
  */
 function AnimatedName() {
-  const { renderName } = useNameAnimation()
+  const introText = ['Frontend-Dev', 'Dima Baranov']
+  const { renderName } = useNameAnimation(introText)
   return <Wrapper>{renderName()}</Wrapper>
 }
 

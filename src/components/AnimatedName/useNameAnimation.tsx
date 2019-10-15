@@ -43,8 +43,7 @@ const H1 = styled(animated.h1)`
   }
 `
 
-const useNameAnimation = () => {
-  const introText = ['Frontend-Dev', 'Dima Baranov']
+const useNameAnimation = (introText: string[]) => {
 
   const introTextTrails = useTrail(introText.length, {
     from: {
