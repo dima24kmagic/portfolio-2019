@@ -24,6 +24,7 @@ const useScrollBarStyles = (
     }
   }, [scrollWrapperRef])
 
+  // On window resize
   const handleWindowResize = () => {
     wrapperHeight = scrollWrapperRef.current.clientHeight
     setScrollHeight(
@@ -37,24 +38,36 @@ const useScrollBarStyles = (
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
-  // 100%
-  const scrollPercentage = wrapperHeight
-  // Percents to move by depends on window
   const movePercentage =
-    (currentScrollDeltaY / scrollPercentage) * window.innerHeight -
-    SCROLL_OFFSET
-
-  console.log({ movePercentage, scrollPercentage })
-
+    (currentScrollDeltaY / wrapperHeight) * window.innerHeight - SCROLL_OFFSET
   const [scrollStyles, setScrollStyles] = useSpring(() => ({
     transform: `translate3d(0px, ${movePercentage * -1}px, 0px)`,
+    opacity: 0.4,
   }))
+
+  // move scroll when content is moved
   useEffect(() => {
     setScrollStyles({
       transform: `translate3d(0px, ${movePercentage * -1}px, 0px)`,
     })
   }, [currentScrollDeltaY])
-  return { scrollStyles, scrollHeight }
+
+  const handleScrollMouseDown = () => {
+    setScrollStyles({
+      opacity: 0.8,
+    })
+  }
+  const handleScrollMouseUp = () => {
+    setScrollStyles({
+      opacity: 0.4,
+    })
+  }
+  return {
+    scrollStyles,
+    scrollHeight,
+    handleScrollMouseDown,
+    handleScrollMouseUp,
+  }
 }
 
 export default useScrollBarStyles

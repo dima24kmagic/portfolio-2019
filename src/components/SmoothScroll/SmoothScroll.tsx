@@ -56,13 +56,20 @@ function SmoothScroll(props: Props) {
     handleMouseWheel,
     scrollProps,
     scrollDeltaY,
-    handleOnScrollDrag,
+    handleScrollDrag,
   } = useSmoothScroll(scrollWrapperRef)
-  const { scrollHeight, scrollStyles } = useScrollBarStyles(
-    scrollDeltaY,
+  const {
+    scrollHeight,
+    scrollStyles,
+    handleScrollMouseDown,
+    handleScrollMouseUp,
+  } = useScrollBarStyles(scrollDeltaY, scrollWrapperRef)
+  const handleMouseDown = useScrollDrag(
     scrollWrapperRef,
+    handleScrollDrag,
+    handleScrollMouseDown,
+    handleScrollMouseUp,
   )
-  const handleMouseDown = useScrollDrag(scrollWrapperRef, handleOnScrollDrag)
   return (
     <>
       <Scroll
