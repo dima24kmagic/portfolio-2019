@@ -50,6 +50,8 @@ const Scroll = styled(animated.div)`
  * Smooth scroll wrapper
  */
 function SmoothScroll(props: Props) {
+  // TODO: Find a way to optimize this, currently because of much effects usage
+  // TODO: react- call re-renders (Ref are passed down)
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
