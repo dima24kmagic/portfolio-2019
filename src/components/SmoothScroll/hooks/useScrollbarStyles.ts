@@ -3,7 +3,7 @@ import { useSpring } from 'react-spring'
 
 const SCROLL_OFFSET = 16
 
-const useScrollBarStyles = (
+const useScrollbarStyles = (
   currentScrollDeltaY: number,
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
 ) => {
@@ -12,7 +12,7 @@ const useScrollBarStyles = (
     wrapperHeight = scrollWrapperRef.current.clientHeight
   }
 
-  const [scrollHeight, setScrollHeight] = useState(0)
+  const [scrollbarHeight, setScrollHeight] = useState(0)
   useEffect(() => {
     if (scrollWrapperRef.current) {
       wrapperHeight = scrollWrapperRef.current.clientHeight
@@ -44,7 +44,7 @@ const useScrollBarStyles = (
 
   const movePercentage =
     (currentScrollDeltaY / wrapperHeight) * window.innerHeight - SCROLL_OFFSET
-  const [scrollStyles, setScrollStyles] = useSpring(() => ({
+  const [scrollbarStyles, setScrollStyles] = useSpring(() => ({
     transform: `translate3d(0px, ${movePercentage * -1}px, 0px)`,
     // opacity: 0.4,
   }))
@@ -56,24 +56,10 @@ const useScrollBarStyles = (
     })
   }, [currentScrollDeltaY])
 
-  const handleScrollMouseDown = () => {
-    setScrollStyles({
-      // @ts-ignore
-      opacity: 0.8,
-    })
-  }
-  const handleScrollMouseUp = () => {
-    setScrollStyles({
-      // @ts-ignore
-      opacity: 0.4,
-    })
-  }
   return {
-    scrollStyles,
-    scrollHeight,
-    handleScrollMouseDown,
-    handleScrollMouseUp,
+    scrollbarStyles,
+    scrollbarHeight,
   }
 }
 
-export default useScrollBarStyles
+export default useScrollbarStyles

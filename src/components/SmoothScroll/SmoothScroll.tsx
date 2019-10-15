@@ -2,7 +2,7 @@ import React, { ReactNode, useRef } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { animated } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
-import useScrollBarStyles from './hooks/useScrollBarStyles'
+import useScrollbarStyles from './hooks/useScrollbarStyles'
 import useScrollDrag from './hooks/useScrollDrag'
 
 interface Props {
@@ -61,7 +61,7 @@ function SmoothScroll(props: Props) {
     scrollDeltaY,
     handleScrollDrag,
   } = useSmoothScroll(scrollWrapperRef)
-  const { scrollHeight, scrollStyles } = useScrollBarStyles(
+  const { scrollbarHeight, scrollbarStyles } = useScrollbarStyles(
     scrollDeltaY,
     scrollWrapperRef,
   )
@@ -75,8 +75,8 @@ function SmoothScroll(props: Props) {
       <Scroll
         ref={scrollBarRef}
         onMouseDown={handleMouseDown}
-        height={scrollHeight}
-        style={scrollStyles}
+        height={scrollbarHeight}
+        style={scrollbarStyles}
       />
       <Scrollable
         ref={scrollWrapperRef}
