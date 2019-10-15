@@ -30,7 +30,7 @@ const useSmoothScroll = (
   const handleScroll = (valueToScroll: number) => {
     let newScrollValue = valueToScroll
     // if scroll down
-    if (newScrollValue <= 0) {
+    if (newScrollValue <= 0 && wrapperHeight > window.innerHeight) {
       // When about to scroll to the very bottom
       if (Math.abs(newScrollValue) > wrapperHeight - window.innerHeight) {
         newScrollValue = (wrapperHeight - window.innerHeight) * -1

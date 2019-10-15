@@ -40,18 +40,7 @@ function Home(props: Props) {
   const theme = useTheme()
   return (
     <ThemeProvider theme={theme}>
-      <SmoothScroll>
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
-        <HomePreview />
+      <SmoothScroll style={{ overflowY: 'auto', height: '100%' }}>
         <HomePreview />
         <Root onClick={toggleTheme}>
           <ContentHolder style={contentSpring}>

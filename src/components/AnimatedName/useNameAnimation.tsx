@@ -11,6 +11,7 @@ const OverflowWrapper = styled('div')`
 const H1 = styled(animated.h1)`
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
+  text-align: center;
   color: ${({
     theme: {
       color: { primary },
@@ -43,7 +44,7 @@ const H1 = styled(animated.h1)`
 `
 
 const useNameAnimation = () => {
-  const introText = ['Frontend Web-Dev', 'Dima Baranov']
+  const introText = ['Frontend-Dev', 'Dima Baranov']
 
   const introTextTrails = useTrail(introText.length, {
     from: {

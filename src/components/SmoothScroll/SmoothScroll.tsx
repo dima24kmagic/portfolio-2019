@@ -36,7 +36,11 @@ const Scroll = styled(animated.div)`
   opacity: 0.4;
   border-radius: 8px;
   z-index: 2;
-    color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  &:hover {
+    opacity: 0.8 !important;
+  }
+  transition: opacity 0.3s;
+  color ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
     display: none;
   }
@@ -48,32 +52,27 @@ const Scroll = styled(animated.div)`
 function SmoothScroll(props: Props) {
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
+  const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
     handleMouseWheel,
     scrollProps,
     scrollDeltaY,
     handleScrollDrag,
   } = useSmoothScroll(scrollWrapperRef)
-  const {
-    scrollHeight,
-    scrollStyles,
-    handleScrollMouseDown,
-    handleScrollMouseUp,
-  } = useScrollBarStyles(scrollDeltaY, scrollWrapperRef)
+  const { scrollHeight, scrollStyles } = useScrollBarStyles(
+    scrollDeltaY,
+    scrollWrapperRef,
+  )
   const handleMouseDown = useScrollDrag(
     scrollWrapperRef,
+    scrollBarRef,
     handleScrollDrag,
-    handleScrollMouseDown,
-    handleScrollMouseUp,
   )
   return (
     <>
       <Scroll
+        ref={scrollBarRef}
         onMouseDown={handleMouseDown}
-        onMouseOver={handleScrollMouseDown}
-        onBlur={handleScrollMouseUp}
-        onFocus={handleScrollMouseDown}
-        onMouseOut={handleScrollMouseUp}
         height={scrollHeight}
         style={scrollStyles}
       />

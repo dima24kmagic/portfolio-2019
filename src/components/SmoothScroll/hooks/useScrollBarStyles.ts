@@ -16,22 +16,26 @@ const useScrollBarStyles = (
   useEffect(() => {
     if (scrollWrapperRef.current) {
       wrapperHeight = scrollWrapperRef.current.clientHeight
-      setScrollHeight(
-        window.innerHeight *
-          (window.innerHeight / scrollWrapperRef.current.clientHeight) -
-          SCROLL_OFFSET * 2,
-      )
+      if (wrapperHeight > window.innerHeight) {
+        setScrollHeight(
+          window.innerHeight *
+            (window.innerHeight / scrollWrapperRef.current.clientHeight) -
+            SCROLL_OFFSET * 2,
+        )
+      }
     }
   }, [scrollWrapperRef])
 
   // On window resize
   const handleWindowResize = () => {
     wrapperHeight = scrollWrapperRef.current.clientHeight
-    setScrollHeight(
-      window.innerHeight *
-        (window.innerHeight / scrollWrapperRef.current.clientHeight) -
-        SCROLL_OFFSET * 2,
-    )
+    if (wrapperHeight > window.innerHeight) {
+      setScrollHeight(
+        window.innerHeight *
+          (window.innerHeight / scrollWrapperRef.current.clientHeight) -
+          SCROLL_OFFSET * 2,
+      )
+    }
   }
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize)
@@ -42,7 +46,7 @@ const useScrollBarStyles = (
     (currentScrollDeltaY / wrapperHeight) * window.innerHeight - SCROLL_OFFSET
   const [scrollStyles, setScrollStyles] = useSpring(() => ({
     transform: `translate3d(0px, ${movePercentage * -1}px, 0px)`,
-    opacity: 0.4,
+    // opacity: 0.4,
   }))
 
   // move scroll when content is moved
@@ -54,11 +58,13 @@ const useScrollBarStyles = (
 
   const handleScrollMouseDown = () => {
     setScrollStyles({
+      // @ts-ignore
       opacity: 0.8,
     })
   }
   const handleScrollMouseUp = () => {
     setScrollStyles({
+      // @ts-ignore
       opacity: 0.4,
     })
   }

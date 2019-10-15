@@ -2,9 +2,8 @@ import { MutableRefObject } from 'react'
 
 const useScrollDrag = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
+  scrollBarRef: MutableRefObject<HTMLDivElement>,
   handleOnScrollDrag: (number) => void,
-  handleScrollMouseDown: () => void,
-  handleScrollMouseUp: () => void,
 ) => {
   let dragStartY = 0
   const handleMouseMove = (e: MouseEvent) => {
@@ -14,13 +13,13 @@ const useScrollDrag = (
     )
   }
   const handleMouseUp = () => {
-    handleScrollMouseUp()
+    scrollBarRef.current.style.opacity = '0.4'
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseMove)
   }
   const handleMouseDown = (e: MouseEvent) => {
     dragStartY = e.clientY
-    handleScrollMouseDown()
+    scrollBarRef.current.style.opacity = '0.8'
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
   }
