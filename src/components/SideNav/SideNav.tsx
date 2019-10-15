@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider, withTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import MenuOptions from './MenuOptions/MenuOptions'
 import useSideNavAnimation from './hooks/useSideNavAnimation'
 import { BackdropFilter, HamburgerStyled, Wrapper } from './styles'
@@ -8,8 +8,6 @@ import { useSideNavContext } from './SideNavContext'
 import { useTheme } from '../../theme/theme'
 
 interface Props {
-  isOpen: boolean
-  onToggleNav: () => void
   menuOptions: MenuLink[]
 }
 
@@ -43,4 +41,4 @@ function SideNav({ menuOptions }: Props) {
   )
 }
 
-export default withTheme(SideNav)
+export default SideNav
