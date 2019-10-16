@@ -6,11 +6,15 @@ const SCROLLBAR_OFFSET = 16
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
 ) => {
-  /* ********* STYLES VARIABLES *********** */
-  let scrollDeltaY = 0
+  /* ********* CALCULATED VARIABLES *********** */
   let wrapperHeight = 1
-  let scrollbarHeight = 0
   let windowToContentRatio = 1
+  let scrollDeltaYHolded = 0
+
+  /* ********* STYLES VARIABLES *********** */
+  console.log('HERE!')
+  let scrollDeltaY = 0
+  let scrollbarHeight = 0
   let scrollbarMovePercentage =
     (scrollDeltaY / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
 
@@ -62,21 +66,22 @@ const useSmoothScroll = (
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
+  /* ********* SET STYLES ON WHEEL SCROLL *********** */
   const handleScroll = (valueToScroll: number) => {
-    let newScrollValue = valueToScroll
+    scrollDeltaY = valueToScroll
+
     // if scroll down
-    if (newScrollValue <= 0 && wrapperHeight > window.innerHeight) {
+    if (valueToScroll <= 0 && wrapperHeight > window.innerHeight) {
       // When about to scroll to the very bottom
-      if (Math.abs(newScrollValue) > wrapperHeight - window.innerHeight) {
-        newScrollValue = (wrapperHeight - window.innerHeight) * -1
+      if (Math.abs(valueToScroll) > wrapperHeight - window.innerHeight) {
+        scrollDeltaY = (wrapperHeight - window.innerHeight) * -1
       }
       //  when wanna scroll more than bottom
     } else {
-      newScrollValue = 0
+      scrollDeltaY = 0
     }
-
     // SET NEW VALUES FOR STYLES
-    scrollDeltaY = newScrollValue
+    // scrollDeltaY = newScrollValue
     scrollbarMovePercentage =
       (scrollDeltaY / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
 
@@ -86,7 +91,7 @@ const useSmoothScroll = (
       height: scrollbarHeight,
     })
     setScrollProps({
-      transform: `translate3d(0px, ${newScrollValue}px, 0px)`,
+      transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
     })
   }
 
@@ -94,16 +99,19 @@ const useSmoothScroll = (
     const valueToScroll = scrollDeltaY - e.deltaY
     handleScroll(valueToScroll)
   }
-
-  const handleScrollDrag = deltaY => {
-    const valueToScroll = scrollDeltaY + deltaY
+  const handleScrollbarDrag = deltaY => {
+    const valueToScroll = scrollDeltaYHolded + deltaY
     handleScroll(valueToScroll)
   }
+  const handleScrollbarMouseUp = () => {
+    scrollDeltaYHolded = scrollDeltaY
+  }
+
   return {
     handleMouseWheel,
     scrollProps,
-    scrollDeltaY,
-    handleScrollDrag,
+    handleScrollbarDrag,
+    handleScrollbarMouseUp,
     scrollbarStyles,
     scrollbarHeight,
   }

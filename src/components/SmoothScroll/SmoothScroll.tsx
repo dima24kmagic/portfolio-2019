@@ -1,9 +1,7 @@
-import React, { Fragment, ReactNode, useRef } from 'react'
+import React, { ReactNode, useEffect, useRef } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { animated } from 'react-spring'
-import { useLocation } from 'react-router-dom'
 import useSmoothScroll from './hooks/useSmoothScroll'
-import useScrollbarStyles from './hooks/useScrollbarStyles'
 import useScrollDrag from './hooks/useScrollDrag'
 
 interface Props {
@@ -54,28 +52,22 @@ const Scroll = styled(animated.div)`
  */
 function SmoothScroll(props: Props) {
   // TODO: Hide scrollbar after some time
-
-  // TODO: Find a way to optimize this, currently because of much effects usage react- call re-renders (Ref are passed down)
-  // 1) Removed all useState
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
     handleMouseWheel,
     scrollProps,
-    scrollDeltaY,
-    handleScrollDrag,
+    handleScrollbarDrag,
     scrollbarHeight,
     scrollbarStyles,
+    handleScrollbarMouseUp,
   } = useSmoothScroll(scrollWrapperRef)
-  // const { scrollbarHeight, scrollbarStyles } = useScrollbarStyles(
-  //   scrollDeltaY,
-  //   scrollWrapperRef,
-  // )
   const handleMouseDown = useScrollDrag(
     scrollWrapperRef,
     scrollBarRef,
-    handleScrollDrag,
+    handleScrollbarDrag,
+    handleScrollbarMouseUp,
   )
   return (
     <>
