@@ -5,6 +5,7 @@ const useScrollDrag = (
   scrollBarRef: MutableRefObject<HTMLDivElement>,
   onScrollDrag: (number) => void,
   onScrollbarMouseUp: () => void,
+  onScrollbarMouseDown: () => void,
 ) => {
   let dragStartY = 0
   const handleMouseMove = (e: MouseEvent) => {
@@ -22,6 +23,7 @@ const useScrollDrag = (
   const handleMouseDown = (e: MouseEvent) => {
     dragStartY = e.clientY + 1
     scrollBarRef.current.style.opacity = '0.8'
+    onScrollbarMouseDown()
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
   }

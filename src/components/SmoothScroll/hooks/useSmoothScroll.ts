@@ -9,7 +9,7 @@ const useSmoothScroll = (
   /* ********* CALCULATED VARIABLES *********** */
   let wrapperHeight = 1
   let windowToContentRatio = 1
-  let scrollDeltaYHolded = 0
+  let scrollDeltaYHolded = 1
 
   /* ********* STYLES VARIABLES *********** */
   console.log('HERE!')
@@ -108,12 +108,16 @@ const useSmoothScroll = (
   const handleScrollbarMouseUp = () => {
     scrollDeltaYHolded = scrollDeltaY
   }
+  const handleScrollbarMouseDown = () => {
+    scrollDeltaYHolded = scrollDeltaY
+  }
 
   return {
     handleMouseWheel,
     scrollProps,
     handleScrollbarDrag,
     handleScrollbarMouseUp,
+    handleScrollbarMouseDown,
     scrollbarStyles,
     scrollbarHeight,
   }
