@@ -1,6 +1,7 @@
-import React, { ReactNode, useRef } from 'react'
+import React, { Fragment, ReactNode, useRef } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { animated } from 'react-spring'
+import { useLocation } from 'react-router-dom'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollbarStyles from './hooks/useScrollbarStyles'
 import useScrollDrag from './hooks/useScrollDrag'
@@ -14,8 +15,10 @@ const Scrollable = styled(animated.div)`
   top: 0;
   left: 0;
   transform: translate3d(0px, 0px, 0px);
-  overflow: hidden;
+  overflow: ${({ isTest }) => (isTest ? 'auto' : 'hidden')};
+  height: ${({ isTest }) => (isTest ? '100%' : 'auto')};
   will-change: transform;
+
   // use default scroll behaviour on mobiles
   @media (hover: none) and (pointer: coarse) {
     overflow-y: auto;
@@ -50,8 +53,8 @@ const Scroll = styled(animated.div)`
  * Smooth scroll wrapper
  */
 function SmoothScroll(props: Props) {
-  // TODO: Find a way to optimize this, currently because of much effects usage react- call re-renders (Ref are passed down)
   // TODO: Hide scrollbar after some time
+  // TODO: Find a way to optimize this, currently because of much effects usage react- call re-renders (Ref are passed down)
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)

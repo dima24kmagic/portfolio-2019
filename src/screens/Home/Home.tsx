@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider, withTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
 import {
@@ -11,7 +11,6 @@ import {
 } from './styles'
 import { useTheme, useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
-import { log } from 'util'
 import SmoothScroll from '../../components/SmoothScroll'
 
 interface Props {}
@@ -68,4 +67,4 @@ function Home(props: Props) {
   )
 }
 
-export default withTheme(Home)
+export default Home
