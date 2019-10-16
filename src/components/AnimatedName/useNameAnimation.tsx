@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { easeExpInOut } from 'd3-ease'
 
 const OverflowWrapper = styled('div')`
+  display: flex;
+  justify-content: center;
   height: auto;
   overflow: hidden;
 `
@@ -11,7 +13,6 @@ const OverflowWrapper = styled('div')`
 const H1 = styled(animated.h1)`
   font-weight: 900;
   font-family: 'Chivo', sans-serif;
-  text-align: center;
   color: ${({
     theme: {
       color: { primary },
@@ -44,7 +45,6 @@ const H1 = styled(animated.h1)`
 `
 
 const useNameAnimation = (introText: string[]) => {
-
   const introTextTrails = useTrail(introText.length, {
     from: {
       opacity: 0,

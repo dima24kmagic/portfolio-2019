@@ -6,9 +6,9 @@ interface Props {}
 
 const Wrapper = styled('div')`
   width: 100%;
-  margin-bottom: 28px;
+  margin-bottom: 280px;
   @media (min-width: 650px) {
-    margin-bottom: 56px;
+    margin-bottom: 300px;
   }
 `
 
