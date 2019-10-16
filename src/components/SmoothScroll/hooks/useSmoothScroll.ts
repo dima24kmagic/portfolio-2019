@@ -1,11 +1,14 @@
 import { useSpring } from 'react-spring'
-import { MutableRefObject, useEffect, useState } from 'react'
+import { MutableRefObject, useEffect } from 'react'
 
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
 ) => {
-  const [scrollDeltaY, setScrollDeltaY] = useState(0)
-  const [wrapperHeight, setWrapperHeight] = useState(0)
+  let scrollDeltaY = 0
+  let wrapperHeight = 0
+  if (scrollWrapperRef.current) {
+    wrapperHeight = scrollWrapperRef.current.clientHeight
+  }
   const [scrollProps, setScrollProps] = useSpring(() => {
     return {
       transform: `translate3d(0px, 0px, 0px)`,
@@ -14,11 +17,11 @@ const useSmoothScroll = (
 
   // Add on screen resize adjustments
   const handleWindowResize = () => {
-    setWrapperHeight(scrollWrapperRef.current.clientHeight)
+    wrapperHeight = scrollWrapperRef.current.clientHeight
   }
   useEffect(() => {
     if (scrollWrapperRef.current) {
-      setWrapperHeight(scrollWrapperRef.current.clientHeight)
+      wrapperHeight = scrollWrapperRef.current.clientHeight
     }
   }, [scrollWrapperRef])
 
@@ -39,7 +42,7 @@ const useSmoothScroll = (
     } else {
       newScrollValue = 0
     }
-    setScrollDeltaY(newScrollValue)
+    scrollDeltaY = newScrollValue
     setScrollProps({
       transform: `translate3d(0px, ${newScrollValue}px, 0px)`,
     })
