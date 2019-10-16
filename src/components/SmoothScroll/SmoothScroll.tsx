@@ -1,11 +1,19 @@
 import React, { ReactNode, useEffect, useRef } from 'react'
-import styled, { withTheme } from 'styled-components'
+import styled, { ThemeProvider, withTheme } from 'styled-components'
 import { animated } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
+import { useTheme } from '../../theme/theme'
 
 interface Props {
   children: ReactNode
+  scrollBarRef: any
+  handleMouseDown: any
+  scrollbarHeight: any
+  scrollbarStyles: any
+  scrollWrapperRef: any
+  handleMouseWheel: any
+  scrollProps: any
 }
 
 const Scrollable = styled(animated.div)`
@@ -40,11 +48,12 @@ const Scroll = styled(animated.div)`
   &:hover {
     opacity: 0.8 !important;
   }
-  transition: opacity 0.3s;
-  color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  transition: opacity 0.3s,
+    background ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
     display: none;
   }
+  will-change: transform, opacity;
 `
 
 /**
@@ -52,7 +61,38 @@ const Scroll = styled(animated.div)`
  */
 function SmoothScroll(props: Props) {
   // TODO: Hide scrollbar after some time
-  const { children } = props
+  const {
+    children,
+    scrollBarRef,
+    handleMouseDown,
+    scrollbarHeight,
+    scrollbarStyles,
+    scrollWrapperRef,
+    handleMouseWheel,
+    scrollProps,
+  } = props
+
+  const theme = useTheme()
+  return (
+    <ThemeProvider theme={theme}>
+      <Scroll
+        ref={scrollBarRef}
+        onMouseDown={handleMouseDown}
+        height={scrollbarHeight}
+        style={scrollbarStyles}
+      />
+      <Scrollable
+        ref={scrollWrapperRef}
+        onWheel={handleMouseWheel}
+        style={scrollProps}
+      >
+        {children}
+      </Scrollable>
+    </ThemeProvider>
+  )
+}
+
+const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
@@ -70,22 +110,21 @@ function SmoothScroll(props: Props) {
     handleScrollbarMouseUp,
   )
   return (
-    <>
-      <Scroll
-        ref={scrollBarRef}
-        onMouseDown={handleMouseDown}
-        height={scrollbarHeight}
-        style={scrollbarStyles}
-      />
-      <Scrollable
-        ref={scrollWrapperRef}
-        onWheel={handleMouseWheel}
-        style={scrollProps}
-      >
-        {children}
-      </Scrollable>
-    </>
+    // @ts-ignore
+    <SmoothScroll
+      scrollWrapperRef={scrollWrapperRef}
+      scrollBarRef={scrollBarRef}
+      handleMouseWheel={handleMouseWheel}
+      scrollProps={scrollProps}
+      handleScrollbarDrag={handleScrollbarDrag}
+      scrollbarHeight={scrollbarHeight}
+      scrollbarStyles={scrollbarStyles}
+      handleScrollbarMouseUp={handleScrollbarMouseUp}
+      handleMouseDown={handleMouseDown}
+    >
+      {children}
+    </SmoothScroll>
   )
 }
 
-export default withTheme(SmoothScroll)
+export default ConnectedSmoothScroll

@@ -11,15 +11,7 @@ const useScrollDrag = (
     const deltaY = dragStartY - e.clientY + 1
     const valueToPass =
       deltaY * (scrollWrapperRef.current.clientHeight / window.innerHeight)
-    console.log({
-      valueToPass,
-      clientHeight: scrollWrapperRef.current.clientHeight,
-      clientDrag: e.clientY,
-      windowHeight: window.innerHeight,
-    })
-    onScrollDrag(
-      deltaY * (scrollWrapperRef.current.clientHeight / window.innerHeight),
-    )
+    onScrollDrag(valueToPass)
   }
   const handleMouseUp = () => {
     scrollBarRef.current.style.opacity = '0.4'

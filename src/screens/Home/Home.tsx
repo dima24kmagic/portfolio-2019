@@ -19,6 +19,16 @@ interface Props {}
  * Home screen
  */
 function Home(props: Props) {
+  return (
+    <SmoothScroll>
+      <HomeContent />
+    </SmoothScroll>
+  )
+}
+
+const HomeContent = () => {
+  const toggleTheme = useToggleTheme()
+  const theme = useTheme()
   const contentSpring = useSpring({
     delay: 1450,
     from: {
@@ -35,34 +45,30 @@ function Home(props: Props) {
     },
   })
 
-  const toggleTheme = useToggleTheme()
-  const theme = useTheme()
   return (
     <ThemeProvider theme={theme}>
-      <SmoothScroll style={{ overflowY: 'auto', height: '100%' }}>
-        <HomePreview />
-        <Root onClick={toggleTheme}>
-          <ContentHolder style={contentSpring}>
-            <ContentName>Lorem Iplsum</ContentName>
-            <PlainText>
-              Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
-            </PlainText>
-            <PlainText>
-              Looking for a remote part-time React Dev position;)
-            </PlainText>
-            <TextDivider />
-            <PlainText>
-              My ideal life is look like this - I sniffing cocaine outta
-              model-hoe butt, on my yacht, somewhere in Mongo-Congo. While my
-              multiple sources of income generating me enough money to buy this
-              Mongo-Congo and install Solar Systems everywhere.
-            </PlainText>
-            <PlainText>
-              I would like to solve trash issue in the world, because I'm cool.
-            </PlainText>
-          </ContentHolder>
-        </Root>
-      </SmoothScroll>
+      <HomePreview />
+      <Root onClick={toggleTheme}>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
+      </Root>
     </ThemeProvider>
   )
 }
