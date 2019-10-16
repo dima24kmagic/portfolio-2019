@@ -13,18 +13,6 @@ const useScrollbarStyles = (
   }
 
   const [scrollbarHeight, setScrollHeight] = useState(0)
-  useEffect(() => {
-    if (scrollWrapperRef.current) {
-      wrapperHeight = scrollWrapperRef.current.clientHeight
-      if (wrapperHeight > window.innerHeight) {
-        setScrollHeight(
-          window.innerHeight *
-            (window.innerHeight / scrollWrapperRef.current.clientHeight) -
-            SCROLL_OFFSET * 2,
-        )
-      }
-    }
-  }, [scrollWrapperRef])
 
   // On window resize
   const handleWindowResize = () => {

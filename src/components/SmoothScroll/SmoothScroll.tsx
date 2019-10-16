@@ -54,7 +54,9 @@ const Scroll = styled(animated.div)`
  */
 function SmoothScroll(props: Props) {
   // TODO: Hide scrollbar after some time
+
   // TODO: Find a way to optimize this, currently because of much effects usage react- call re-renders (Ref are passed down)
+  // 1) Removed all useState
   const { children } = props
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
@@ -63,11 +65,13 @@ function SmoothScroll(props: Props) {
     scrollProps,
     scrollDeltaY,
     handleScrollDrag,
+    scrollbarHeight,
+    scrollbarStyles,
   } = useSmoothScroll(scrollWrapperRef)
-  const { scrollbarHeight, scrollbarStyles } = useScrollbarStyles(
-    scrollDeltaY,
-    scrollWrapperRef,
-  )
+  // const { scrollbarHeight, scrollbarStyles } = useScrollbarStyles(
+  //   scrollDeltaY,
+  //   scrollWrapperRef,
+  // )
   const handleMouseDown = useScrollDrag(
     scrollWrapperRef,
     scrollBarRef,
