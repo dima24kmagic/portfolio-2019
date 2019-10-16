@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
@@ -27,8 +27,6 @@ function Home(props: Props) {
 }
 
 const HomeContent = () => {
-  const toggleTheme = useToggleTheme()
-  const theme = useTheme()
   const contentSpring = useSpring({
     delay: 1450,
     from: {
@@ -44,9 +42,9 @@ const HomeContent = () => {
       easing: easeExpOut,
     },
   })
-
+  const toggleTheme = useToggleTheme()
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <HomePreview />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
@@ -69,7 +67,7 @@ const HomeContent = () => {
           </PlainText>
         </ContentHolder>
       </Root>
-    </ThemeProvider>
+    </>
   )
 }
 
