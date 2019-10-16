@@ -102,7 +102,7 @@ const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
     scrollbarHeight,
     scrollbarStyles,
     handleScrollbarMouseUp,
-    handleScrollbarMouseDown
+    handleScrollbarMouseDown,
   } = useSmoothScroll(scrollWrapperRef)
 
   const handleMouseDown = useScrollDrag(
@@ -110,7 +110,7 @@ const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
     scrollBarRef,
     handleScrollbarDrag,
     handleScrollbarMouseUp,
-    handleScrollbarMouseDown
+    handleScrollbarMouseDown,
   )
   return (
     // @ts-ignore
