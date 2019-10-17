@@ -46,7 +46,7 @@ const Scroll = styled(animated.div)`
   border-radius: 8px;
   z-index: 2;
   &:hover {
-    opacity: 0.8 !important;
+    opacity: 0.5 !important;
   }
   transition: opacity 0.3s,
     background ${({ theme: { transitionSpeed } }) => transitionSpeed};

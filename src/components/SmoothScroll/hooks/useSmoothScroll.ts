@@ -25,13 +25,28 @@ const useSmoothScroll = (
     }
   })
   const [scrollbarStyles, setScrollbarStyles] = useSpring(() => ({
-    transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
-    height: 0,
+    to: {
+      transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
+      height: 0,
+      opacity: 0.4,
+    },
+    onRest: () => {
+      setScrollbarStyles({
+        // @ts-ignore
+        to: {
+          opacity: 0,
+        },
+        delay: 1500,
+      })
+    },
   }))
 
   setScrollbarStyles({
-    transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
-    height: scrollbarHeight,
+    to: {
+      transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
+      height: scrollbarHeight,
+      opacity: 0.4,
+    },
   })
 
   /* ********* ON WRAPPER MOUNTED *********** */
@@ -44,8 +59,12 @@ const useSmoothScroll = (
         scrollbarHeight =
           window.innerHeight * windowToContentRatio - SCROLLBAR_OFFSET * 2
         setScrollbarStyles({
-          transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
-          height: scrollbarHeight,
+          to: {
+            transform: `translate3d(0px, ${scrollbarMovePercentage *
+              -1}px, 0px)`,
+            height: scrollbarHeight,
+            opacity: 0.4,
+          },
         })
       }
     }
@@ -86,9 +105,11 @@ const useSmoothScroll = (
       (scrollDeltaY / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
 
     setScrollbarStyles({
-      transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
-      // @ts-ignore
-      height: scrollbarHeight,
+      to: {
+        transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
+        height: scrollbarHeight,
+        opacity: 0.4,
+      },
     })
     setScrollProps({
       transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
