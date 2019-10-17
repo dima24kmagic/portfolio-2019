@@ -31,7 +31,22 @@ const Scrollable = styled(animated.div)`
     height: 100%;
   }
 `
-const Scroll = styled(animated.div)`
+const ScrollbarContainer = styled('div')`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 20px;
+  z-index: 99;
+  &:hover {
+    & span {
+      width: 10px !important;
+      opacity: 0.5 !important;
+    }
+  }
+`
+
+const Scroll = styled(animated.span)`
   position: fixed;
   top: 0px;
   right: 5px;
@@ -45,10 +60,10 @@ const Scroll = styled(animated.div)`
   opacity: 0.4;
   border-radius: 8px;
   z-index: 2;
-  &:hover {
-    opacity: 0.5 !important;
-    width: 10px !important;
-  }
+  //&:hover {
+  //  opacity: 0.5 !important;
+  //  width: 10px !important;
+  //}
   transition: opacity 0.25s, width 0.25s,
     background ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
@@ -75,12 +90,14 @@ function SmoothScroll(props: Props) {
   const theme = useTheme()
   return (
     <ThemeProvider theme={theme}>
-      <Scroll
-        ref={scrollBarRef}
-        onMouseDown={handleMouseDown}
-        height={scrollbarHeight}
-        style={scrollbarStyles}
-      />
+      <ScrollbarContainer onMouseDown={handleMouseDown}>
+        <Scroll
+          ref={scrollBarRef}
+          onMouseDown={handleMouseDown}
+          height={scrollbarHeight}
+          style={scrollbarStyles}
+        />
+      </ScrollbarContainer>
       <Scrollable
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}
