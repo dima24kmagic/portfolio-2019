@@ -60,10 +60,6 @@ const Scroll = styled(animated.span)`
   opacity: 0.4;
   border-radius: 8px;
   z-index: 2;
-  //&:hover {
-  //  opacity: 0.5 !important;
-  //  width: 10px !important;
-  //}
   transition: opacity 0.25s, width 0.25s,
     background ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
