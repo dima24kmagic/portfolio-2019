@@ -35,7 +35,7 @@ const Scroll = styled(animated.div)`
   position: fixed;
   top: 0px;
   right: 5px;
-  width: 8px;
+  width: 6px;
   height: ${({ height }) => `${height}px`};
   background: ${({
     theme: {
@@ -47,8 +47,9 @@ const Scroll = styled(animated.div)`
   z-index: 2;
   &:hover {
     opacity: 0.5 !important;
+    width: 10px !important;
   }
-  transition: opacity 0.25s,
+  transition: opacity 0.25s, width 0.25s,
     background ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
     display: none;
