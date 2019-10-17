@@ -1,5 +1,7 @@
 import { useSpring } from 'react-spring'
 import { MutableRefObject, useEffect } from 'react'
+import { easeCubicOut } from 'd3-ease'
+import { log } from 'util'
 
 const SCROLLBAR_OFFSET = 16
 
@@ -36,6 +38,7 @@ const useSmoothScroll = (
           opacity: 0,
         },
         delay: 1500,
+        config: {},
       })
     },
   }))
@@ -57,10 +60,11 @@ const useSmoothScroll = (
             opacity: 0.4,
           },
           config: key => {
-            if (key === 'height')
+            if (key === 'height') {
               return {
-                duration: 2,
+                duration: 0,
               }
+            }
             return {}
           },
         })
@@ -108,6 +112,15 @@ const useSmoothScroll = (
         height: scrollbarHeight,
         opacity: 0.4,
       },
+      config: key => {
+        if (key === 'opacity') {
+          return {
+            duration: 10,
+            easing: easeCubicOut,
+          }
+        }
+        return {}
+      },
     })
     setScrollProps({
       transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
@@ -131,6 +144,10 @@ const useSmoothScroll = (
     scrollDeltaYHolded = scrollDeltaY
   }
 
+  const moveScrollWrapper = (deltaY: number) => {
+    handleScroll(deltaY)
+  }
+
   return {
     handleMouseWheel,
     scrollProps,
@@ -139,6 +156,7 @@ const useSmoothScroll = (
     handleScrollbarMouseDown,
     scrollbarStyles,
     scrollbarHeight,
+    moveScrollWrapper,
   }
 }
 

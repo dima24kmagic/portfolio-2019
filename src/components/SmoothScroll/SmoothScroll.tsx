@@ -48,7 +48,7 @@ const Scroll = styled(animated.div)`
   &:hover {
     opacity: 0.5 !important;
   }
-  transition: opacity 0.3s,
+  transition: opacity 0.25s,
     background ${({ theme: { transitionSpeed } }) => transitionSpeed};
   @media (hover: none) and (pointer: coarse) {
     display: none;
