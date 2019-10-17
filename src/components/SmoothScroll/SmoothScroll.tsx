@@ -53,7 +53,6 @@ const Scroll = styled(animated.div)`
   @media (hover: none) and (pointer: coarse) {
     display: none;
   }
-  will-change: transform, opacity;
 `
 
 /**

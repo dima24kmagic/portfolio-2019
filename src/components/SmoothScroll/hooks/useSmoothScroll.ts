@@ -12,7 +12,6 @@ const useSmoothScroll = (
   let scrollDeltaYHolded = 1
 
   /* ********* STYLES VARIABLES *********** */
-  console.log('HERE!')
   let scrollDeltaY = 0
   let scrollbarHeight = 0
   let scrollbarMovePercentage =
@@ -41,14 +40,6 @@ const useSmoothScroll = (
     },
   }))
 
-  setScrollbarStyles({
-    to: {
-      transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
-      height: scrollbarHeight,
-      opacity: 0.4,
-    },
-  })
-
   /* ********* ON WRAPPER MOUNTED *********** */
   useEffect(() => {
     if (scrollWrapperRef.current) {
@@ -64,6 +55,13 @@ const useSmoothScroll = (
               -1}px, 0px)`,
             height: scrollbarHeight,
             opacity: 0.4,
+          },
+          config: key => {
+            if (key === 'height')
+              return {
+                duration: 2,
+              }
+            return {}
           },
         })
       }
