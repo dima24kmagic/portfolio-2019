@@ -44,6 +44,9 @@ const ScrollbarContainer = styled('div')`
       opacity: 0.5 !important;
     }
   }
+  @media (hover: none) and (pointer: coarse) {
+    display: none;
+  }
 `
 
 const Scroll = styled(animated.span)`
