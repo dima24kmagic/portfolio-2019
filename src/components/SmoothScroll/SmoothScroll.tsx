@@ -1,19 +1,16 @@
-import React, { cloneElement, ReactElement, useRef } from 'react'
+import React, { MutableRefObject, ReactElement } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { animated } from 'react-spring'
-import useSmoothScroll from './hooks/useSmoothScroll'
-import useScrollDrag from './hooks/useScrollDrag'
 import { useTheme } from '../../theme/theme'
-import ScrollContextProvider from './ScrollContext'
 
 interface Props {
   children: ReactElement
-  scrollBarRef: any
   handleMouseDown: any
-  scrollbarHeight: any
+  scrollbarHeight: number
   scrollbarStyles: any
-  scrollWrapperRef: any
-  handleMouseWheel: any
+  scrollBarRef: MutableRefObject<HTMLDivElement>
+  scrollWrapperRef: MutableRefObject<HTMLDivElement>
+  handleMouseWheel: (e: WheelEvent) => void
   scrollProps: any
 }
 
@@ -48,7 +45,6 @@ const ScrollbarContainer = styled('div')`
   @media (hover: none) and (pointer: coarse) {
     display: none;
   }
-  backface-visibility: hidden;
 `
 
 const Scrollbar = styled(animated.span)`
@@ -88,7 +84,6 @@ function SmoothScroll(props: Props) {
   } = props
 
   const theme = useTheme()
-
   return (
     <ThemeProvider theme={theme}>
       <ScrollbarContainer onMouseDown={handleMouseDown}>

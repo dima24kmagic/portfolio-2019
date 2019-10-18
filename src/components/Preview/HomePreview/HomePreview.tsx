@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
 import {
@@ -8,10 +8,7 @@ import {
 } from '../PreviewContent'
 import AnimatedName from '../../AnimatedName'
 import mePortraitImg from '../../../images/Me Portrait.jpg'
-import {
-  useScroll,
-  useScrollWrapperRef,
-} from '../../SmoothScroll/ScrollContext'
+import { useScroll } from '../../SmoothScroll/ScrollContext'
 
 /**
  * Home preview content (img + text)
@@ -33,28 +30,15 @@ function HomePreview() {
     },
   })
 
-  const { scroll, scrollToRef, scrollToEventTarget } = useScroll()
-  const scrollWrapperRef = useScrollWrapperRef()
-  const testRef = useRef<HTMLDivElement>()
-  const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
-    scrollToEventTarget(e)
+  const { scroll } = useScroll()
+  const handleScroll = () => {
+    scroll(600)
   }
-
-  useEffect(() => {
-    console.log('RUN!', testRef, scrollWrapperRef)
-    if (testRef.current && scrollWrapperRef.current) {
-      scrollToRef(testRef)
-    }
-  }, [scrollWrapperRef, testRef])
   return (
     <PreviewContent>
       <PreviewImage src={mePortraitImg} />
       <AnimatedName />
-      <NavigateMoreButton
-        ref={testRef}
-        onClick={handleScroll}
-        style={showMoreButtonStyled}
-      >
+      <NavigateMoreButton onClick={handleScroll} style={showMoreButtonStyled}>
         Read More
       </NavigateMoreButton>
     </PreviewContent>

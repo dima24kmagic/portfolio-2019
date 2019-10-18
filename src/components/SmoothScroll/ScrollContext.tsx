@@ -1,5 +1,4 @@
 import React, {
-  cloneElement,
   MouseEvent,
   MutableRefObject,
   ReactElement,
@@ -12,7 +11,7 @@ import useScrollDrag from './hooks/useScrollDrag'
 import SmoothScroll from './SmoothScroll'
 
 const ScrollContext = React.createContext({
-  scroll: (position: number = 0, config: SpringConfig) => {},
+  scroll: (position: number = 0, config?: SpringConfig) => {},
   scrollWrapperRef: null,
   scrollToRef: (
     ref: MutableRefObject<HTMLDivElement>,

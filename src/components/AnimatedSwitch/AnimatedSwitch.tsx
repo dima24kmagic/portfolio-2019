@@ -10,11 +10,6 @@ interface Props extends SwitchProps {
 const Root = styled(animated.div)`
   width: 100%;
   height: 100%;
-  // use default scroll behaviour on mobiles
-  @media (hover: none) and (pointer: coarse) {
-    height: 100%;
-  }
-  backface-visibility: hidden;
 `
 
 /**
