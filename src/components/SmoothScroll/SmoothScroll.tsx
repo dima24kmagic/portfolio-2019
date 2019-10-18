@@ -22,8 +22,8 @@ const Scrollable = styled(animated.div)`
   top: 0;
   left: 0;
   transform: translate3d(0px, 0px, 0px);
-  overflow: ${({ isTest }) => (isTest ? 'auto' : 'hidden')};
-  height: ${({ isTest }) => (isTest ? '100%' : 'auto')};
+  overflow: hidden;
+  height: auto;
   will-change: transform;
 
   // use default scroll behaviour on mobiles
@@ -48,9 +48,10 @@ const ScrollbarContainer = styled('div')`
   @media (hover: none) and (pointer: coarse) {
     display: none;
   }
+  backface-visibility: hidden;
 `
 
-const Scroll = styled(animated.span)`
+const Scrollbar = styled(animated.span)`
   position: fixed;
   top: 0px;
   right: 5px;
@@ -91,7 +92,7 @@ function SmoothScroll(props: Props) {
   return (
     <ThemeProvider theme={theme}>
       <ScrollbarContainer onMouseDown={handleMouseDown}>
-        <Scroll
+        <Scrollbar
           ref={scrollBarRef}
           onMouseDown={handleMouseDown}
           height={scrollbarHeight}

@@ -133,7 +133,8 @@ const useSmoothScroll = (
 
   /* ********* EVENT HANDLES *********** */
   const handleMouseWheel = (e: WheelEvent) => {
-    const valueToScroll = scrollDeltaY - e.deltaY
+    const deltaYDirection = e.deltaY > 0 ? 1 : -1
+    const valueToScroll = scrollDeltaY - 50 * deltaYDirection
     handleScroll(valueToScroll)
   }
 

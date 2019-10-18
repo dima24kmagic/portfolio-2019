@@ -12,11 +12,8 @@ const GlobalStyle = () => {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-  }
-  ::-webkit-scrollbar {
-    //width: 0px;  /* Remove scrollbar space */
-    //background: transparent;  /* Optional: just make scrollbar invisible */
-  }
+     backface-visibility: hidden;
+ }
   html,
   body {
     margin: 0;
@@ -37,7 +34,6 @@ const GlobalStyle = () => {
   #root {
     width: 100%;
     height: 100%;
-    //overflow-y: auto;
   }
 `
   return (

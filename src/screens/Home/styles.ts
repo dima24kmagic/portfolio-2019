@@ -19,6 +19,7 @@ export const Root = styled('div')`
     },
   }) => primary};
   transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  backface-visibility: hidden;
 `
 
 export const ContentName = styled('h1')`

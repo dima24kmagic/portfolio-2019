@@ -14,6 +14,7 @@ const Root = styled(animated.div)`
   @media (hover: none) and (pointer: coarse) {
     height: 100%;
   }
+  backface-visibility: hidden;
 `
 
 /**

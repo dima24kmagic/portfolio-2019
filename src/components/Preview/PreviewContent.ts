@@ -13,6 +13,7 @@ export const PreviewContent = styled('div')`
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  backface-visibility: hidden;
 
   padding: 64px 15px 0 15px;
   @media (min-width: 375px) {
