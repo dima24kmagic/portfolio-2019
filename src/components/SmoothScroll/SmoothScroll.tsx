@@ -1,12 +1,12 @@
-import React, { ReactNode, useEffect, useRef } from 'react'
-import styled, { ThemeProvider, withTheme } from 'styled-components'
-import { animated } from 'react-spring'
+import React, { cloneElement, ReactElement, useRef } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import { animated, SpringConfig } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
 import { useTheme } from '../../theme/theme'
 
 interface Props {
-  children: ReactNode
+  children: ReactElement
   scrollBarRef: any
   handleMouseDown: any
   scrollbarHeight: any
@@ -14,6 +14,7 @@ interface Props {
   scrollWrapperRef: any
   handleMouseWheel: any
   scrollProps: any
+  scrollToExactPosition: (position: number, config: SpringConfig) => void
 }
 
 const Scrollable = styled(animated.div)`
@@ -83,9 +84,11 @@ function SmoothScroll(props: Props) {
     scrollWrapperRef,
     handleMouseWheel,
     scrollProps,
+    scrollToExactPosition,
   } = props
 
   const theme = useTheme()
+
   return (
     <ThemeProvider theme={theme}>
       <ScrollbarContainer onMouseDown={handleMouseDown}>
@@ -101,13 +104,13 @@ function SmoothScroll(props: Props) {
         onWheel={handleMouseWheel}
         style={scrollProps}
       >
-        {children()}
+        {children}
       </Scrollable>
     </ThemeProvider>
   )
 }
 
-const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
+const ConnectedSmoothScroll = ({ children }: { children: ReactElement }) => {
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
@@ -118,6 +121,7 @@ const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
     scrollbarStyles,
     handleScrollbarMouseUp,
     handleScrollbarMouseDown,
+    scrollToExactPosition,
   } = useSmoothScroll(scrollWrapperRef)
 
   const handleMouseDown = useScrollDrag(
@@ -130,6 +134,7 @@ const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
   return (
     // @ts-ignore
     <SmoothScroll
+      scrollToExactPosition={scrollToExactPosition}
       scrollWrapperRef={scrollWrapperRef}
       scrollBarRef={scrollBarRef}
       handleMouseWheel={handleMouseWheel}
@@ -140,7 +145,7 @@ const ConnectedSmoothScroll = ({ children }: { children: ReactNode }) => {
       handleScrollbarMouseUp={handleScrollbarMouseUp}
       handleMouseDown={handleMouseDown}
     >
-      {children}
+      {cloneElement(children, { scroll: scrollToExactPosition })}
     </SmoothScroll>
   )
 }

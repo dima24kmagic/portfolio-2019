@@ -1,7 +1,6 @@
-import { useSpring } from 'react-spring'
+import { SpringConfig, useSpring } from 'react-spring'
 import { MutableRefObject, useEffect } from 'react'
 import { easeCubicOut } from 'd3-ease'
-import { log } from 'util'
 
 const SCROLLBAR_OFFSET = 16
 
@@ -22,7 +21,9 @@ const useSmoothScroll = (
   /* ********* SPRINGS STYLES *********** */
   const [scrollProps, setScrollProps] = useSpring(() => {
     return {
-      transform: `translate3d(0px, 0px, 0px)`,
+      to: {
+        transform: `translate3d(0px, 0px, 0px)`,
+      },
     }
   })
   const [scrollbarStyles, setScrollbarStyles] = useSpring(() => ({
@@ -123,7 +124,10 @@ const useSmoothScroll = (
       },
     })
     setScrollProps({
-      transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
+      to: {
+        transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
+      },
+      config: {},
     })
   }
 
@@ -144,8 +148,51 @@ const useSmoothScroll = (
     scrollDeltaYHolded = scrollDeltaY
   }
 
-  const moveScrollWrapper = (deltaY: number) => {
-    handleScroll(deltaY)
+  /* ********* API *********** */
+  const scrollToExactPosition = (
+    position: number = 0,
+    config: SpringConfig,
+  ) => {
+    let valueToScroll = position * -1
+    // if scroll down
+    if (valueToScroll <= 0 && wrapperHeight > window.innerHeight) {
+      // When about to scroll to the very bottom
+      if (Math.abs(valueToScroll) > wrapperHeight - window.innerHeight) {
+        valueToScroll = (wrapperHeight - window.innerHeight) * -1
+      }
+      //  when wanna scroll more than bottom
+    } else {
+      valueToScroll = 0
+    }
+    // SET NEW VALUES FOR STYLES
+    // scrollDeltaY = newScrollValue
+    scrollbarMovePercentage =
+      (valueToScroll / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
+
+    setScrollbarStyles({
+      to: {
+        transform: `translate3d(0px, ${scrollbarMovePercentage * -1}px, 0px)`,
+        height: scrollbarHeight,
+        opacity: 0.4,
+      },
+      config: key => {
+        if (key === 'opacity') {
+          return {
+            duration: 10,
+            easing: easeCubicOut,
+          }
+        }
+        if (key === 'transform') return config
+        return {}
+      },
+    })
+    setScrollProps({
+      to: {
+        transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
+      },
+      config,
+    })
+    scrollDeltaY = valueToScroll
   }
 
   return {
@@ -156,7 +203,7 @@ const useSmoothScroll = (
     handleScrollbarMouseDown,
     scrollbarStyles,
     scrollbarHeight,
-    moveScrollWrapper,
+    scrollToExactPosition,
   }
 }
 

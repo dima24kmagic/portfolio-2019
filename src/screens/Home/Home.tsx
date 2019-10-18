@@ -26,7 +26,7 @@ function Home(props: Props) {
   )
 }
 
-const HomeContent = () => {
+const HomeContent = (props: any) => {
   const contentSpring = useSpring({
     delay: 1450,
     from: {
@@ -43,9 +43,10 @@ const HomeContent = () => {
     },
   })
   const toggleTheme = useToggleTheme()
+  const { scroll } = props
   return (
     <>
-      <HomePreview />
+      <HomePreview onScroll={scroll} />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
           <ContentName>Lorem Iplsum</ContentName>

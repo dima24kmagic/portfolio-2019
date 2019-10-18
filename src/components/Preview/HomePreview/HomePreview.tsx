@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useSpring } from 'react-spring'
-import { easeExpOut } from 'd3-ease'
+import React from 'react'
+import { SpringConfig, useSpring } from 'react-spring'
+import { easeExpInOut, easeExpOut } from 'd3-ease'
 import {
   NavigateMoreButton,
   PreviewContent,
@@ -8,15 +8,16 @@ import {
 } from '../PreviewContent'
 import AnimatedName from '../../AnimatedName'
 import mePortraitImg from '../../../images/Me Portrait.jpg'
-import meLandscapeImg from '../../../images/Me Landscape.jpg'
 
-interface Props {}
+interface Props {
+  onScroll: (scrollNum: number, config: SpringConfig) => void
+}
 
 /**
  * Home preview content (img + text)
  */
-function HomePreview(props: Props) {
-  const {} = props
+function HomePreview(props: Props | any) {
+  const { onScroll } = props
   const showMoreButtonStyled = useSpring({
     delay: 1600,
     from: {
@@ -32,11 +33,16 @@ function HomePreview(props: Props) {
       easing: easeExpOut,
     },
   })
+
+  const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
+    // @ts-ignore
+    onScroll(600, { duration: 1400, easing: easeExpInOut })
+  }
   return (
     <PreviewContent>
       <PreviewImage src={mePortraitImg} />
       <AnimatedName />
-      <NavigateMoreButton style={showMoreButtonStyled}>
+      <NavigateMoreButton onClick={handleScroll} style={showMoreButtonStyled}>
         Read More
       </NavigateMoreButton>
     </PreviewContent>
