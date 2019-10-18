@@ -9,6 +9,7 @@ import { SpringConfig } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
 import SmoothScroll from './SmoothScroll'
+import { checkIsMobile } from '../../utils'
 
 const ScrollContext = React.createContext({
   scroll: (position: number = 0, config?: SpringConfig) => {},
@@ -22,6 +23,15 @@ const ScrollContext = React.createContext({
     event: MouseEvent,
     offset?: number,
     config?: SpringConfig,
+  ) => {},
+  scrollToRefMobile: (
+    ref: MutableRefObject<HTMLElement>,
+    offset?: number,
+  ) => {},
+  scrollToExactPositionMobile: (position: number) => {},
+  scrollToEventTargetMobile: (
+    e: MouseEvent<HTMLElement>,
+    offset?: number,
   ) => {},
 })
 
@@ -43,6 +53,9 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
     scrollToExactPosition,
     scrollToRef,
     scrollToEventTarget,
+    scrollToRefMobile,
+    scrollToExactPositionMobile,
+    scrollToEventTargetMobile,
   } = useSmoothScroll(scrollWrapperRef)
 
   const handleMouseDown = useScrollDrag(
@@ -59,6 +72,9 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
         scrollWrapperRef,
         scrollToRef,
         scrollToEventTarget,
+        scrollToRefMobile,
+        scrollToExactPositionMobile,
+        scrollToEventTargetMobile,
       }}
     >
       <SmoothScroll
@@ -78,8 +94,22 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
 }
 
 export const useScroll = () => {
-  const { scroll, scrollToRef, scrollToEventTarget } = useContext(ScrollContext)
-  return { scroll, scrollToRef, scrollToEventTarget }
+  const isMobile = checkIsMobile()
+  const {
+    scroll,
+    scrollToRef,
+    scrollToEventTarget,
+    scrollToEventTargetMobile,
+    scrollToExactPositionMobile,
+    scrollToRefMobile,
+  } = useContext(ScrollContext)
+  return {
+    scroll: isMobile ? scrollToExactPositionMobile : scroll,
+    scrollToRef: isMobile ? scrollToRefMobile : scrollToRef,
+    scrollToEventTarget: isMobile
+      ? scrollToEventTargetMobile
+      : scrollToEventTarget,
+  }
 }
 
 export const useScrollWrapperRef = (): MutableRefObject<HTMLDivElement> => {

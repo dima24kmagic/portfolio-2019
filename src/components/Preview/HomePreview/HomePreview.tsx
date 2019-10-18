@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
 import {
@@ -8,12 +8,16 @@ import {
 } from '../PreviewContent'
 import AnimatedName from '../../AnimatedName'
 import mePortraitImg from '../../../images/Me Portrait.jpg'
-import { useScroll } from '../../SmoothScroll/ScrollContext'
+
+interface Props {
+  onReadMore: (e: MouseEvent<HTMLDivElement>) => void
+}
 
 /**
  * Home preview content (img + text)
  */
-function HomePreview() {
+function HomePreview(props: Props) {
+  const { onReadMore } = props
   const showMoreButtonStyled = useSpring({
     delay: 1600,
     from: {
@@ -30,15 +34,11 @@ function HomePreview() {
     },
   })
 
-  const { scroll } = useScroll()
-  const handleScroll = () => {
-    scroll(600)
-  }
   return (
     <PreviewContent>
       <PreviewImage src={mePortraitImg} />
       <AnimatedName />
-      <NavigateMoreButton onClick={handleScroll} style={showMoreButtonStyled}>
+      <NavigateMoreButton onClick={onReadMore} style={showMoreButtonStyled}>
         Read More
       </NavigateMoreButton>
     </PreviewContent>
