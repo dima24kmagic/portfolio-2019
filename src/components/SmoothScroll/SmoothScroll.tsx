@@ -74,7 +74,6 @@ const Scroll = styled(animated.span)`
  * Smooth scroll wrapper
  */
 function SmoothScroll(props: Props) {
-  // TODO: Hide scrollbar after some time
   const {
     children,
     scrollBarRef,
@@ -102,7 +101,7 @@ function SmoothScroll(props: Props) {
         onWheel={handleMouseWheel}
         style={scrollProps}
       >
-        {children}
+        {children()}
       </Scrollable>
     </ThemeProvider>
   )

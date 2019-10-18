@@ -15,19 +15,23 @@ const useScrollDrag = (
     onScrollDrag(valueToPass)
   }
   const handleMouseUp = () => {
-    scrollBarRef.current.style.opacity = '0.4'
-    scrollBarRef.current.style.width = '6px'
-    onScrollbarMouseUp()
-    document.removeEventListener('mousemove', handleMouseMove)
-    document.removeEventListener('mouseup', handleMouseMove)
+    if (scrollBarRef.current) {
+      scrollBarRef.current.style.opacity = '0.4'
+      scrollBarRef.current.style.width = '6px'
+      onScrollbarMouseUp()
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseMove)
+    }
   }
   const handleMouseDown = (e: MouseEvent) => {
-    dragStartY = e.clientY + 1
-    scrollBarRef.current.style.opacity = '0.8'
-    scrollBarRef.current.style.width = '10px'
-    onScrollbarMouseDown()
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseup', handleMouseUp)
+    if (scrollBarRef.current) {
+      dragStartY = e.clientY + 1
+      scrollBarRef.current.style.opacity = '0.8'
+      scrollBarRef.current.style.width = '10px'
+      onScrollbarMouseDown()
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+    }
   }
 
   return handleMouseDown
