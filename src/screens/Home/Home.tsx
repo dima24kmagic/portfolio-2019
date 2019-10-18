@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useSpring } from 'react-spring'
-import { easeExpInOut, easeExpOut } from 'd3-ease'
+import { easeCubicOut, easeExpInOut, easeExpOut } from 'd3-ease'
 import {
   ContentHolder,
   ContentName,
@@ -48,7 +48,7 @@ const HomeContent = (props: any) => {
 
   const contentRef = useRef()
   const handleReadMore = () => {
-    scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut })
+    scrollToRef(contentRef, 0, { duration: 200, easing: easeCubicOut })
   }
   return (
     <div>

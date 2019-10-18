@@ -23,7 +23,7 @@ const useSmoothScroll = (
     return {
       to: {
         transform: `translate3d(0px, 0px, 0px)`,
-        scrollTop: 0,
+        mobileScrollTop: 0,
       },
       onFrame: null,
       config: {},
@@ -129,7 +129,7 @@ const useSmoothScroll = (
     setScrollStyles({
       to: {
         transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
-        scrollTop: 0,
+        mobileScrollTop: 0,
       },
       config: {},
       onFrame: null,
@@ -200,7 +200,7 @@ const useSmoothScroll = (
     setScrollStyles({
       to: {
         transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
-        scrollTop: valueToScroll,
+        mobileScrollTop: valueToScroll,
       },
       config,
       onFrame: () => {},
@@ -235,15 +235,19 @@ const useSmoothScroll = (
     config: SpringConfig = {},
   ) => {
     if (scrollWrapperRef.current) {
-      const valueToScroll = position + scrollWrapperRef.current.scrollTop
+      scrollDeltaY = scrollWrapperRef.current.scrollTop
+      const valueToScroll = position + scrollDeltaY
       setScrollStyles({
         to: {
           transform: 'translate3d(0px, 0px, 0px)',
-          scrollTop: valueToScroll,
+          mobileScrollTop: valueToScroll,
         },
-        onFrame: ({ scrollTop }) => {
-          console.log({ scrollTop })
-          scrollWrapperRef.current.scrollTop = scrollTop
+        onFrame: ({ mobileScrollTop }) => {
+          console.log({ mobileScrollTop })
+          scrollWrapperRef.current.scrollTop = mobileScrollTop
+        },
+        onRest: () => {
+          scrollDeltaY = valueToScroll
         },
         config,
       })
