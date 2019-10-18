@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react'
-import { ThemeProvider } from 'styled-components'
+import React from 'react'
 import { useSpring } from 'react-spring'
 import { easeExpOut } from 'd3-ease'
 import {
@@ -9,9 +8,11 @@ import {
   Root,
   TextDivider,
 } from './styles'
-import { useTheme, useToggleTheme } from '../../theme/theme'
+import { useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
-import SmoothScroll from '../../components/SmoothScroll'
+import ScrollContextProvider, {
+  useScroll,
+} from '../../components/SmoothScroll/ScrollContext'
 
 interface Props {}
 
@@ -20,9 +21,9 @@ interface Props {}
  */
 function Home(props: Props) {
   return (
-    <SmoothScroll>
+    <ScrollContextProvider>
       <HomeContent />
-    </SmoothScroll>
+    </ScrollContextProvider>
   )
 }
 
@@ -43,7 +44,8 @@ const HomeContent = (props: any) => {
     },
   })
   const toggleTheme = useToggleTheme()
-  const { scroll } = props
+
+  const scroll = useScroll()
   return (
     <>
       <HomePreview onScroll={scroll} />

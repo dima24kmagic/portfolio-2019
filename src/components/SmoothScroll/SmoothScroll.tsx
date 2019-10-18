@@ -1,9 +1,10 @@
 import React, { cloneElement, ReactElement, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { animated, SpringConfig } from 'react-spring'
+import { animated } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
 import { useTheme } from '../../theme/theme'
+import ScrollContextProvider from './ScrollContext'
 
 interface Props {
   children: ReactElement
@@ -14,7 +15,6 @@ interface Props {
   scrollWrapperRef: any
   handleMouseWheel: any
   scrollProps: any
-  scrollToExactPosition: (position: number, config: SpringConfig) => void
 }
 
 const Scrollable = styled(animated.div)`
@@ -84,7 +84,6 @@ function SmoothScroll(props: Props) {
     scrollWrapperRef,
     handleMouseWheel,
     scrollProps,
-    scrollToExactPosition,
   } = props
 
   const theme = useTheme()
@@ -110,44 +109,4 @@ function SmoothScroll(props: Props) {
   )
 }
 
-const ConnectedSmoothScroll = ({ children }: { children: ReactElement }) => {
-  const scrollWrapperRef = useRef<HTMLDivElement>(null)
-  const scrollBarRef = useRef<HTMLDivElement>(null)
-  const {
-    handleMouseWheel,
-    scrollProps,
-    handleScrollbarDrag,
-    scrollbarHeight,
-    scrollbarStyles,
-    handleScrollbarMouseUp,
-    handleScrollbarMouseDown,
-    scrollToExactPosition,
-  } = useSmoothScroll(scrollWrapperRef)
-
-  const handleMouseDown = useScrollDrag(
-    scrollWrapperRef,
-    scrollBarRef,
-    handleScrollbarDrag,
-    handleScrollbarMouseUp,
-    handleScrollbarMouseDown,
-  )
-  return (
-    // @ts-ignore
-    <SmoothScroll
-      scrollToExactPosition={scrollToExactPosition}
-      scrollWrapperRef={scrollWrapperRef}
-      scrollBarRef={scrollBarRef}
-      handleMouseWheel={handleMouseWheel}
-      scrollProps={scrollProps}
-      handleScrollbarDrag={handleScrollbarDrag}
-      scrollbarHeight={scrollbarHeight}
-      scrollbarStyles={scrollbarStyles}
-      handleScrollbarMouseUp={handleScrollbarMouseUp}
-      handleMouseDown={handleMouseDown}
-    >
-      {cloneElement(children, { scroll: scrollToExactPosition })}
-    </SmoothScroll>
-  )
-}
-
-export default ConnectedSmoothScroll
+export default SmoothScroll

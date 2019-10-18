@@ -7,6 +7,7 @@ import AnimatedSwitch from '../components/AnimatedSwitch'
 import Home from '../screens/Home/Home'
 import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
 import GlobalStyle from './GlobalStyles'
+import ScrollContextProvider from '../components/SmoothScroll/ScrollContext'
 
 interface Props {}
 
@@ -28,7 +29,147 @@ function App(props: Props) {
           <Home />
         </Route>
         <Route>
-          <div>Nothing Here!</div>
+          <ScrollContextProvider>
+            <div style={{ width: '100vw' }}>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+              <div>Nothing Here!</div>
+            </div>
+          </ScrollContextProvider>
         </Route>
       </AnimatedSwitch>
     </SideNavContextProvider>
