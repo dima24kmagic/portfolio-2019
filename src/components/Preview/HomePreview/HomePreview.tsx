@@ -10,7 +10,7 @@ import AnimatedName from '../../AnimatedName'
 import mePortraitImg from '../../../images/Me Portrait.jpg'
 
 interface Props {
-  onReadMore: (e: MouseEvent<HTMLDivElement>) => void
+  onReadMore?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
 /**

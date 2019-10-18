@@ -225,7 +225,11 @@ const useSmoothScroll = (
   }
   const scrollToExactPositionMobile = (position: number = 0) => {
     if (scrollWrapperRef.current) {
-      scrollWrapperRef.current.scroll({ top: position, behavior: 'smooth' })
+      const valueToScroll = position + scrollWrapperRef.current.scrollTop
+      scrollWrapperRef.current.scroll({
+        top: valueToScroll,
+        behavior: 'smooth',
+      })
     }
   }
 
@@ -234,15 +238,14 @@ const useSmoothScroll = (
     offset: number = 0,
   ) => {
     if (ref.current) {
-      const offsetFromTop =
-        ref.current.getBoundingClientRect().top + offset - scrollDeltaY
+      const offsetFromTop = ref.current.getBoundingClientRect().top + offset
       scrollToExactPositionMobile(offsetFromTop)
     }
   }
   const scrollToEventTargetMobile = (event: MouseEvent, offset: number = 0) => {
     if (event.currentTarget) {
       const offsetFromTop =
-        event.currentTarget.getBoundingClientRect().top + offset - scrollDeltaY
+        event.currentTarget.getBoundingClientRect().top + offset
       scrollToExactPositionMobile(offsetFromTop)
     }
   }

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSpring } from 'react-spring'
-import { easeExpOut } from 'd3-ease'
+import { easeExpInOut, easeExpOut } from 'd3-ease'
 import {
   ContentHolder,
   ContentName,
@@ -10,7 +10,9 @@ import {
 } from './styles'
 import { useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
-import ScrollContextProvider from '../../components/SmoothScroll/ScrollContext'
+import ScrollContextProvider, {
+  useScroll,
+} from '../../components/SmoothScroll/ScrollContext'
 
 interface Props {}
 
@@ -42,10 +44,111 @@ const HomeContent = (props: any) => {
     },
   })
   const toggleTheme = useToggleTheme()
+  const { scrollToRef } = useScroll()
+
+  const contentRef = useRef()
+  const handleReadMore = () => {
+    scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut })
+  }
   return (
     <>
-      <HomePreview />
-      <Root onClick={toggleTheme}>
+      <HomePreview onReadMore={handleReadMore} />
+      <Root onClick={toggleTheme} ref={contentRef}>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
+        <ContentHolder style={contentSpring}>
+          <ContentName>Lorem Iplsum</ContentName>
+          <PlainText>
+            Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
+          </PlainText>
+          <PlainText>
+            Looking for a remote part-time React Dev position;)
+          </PlainText>
+          <TextDivider />
+          <PlainText>
+            My ideal life is look like this - I sniffing cocaine outta model-hoe
+            butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+            sources of income generating me enough money to buy this Mongo-Congo
+            and install Solar Systems everywhere.
+          </PlainText>
+          <PlainText>
+            I would like to solve trash issue in the world, because I'm cool.
+          </PlainText>
+        </ContentHolder>
         <ContentHolder style={contentSpring}>
           <ContentName>Lorem Iplsum</ContentName>
           <PlainText>
