@@ -1,4 +1,11 @@
-import React, { cloneElement, ReactElement, useContext, useRef } from 'react'
+import React, {
+  cloneElement,
+  MouseEvent,
+  MutableRefObject,
+  ReactElement,
+  useContext,
+  useRef,
+} from 'react'
 import { SpringConfig } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
@@ -7,6 +14,16 @@ import SmoothScroll from './SmoothScroll'
 const ScrollContext = React.createContext({
   scroll: (position: number = 0, config: SpringConfig) => {},
   scrollWrapperRef: null,
+  scrollToRef: (
+    ref: MutableRefObject<HTMLDivElement>,
+    offset?: number,
+    config?: SpringConfig,
+  ) => {},
+  scrollToEventTarget: (
+    event: MouseEvent,
+    offset?: number,
+    config?: SpringConfig,
+  ) => {},
 })
 
 interface Props {
@@ -25,6 +42,8 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
     handleScrollbarMouseUp,
     handleScrollbarMouseDown,
     scrollToExactPosition,
+    scrollToRef,
+    scrollToEventTarget,
   } = useSmoothScroll(scrollWrapperRef)
 
   const handleMouseDown = useScrollDrag(
@@ -36,7 +55,12 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
   )
   return (
     <ScrollContext.Provider
-      value={{ scroll: scrollToExactPosition, scrollWrapperRef }}
+      value={{
+        scroll: scrollToExactPosition,
+        scrollWrapperRef,
+        scrollToRef,
+        scrollToEventTarget,
+      }}
     >
       <SmoothScroll
         scrollBarRef={scrollBarRef}
@@ -55,8 +79,13 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
 }
 
 export const useScroll = () => {
-  const { scroll } = useContext(ScrollContext)
-  return scroll
+  const { scroll, scrollToRef, scrollToEventTarget } = useContext(ScrollContext)
+  return { scroll, scrollToRef, scrollToEventTarget }
+}
+
+export const useScrollWrapperRef = (): MutableRefObject<HTMLDivElement> => {
+  const { scrollWrapperRef } = useContext(ScrollContext)
+  return scrollWrapperRef
 }
 
 export default ScrollContextProvider

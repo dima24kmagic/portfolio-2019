@@ -1,6 +1,6 @@
-import React from 'react'
-import { SpringConfig, useSpring } from 'react-spring'
-import { easeExpInOut, easeExpOut } from 'd3-ease'
+import React, { useEffect, useRef } from 'react'
+import { useSpring } from 'react-spring'
+import { easeExpOut } from 'd3-ease'
 import {
   NavigateMoreButton,
   PreviewContent,
@@ -8,16 +8,15 @@ import {
 } from '../PreviewContent'
 import AnimatedName from '../../AnimatedName'
 import mePortraitImg from '../../../images/Me Portrait.jpg'
-
-interface Props {
-  onScroll: (scrollNum: number, config: SpringConfig) => void
-}
+import {
+  useScroll,
+  useScrollWrapperRef,
+} from '../../SmoothScroll/ScrollContext'
 
 /**
  * Home preview content (img + text)
  */
-function HomePreview(props: Props | any) {
-  const { onScroll } = props
+function HomePreview() {
   const showMoreButtonStyled = useSpring({
     delay: 1600,
     from: {
@@ -34,15 +33,28 @@ function HomePreview(props: Props | any) {
     },
   })
 
+  const { scroll, scrollToRef, scrollToEventTarget } = useScroll()
+  const scrollWrapperRef = useScrollWrapperRef()
+  const testRef = useRef<HTMLDivElement>()
   const handleScroll = (e: React.MouseEvent<HTMLDivElement>) => {
-    // @ts-ignore
-    onScroll(600, { duration: 1400, easing: easeExpInOut })
+    scrollToEventTarget(e)
   }
+
+  useEffect(() => {
+    console.log('RUN!', testRef, scrollWrapperRef)
+    if (testRef.current && scrollWrapperRef.current) {
+      scrollToRef(testRef)
+    }
+  }, [scrollWrapperRef, testRef])
   return (
     <PreviewContent>
       <PreviewImage src={mePortraitImg} />
       <AnimatedName />
-      <NavigateMoreButton onClick={handleScroll} style={showMoreButtonStyled}>
+      <NavigateMoreButton
+        ref={testRef}
+        onClick={handleScroll}
+        style={showMoreButtonStyled}
+      >
         Read More
       </NavigateMoreButton>
     </PreviewContent>

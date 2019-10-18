@@ -1,5 +1,5 @@
+import { MouseEvent, MutableRefObject, useEffect } from 'react'
 import { SpringConfig, useSpring } from 'react-spring'
-import { MutableRefObject, useEffect } from 'react'
 import { easeCubicOut } from 'd3-ease'
 
 const SCROLLBAR_OFFSET = 16
@@ -152,8 +152,13 @@ const useSmoothScroll = (
   /* ********* API *********** */
   const scrollToExactPosition = (
     position: number = 0,
-    config: SpringConfig,
+    config: SpringConfig = {},
   ) => {
+    if (wrapperHeight === 1) {
+      if (scrollWrapperRef.current) {
+        wrapperHeight = scrollWrapperRef.current.clientHeight
+      }
+    }
     let valueToScroll = position * -1
     // if scroll down
     if (valueToScroll <= 0 && wrapperHeight > window.innerHeight) {
@@ -196,6 +201,29 @@ const useSmoothScroll = (
     scrollDeltaY = valueToScroll
   }
 
+  const scrollToRef = (
+    ref: MutableRefObject<HTMLElement>,
+    offset: number = 0,
+    config: SpringConfig = {},
+  ) => {
+    if (ref.current) {
+      const offsetFromTop =
+        ref.current.getBoundingClientRect().top + offset - scrollDeltaY
+      scrollToExactPosition(offsetFromTop, config)
+    }
+  }
+  const scrollToEventTarget = (
+    event: MouseEvent,
+    offset: number = 0,
+    config: SpringConfig = {},
+  ) => {
+    if (event.currentTarget) {
+      const offsetFromTop =
+        event.currentTarget.getBoundingClientRect().top + offset - scrollDeltaY
+      scrollToExactPosition(offsetFromTop, config)
+    }
+  }
+
   return {
     handleMouseWheel,
     scrollProps,
@@ -205,6 +233,8 @@ const useSmoothScroll = (
     scrollbarStyles,
     scrollbarHeight,
     scrollToExactPosition,
+    scrollToRef,
+    scrollToEventTarget,
   }
 }
 

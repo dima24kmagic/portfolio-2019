@@ -10,9 +10,7 @@ import {
 } from './styles'
 import { useToggleTheme } from '../../theme/theme'
 import HomePreview from '../../components/Preview/HomePreview/HomePreview'
-import ScrollContextProvider, {
-  useScroll,
-} from '../../components/SmoothScroll/ScrollContext'
+import ScrollContextProvider from '../../components/SmoothScroll/ScrollContext'
 
 interface Props {}
 
@@ -44,11 +42,9 @@ const HomeContent = (props: any) => {
     },
   })
   const toggleTheme = useToggleTheme()
-
-  const scroll = useScroll()
   return (
     <>
-      <HomePreview onScroll={scroll} />
+      <HomePreview />
       <Root onClick={toggleTheme}>
         <ContentHolder style={contentSpring}>
           <ContentName>Lorem Iplsum</ContentName>

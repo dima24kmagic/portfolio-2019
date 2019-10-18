@@ -8,6 +8,7 @@ import Home from '../screens/Home/Home'
 import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
 import GlobalStyle from './GlobalStyles'
 import ScrollContextProvider from '../components/SmoothScroll/ScrollContext'
+import HomePreview from '../components/Preview/HomePreview/HomePreview'
 
 interface Props {}
 
@@ -30,145 +31,7 @@ function App(props: Props) {
         </Route>
         <Route>
           <ScrollContextProvider>
-            <div style={{ width: '100vw' }}>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-              <div>Nothing Here!</div>
-            </div>
+            <div>Nothing here yet</div>
           </ScrollContextProvider>
         </Route>
       </AnimatedSwitch>
