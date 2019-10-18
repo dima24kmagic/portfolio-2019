@@ -22,7 +22,6 @@ const Scrollable = styled(animated.div)`
   overflow: hidden;
   height: auto;
   will-change: transform;
-
   // use default scroll behaviour on mobiles
   @media (hover: none) and (pointer: coarse) {
     overflow-y: auto;

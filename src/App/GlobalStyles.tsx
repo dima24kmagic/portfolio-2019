@@ -12,7 +12,9 @@ const GlobalStyle = () => {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-     backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
+     scroll-behavior: smooth;
  }
   html,
   body {

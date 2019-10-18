@@ -27,11 +27,13 @@ const ScrollContext = React.createContext({
   scrollToRefMobile: (
     ref: MutableRefObject<HTMLElement>,
     offset?: number,
+    config?: SpringConfig,
   ) => {},
-  scrollToExactPositionMobile: (position: number) => {},
+  scrollToExactPositionMobile: (position: number, config?: SpringConfig) => {},
   scrollToEventTargetMobile: (
     e: MouseEvent<HTMLElement>,
     offset?: number,
+    config?: SpringConfig,
   ) => {},
 })
 

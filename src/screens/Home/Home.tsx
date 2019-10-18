@@ -51,7 +51,7 @@ const HomeContent = (props: any) => {
     scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut })
   }
   return (
-    <>
+    <div>
       <HomePreview onReadMore={handleReadMore} />
       <Root onClick={toggleTheme} ref={contentRef}>
         <ContentHolder style={contentSpring}>
@@ -169,7 +169,7 @@ const HomeContent = (props: any) => {
           </PlainText>
         </ContentHolder>
       </Root>
-    </>
+    </div>
   )
 }
 

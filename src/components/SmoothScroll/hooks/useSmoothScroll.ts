@@ -19,11 +19,14 @@ const useSmoothScroll = (
     (scrollDeltaY / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
 
   /* ********* SPRINGS STYLES *********** */
-  const [scrollProps, setScrollProps] = useSpring(() => {
+  const [scrollProps, setScrollStyles] = useSpring(() => {
     return {
       to: {
         transform: `translate3d(0px, 0px, 0px)`,
+        scrollTop: 0,
       },
+      onFrame: null,
+      config: {},
     }
   })
   const [scrollbarStyles, setScrollbarStyles] = useSpring(() => ({
@@ -123,11 +126,13 @@ const useSmoothScroll = (
         return {}
       },
     })
-    setScrollProps({
+    setScrollStyles({
       to: {
         transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
+        scrollTop: 0,
       },
       config: {},
+      onFrame: null,
     })
   }
 
@@ -192,11 +197,13 @@ const useSmoothScroll = (
         return {}
       },
     })
-    setScrollProps({
+    setScrollStyles({
       to: {
         transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
+        scrollTop: valueToScroll,
       },
       config,
+      onFrame: () => {},
     })
     scrollDeltaY = valueToScroll
   }
@@ -223,12 +230,22 @@ const useSmoothScroll = (
       scrollToExactPosition(offsetFromTop, config)
     }
   }
-  const scrollToExactPositionMobile = (position: number = 0) => {
+  const scrollToExactPositionMobile = (
+    position: number = 0,
+    config: SpringConfig = {},
+  ) => {
     if (scrollWrapperRef.current) {
       const valueToScroll = position + scrollWrapperRef.current.scrollTop
-      scrollWrapperRef.current.scroll({
-        top: valueToScroll,
-        behavior: 'smooth',
+      setScrollStyles({
+        to: {
+          transform: 'translate3d(0px, 0px, 0px)',
+          scrollTop: valueToScroll,
+        },
+        onFrame: ({ scrollTop }) => {
+          console.log({ scrollTop })
+          scrollWrapperRef.current.scrollTop = scrollTop
+        },
+        config,
       })
     }
   }
@@ -236,17 +253,22 @@ const useSmoothScroll = (
   const scrollToRefMobile = (
     ref: MutableRefObject<HTMLElement>,
     offset: number = 0,
+    config: SpringConfig = {},
   ) => {
     if (ref.current) {
       const offsetFromTop = ref.current.getBoundingClientRect().top + offset
-      scrollToExactPositionMobile(offsetFromTop)
+      scrollToExactPositionMobile(offsetFromTop, config)
     }
   }
-  const scrollToEventTargetMobile = (event: MouseEvent, offset: number = 0) => {
+  const scrollToEventTargetMobile = (
+    event: MouseEvent,
+    offset: number = 0,
+    config: SpringConfig = {},
+  ) => {
     if (event.currentTarget) {
       const offsetFromTop =
         event.currentTarget.getBoundingClientRect().top + offset
-      scrollToExactPositionMobile(offsetFromTop)
+      scrollToExactPositionMobile(offsetFromTop, config)
     }
   }
 
