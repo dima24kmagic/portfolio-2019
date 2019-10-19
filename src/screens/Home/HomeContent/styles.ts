@@ -54,7 +54,7 @@ export const TextDivider = styled('div')`
   margin-bottom: 8px;
 `
 
-export const ContentHolder = styled(animated.div)`
+export const ContentWrapper = styled(animated.div)`
   width: 100%;
   height: auto;
   @media (min-width: 650px) {

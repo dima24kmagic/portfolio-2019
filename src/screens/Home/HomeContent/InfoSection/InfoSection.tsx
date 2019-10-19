@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContentHolder, ContentName, PlainText, TextDivider } from '../styles'
+import { ContentWrapper, ContentName, PlainText, TextDivider } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
 
 interface Props {}
@@ -11,7 +11,7 @@ function InfoSection(props: Props) {
   const {} = props
   const contentSpring = useContentSpring()
   return (
-    <ContentHolder style={contentSpring}>
+    <ContentWrapper style={contentSpring}>
       <ContentName>About Me</ContentName>
       <PlainText>
         Yo wasup guys I'm just cool-ass dev, who you wanna pay money.
@@ -27,7 +27,7 @@ function InfoSection(props: Props) {
       <PlainText>
         I would like to solve trash issue in the world, because I'm cool.
       </PlainText>
-    </ContentHolder>
+    </ContentWrapper>
   )
 }
 

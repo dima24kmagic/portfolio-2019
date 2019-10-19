@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContentHolder, ContentName } from '../styles'
+import { ContentWrapper, ContentName } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
 
 interface Props {}
@@ -11,9 +11,9 @@ function SkillsSection(props: Props) {
   const {} = props
   const contentSpring = useContentSpring()
   return (
-    <ContentHolder style={contentSpring}>
+    <ContentWrapper style={contentSpring}>
       <ContentName>My skills</ContentName>
-    </ContentHolder>
+    </ContentWrapper>
   )
 }
 
