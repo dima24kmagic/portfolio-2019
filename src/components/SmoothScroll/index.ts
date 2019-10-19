@@ -1,1 +1,1 @@
-export { default } from './SmoothScroll'
+export { default } from './ScrollContext'

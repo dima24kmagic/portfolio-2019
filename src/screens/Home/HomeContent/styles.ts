@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import meLandscapeImg from '../../images/Me Landscape.jpg'
-import mePortraitImg from '../../images/Me Portrait.jpg'
+import meLandscapeImg from '../../../images/Me Landscape.jpg'
+import mePortraitImg from '../../../images/Me Portrait.jpg'
 
 export const Root = styled('div')`
   display: flex;

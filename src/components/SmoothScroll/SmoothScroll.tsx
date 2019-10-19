@@ -19,6 +19,7 @@ const Scrollable = styled(animated.div)`
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   transform: translate3d(0px, 0px, 0px);
   overflow: ${({ isMobile }) => (isMobile ? 'auto' : 'hidden')};
   height: ${({ isMobile }) => (isMobile ? '100%' : 'auto')};
