@@ -96,7 +96,8 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
 }
 
 export const useScroll = () => {
-  const isMobile = checkIsMobile()
+  // @ts-ignore
+  const { isMobile } = window
   const {
     scroll,
     scrollToRef,

@@ -234,7 +234,7 @@ const useSmoothScroll = (
         scrollY: position,
         from: { scrollY: scrollWrapperRef.current.scrollTop },
         onFrame: ({ scrollY }) => {
-          scrollWrapperRef.current.scroll({ top: scrollY, behavior: 'smooth' })
+          scrollWrapperRef.current.scroll({ top: scrollY, behavior: 'auto' })
         },
         config,
       })

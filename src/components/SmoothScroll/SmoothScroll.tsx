@@ -2,6 +2,7 @@ import React, { MutableRefObject, ReactElement } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { animated } from 'react-spring'
 import { useTheme } from '../../theme/theme'
+import { checkIsMobile } from '../../utils'
 
 interface Props {
   children: ReactElement
@@ -19,14 +20,9 @@ const Scrollable = styled(animated.div)`
   top: 0;
   left: 0;
   transform: translate3d(0px, 0px, 0px);
-  overflow: hidden;
-  height: auto;
+  overflow: ${({ isMobile }) => (isMobile ? 'auto' : 'hidden')};
+  height: ${({ isMobile }) => (isMobile ? '100%' : 'auto')};
   will-change: transform;
-  // use default scroll behaviour on mobiles
-  @media (hover: none) and (pointer: coarse) {
-    overflow-y: auto;
-    height: 100%;
-  }
 `
 const ScrollbarContainer = styled('div')`
   position: absolute;
@@ -41,9 +37,7 @@ const ScrollbarContainer = styled('div')`
       opacity: 0.5 !important;
     }
   }
-  @media (hover: none) and (pointer: coarse) {
-    display: none;
-  }
+  display: ${({ isMobile }) => (isMobile ? 'none' : 'auto')};
 `
 
 const Scrollbar = styled(animated.span)`
@@ -83,9 +77,10 @@ function SmoothScroll(props: Props) {
   } = props
 
   const theme = useTheme()
+  const isMobile = checkIsMobile()
   return (
     <ThemeProvider theme={theme}>
-      <ScrollbarContainer onMouseDown={handleMouseDown}>
+      <ScrollbarContainer isMobile={isMobile} onMouseDown={handleMouseDown}>
         <Scrollbar
           ref={scrollBarRef}
           onMouseDown={handleMouseDown}
@@ -94,6 +89,7 @@ function SmoothScroll(props: Props) {
         />
       </ScrollbarContainer>
       <Scrollable
+        isMobile={isMobile}
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}
         style={scrollProps}

@@ -14,7 +14,7 @@ const GlobalStyle = () => {
     font-family: 'Lato', sans-serif;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
-     scroll-behavior: smooth;
+     //scroll-behavior: smooth;
  }
   html,
   body {

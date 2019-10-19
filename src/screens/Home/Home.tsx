@@ -58,7 +58,8 @@ const HomeContent = (props: any) => {
   }
   const handleGoToTop = () => {
     scroll(0)
-  };
+  }
+
   return (
     <div>
       <HomePreview onReadMore={handleReadMore} />
