@@ -45,52 +45,12 @@ const useSmoothScroll = (
     },
   }))
 
-  /* ********* ON WRAPPER MOUNTED *********** */
-  useEffect(() => {
-    if (scrollWrapperRef.current) {
-      wrapperHeight = scrollWrapperRef.current.clientHeight
-      if (wrapperHeight > window.innerHeight) {
-        windowToContentRatio =
-          window.innerHeight / scrollWrapperRef.current.clientHeight
-        scrollbarHeight =
-          window.innerHeight * windowToContentRatio - SCROLLBAR_OFFSET * 2
-        setScrollbarStyles({
-          to: {
-            transform: `translate3d(0px, ${scrollbarMovePercentage *
-              -1}px, 0px)`,
-            height: scrollbarHeight,
-            opacity: 0.4,
-          },
-          config: key => {
-            if (key === 'height') {
-              return {
-                duration: 0,
-              }
-            }
-            return {}
-          },
-        })
-      }
-    }
-  }, [scrollWrapperRef])
-
-  /* ********* WINDOW RESIZE *********** */
-  const handleWindowResize = () => {
-    wrapperHeight = scrollWrapperRef.current.clientHeight
-    if (wrapperHeight > window.innerHeight) {
-      scrollbarHeight =
-        window.innerHeight *
-          (window.innerHeight / scrollWrapperRef.current.clientHeight) -
-        SCROLLBAR_OFFSET * 2
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowResize)
-    return () => window.removeEventListener('resize', handleWindowResize)
-  }, [])
-
-  /* ********* SET STYLES ON WHEEL SCROLL *********** */
-  const handleScroll = (valueToScroll: number) => {
+  /* ********* SET STYLES FOR EXACT VALUE *********** */
+  const handleScroll = (
+    valueToScroll: number,
+    scrollWrapperConfig: SpringConfig = {},
+    scrollbarConfig: SpringConfig = null,
+  ) => {
     scrollDeltaY = valueToScroll
 
     // if scroll down
@@ -114,28 +74,78 @@ const useSmoothScroll = (
         height: scrollbarHeight,
         opacity: 0.4,
       },
-      config: key => {
-        if (key === 'opacity') {
-          return {
-            duration: 10,
-            easing: easeCubicOut,
+      config:
+        scrollbarConfig ||
+        (key => {
+          if (key === 'opacity') {
+            return {
+              duration: 10,
+              easing: easeCubicOut,
+            }
           }
-        }
-        return {}
-      },
+          return {}
+        }),
     })
     setScrollStyles({
       transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
       scrollY: 0,
-      config: {},
+      config: scrollWrapperConfig,
       onFrame: null,
     })
   }
 
+  /* ********* ON WRAPPER MOUNTED *********** */
+  const setInitialWrapperAndScrollbarHeight = () => {
+    if (scrollWrapperRef.current) {
+      wrapperHeight = scrollWrapperRef.current.clientHeight
+      if (wrapperHeight > window.innerHeight) {
+        windowToContentRatio =
+          window.innerHeight / scrollWrapperRef.current.clientHeight
+        scrollbarHeight =
+          window.innerHeight * windowToContentRatio - SCROLLBAR_OFFSET * 2
+        if (scrollDeltaY < (wrapperHeight - window.innerHeight) * -1) {
+          const newScrollValue = (wrapperHeight - window.innerHeight) * -1
+          handleScroll(newScrollValue, { duration: 0 })
+        }
+        setScrollbarStyles({
+          to: {
+            transform: `translate3d(0px, ${scrollbarMovePercentage *
+              -1}px, 0px)`,
+            height: scrollbarHeight,
+            opacity: 0.4,
+          },
+          config: key => {
+            if (key === 'height') {
+              return {
+                duration: 0,
+              }
+            }
+            return {}
+          },
+        })
+      }
+    }
+  }
+  useEffect(() => {
+    setInitialWrapperAndScrollbarHeight()
+  }, [scrollWrapperRef])
+
+  /* ********* WINDOW RESIZE *********** */
+  const handleWindowResize = () => {
+    wrapperHeight = scrollWrapperRef.current.clientHeight
+    if (wrapperHeight > window.innerHeight) {
+      setInitialWrapperAndScrollbarHeight()
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+  }, [])
+
   /* ********* EVENT HANDLES *********** */
   const handleMouseWheel = (e: WheelEvent) => {
-    const deltaYDirection = e.deltaY > 0 ? 1 : -1
-    const valueToScroll = scrollDeltaY - 50 * deltaYDirection
+    // const deltaYDirection = e.deltaY > 0 ? 1 : -1
+    const valueToScroll = scrollDeltaY - e.deltaY
     handleScroll(valueToScroll)
   }
 
