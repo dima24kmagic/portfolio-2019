@@ -1,6 +1,12 @@
 import React, { useRef } from 'react'
 import { useSpring } from 'react-spring'
-import { easeCubicOut, easeExpInOut, easeExpOut } from 'd3-ease'
+import {
+  easeCubicIn,
+  easeCubicInOut,
+  easeCubicOut,
+  easeExpInOut,
+  easeExpOut,
+} from 'd3-ease'
 import {
   ContentHolder,
   ContentName,
@@ -44,16 +50,19 @@ const HomeContent = (props: any) => {
     },
   })
   const toggleTheme = useToggleTheme()
-  const { scrollToRef } = useScroll()
+  const { scrollToRef, scroll } = useScroll()
 
   const contentRef = useRef()
   const handleReadMore = () => {
-    scrollToRef(contentRef, 0, { duration: 200, easing: easeCubicOut })
+    scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut })
   }
+  const handleGoToTop = () => {
+    scroll(0)
+  };
   return (
     <div>
       <HomePreview onReadMore={handleReadMore} />
-      <Root onClick={toggleTheme} ref={contentRef}>
+      <Root onClick={handleGoToTop} ref={contentRef}>
         <ContentHolder style={contentSpring}>
           <ContentName>Lorem Iplsum</ContentName>
           <PlainText>

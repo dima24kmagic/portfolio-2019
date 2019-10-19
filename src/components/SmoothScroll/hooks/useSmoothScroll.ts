@@ -21,10 +21,8 @@ const useSmoothScroll = (
   /* ********* SPRINGS STYLES *********** */
   const [scrollProps, setScrollStyles] = useSpring(() => {
     return {
-      to: {
-        transform: `translate3d(0px, 0px, 0px)`,
-        mobileScrollTop: 0,
-      },
+      transform: `translate3d(0px, 0px, 0px)`,
+      scrollY: 0,
       onFrame: null,
       config: {},
     }
@@ -127,10 +125,8 @@ const useSmoothScroll = (
       },
     })
     setScrollStyles({
-      to: {
-        transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
-        mobileScrollTop: 0,
-      },
+      transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
+      scrollY: 0,
       config: {},
       onFrame: null,
     })
@@ -198,10 +194,8 @@ const useSmoothScroll = (
       },
     })
     setScrollStyles({
-      to: {
-        transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
-        mobileScrollTop: valueToScroll,
-      },
+      transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
+      scrollY: valueToScroll,
       config,
       onFrame: () => {},
     })
@@ -235,19 +229,12 @@ const useSmoothScroll = (
     config: SpringConfig = {},
   ) => {
     if (scrollWrapperRef.current) {
-      scrollDeltaY = scrollWrapperRef.current.scrollTop
-      const valueToScroll = position + scrollDeltaY
       setScrollStyles({
-        to: {
-          transform: 'translate3d(0px, 0px, 0px)',
-          mobileScrollTop: valueToScroll,
-        },
-        onFrame: ({ mobileScrollTop }) => {
-          console.log({ mobileScrollTop })
-          scrollWrapperRef.current.scrollTop = mobileScrollTop
-        },
-        onRest: () => {
-          scrollDeltaY = valueToScroll
+        reset: true,
+        scrollY: position,
+        from: { scrollY: scrollWrapperRef.current.scrollTop },
+        onFrame: ({ scrollY }) => {
+          scrollWrapperRef.current.scroll({ top: scrollY, behavior: 'smooth' })
         },
         config,
       })
@@ -260,7 +247,10 @@ const useSmoothScroll = (
     config: SpringConfig = {},
   ) => {
     if (ref.current) {
-      const offsetFromTop = ref.current.getBoundingClientRect().top + offset
+      const offsetFromTop =
+        ref.current.getBoundingClientRect().top +
+        offset +
+        scrollWrapperRef.current.scrollTop
       scrollToExactPositionMobile(offsetFromTop, config)
     }
   }
@@ -271,7 +261,9 @@ const useSmoothScroll = (
   ) => {
     if (event.currentTarget) {
       const offsetFromTop =
-        event.currentTarget.getBoundingClientRect().top + offset
+        event.currentTarget.getBoundingClientRect().top +
+        offset +
+        scrollWrapperRef.current.scrollTop
       scrollToExactPositionMobile(offsetFromTop, config)
     }
   }
