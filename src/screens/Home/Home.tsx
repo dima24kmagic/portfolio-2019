@@ -8,6 +8,7 @@ import {
   easeExpOut,
 } from 'd3-ease'
 import {
+  ChangeThemeButton,
   ContentHolder,
   ContentName,
   PlainText,
@@ -179,6 +180,7 @@ const HomeContent = (props: any) => {
           </PlainText>
         </ContentHolder>
       </Root>
+      <ChangeThemeButton onClick={toggleTheme}>Change Theme!</ChangeThemeButton>
     </div>
   )
 }

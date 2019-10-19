@@ -31,6 +31,7 @@ const GlobalStyle = () => {
         bg: { primary },
       },
     }) => primary};
+    transition: background ${({ theme }) => theme.transitionSpeed};
   }
   
   #root {
