@@ -58,6 +58,9 @@ export const ContentWrapper = styled(animated.div)`
   width: 100%;
   height: auto;
   @media (min-width: 650px) {
+    width: 80%;
+  }
+  @media (min-width: 1250px) {
     width: 60%;
   }
 `

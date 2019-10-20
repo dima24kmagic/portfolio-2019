@@ -1,6 +1,6 @@
+import React, { useRef } from 'react'
 import { easeExpInOut } from 'd3-ease'
 import { useScroll } from '../../../components/SmoothScroll/ScrollContext'
-import React, { useRef } from 'react'
 import HomePreview from '../../../components/Preview/HomePreview'
 import { Root } from './styles'
 import SkillsSection from './SkillsSection'

@@ -11,6 +11,9 @@ const getConvertedTheme = (mode: ThemeMode) => {
       primary: getModeValue(mode, '#f6f6f6', '#020202'),
       secondary: getModeValue(mode, '#020202', '#a20051'),
     },
+    skillCard: {
+      bg: getModeValue(mode, '#020202', '#f6f6f6'),
+    },
     color: {
       white: '#fcfcfc',
       black: '#020202',
