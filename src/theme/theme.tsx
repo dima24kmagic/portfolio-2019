@@ -5,7 +5,7 @@ function getModeValue(mode: ThemeMode, lightVal: string, darkVal: string) {
   return mode === ThemeMode.LIGHT ? lightVal : darkVal
 }
 
-const getConvertedTheme = (mode: ThemeMode) => {
+export const getConvertedTheme = (mode: ThemeMode) => {
   return {
     bg: {
       primary: getModeValue(mode, '#f6f6f6', '#020202'),
