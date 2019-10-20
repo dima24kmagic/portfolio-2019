@@ -42,7 +42,7 @@ function SkillsSection() {
       <ContentName>My Abilities</ContentName>
       <SkillCardsWrapper>
         {skills.map(skill => (
-          <SkillCardWrapper skill={skill} />
+          <SkillCardWrapper key={skill.name} skill={skill} />
         ))}
       </SkillCardsWrapper>
     </ContentWrapper>
