@@ -33,7 +33,11 @@ export const ContentName = styled('h1')`
       color: { primary },
     },
   }) => primary};
+  text-align: center;
   transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  @media (min-width: 850px) {
+    text-align: unset;
+  }
 `
 
 export const PlainText = styled('p')`
