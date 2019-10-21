@@ -70,7 +70,7 @@ function SkillsSection() {
   }
   const contentSpring = useContentSpring()
   return (
-    <ContentWrapper style={{ contentSpring, paddingBottom: 240 }}>
+    <ContentWrapper style={contentSpring}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
         {skills.map(({ name }) => {
