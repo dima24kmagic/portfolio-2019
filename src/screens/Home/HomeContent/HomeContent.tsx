@@ -23,10 +23,7 @@ const HomeContent = (props: any) => {
         <InfoSection />
 
         <ChangeThemeButton onClick={toggleTheme}>
-          <PlainText style={{ textAlign: 'center', marginBottom: 16 }}>
-            You like this, but want some cherry on the top?)
-          </PlainText>
-          Change Theme!
+          Cherry on the top: Change Theme!
         </ChangeThemeButton>
       </Root>
     </div>

@@ -27,7 +27,6 @@ export const ContentName = styled('h1')`
   font-weight: 700;
   font-size: 21px;
   margin-bottom: 72px;
-  margin-top: 64px;
   color: ${({
     theme: {
       color: { primary },
@@ -58,7 +57,7 @@ export const TextDivider = styled('div')`
 export const ContentWrapper = styled(animated.div)`
   width: 100%;
   height: auto;
-  min-height: 50vh;
+  padding-top: 64px;
   margin-bottom: 32px;
   @media (min-width: 650px) {
     width: 80%;

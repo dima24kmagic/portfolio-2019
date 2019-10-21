@@ -13,9 +13,24 @@ interface Props {
 
 const Root = styled('div')`
   display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  margin-right: 32px;
+  padding-right: 0px;
   margin-bottom: 32px;
+  width: 100%;
+  @media (min-width: 650px) {
+    padding-right: 32px;
+    width: 50%;
+  }
+  @media (min-width: 1050px) {
+    padding-right: 32px;
+    width: 30%;
+  }
+  @media (min-width: 1420px) {
+    padding-right: 32px;
+    width: auto;
+  }
 `
 
 const SkillName = styled(animated.div)`

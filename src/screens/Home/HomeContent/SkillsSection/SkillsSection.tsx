@@ -49,9 +49,14 @@ const skills: SkillType[] = [
 
 const SkillsWrapper = styled('div')`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+
+  @media (min-width: 650px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `
 
 /**
@@ -65,7 +70,7 @@ function SkillsSection() {
   }
   const contentSpring = useContentSpring()
   return (
-    <ContentWrapper style={contentSpring}>
+    <ContentWrapper style={{ contentSpring, paddingBottom: 240 }}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
         {skills.map(({ name }) => {
