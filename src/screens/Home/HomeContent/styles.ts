@@ -71,13 +71,12 @@ export const ChangeThemeButton = styled('div')`
   display:flex;
   align-items:center;
   justify-content:center;
+  flex-direction: column;
   border-radius: 8px;
   width: 250px;
   height: 40px;
   margin: 20px auto 60px;
-  font-size: 25px;
   cursor: pointer;
-  background: ${({ theme }) => theme.bg.secondary};
-  color: ${({ theme }) => theme.color.secondary}
-  transition: background ${({ theme }) => theme.transitionSpeed};
+  color: ${({ theme }) => theme.color.accent}
+  transition: color ${({ theme }) => theme.transitionSpeed};
 `

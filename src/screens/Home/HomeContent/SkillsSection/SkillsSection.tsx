@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { animated, useTrail } from 'react-spring'
 import { ContentName, ContentWrapper } from '../styles'
@@ -51,20 +51,34 @@ const SkillsWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 `
 
 /**
  * Section with my skills
  */
 function SkillsSection() {
+  const [selectedSkill, setSelectedSkill] = useState('')
+
+  const handleOnSkillClick = (skillName: string) => {
+    setSelectedSkill(skillName)
+  }
   const contentSpring = useContentSpring()
   return (
     <ContentWrapper style={contentSpring}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
-        {skills.map(({ name }) => (
-          <Skill isSelected={false} name={name} key={name} />
-        ))}
+        {skills.map(({ name }) => {
+          const isSelected = selectedSkill === name
+          return (
+            <Skill
+              onClick={handleOnSkillClick}
+              isSelected={isSelected}
+              name={name}
+              key={name}
+            />
+          )
+        })}
       </SkillsWrapper>
     </ContentWrapper>
   )

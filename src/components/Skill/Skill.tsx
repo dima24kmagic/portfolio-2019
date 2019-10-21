@@ -1,46 +1,87 @@
-import React from 'react'
-import { animated, useSpring } from 'react-spring'
+import React, { useState, MouseEvent } from 'react'
+import { animated } from 'react-spring'
 import styled from 'styled-components'
+import Underline from '../Underline'
+import SkillDescription from './SkillDescription'
+import DropDown from '../DropDown'
 
 interface Props {
   name: string
-  isSelected: boolean
+  isSelected?: boolean
+  onClick?: (skillName: string) => void
 }
 
-const Wrapper = styled(animated.div)`
+const Root = styled('div')`
+  display: inline-flex;
+  position: relative;
+  margin-right: 32px;
+  margin-bottom: 32px;
+`
+
+const SkillName = styled(animated.div)`
   display: inline-flex;
   position: relative;
   padding: 0 12px;
   font-size: 36px;
   font-weight: 300;
-  margin-right: 32px;
   cursor: pointer;
+  overflow: hidden;
+
   color: ${({ theme }) => theme.color.primary};
   transition: color 0.15s;
-`
-
-const Underline = styled(animated.div)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background: ${({ theme }) => theme.color.primary};
 `
 
 /**
  * Skill
  */
 function Skill(props: Props) {
-  const { name, isSelected } = props
-  const underlineSpring = useSpring({
-    transform: isSelected ? 'translate3d(100%, 0, 0)' : 'translate3d(0, 0, 0)',
-  })
+  const { name, isSelected = true, onClick = () => {} } = props
+  const [isHovered, setHovered] = useState(false)
+  const handleMouseIn = () => {
+    setHovered(true)
+  }
+  const handleMouseOut = () => {
+    setHovered(false)
+  }
+
+  const handleOnClickAway = (e: MouseEvent<HTMLDivElement>) => {
+    // @ts-ignore
+    if (!e.target.classList.contains('skill-name')) {
+      onClick('')
+    }
+  }
+
+  const handleOnClick = () => {
+    if (isSelected) {
+      return onClick('')
+    }
+    return onClick(name)
+  }
+
   return (
-    <Wrapper>
-      {name}
-      <Underline style={underlineSpring} />
-    </Wrapper>
+    <Root>
+      <SkillName
+        className="skill-name"
+        onClick={handleOnClick}
+        onFocus={handleMouseIn}
+        onBlur={handleMouseOut}
+        onMouseEnter={handleMouseIn}
+        onMouseOut={handleMouseOut}
+        index={1}
+      >
+        {name}
+        <Underline isShow={isHovered || isSelected} />
+      </SkillName>
+      <DropDown isOpen={isSelected} onClickAway={handleOnClickAway}>
+        <SkillDescription
+          descriptions={[
+            'Familiar with modern JavaScript syntax',
+            'Familiar with Webpack, Babel.',
+            'Understand closures, async programming (promises, async/await)',
+          ]}
+        />
+      </DropDown>
+    </Root>
   )
 }
 
