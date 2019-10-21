@@ -26,7 +26,7 @@ export const ContentName = styled('h1')`
   font-family: 'Chivo', sans-serif;
   font-weight: 700;
   font-size: 21px;
-  margin-bottom: 28px;
+  margin-bottom: 72px;
   margin-top: 64px;
   color: ${({
     theme: {
@@ -58,11 +58,13 @@ export const TextDivider = styled('div')`
 export const ContentWrapper = styled(animated.div)`
   width: 100%;
   height: auto;
+  min-height: 50vh;
+  margin-bottom: 32px;
   @media (min-width: 650px) {
     width: 80%;
   }
   @media (min-width: 1250px) {
-    width: 60%;
+    width: 80%;
   }
 `
 export const ChangeThemeButton = styled('div')`

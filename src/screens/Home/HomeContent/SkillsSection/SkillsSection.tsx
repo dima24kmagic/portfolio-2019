@@ -1,13 +1,14 @@
 import React from 'react'
-import { withTheme } from 'styled-components'
-import { useTrail } from 'react-spring'
+import styled, { withTheme } from 'styled-components'
+import { animated, useTrail } from 'react-spring'
 import { ContentName, ContentWrapper } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
 import { SkillCardsWrapper } from './skillsSectionStyles'
-import Skill from '../../../../types/Skill'
+import SkillType from '../../../../types/Skill'
 import SkillCard from '../../../../components/SkillCard'
+import Skill from '../../../../components/Skill'
 
-const skills: Skill[] = [
+const skills: SkillType[] = [
   {
     name: 'JavaScript',
     description:
@@ -46,29 +47,25 @@ const skills: Skill[] = [
   },
 ]
 
+const SkillsWrapper = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 /**
  * Section with my skills
  */
 function SkillsSection() {
   const contentSpring = useContentSpring()
-  const trails = useTrail(skills.length, {
-    delay: 4000,
-    from: {
-      opacity: 0,
-    },
-    to: {
-      opacity: 1,
-    },
-  })
   return (
     <ContentWrapper style={contentSpring}>
       <ContentName>My Abilities</ContentName>
-      <SkillCardsWrapper>
-        {trails.map((style, index) => {
-          const skill = skills[index]
-          return <SkillCard style={style} key={skill.name} skill={skill} />
-        })}
-      </SkillCardsWrapper>
+      <SkillsWrapper>
+        {skills.map(({ name }) => (
+          <Skill isSelected={false} name={name} key={name} />
+        ))}
+      </SkillsWrapper>
     </ContentWrapper>
   )
 }

@@ -19,7 +19,7 @@ export const getConvertedTheme = (mode: ThemeMode) => {
       white: '#fcfcfc',
       black: '#020202',
       primary: getModeValue(mode, '#020202', '#f6f6f6'),
-      primaryHover: getModeValue(mode, '#00051d', '#fff'),
+      primaryHover: getModeValue(mode, '#a0148b', '#fff'),
       secondary: getModeValue(mode, '#f6f6f6', '#f6f6f6'),
       secondaryHover: getModeValue(mode, 'hotpink', '#ff00a6'),
       accent: getModeValue(mode, '#ba004e', 'hotpink'),
