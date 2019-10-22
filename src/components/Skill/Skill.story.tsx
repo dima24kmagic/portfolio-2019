@@ -10,7 +10,7 @@ storiesOf('Components|SkillType', module)
   .add('SkillType example', () => {
     return (
       <ProvideStoriesTheme>
-        <Skill index={1} skill={SkillTypeExample} />
+        <Skill skill={SkillTypeExample} />
       </ProvideStoriesTheme>
     )
   })

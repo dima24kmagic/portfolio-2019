@@ -12,7 +12,7 @@ storiesOf('Components|SkillCard', module).add('SkillCard example', () => {
         <SkillCard
           skill={{
             name: 'JavaScript',
-            description: '',
+            description: [''],
             img: 'https://png.pngtree.com/svg/20170719/javascript_633988.png',
           }}
         />
