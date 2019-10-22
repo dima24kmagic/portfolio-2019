@@ -1,45 +1,49 @@
-import React, { useState, MouseEvent } from 'react'
-import { animated } from 'react-spring'
+import React, { useState } from 'react'
+import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components'
 import Underline from '../Underline'
-import SkillDescription from './SkillDescription'
-import DropDown from '../DropDown'
+import SkillType from '../../types/SkillType'
 
 interface Props {
-  name: string
-  isSelected?: boolean
-  onClick?: (skillName: string) => void
+  skill: SkillType
+  index?: number
 }
 
-const Root = styled('div')`
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding-right: 0px;
-  margin-bottom: 32px;
+const Root = styled(animated.div)`
+  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80%;
+  cursor: pointer;
+`
+
+const BGBlend = styled('div')`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  @media (min-width: 650px) {
-    padding-right: 32px;
-    width: 50%;
-  }
-  @media (min-width: 1050px) {
-    padding-right: 32px;
-    width: 30%;
-  }
-  @media (min-width: 1420px) {
-    padding-right: 32px;
-    width: auto;
-  }
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+`
+
+const SkillImg = styled('img')`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -2;
 `
 
 const SkillName = styled(animated.div)`
+  position: absolute;
+  top: 30%;
+  left: 30px;
   display: inline-flex;
-  position: relative;
   padding: 0 12px;
   font-size: 36px;
   font-weight: 300;
-  cursor: pointer;
   overflow: hidden;
 
   color: ${({ theme }) => theme.color.primary};
@@ -47,10 +51,11 @@ const SkillName = styled(animated.div)`
 `
 
 /**
- * Skill
+ * SkillType
  */
 function Skill(props: Props) {
-  const { name, isSelected = true, onClick = () => {} } = props
+  const { skill, index } = props
+  const { name, img } = skill
   const [isHovered, setHovered] = useState(false)
   const handleMouseIn = () => {
     setHovered(true)
@@ -59,43 +64,27 @@ function Skill(props: Props) {
     setHovered(false)
   }
 
-  const handleOnClickAway = (e: MouseEvent<HTMLDivElement>) => {
-    // @ts-ignore
-    if (!e.target.classList.contains('skill-name')) {
-      onClick('')
-    }
-  }
-
-  const handleOnClick = () => {
-    if (isSelected) {
-      return onClick('')
-    }
-    return onClick(name)
-  }
+  const skillCardSpring = useSpring({
+    from: {
+      left: `${(100 / 6) * index}%`,
+    },
+    width: isHovered ? '25%' : `${100 / 6}%`,
+  })
 
   return (
-    <Root>
-      <SkillName
-        className="skill-name"
-        onClick={handleOnClick}
-        onFocus={handleMouseIn}
-        onBlur={handleMouseOut}
-        onMouseEnter={handleMouseIn}
-        onMouseOut={handleMouseOut}
-        index={1}
-      >
+    <Root
+      onFocus={handleMouseIn}
+      onBlur={handleMouseOut}
+      onMouseOver={handleMouseIn}
+      onMouseLeave={handleMouseOut}
+      style={skillCardSpring}
+    >
+      <BGBlend />
+      <SkillImg src={img} />
+      <SkillName index={1}>
         {name}
-        <Underline isShow={isHovered || isSelected} />
+        <Underline isShow={isHovered} />
       </SkillName>
-      <DropDown isOpen={isSelected} onClickAway={handleOnClickAway}>
-        <SkillDescription
-          descriptions={[
-            'Familiar with modern JavaScript syntax',
-            'Familiar with Webpack, Babel.',
-            'Understand closures, async programming (promises, async/await)',
-          ]}
-        />
-      </DropDown>
     </Root>
   )
 }

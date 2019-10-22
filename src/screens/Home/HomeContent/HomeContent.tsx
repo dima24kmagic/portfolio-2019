@@ -23,7 +23,7 @@ const HomeContent = (props: any) => {
         <InfoSection />
 
         <ChangeThemeButton onClick={toggleTheme}>
-          Cherry on the top: Change Theme!
+          Want some more? Change Theme!)
         </ChangeThemeButton>
       </Root>
     </div>

@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { withTheme } from 'styled-components'
-import { animated, useTrail } from 'react-spring'
 import { ContentName, ContentWrapper } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
-import { SkillCardsWrapper } from './skillsSectionStyles'
-import SkillType from '../../../../types/Skill'
-import SkillCard from '../../../../components/SkillCard'
+import SkillType from '../../../../types/SkillType'
 import Skill from '../../../../components/Skill'
 
 const skills: SkillType[] = [
@@ -13,45 +10,46 @@ const skills: SkillType[] = [
     name: 'JavaScript',
     description:
       'Familiar with modern JS syntax. Understand how JS compiler works.',
-    img: 'https://png.pngtree.com/svg/20170719/javascript_633988.png',
+    img: 'https://wallpapercave.com/wp/wp2465949.png',
   },
   {
     name: 'React JS',
     description:
       'Creating components (typescript), State Management, Performance tracking, API integration, hooks, styling',
     img:
-      'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png',
+      'https://c.wallhere.com/photos/0a/93/reactJS_JavaScript_Typescript_programming_programming_language_React_Native_Facebook_React-1568827.jpg!d',
   },
   {
     name: 'SASS',
     description: '',
-    img:
-      'https://freeicons.io/laravel/public/uploads/icons/png/10958812621551942279-512.png',
+    img: 'https://wpcron.files.wordpress.com/2015/01/sass-wallpaper.jpg ',
   },
   {
     name: 'VCS',
     description: '',
-    img: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png',
+    img: 'https://images4.alphacoders.com/985/thumb-1920-985805.png',
   },
   {
     name: 'Soft Skills',
     description: '',
     img:
-      'https://cdn.pixabay.com/photo/2017/09/28/22/14/speech-icon-2797263_960_720.png',
+      'https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   },
   {
     name: 'Additional',
     description: '',
     img:
-      'https://upload.wikimedia.org/wikipedia/commons/6/61/Book-icon-orange.png',
+      'https://i.pinimg.com/originals/01/f7/9b/01f79b284c63082d29c82b8cb94c63d1.jpg',
   },
 ]
 
 const SkillsWrapper = styled('div')`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
 
   @media (min-width: 650px) {
     flex-direction: row;
@@ -63,26 +61,14 @@ const SkillsWrapper = styled('div')`
  * Section with my skills
  */
 function SkillsSection() {
-  const [selectedSkill, setSelectedSkill] = useState('')
-
-  const handleOnSkillClick = (skillName: string) => {
-    setSelectedSkill(skillName)
-  }
   const contentSpring = useContentSpring()
   return (
     <ContentWrapper style={contentSpring}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
-        {skills.map(({ name }) => {
-          const isSelected = selectedSkill === name
-          return (
-            <Skill
-              onClick={handleOnSkillClick}
-              isSelected={isSelected}
-              name={name}
-              key={name}
-            />
-          )
+        {skills.map((skill, index) => {
+          const { name } = skill
+          return <Skill index={index} skill={skill} key={name} />
         })}
       </SkillsWrapper>
     </ContentWrapper>

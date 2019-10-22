@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { AnimatedValue } from 'react-spring'
 import { Icon, Name, ViewMoreButton, Wrapper } from './SkillCardStyles'
-import Skill from '../../types/Skill'
+import SkillType from '../../types/SkillType'
 
 interface Props {
-  skill: Skill
+  skill: SkillType
   style?: any
 }
 

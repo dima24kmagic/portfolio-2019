@@ -10,7 +10,6 @@ export const Root = styled('div')`
   width: 100%;
   min-height: 100%;
   height: 100%;
-  padding: 0px 32px;
   padding-bottom: 64px;
   overflow: auto;
   background: ${({
@@ -55,17 +54,14 @@ export const TextDivider = styled('div')`
 `
 
 export const ContentWrapper = styled(animated.div)`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100vh;
   padding-top: 64px;
   margin-bottom: 32px;
-  @media (min-width: 650px) {
-    width: 80%;
-  }
-  @media (min-width: 1250px) {
-    width: 80%;
-  }
 `
+
 export const ChangeThemeButton = styled('div')`
   display:flex;
   align-items:center;

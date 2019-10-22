@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import SkillCard from './SkillCard'
 import ProvideStoriesTheme from '../../storybook/ProvideStoriesTheme'
-import { SkillTypeExample } from '../../types/Skill'
+import { SkillTypeExample } from '../../types/SkillType'
 
 storiesOf('Components|SkillCard', module).add('SkillCard example', () => {
   return (
