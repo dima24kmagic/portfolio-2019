@@ -73,14 +73,13 @@ const SkillNames = styled('div')`
 `
 
 const DescriptionWrapper = styled('div')`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding-bottom: 82px;
+  justify-content: flex-start;
   height: 80%;
   min-width: 400px;
-  padding-left: 64px;
   border-left: 2px solid ${({ theme }) => theme.color.primary};
 `
 

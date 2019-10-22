@@ -57,6 +57,7 @@
     "@storybook/addon-links": "^5.2.4",
     "@storybook/addons": "^5.2.4",
     "@storybook/react": "^5.2.4",
+    "@types/core-js": "^2.5.2",
     "@types/d3-ease": "^1.0.8",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.144",
