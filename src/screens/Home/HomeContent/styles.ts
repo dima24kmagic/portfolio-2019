@@ -25,7 +25,6 @@ export const ContentName = styled('h1')`
   font-family: 'Chivo', sans-serif;
   font-weight: 700;
   font-size: 21px;
-  margin-bottom: 72px;
   color: ${({
     theme: {
       color: { primary },
@@ -33,6 +32,11 @@ export const ContentName = styled('h1')`
   }) => primary};
   text-align: center;
   transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+
+  margin-bottom: 48px;
+  @media (min-width: 500px) {
+    margin-bottom: 72px;
+  }
 `
 
 export const PlainText = styled('p')`
@@ -58,8 +62,12 @@ export const ContentWrapper = styled(animated.div)`
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  padding-top: 64px;
+
   margin-bottom: 32px;
+  padding-top: 24px;
+  @media (min-width: 500px) {
+    padding-top: 32px;
+  }
 `
 
 export const ChangeThemeButton = styled('div')`

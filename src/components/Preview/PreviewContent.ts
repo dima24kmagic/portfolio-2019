@@ -51,6 +51,8 @@ export const NavigateMoreButton = styled(animated.div)`
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
+  font-weight: 100;
+  font-size: 18px;
   color: ${({
     theme: {
       color: { primary },

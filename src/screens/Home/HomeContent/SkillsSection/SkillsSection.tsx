@@ -5,6 +5,9 @@ import useContentSpring from '../hooks/useContentSpring'
 import SkillType from '../../../../types/SkillType'
 import Skill from '../../../../components/Skill'
 import SkillDescription from '../../../../components/Skill/SkillDescription'
+import { NavigateMoreButton } from '../../../../components/Preview/PreviewContent'
+import { useTrail } from 'react-spring'
+import { createVerify } from 'crypto'
 
 const skills: SkillType[] = [
   {
@@ -137,12 +140,21 @@ function SkillsSection() {
     setSelectedSkill(skill)
   }
   const contentSpring = useContentSpring()
+
+  const skillsTrail = useTrail(skills.length, {
+    delay: 4000,
+    from: {
+      opacity: 0,
+    },
+    opacity: 1,
+  })
   return (
     <ContentWrapper style={contentSpring}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
         <SkillNames>
-          {skills.map(skill => {
+          {skillsTrail.map((trailSpring, index) => {
+            const skill = skills[index]
             const { name } = skill
             const isSelected = name === selectedSkill.name
             return (
@@ -159,6 +171,7 @@ function SkillsSection() {
           <SkillDescription descriptions={selectedSkill.description} />
         </DescriptionWrapper>
       </SkillsWrapper>
+      <NavigateMoreButton>About Me</NavigateMoreButton>
     </ContentWrapper>
   )
 }

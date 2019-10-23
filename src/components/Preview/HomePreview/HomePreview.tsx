@@ -39,7 +39,7 @@ function HomePreview(props: Props) {
       <PreviewImage src={mePortraitImg} />
       <AnimatedName />
       <NavigateMoreButton onClick={onReadMore} style={showMoreButtonStyled}>
-        Read More
+        Check My Skills
       </NavigateMoreButton>
     </PreviewContent>
   )

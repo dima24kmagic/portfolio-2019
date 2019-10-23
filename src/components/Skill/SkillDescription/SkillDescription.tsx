@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { animated, useTransition } from 'react-spring'
 import { PlainText } from '../../../screens/Home/HomeContent/styles'
+import { easeExpIn } from 'd3-ease'
 
 interface Props {
   descriptions: string[]
@@ -33,12 +34,10 @@ const Container = styled(animated.div)`
  * Description of a skill
  */
 function SkillDescription(props: Props) {
-  const ANIMATION_TRAIL = 100
   const DURATION = 300
   const { descriptions } = props
   const [descriptionState, setDescriptions] = useState(descriptions)
   useEffect(() => {
-    const descriptionLength = descriptionState.length
     setDescriptions([])
     setTimeout(() => {
       setDescriptions(descriptions)
@@ -50,8 +49,6 @@ function SkillDescription(props: Props) {
     descriptionState,
     description => description,
     {
-      // trail: ANIMATION_TRAIL,
-      reset: true,
       from: {
         transform: 'translate3d(-8px, 0, 0)',
         opacity: 0,
@@ -60,19 +57,17 @@ function SkillDescription(props: Props) {
         transform: 'translate3d(0px, 0, 0)',
         opacity: 1,
       },
-      leave: item => async next => {
-        // TODO: get top value from refMap
-        await next({ transform: 'translate3d(8px, 0, 0)', opacity: 0 })
-        await next({ position: 'absolute', top: 0 })
+      leave: {
+        transform: 'translate3d(8px, 0, 0)',
+        opacity: 0,
       },
-      config: (item, state) =>
-        state === 'leave' ? [{ duration: DURATION }, { duration: 0 }] : {},
+      config: { duration: DURATION },
     },
   )
 
   return (
     <>
-      {transition.map(({ key, props, item }, index) => {
+      {transition.map(({ key, props, item }) => {
         return (
           <animated.div key={key} style={props}>
             <Description>
