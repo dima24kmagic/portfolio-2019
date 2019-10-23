@@ -1,8 +1,7 @@
-import React, { MutableRefObject, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { animated, useTransition } from 'react-spring'
 import { PlainText } from '../../../screens/Home/HomeContent/styles'
-import { easeExpInOut } from 'd3-ease'
 
 interface Props {
   descriptions: string[]
@@ -45,6 +44,7 @@ function SkillDescription(props: Props) {
       setDescriptions(descriptions)
     }, DURATION + 100)
   }, [descriptions])
+
   // @ts-ignore
   const transition = useTransition(
     descriptionState,
@@ -72,20 +72,18 @@ function SkillDescription(props: Props) {
 
   return (
     <>
-      <Container>
-        {transition.map(({ key, props, item }, index) => {
-          return (
-            <animated.div key={key} style={props}>
-              <Description>
-                <BulletPoint />
-                <PlainText style={{ fontSize: 16, fontWeight: 400 }}>
-                  {item}
-                </PlainText>
-              </Description>
-            </animated.div>
-          )
-        })}
-      </Container>
+      {transition.map(({ key, props, item }, index) => {
+        return (
+          <animated.div key={key} style={props}>
+            <Description>
+              <BulletPoint />
+              <PlainText style={{ fontSize: 16, fontWeight: 400 }}>
+                {item}
+              </PlainText>
+            </Description>
+          </animated.div>
+        )
+      })}
     </>
   )
 }

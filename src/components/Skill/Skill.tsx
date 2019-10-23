@@ -11,22 +11,51 @@ interface Props {
 }
 
 const Root = styled(animated.div)`
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   margin-bottom: 16px;
   padding-bottom: 4px;
+
+  width: 50%;
+  @media (min-width: 320px) {
+    width: 40%;
+  }
+  @media (min-width: 505px) {
+    width: 30%;
+  }
+  @media (min-width: 950px) {
+    width: auto;
+  }
 `
 
 const SkillName = styled(animated.div)`
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   padding: 0 12px;
-  font-size: 72px;
   font-weight: 900;
-  overflow: hidden;
 
   color: ${({ theme }) => theme.color.primary};
   transition: color 0.15s;
+
+  font-size: 22px;
+  @media (min-width: 360px) {
+    font-size: 28px;
+  }
+  @media (min-width: 620px) {
+    font-size: 36px;
+    width: auto;
+  }
+  @media (min-width: 830px) {
+    font-size: 48px;
+    width: auto;
+  }
+  @media (min-width: 950px) {
+    font-size: 72px;
+    width: auto;
+  }
 `
 
 /**

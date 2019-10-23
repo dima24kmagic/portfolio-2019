@@ -73,20 +73,33 @@ const SkillsWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 64px;
+
+  padding-right: 0px;
+  flex-direction: column;
+  @media (min-width: 950px) {
+    flex-direction: row;
+    padding-right: 64px;
+  }
 `
 
 const SkillNames = styled('div')`
   position: relative;
   display: inline-flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   height: 100%;
-  padding: 0 32px;
-  padding-right: 64px;
   width: auto;
-  @media (min-width: 650px) {
+
+  padding: 0px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  @media (min-width: 950px) {
+    margin-bottom: 0px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 0 32px;
+    padding-right: 64px;
   }
 `
 
@@ -97,8 +110,22 @@ const DescriptionWrapper = styled('div')`
   align-items: flex-start;
   justify-content: flex-start;
   height: 80%;
-  min-width: 400px;
-  border-left: 2px solid ${({ theme }) => theme.color.primary};
+  max-width: 400px;
+  width: 100%;
+
+  border-top: 2px solid ${({ theme }) => theme.color.primary};
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 16px;
+  @media (min-width: 500px) {
+    padding-left: 72px;
+  }
+  @media (min-width: 950px) {
+    padding-left: 72px;
+    padding-top: 82px;
+    border-left: 2px solid ${({ theme }) => theme.color.primary};
+    border-top: none;
+  }
 `
 
 /**
@@ -115,7 +142,7 @@ function SkillsSection() {
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
         <SkillNames>
-          {skills.map((skill, index) => {
+          {skills.map(skill => {
             const { name } = skill
             const isSelected = name === selectedSkill.name
             return (
