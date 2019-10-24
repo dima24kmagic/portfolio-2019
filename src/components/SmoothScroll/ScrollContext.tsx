@@ -192,8 +192,7 @@ export const useIsRefInView = (
   const handleIsInView = isInView => setInView(isInView)
   const checkIsElementInView = scrollVal => {
     const topValue = ref.current.offsetTop
-    const shownInView = topValue - scrollVal - window.innerHeight
-    console.log(shownInView, shownInView > offsetValue, offsetValue)
+    const shownInView = (topValue - window.innerHeight + scrollVal) * -1
     if (shownInView > offsetValue) {
       handleIsInView(true)
     } else {
