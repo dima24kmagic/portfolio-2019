@@ -7,7 +7,7 @@ interface Props {}
 /**
  * Home screen
  */
-function Home(props: Props) {
+function Home() {
   return (
     <ScrollContextProvider>
       <HomeContent />

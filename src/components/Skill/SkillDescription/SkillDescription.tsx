@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { animated, useTransition } from 'react-spring'
 import { PlainText } from '../../../screens/Home/HomeContent/styles'
-import { easeExpIn } from 'd3-ease'
 
 interface Props {
   descriptions: string[]
@@ -66,7 +65,7 @@ function SkillDescription(props: Props) {
   )
 
   return (
-    <>
+    <div>
       {transition.map(({ key, props, item }) => {
         return (
           <animated.div key={key} style={props}>
@@ -79,7 +78,7 @@ function SkillDescription(props: Props) {
           </animated.div>
         )
       })}
-    </>
+    </div>
   )
 }
 

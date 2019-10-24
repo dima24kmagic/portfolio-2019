@@ -6,14 +6,20 @@ import { ChangeThemeButton, Root } from './styles'
 import SkillsSection from './SkillsSection'
 import InfoSection from './InfoSection'
 import { useToggleTheme } from '../../../theme/theme'
+import { checkIsMobile } from '../../../utils'
 
-const HomeContent = (props: any) => {
+const HomeContent = () => {
   const { scrollToRef } = useScroll()
   const toggleTheme = useToggleTheme()
 
   const contentRef = useRef()
   const handleReadMore = () => {
-    scrollToRef(contentRef, -70, { duration: 1200, easing: easeExpInOut }, 400)
+    scrollToRef(
+      contentRef,
+      0,
+      { duration: 1200, easing: easeExpInOut },
+      400,
+    )
   }
   return (
     <div>
@@ -21,8 +27,6 @@ const HomeContent = (props: any) => {
       <Root ref={contentRef}>
         <SkillsSection />
         <InfoSection />
-        <InfoSection />
-
         <ChangeThemeButton onClick={toggleTheme}>
           Want some more? Change Theme!)
         </ChangeThemeButton>

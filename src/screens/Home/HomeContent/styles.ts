@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import meLandscapeImg from '../../../images/Me Landscape.jpg'
-import mePortraitImg from '../../../images/Me Portrait.jpg'
 
 export const Root = styled('div')`
   display: flex;
@@ -10,7 +8,6 @@ export const Root = styled('div')`
   width: 100%;
   min-height: 100%;
   height: 100%;
-  padding-bottom: 64px;
   overflow: auto;
   background: ${({
     theme: {
@@ -18,6 +15,7 @@ export const Root = styled('div')`
     },
   }) => primary};
   transition: background ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  will-change: background;
   backface-visibility: hidden;
 `
 
@@ -61,7 +59,7 @@ export const ContentWrapper = styled(animated.div)`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: auto;
 
   margin-bottom: 32px;
   padding-top: 24px;

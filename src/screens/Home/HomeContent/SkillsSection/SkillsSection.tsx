@@ -81,7 +81,7 @@ const skills: SkillType[] = [
 
 const SkillsWrapper = styled('div')`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   padding-right: 0px;
@@ -104,37 +104,36 @@ const SkillNames = styled('div')`
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 12px;
+  border-bottom: 2px solid ${({ theme }) => theme.color.primary};
   @media (min-width: 950px) {
     margin-bottom: 0px;
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 0 32px;
     padding-right: 64px;
+    border-right: 2px solid ${({ theme }) => theme.color.primary};
+    border-bottom: none;
   }
 `
 
 const DescriptionWrapper = styled('div')`
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: flex-start;
-  height: 80%;
   max-width: 400px;
   width: 100%;
-
-  border-top: 2px solid ${({ theme }) => theme.color.primary};
-  padding-top: 32px;
-  padding-left: 32px;
+  min-height: 250px;
   padding-right: 16px;
+
+  padding-left: 32px;
+  align-items: center;
+  margin-top: 32px;
   @media (min-width: 500px) {
     padding-left: 72px;
+    margin-top: 72px;
+    align-items: flex-start;
   }
   @media (min-width: 950px) {
-    padding-left: 72px;
-    padding-top: 82px;
-    border-left: 2px solid ${({ theme }) => theme.color.primary};
-    border-top: none;
   }
 `
 
@@ -148,14 +147,15 @@ function SkillsSection() {
   }
 
   const wrapperRef = useRef<HTMLDivElement>()
-  const isInView = useIsRefInView(wrapperRef, 400)
+  const offsetValue = checkIsMobile() ?200 :400;
+  const isInView = useIsRefInView(wrapperRef, offsetValue)
   const contentSpring = useContentSpring(isInView)
   return (
     <ContentWrapper ref={wrapperRef} style={contentSpring}>
       {useMemo(
         () => (
           <>
-            <ContentName>My Abilities</ContentName>
+            <ContentName>My Skills</ContentName>
             <SkillsWrapper>
               <SkillNames>
                 {skills.map(skill => {

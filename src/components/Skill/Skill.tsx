@@ -41,7 +41,7 @@ const SkillName = styled(animated.div)`
   transition: color 0.15s;
 
   font-size: 22px;
-  @media (min-width: 360px) {
+  @media (min-width: 370px) {
     font-size: 28px;
   }
   @media (min-width: 620px) {

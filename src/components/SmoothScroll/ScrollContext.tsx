@@ -154,7 +154,7 @@ export const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
     callback(window.scrollDeltaY)
   }
   const mobileCb = () => {
-    callback(wrapperRef.current.scrollTop)
+    callback(wrapperRef.current.scrollTop * -1)
   }
 
   useEffect(() => {

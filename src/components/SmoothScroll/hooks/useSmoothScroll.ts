@@ -6,8 +6,10 @@ const SCROLLBAR_OFFSET = 16
 
 export const windowScrollEvent = new CustomEvent('scrollDeltaY')
 
-const dispatchWindowScrollEvent = (scrollDeltaY) => {
-    window.dispatchEvent(windowScrollEvent)
+const dispatchWindowScrollEvent = scrollDeltaY => {
+  // @ts-ignore
+  window.scrollDeltaY = scrollDeltaY
+  window.dispatchEvent(windowScrollEvent)
 }
 
 const useSmoothScroll = (
@@ -70,7 +72,6 @@ const useSmoothScroll = (
       scrollDeltaY = 0
     }
     // SET NEW VALUES FOR STYLES
-    // scrollDeltaY = newScrollValue
     scrollbarMovePercentage =
       (scrollDeltaY / wrapperHeight) * window.innerHeight - SCROLLBAR_OFFSET
 
@@ -100,8 +101,7 @@ const useSmoothScroll = (
     })
 
     // @ts-ignore
-    window.scrollDeltaY = scrollDeltaY
-    window.dispatchEvent(windowScrollEvent)
+    dispatchWindowScrollEvent(scrollDeltaY)
   }
 
   /* ********* ON WRAPPER MOUNTED *********** */
@@ -155,7 +155,13 @@ const useSmoothScroll = (
   /* ********* EVENT HANDLES *********** */
   const handleMouseWheel = (e: WheelEvent) => {
     // const deltaYDirection = e.deltaY > 0 ? 1 : -1
-    const valueToScroll = scrollDeltaY - e.deltaY
+    let deltaVal = 0;
+    if (e.deltaY <= -3 ) {
+      deltaVal = -53
+    } else if (e.deltaY >= 3) {
+      deltaVal = 53
+    }
+    const valueToScroll = scrollDeltaY - deltaVal
     handleScroll(valueToScroll)
   }
 
@@ -225,14 +231,12 @@ const useSmoothScroll = (
     })
     scrollDeltaY = valueToScroll
     scrollDeltaYHolded = scrollDeltaY
-    // @ts-ignore
-    window.scrollDeltaY = scrollDeltaY
     if (config.duration) {
       setTimeout(() => {
-        window.dispatchEvent(windowScrollEvent)
+        dispatchWindowScrollEvent(scrollDeltaY)
       }, config.duration - scrollEventOffsetDuration)
     } else {
-      window.dispatchEvent(windowScrollEvent)
+      dispatchWindowScrollEvent(scrollDeltaY)
     }
   }
 
@@ -272,20 +276,17 @@ const useSmoothScroll = (
         from: { scrollY: scrollWrapperRef.current.scrollTop },
         onFrame: ({ scrollY }) => {
           scrollWrapperRef.current.scroll({ top: scrollY, behavior: 'auto' })
+          scrollWrapperRef.current.dispatchEvent(windowScrollEvent)
         },
         config,
       })
 
       if (config.duration) {
         setTimeout(() => {
-          // @ts-ignore
-          window.scrollDeltaY = position * -1
-          window.dispatchEvent(windowScrollEvent)
+          scrollWrapperRef.current.dispatchEvent(windowScrollEvent)
         }, config.duration - scrollEventOffsetDuration)
       } else {
-        // @ts-ignore
-        window.scrollDeltaY = position * -1
-        window.dispatchEvent(windowScrollEvent)
+        scrollWrapperRef.current.dispatchEvent(windowScrollEvent)
       }
     }
   }
@@ -342,7 +343,7 @@ const useSmoothScroll = (
     }
   }
   const handleTouchEnd = () => {
-      touchStartY = 0
+    touchStartY = 0
   }
 
   return {
@@ -362,7 +363,7 @@ const useSmoothScroll = (
     scrollDeltaY,
     handleTouchStart,
     handleTouchMove,
-    handleTouchEnd
+    handleTouchEnd,
   }
 }
 
