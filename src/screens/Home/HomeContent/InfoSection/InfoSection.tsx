@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { animated } from 'react-spring'
 import { ContentName, PlainText, TextDivider } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
+import { useIsRefInView } from '../../../../components/SmoothScroll/ScrollContext'
 
 interface Props {}
 
@@ -27,9 +28,11 @@ const ContentWrapper = styled(animated.div)`
  */
 function InfoSection(props: Props) {
   const {} = props
-  const contentSpring = useContentSpring(false)
+  const contentRef = useRef()
+  const isInView = useIsRefInView(contentRef, 400)
+  const contentSpring = useContentSpring(isInView)
   return (
-    <ContentWrapper style={contentSpring}>
+    <ContentWrapper ref={contentRef} style={contentSpring}>
       <ContentName>About Me</ContentName>
       <PlainText>
         Yo wasup guys I'm just cool-ass dev, who you wanna pay money.

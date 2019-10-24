@@ -19,7 +19,7 @@ const HomeContent = (props: any) => {
     <div>
       <HomePreview onReadMore={handleReadMore} />
       <Root ref={contentRef}>
-        <SkillsSection />
+        {/*<SkillsSection />*/}
         <InfoSection />
 
         <ChangeThemeButton onClick={toggleTheme}>

@@ -142,15 +142,14 @@ const DescriptionWrapper = styled('div')`
  * Section with my skills
  */
 function SkillsSection() {
-  const wrapperRef = useRef<HTMLDivElement>()
-  const isInView = useIsRefInView(wrapperRef, 400)
-
   const [selectedSkill, setSelectedSkill] = useState(skills[0])
   const handleOnClick = (skill: SkillType) => {
     setSelectedSkill(skill)
   }
-  const contentSpring = useContentSpring(isInView)
 
+  const wrapperRef = useRef<HTMLDivElement>()
+  const isInView = useIsRefInView(wrapperRef, 400)
+  const contentSpring = useContentSpring(isInView)
   return (
     <ContentWrapper ref={wrapperRef} style={contentSpring}>
       {useMemo(
@@ -178,7 +177,7 @@ function SkillsSection() {
             </SkillsWrapper>
           </>
         ),
-        [],
+        [selectedSkill],
       )}
     </ContentWrapper>
   )

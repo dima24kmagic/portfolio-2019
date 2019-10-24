@@ -56,7 +56,7 @@ interface Props {
 
 const ScrollContextProvider = ({
   children,
-  isDefaultScroll,
+  isDefaultScroll = false,
   ...otherProps
 }: Props) => {
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
@@ -100,6 +100,7 @@ const ScrollContextProvider = ({
       }}
     >
       <SmoothScroll
+        isDefaultScroll={isDefaultScroll}
         scrollBarRef={scrollBarRef}
         handleMouseDown={handleMouseDown}
         scrollbarHeight={scrollbarHeight}
@@ -150,7 +151,7 @@ export const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
 
   const cb = () => {
     // @ts-ignore
-    callback(window.scrollDeltaY * -1)
+    callback(window.scrollDeltaY)
   }
   const mobileCb = () => {
     callback(wrapperRef.current.scrollTop)
@@ -191,7 +192,8 @@ export const useIsRefInView = (
   const handleIsInView = isInView => setInView(isInView)
   const checkIsElementInView = scrollVal => {
     const topValue = ref.current.offsetTop
-    const shownInView = topValue - (topValue - scrollVal)
+    const shownInView = topValue - scrollVal - window.innerHeight
+    console.log(shownInView, shownInView > offsetValue, offsetValue)
     if (shownInView > offsetValue) {
       handleIsInView(true)
     } else {

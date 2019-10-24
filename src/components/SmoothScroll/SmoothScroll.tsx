@@ -41,7 +41,8 @@ const ScrollbarContainer = styled('div')`
       opacity: 0.5 !important;
     }
   }
-  display: ${({ isMobile }) => (isMobile ? 'none' : 'auto')};
+  display: ${({ isMobile, isDefaultScroll }) =>
+    isMobile || isDefaultScroll ? 'none' : 'auto'};
 `
 
 const Scrollbar = styled(animated.span)`
@@ -85,7 +86,11 @@ function SmoothScroll(props: Props) {
   const isMobile = checkIsMobile()
   return (
     <ThemeProvider theme={theme}>
-      <ScrollbarContainer isMobile={isMobile} onMouseDown={handleMouseDown}>
+      <ScrollbarContainer
+        isDefaultScroll={isDefaultScroll}
+        isMobile={isMobile}
+        onMouseDown={handleMouseDown}
+      >
         <Scrollbar
           ref={scrollBarRef}
           onMouseDown={handleMouseDown}
