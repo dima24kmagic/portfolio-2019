@@ -3,12 +3,15 @@ import React, {
   MutableRefObject,
   ReactElement,
   useContext,
+  useEffect,
   useRef,
+  useState,
 } from 'react'
 import { SpringConfig } from 'react-spring'
-import useSmoothScroll from './hooks/useSmoothScroll'
+import useSmoothScroll, { windowScrollEvent } from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
 import SmoothScroll from './SmoothScroll'
+import { checkIsMobile } from '../../utils'
 
 const ScrollContext = React.createContext({
   scroll: (
@@ -43,13 +46,19 @@ const ScrollContext = React.createContext({
     scrollEventOffsetDuration?: number,
   ) => {},
   scrollDeltaY: 0,
+  isDefaultScroll: false,
 })
 
 interface Props {
   children: ReactElement
+  isDefaultScroll?: boolean
 }
 
-const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
+const ScrollContextProvider = ({
+  children,
+  isDefaultScroll,
+  ...otherProps
+}: Props) => {
   const scrollWrapperRef = useRef<HTMLDivElement>(null)
   const scrollBarRef = useRef<HTMLDivElement>(null)
   const {
@@ -87,6 +96,7 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
         scrollToExactPositionMobile,
         scrollToEventTargetMobile,
         scrollDeltaY,
+        isDefaultScroll,
       }}
     >
       <SmoothScroll
@@ -116,6 +126,7 @@ export const useScroll = () => {
     scrollToExactPositionMobile,
     scrollToRefMobile,
     scrollDeltaY,
+    isDefaultScroll,
   } = useContext(ScrollContext)
   return {
     scrollDeltaY,
@@ -124,12 +135,71 @@ export const useScroll = () => {
     scrollToEventTarget: isMobile
       ? scrollToEventTargetMobile
       : scrollToEventTarget,
+    isDefaultScroll,
   }
 }
 
 export const useScrollWrapperRef = (): MutableRefObject<HTMLDivElement> => {
   const { scrollWrapperRef } = useContext(ScrollContext)
   return scrollWrapperRef
+}
+
+export const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
+  const { isDefaultScroll } = useContext(ScrollContext)
+  const wrapperRef = useScrollWrapperRef()
+
+  const cb = () => {
+    // @ts-ignore
+    callback(window.scrollDeltaY * -1)
+  }
+  const mobileCb = () => {
+    callback(wrapperRef.current.scrollTop)
+  }
+
+  useEffect(() => {
+    if (checkIsMobile() || isDefaultScroll) {
+      wrapperRef.current.addEventListener('scroll', mobileCb)
+      return () => wrapperRef.current.removeEventListener('scroll', mobileCb)
+    }
+    window.addEventListener(windowScrollEvent.type, cb)
+    return () => window.removeEventListener(windowScrollEvent.type, cb)
+  }, [])
+}
+
+export const useIsRefInScrollView = (
+  ref: MutableRefObject<HTMLElement>,
+  callback: (isInScroll: boolean) => void,
+  offsetValue: number = 0,
+) => {
+  const checkIsElementInView = scrollVal => {
+    const topValue = ref.current.offsetTop
+    const shownInView = topValue - (topValue - scrollVal)
+    if (shownInView > offsetValue) {
+      callback(true)
+    } else {
+      callback(false)
+    }
+  }
+  useScrollDeltaY(checkIsElementInView)
+}
+
+export const useIsRefInView = (
+  ref: MutableRefObject<HTMLElement>,
+  offsetValue: number = 0,
+) => {
+  const [isInView, setInView] = useState(false)
+  const handleIsInView = isInView => setInView(isInView)
+  const checkIsElementInView = scrollVal => {
+    const topValue = ref.current.offsetTop
+    const shownInView = topValue - (topValue - scrollVal)
+    if (shownInView > offsetValue) {
+      handleIsInView(true)
+    } else {
+      handleIsInView(false)
+    }
+  }
+  useScrollDeltaY(checkIsElementInView)
+  return isInView
 }
 
 export default ScrollContextProvider

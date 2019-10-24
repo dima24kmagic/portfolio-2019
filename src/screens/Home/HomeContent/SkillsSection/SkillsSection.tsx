@@ -7,6 +7,13 @@ import Skill from '../../../../components/Skill'
 import SkillDescription from '../../../../components/Skill/SkillDescription'
 import { useTrail } from 'react-spring'
 import { windowScrollEvent } from '../../../../components/SmoothScroll/hooks/useSmoothScroll'
+import {
+  useIsRefInScrollView,
+  useIsRefInView,
+  useScrollDeltaY,
+  useScrollWrapperRef,
+} from '../../../../components/SmoothScroll/ScrollContext'
+import { checkIsMobile } from '../../../../utils'
 
 const skills: SkillType[] = [
   {
@@ -131,62 +138,48 @@ const DescriptionWrapper = styled('div')`
   }
 `
 
-const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
-  const cb = () => {
-    // @ts-ignore
-    callback(window.scrollDeltaY * -1)
-  }
-  useEffect(() => {
-    window.addEventListener(windowScrollEvent.type, cb)
-    return () => window.removeEventListener(windowScrollEvent.type, cb)
-    // @ts-ignore
-  }, [])
-}
-
 /**
  * Section with my skills
  */
 function SkillsSection() {
-  const [isInView, setInView] = useState(false)
+  const wrapperRef = useRef<HTMLDivElement>()
+  const isInView = useIsRefInView(wrapperRef, 400)
+
   const [selectedSkill, setSelectedSkill] = useState(skills[0])
   const handleOnClick = (skill: SkillType) => {
     setSelectedSkill(skill)
   }
   const contentSpring = useContentSpring(isInView)
 
-  const wrapperRef = useRef<HTMLDivElement>()
-  const checkIsWrapperInView = scrollVal => {
-    const topValue = wrapperRef.current.offsetTop
-    const shownInView = topValue - (topValue - scrollVal);
-    if (shownInView > 400) {
-      setInView(true)
-    } else {
-      setInView(false)
-    }
-  }
-  useScrollDeltaY(checkIsWrapperInView)
   return (
     <ContentWrapper ref={wrapperRef} style={contentSpring}>
-      <ContentName>My Abilities</ContentName>
-      <SkillsWrapper>
-        <SkillNames>
-          {skills.map((skill) => {
-            const { name } = skill
-            const isSelected = name === selectedSkill.name
-            return (
-              <Skill
-                isSelected={isSelected}
-                skill={skill}
-                key={name}
-                onClick={handleOnClick}
-              />
-            )
-          })}
-        </SkillNames>
-        <DescriptionWrapper>
-          <SkillDescription descriptions={selectedSkill.description} />
-        </DescriptionWrapper>
-      </SkillsWrapper>
+      {useMemo(
+        () => (
+          <>
+            <ContentName>My Abilities</ContentName>
+            <SkillsWrapper>
+              <SkillNames>
+                {skills.map(skill => {
+                  const { name } = skill
+                  const isSelected = name === selectedSkill.name
+                  return (
+                    <Skill
+                      isSelected={isSelected}
+                      skill={skill}
+                      key={name}
+                      onClick={handleOnClick}
+                    />
+                  )
+                })}
+              </SkillNames>
+              <DescriptionWrapper>
+                <SkillDescription descriptions={selectedSkill.description} />
+              </DescriptionWrapper>
+            </SkillsWrapper>
+          </>
+        ),
+        [],
+      )}
     </ContentWrapper>
   )
 }

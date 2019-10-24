@@ -85,10 +85,7 @@ function SmoothScroll(props: Props) {
   const isMobile = checkIsMobile()
   return (
     <ThemeProvider theme={theme}>
-      <ScrollbarContainer
-        isMobile={isMobile}
-        onMouseDown={handleMouseDown}
-      >
+      <ScrollbarContainer isMobile={isMobile} onMouseDown={handleMouseDown}>
         <Scrollbar
           ref={scrollBarRef}
           onMouseDown={handleMouseDown}

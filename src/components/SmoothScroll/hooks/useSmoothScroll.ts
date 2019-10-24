@@ -6,6 +6,10 @@ const SCROLLBAR_OFFSET = 16
 
 export const windowScrollEvent = new CustomEvent('scrollDeltaY')
 
+const dispatchWindowScrollEvent = (scrollDeltaY) => {
+    window.dispatchEvent(windowScrollEvent)
+}
+
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
 ) => {
@@ -323,6 +327,24 @@ const useSmoothScroll = (
     }
   }
 
+  let touchStartY = 0
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartY = e.touches[0].pageY
+  }
+  const handleTouchMove = (e: TouchEvent) => {
+    if (scrollDeltaY !== 0) {
+      scrollDeltaY = touchStartY - e.touches[0].pageY
+      // @ts-ignore
+      window.scrollDeltaY = scrollDeltaY
+      window.dispatchEvent(windowScrollEvent)
+    } else {
+      scrollDeltaY = touchStartY - e.touches[0].pageY
+    }
+  }
+  const handleTouchEnd = () => {
+      touchStartY = 0
+  }
+
   return {
     handleMouseWheel,
     scrollProps,
@@ -338,6 +360,9 @@ const useSmoothScroll = (
     scrollToExactPositionMobile,
     scrollToRefMobile,
     scrollDeltaY,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd
   }
 }
 
