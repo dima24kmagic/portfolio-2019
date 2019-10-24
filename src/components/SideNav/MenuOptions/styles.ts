@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const MenuOptionWrapper = styled(animated.span)`
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 `
 
 export const MenuOption = styled(NavLink)`

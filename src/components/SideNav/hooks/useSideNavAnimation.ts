@@ -34,17 +34,14 @@ const useSideNavAnimation = (isOpen: boolean, menuOptions: any[]) => {
       from: {
         opacity: 0,
         transform: 'translate3d(20px, 0px ,0px)',
-        height: 0
       },
       enter: {
         opacity: 1,
         transform: 'translate3d(0px, 0px ,0px)',
-        height: 0
       },
       leave: {
         opacity: 0,
         transform: 'translate3d(20px, 0px ,0px)',
-        height: 0
       },
       trail: isOpen ? 100 : 120,
     },
