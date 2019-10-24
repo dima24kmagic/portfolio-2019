@@ -30,7 +30,7 @@ function App(props: Props) {
         </Route>
         <Route>
           <ScrollContextProvider>
-            <div>Nothing here yet</div>
+            <div>Oops, check your URL, seems this is wrong path;)</div>
           </ScrollContextProvider>
         </Route>
       </AnimatedSwitch>

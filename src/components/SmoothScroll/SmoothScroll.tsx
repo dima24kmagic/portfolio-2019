@@ -22,10 +22,10 @@ const Scrollable = styled(animated.div)`
   left: 0;
   width: 100%;
   transform: translate3d(0px, 0px, 0px);
-  overflow: ${({ isMobile, isDefaultScroll }) =>
-    isMobile || isDefaultScroll ? 'auto' : 'hidden'};
-  height: ${({ isMobile, isDefaultScroll }) =>
-    isMobile || isDefaultScroll ? '100%' : 'auto'};
+  overflow: ${({ ismobile, isdefaultscroll }) =>
+    ismobile || isdefaultscroll ? 'auto' : 'hidden'};
+  height: ${({ ismobile, isdefaultscroll }) =>
+    ismobile || isdefaultscroll ? '100%' : 'auto'};
   will-change: transform;
 `
 const ScrollbarContainer = styled('div')`
@@ -41,8 +41,8 @@ const ScrollbarContainer = styled('div')`
       opacity: 0.5 !important;
     }
   }
-  display: ${({ isMobile, isDefaultScroll }) =>
-    isMobile || isDefaultScroll ? 'none' : 'auto'};
+  display: ${({ ismobile, isdefaultscroll }) =>
+    ismobile || isdefaultscroll ? 'none' : 'auto'};
 `
 
 const Scrollbar = styled(animated.span)`
@@ -87,8 +87,10 @@ function SmoothScroll(props: Props) {
   return (
     <ThemeProvider theme={theme}>
       <ScrollbarContainer
-        isDefaultScroll={isDefaultScroll}
-        isMobile={isMobile}
+        isdefaultscroll={
+          isDefaultScroll ? isDefaultScroll.toString() : undefined
+        }
+        ismobile={isMobile ? isMobile.toString() : undefined}
         onMouseDown={handleMouseDown}
       >
         <Scrollbar
@@ -99,8 +101,10 @@ function SmoothScroll(props: Props) {
         />
       </ScrollbarContainer>
       <Scrollable
-        isDefaultScroll={isDefaultScroll}
-        isMobile={isMobile}
+        isdefaultscroll={
+          isDefaultScroll ? isDefaultScroll.toString() : undefined
+        }
+        ismobile={isMobile ? isMobile.toString() : undefined}
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}
         style={scrollProps}

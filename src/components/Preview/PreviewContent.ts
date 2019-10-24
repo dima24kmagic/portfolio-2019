@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import mePortraitImg from '../../images/Me Portrait.jpg'
-import meLandscapeImg from '../../images/Me Landscape.jpg'
 
 export const PreviewContent = styled('div')`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
   background-size: cover;

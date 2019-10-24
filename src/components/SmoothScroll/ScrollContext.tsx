@@ -162,11 +162,6 @@ export const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
       if (wrapperRef.current) {
         wrapperRef.current.addEventListener('scroll', mobileCb)
       }
-      return () => {
-        if (wrapperRef.current)
-          return wrapperRef.current.removeEventListener('scroll', mobileCb)
-        return null
-      }
     }
     window.addEventListener(windowScrollEvent.type, cb)
     return () => window.removeEventListener(windowScrollEvent.type, cb)

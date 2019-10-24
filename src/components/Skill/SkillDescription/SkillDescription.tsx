@@ -22,13 +22,6 @@ const BulletPoint = styled('div')`
   background: ${({ theme }) => theme.color.accent2};
 `
 
-const Container = styled(animated.div)`
-  position: absolute;
-  top: 72px;
-  left: 72px;
-  width: 100%;
-`
-
 /**
  * Description of a skill
  */

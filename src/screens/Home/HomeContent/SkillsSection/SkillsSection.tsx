@@ -1,18 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { ContentName, ContentWrapper } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
 import SkillType from '../../../../types/SkillType'
 import Skill from '../../../../components/Skill'
 import SkillDescription from '../../../../components/Skill/SkillDescription'
-import { useTrail } from 'react-spring'
-import { windowScrollEvent } from '../../../../components/SmoothScroll/hooks/useSmoothScroll'
-import {
-  useIsRefInScrollView,
-  useIsRefInView,
-  useScrollDeltaY,
-  useScrollWrapperRef,
-} from '../../../../components/SmoothScroll/ScrollContext'
+import { useIsRefInView } from '../../../../components/SmoothScroll/ScrollContext'
 import { checkIsMobile } from '../../../../utils'
 
 const skills: SkillType[] = [
@@ -147,7 +140,7 @@ function SkillsSection() {
   }
 
   const wrapperRef = useRef<HTMLDivElement>()
-  const offsetValue = checkIsMobile() ?200 :400;
+  const offsetValue = checkIsMobile() ? 200 : 400
   const isInView = useIsRefInView(wrapperRef, offsetValue)
   const contentSpring = useContentSpring(isInView)
   return (

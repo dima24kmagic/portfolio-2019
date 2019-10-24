@@ -31,8 +31,7 @@ const ContentWrapper = styled(animated.div)`
 /**
  * Section with info about myself
  */
-function InfoSection(props: Props) {
-  const {} = props
+function InfoSection() {
   const contentRef = useRef()
   const offsetValue = checkIsMobile() ? 150 : 200
   const isInView = useIsRefInView(contentRef, offsetValue)
@@ -44,16 +43,18 @@ function InfoSection(props: Props) {
           <>
             <ContentName>About Me</ContentName>
             <PlainText>
-              Welcome Here! I'm just cool dude, who enjoy writing code and also I'm enjoying life.
+              Welcome Here! I'm just cool dude, who enjoy writing code and also
+              I'm enjoying life.
             </PlainText>
             <PlainText>
-              I'm Looking for a remote part-time React Dev position *of course we can discuss details and I can work in office;)*
+              I'm Looking for a remote part-time React Dev position *of course
+              we can discuss details and I can work in office;)*
             </PlainText>
             <TextDivider />
             <PlainText>
-              My ideal life is look like this - I sniffing cocaine outta
-              model butt, on my yacht, somewhere in Mongo-Congo. While my
-              multiple sources of income generating me enough money to buy this
+              My ideal life is look like this - I sniffing cocaine outta model
+              butt, on my yacht, somewhere in Mongo-Congo. While my multiple
+              sources of income generating me enough money to buy this
               Mongo-Congo and install Solar Systems everywhere.
             </PlainText>
             <TextDivider />
@@ -61,9 +62,7 @@ function InfoSection(props: Props) {
               I would like to solve trash issue in the world, because I'm cool.
             </PlainText>
             <TextDivider />
-            <PlainText>
-              Fantasy books lover :3
-            </PlainText>
+            <PlainText>Fantasy books lover :3</PlainText>
           </>
         ),
         [],
