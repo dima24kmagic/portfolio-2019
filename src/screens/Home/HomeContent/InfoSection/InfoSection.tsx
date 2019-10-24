@@ -27,7 +27,7 @@ const ContentWrapper = styled(animated.div)`
  */
 function InfoSection(props: Props) {
   const {} = props
-  const contentSpring = useContentSpring()
+  const contentSpring = useContentSpring(false)
   return (
     <ContentWrapper style={contentSpring}>
       <ContentName>About Me</ContentName>

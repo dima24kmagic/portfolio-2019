@@ -4,6 +4,8 @@ import { easeCubicOut } from 'd3-ease'
 
 const SCROLLBAR_OFFSET = 16
 
+export const windowScrollEvent = new CustomEvent('scrollDeltaY')
+
 const useSmoothScroll = (
   scrollWrapperRef: MutableRefObject<HTMLDivElement>,
 ) => {
@@ -88,10 +90,14 @@ const useSmoothScroll = (
     })
     setScrollStyles({
       transform: `translate3d(0px, ${scrollDeltaY}px, 0px)`,
-      scrollY: 0,
+      scrollY: scrollDeltaY,
       config: scrollWrapperConfig,
       onFrame: null,
     })
+
+    // @ts-ignore
+    window.scrollDeltaY = scrollDeltaY
+    window.dispatchEvent(windowScrollEvent)
   }
 
   /* ********* ON WRAPPER MOUNTED *********** */
@@ -164,6 +170,7 @@ const useSmoothScroll = (
   const scrollToExactPosition = (
     position: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (wrapperHeight === 1) {
       if (scrollWrapperRef.current) {
@@ -204,39 +211,55 @@ const useSmoothScroll = (
       },
     })
     setScrollStyles({
+      from: {
+        scrollY: scrollDeltaY,
+      },
       transform: `translate3d(0px, ${valueToScroll}px, 0px)`,
       scrollY: valueToScroll,
       config,
-      onFrame: () => {},
+      onFrame: ({ scrollY }) => {},
     })
     scrollDeltaY = valueToScroll
+    scrollDeltaYHolded = scrollDeltaY
+    // @ts-ignore
+    window.scrollDeltaY = scrollDeltaY
+    if (config.duration) {
+      setTimeout(() => {
+        window.dispatchEvent(windowScrollEvent)
+      }, config.duration - scrollEventOffsetDuration)
+    } else {
+      window.dispatchEvent(windowScrollEvent)
+    }
   }
 
   const scrollToRef = (
     ref: MutableRefObject<HTMLElement>,
     offset: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (ref.current) {
       const offsetFromTop =
         ref.current.getBoundingClientRect().top + offset - scrollDeltaY
-      scrollToExactPosition(offsetFromTop, config)
+      scrollToExactPosition(offsetFromTop, config, scrollEventOffsetDuration)
     }
   }
   const scrollToEventTarget = (
     event: MouseEvent,
     offset: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (event.currentTarget) {
       const offsetFromTop =
         event.currentTarget.getBoundingClientRect().top + offset - scrollDeltaY
-      scrollToExactPosition(offsetFromTop, config)
+      scrollToExactPosition(offsetFromTop, config, scrollEventOffsetDuration)
     }
   }
   const scrollToExactPositionMobile = (
     position: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (scrollWrapperRef.current) {
       setScrollStyles({
@@ -248,6 +271,18 @@ const useSmoothScroll = (
         },
         config,
       })
+
+      if (config.duration) {
+        setTimeout(() => {
+          // @ts-ignore
+          window.scrollDeltaY = position * -1
+          window.dispatchEvent(windowScrollEvent)
+        }, config.duration - scrollEventOffsetDuration)
+      } else {
+        // @ts-ignore
+        window.scrollDeltaY = position * -1
+        window.dispatchEvent(windowScrollEvent)
+      }
     }
   }
 
@@ -255,26 +290,36 @@ const useSmoothScroll = (
     ref: MutableRefObject<HTMLElement>,
     offset: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (ref.current) {
       const offsetFromTop =
         ref.current.getBoundingClientRect().top +
         offset +
         scrollWrapperRef.current.scrollTop
-      scrollToExactPositionMobile(offsetFromTop, config)
+      scrollToExactPositionMobile(
+        offsetFromTop,
+        config,
+        scrollEventOffsetDuration,
+      )
     }
   }
   const scrollToEventTargetMobile = (
     event: MouseEvent,
     offset: number = 0,
     config: SpringConfig = {},
+    scrollEventOffsetDuration: number = 0,
   ) => {
     if (event.currentTarget) {
       const offsetFromTop =
         event.currentTarget.getBoundingClientRect().top +
         offset +
         scrollWrapperRef.current.scrollTop
-      scrollToExactPositionMobile(offsetFromTop, config)
+      scrollToExactPositionMobile(
+        offsetFromTop,
+        config,
+        scrollEventOffsetDuration,
+      )
     }
   }
 
@@ -292,6 +337,7 @@ const useSmoothScroll = (
     scrollToEventTargetMobile,
     scrollToExactPositionMobile,
     scrollToRefMobile,
+    scrollDeltaY,
   }
 }
 

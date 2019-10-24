@@ -9,32 +9,40 @@ import { SpringConfig } from 'react-spring'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollDrag from './hooks/useScrollDrag'
 import SmoothScroll from './SmoothScroll'
-import { checkIsMobile } from '../../utils'
 
 const ScrollContext = React.createContext({
-  scroll: (position: number = 0, config?: SpringConfig) => {},
+  scroll: (
+    position: number = 0,
+    config?: SpringConfig,
+    scrollEventOffsetDuration: number = 0,
+  ) => {},
   scrollWrapperRef: null,
   scrollToRef: (
     ref: MutableRefObject<HTMLDivElement>,
     offset?: number,
     config?: SpringConfig,
+    scrollEventOffsetDuration?: number,
   ) => {},
   scrollToEventTarget: (
     event: MouseEvent,
     offset?: number,
     config?: SpringConfig,
+    scrollEventOffsetDuration?: number,
   ) => {},
   scrollToRefMobile: (
     ref: MutableRefObject<HTMLElement>,
     offset?: number,
     config?: SpringConfig,
+    scrollEventOffsetDuration?: number,
   ) => {},
   scrollToExactPositionMobile: (position: number, config?: SpringConfig) => {},
   scrollToEventTargetMobile: (
     e: MouseEvent<HTMLElement>,
     offset?: number,
     config?: SpringConfig,
+    scrollEventOffsetDuration?: number,
   ) => {},
+  scrollDeltaY: 0,
 })
 
 interface Props {
@@ -58,6 +66,7 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
     scrollToRefMobile,
     scrollToExactPositionMobile,
     scrollToEventTargetMobile,
+    scrollDeltaY,
   } = useSmoothScroll(scrollWrapperRef)
 
   const handleMouseDown = useScrollDrag(
@@ -77,6 +86,7 @@ const ScrollContextProvider = ({ children, ...otherProps }: Props) => {
         scrollToRefMobile,
         scrollToExactPositionMobile,
         scrollToEventTargetMobile,
+        scrollDeltaY,
       }}
     >
       <SmoothScroll
@@ -105,8 +115,10 @@ export const useScroll = () => {
     scrollToEventTargetMobile,
     scrollToExactPositionMobile,
     scrollToRefMobile,
+    scrollDeltaY,
   } = useContext(ScrollContext)
   return {
+    scrollDeltaY,
     scroll: isMobile ? scrollToExactPositionMobile : scroll,
     scrollToRef: isMobile ? scrollToRefMobile : scrollToRef,
     scrollToEventTarget: isMobile

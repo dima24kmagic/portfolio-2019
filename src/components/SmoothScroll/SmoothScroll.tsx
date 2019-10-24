@@ -13,6 +13,7 @@ interface Props {
   scrollWrapperRef: MutableRefObject<HTMLDivElement>
   handleMouseWheel: (e: WheelEvent) => void
   scrollProps: any
+  isDefaultScroll?: boolean
 }
 
 const Scrollable = styled(animated.div)`
@@ -21,8 +22,10 @@ const Scrollable = styled(animated.div)`
   left: 0;
   width: 100%;
   transform: translate3d(0px, 0px, 0px);
-  overflow: ${({ isMobile }) => (isMobile ? 'auto' : 'hidden')};
-  height: ${({ isMobile }) => (isMobile ? '100%' : 'auto')};
+  overflow: ${({ isMobile, isDefaultScroll }) =>
+    isMobile || isDefaultScroll ? 'auto' : 'hidden'};
+  height: ${({ isMobile, isDefaultScroll }) =>
+    isMobile || isDefaultScroll ? '100%' : 'auto'};
   will-change: transform;
 `
 const ScrollbarContainer = styled('div')`
@@ -75,13 +78,17 @@ function SmoothScroll(props: Props) {
     scrollWrapperRef,
     handleMouseWheel,
     scrollProps,
+    isDefaultScroll = false,
   } = props
 
   const theme = useTheme()
   const isMobile = checkIsMobile()
   return (
     <ThemeProvider theme={theme}>
-      <ScrollbarContainer isMobile={isMobile} onMouseDown={handleMouseDown}>
+      <ScrollbarContainer
+        isMobile={isMobile}
+        onMouseDown={handleMouseDown}
+      >
         <Scrollbar
           ref={scrollBarRef}
           onMouseDown={handleMouseDown}
@@ -90,6 +97,7 @@ function SmoothScroll(props: Props) {
         />
       </ScrollbarContainer>
       <Scrollable
+        isDefaultScroll={isDefaultScroll}
         isMobile={isMobile}
         ref={scrollWrapperRef}
         onWheel={handleMouseWheel}

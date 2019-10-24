@@ -1,16 +1,17 @@
-import {useSpring} from "react-spring";
-import {easeExpOut} from "d3-ease";
+import { useSpring } from 'react-spring'
+import { easeExpOut } from 'd3-ease'
 
-const useContentSpring = () => {
+const useContentSpring = (isInView: boolean) => {
   const contentSpring = useSpring({
-    delay: 1450,
     from: {
       opacity: 0,
-      transform: 'translate3d(0px, -8px, 0px)',
+      transform: 'translate3d(0px, 32px, 0px)',
     },
     to: {
-      opacity: 1,
-      transform: 'translate3d(0px, 0px, 0px)',
+      opacity: isInView ? 1 : 0,
+      transform: isInView
+        ? 'translate3d(0px, 0px, 0px)'
+        : 'translate3d(0px, 32px, 0px)',
     },
     config: {
       duration: 1300,

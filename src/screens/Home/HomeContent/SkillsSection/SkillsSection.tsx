@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { ContentName, ContentWrapper } from '../styles'
 import useContentSpring from '../hooks/useContentSpring'
 import SkillType from '../../../../types/SkillType'
 import Skill from '../../../../components/Skill'
 import SkillDescription from '../../../../components/Skill/SkillDescription'
-import { NavigateMoreButton } from '../../../../components/Preview/PreviewContent'
 import { useTrail } from 'react-spring'
-import { createVerify } from 'crypto'
+import { windowScrollEvent } from '../../../../components/SmoothScroll/hooks/useSmoothScroll'
 
 const skills: SkillType[] = [
   {
@@ -27,6 +26,7 @@ const skills: SkillType[] = [
       'Performance tracking',
       'API integration',
       'hooks',
+      'Animations with react-spring',
       'styling',
     ],
     img:
@@ -131,30 +131,46 @@ const DescriptionWrapper = styled('div')`
   }
 `
 
+const useScrollDeltaY = (callback: (scrollValue: number) => void) => {
+  const cb = () => {
+    // @ts-ignore
+    callback(window.scrollDeltaY * -1)
+  }
+  useEffect(() => {
+    window.addEventListener(windowScrollEvent.type, cb)
+    return () => window.removeEventListener(windowScrollEvent.type, cb)
+    // @ts-ignore
+  }, [])
+}
+
 /**
  * Section with my skills
  */
 function SkillsSection() {
+  const [isInView, setInView] = useState(false)
   const [selectedSkill, setSelectedSkill] = useState(skills[0])
   const handleOnClick = (skill: SkillType) => {
     setSelectedSkill(skill)
   }
-  const contentSpring = useContentSpring()
+  const contentSpring = useContentSpring(isInView)
 
-  const skillsTrail = useTrail(skills.length, {
-    delay: 4000,
-    from: {
-      opacity: 0,
-    },
-    opacity: 1,
-  })
+  const wrapperRef = useRef<HTMLDivElement>()
+  const checkIsWrapperInView = scrollVal => {
+    const topValue = wrapperRef.current.offsetTop
+    const shownInView = topValue - (topValue - scrollVal);
+    if (shownInView > 400) {
+      setInView(true)
+    } else {
+      setInView(false)
+    }
+  }
+  useScrollDeltaY(checkIsWrapperInView)
   return (
-    <ContentWrapper style={contentSpring}>
+    <ContentWrapper ref={wrapperRef} style={contentSpring}>
       <ContentName>My Abilities</ContentName>
       <SkillsWrapper>
         <SkillNames>
-          {skillsTrail.map((trailSpring, index) => {
-            const skill = skills[index]
+          {skills.map((skill) => {
             const { name } = skill
             const isSelected = name === selectedSkill.name
             return (
@@ -171,7 +187,6 @@ function SkillsSection() {
           <SkillDescription descriptions={selectedSkill.description} />
         </DescriptionWrapper>
       </SkillsWrapper>
-      <NavigateMoreButton>About Me</NavigateMoreButton>
     </ContentWrapper>
   )
 }
