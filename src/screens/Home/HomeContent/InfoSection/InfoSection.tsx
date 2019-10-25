@@ -33,7 +33,7 @@ const ContentWrapper = styled(animated.div)`
  */
 function InfoSection() {
   const contentRef = useRef()
-  const offsetValue = checkIsMobile() ? 150 : 200
+  const offsetValue = checkIsMobile() ? 150 : 250
   const isInView = useIsRefInView(contentRef, offsetValue)
   const contentSpring = useContentSpring(isInView)
   return (
@@ -44,7 +44,7 @@ function InfoSection() {
             <ContentName>About Me</ContentName>
             <PlainText>
               Welcome Here! I'm just cool dude, who enjoy writing code and also
-              I'm enjoying life.
+              enjoying life.
             </PlainText>
             <PlainText>
               I'm Looking for a remote part-time React Dev position *of course
@@ -52,7 +52,7 @@ function InfoSection() {
             </PlainText>
             <TextDivider />
             <PlainText>
-              My ideal life is look like this - I sniffing cocaine outta model
+              My ideal life is look like this - I sniffing cocaine outta model-hoe
               butt, on my yacht, somewhere in Mongo-Congo. While my multiple
               sources of income generating me enough money to buy this
               Mongo-Congo and install Solar Systems everywhere.
@@ -63,6 +63,8 @@ function InfoSection() {
             </PlainText>
             <TextDivider />
             <PlainText>Fantasy books lover :3</PlainText>
+            <TextDivider />
+            <PlainText>I like BEANS GREENS POTATOES TOMATOES LAMB RAM HOG DOG</PlainText>
           </>
         ),
         [],

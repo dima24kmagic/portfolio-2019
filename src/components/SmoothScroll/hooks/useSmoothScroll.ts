@@ -154,13 +154,13 @@ const useSmoothScroll = (
 
   /* ********* EVENT HANDLES *********** */
   const handleMouseWheel = (e: WheelEvent) => {
-    // const deltaYDirection = e.deltaY > 0 ? 1 : -1
-    let deltaVal = 0
-    if (e.deltaY <= -3) {
-      deltaVal = -53
-    } else if (e.deltaY >= 3) {
-      deltaVal = 53
+    let deltaVal: number
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+      deltaVal = e.deltaY < 0 ? -53 : 53
+    } else {
+      deltaVal = e.deltaY
     }
+
     const valueToScroll = scrollDeltaY - deltaVal
     handleScroll(valueToScroll)
   }

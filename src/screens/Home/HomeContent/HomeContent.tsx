@@ -13,7 +13,7 @@ const HomeContent = () => {
 
   const contentRef = useRef()
   const handleReadMore = () => {
-    scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut }, 400)
+    scrollToRef(contentRef, 0, { duration: 1200, easing: easeExpInOut }, 320)
   }
   return (
     <div>
