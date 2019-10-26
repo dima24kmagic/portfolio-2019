@@ -5,11 +5,12 @@ import { easeCubicInOut } from 'd3-ease'
 
 interface Props {
   isShow: boolean
+  bottom?: string
 }
 
 const Root = styled(animated.div)`
   position: absolute;
-  bottom: 0;
+  bottom: ${({ bottom }) => bottom};
   left: 0;
   height: 2px;
   width: 100%;
@@ -20,7 +21,7 @@ const Root = styled(animated.div)`
  * Animated left to right underline
  */
 function Underline(props: Props) {
-  const { isShow } = props
+  const { isShow, bottom = '0' } = props
   const transitions = useTransition(isShow, null, {
     from: {
       transform: `translate3d(-100%, 0, 0)`,
@@ -39,7 +40,7 @@ function Underline(props: Props) {
   return (
     <>
       {transitions.map(({ props, item, key }) => {
-        return item && <Root style={props} key={key} />
+        return item && <Root bottom={bottom} style={props} key={key} />
       })}
     </>
   )

@@ -5,7 +5,7 @@ import HomeContent from './HomeContent'
 interface Props {}
 
 /**
- * Home screen
+ * HomePage screen
  */
 function Home() {
   return (

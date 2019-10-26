@@ -14,7 +14,7 @@ interface Props {
 }
 
 /**
- * Home preview content (img + text)
+ * HomePage preview content (img + text)
  */
 function HomePreview(props: Props) {
   const { onReadMore } = props

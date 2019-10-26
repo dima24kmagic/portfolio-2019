@@ -4,29 +4,33 @@ import { withTheme } from 'styled-components'
 import SideNav from '../components/SideNav'
 import { MenuLink } from '../types/MenuLink'
 import AnimatedSwitch from '../components/AnimatedSwitch'
-import Home from '../screens/Home'
+import HomePage from '../screens/Home'
 import { SideNavContextProvider } from '../components/SideNav/SideNavContext'
 import GlobalStyle from './GlobalStyles'
 import ScrollContextProvider from '../components/SmoothScroll/ScrollContext'
+import ContactPage from "../screens/Contact";
 
 interface Props {}
 
 const menuOptions: MenuLink[] = [
   { to: '/', text: 'About' },
-  { to: '/contact', text: 'Contact Me' },
+  { to: '/contact', text: 'ContactPage Me' },
 ]
 
 /**
  * App
  */
-function App(props: Props) {
+function App() {
   return (
     <SideNavContextProvider>
       <GlobalStyle />
       <SideNav menuOptions={menuOptions} />
       <AnimatedSwitch>
         <Route exact path="/">
-          <Home />
+          <HomePage />
+        </Route>
+        <Route path="/contact" >
+          <ContactPage />
         </Route>
         <Route>
           <ScrollContextProvider>

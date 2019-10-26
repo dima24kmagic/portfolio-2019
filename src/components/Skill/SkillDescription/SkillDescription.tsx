@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { animated, useTransition } from 'react-spring'
-import { PlainText } from '../../../screens/Home/HomeContent/styles'
+import { PlainText } from '../../../screens/screenStyles'
 
 interface Props {
   descriptions: string[]

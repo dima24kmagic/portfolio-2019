@@ -1,7 +1,7 @@
 import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import { ContentName, PlainText, TextDivider } from '../styles'
+import { ContentName, PlainText, TextDivider } from '../../../screenStyles'
 import useContentSpring from '../hooks/useContentSpring'
 import { useIsRefInView } from '../../../../components/SmoothScroll/ScrollContext'
 import { checkIsMobile } from '../../../../utils'

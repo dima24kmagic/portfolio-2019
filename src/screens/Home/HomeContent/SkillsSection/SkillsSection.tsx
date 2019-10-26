@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react'
 import styled, { withTheme } from 'styled-components'
-import { ContentName, ContentWrapper } from '../styles'
+import { ContentName, ContentWrapper } from '../../../screenStyles'
 import useContentSpring from '../hooks/useContentSpring'
 import SkillType from '../../../../types/SkillType'
 import Skill from '../../../../components/Skill'

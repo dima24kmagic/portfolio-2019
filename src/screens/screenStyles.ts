@@ -51,6 +51,24 @@ export const PlainText = styled('p')`
   }
 `
 
+export const StandOutText = styled('p')`
+  width: 100%;
+  color: ${({
+    theme: {
+      color: { primary },
+    },
+  }) => primary};
+  transition: color ${({ theme: { transitionSpeed } }) => transitionSpeed};
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 24px;
+  @media (min-width: 650px) {
+    letter-spacing: 1px;
+    font-size: 38px;
+    font-weight: 100;
+  }
+`
+
 export const TextDivider = styled('div')`
   margin-bottom: 8px;
 `
