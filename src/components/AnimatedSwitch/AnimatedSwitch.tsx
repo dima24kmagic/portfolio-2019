@@ -18,7 +18,6 @@ const Root = styled(animated.div)`
 function AnimatedSwitch({ children }: Props) {
   const location = useLocation()
   const transitions = useTransition(location, location => location.pathname, {
-    delay: 2000,
     initial: {
       opacity: 1,
       transform: 'translate3d(0%,0,0)',

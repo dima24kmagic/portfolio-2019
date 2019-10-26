@@ -4,31 +4,9 @@ import styled from 'styled-components'
 import ScrollContextProvider from '../../components/SmoothScroll'
 import { Root, StandOutText } from '../screenStyles'
 import CopyTextVal from '../../components/CopyTextVal'
+import ContactOption from '../../components/ContactOption'
 
 interface Props {}
-
-const ContactOption = styled(animated.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 16px;
-`
-
-const ContactInfo = styled(animated.a)`
-  font-weight: 900;
-  font-family: 'Chivo', sans-serif;
-  color: ${({ theme }) => theme.color.primary};
-  text-decoration: none;
-  text-align:center;
-
-  font-size: 48px;
-  @media (min-width: 500px) {
-    font-size: 62px;
-  }
-  @media (min-width: 650px) {
-    font-size: 120px;
-  }
-`
 
 const OptionsWrapper = styled('div')`
   display: flex;
@@ -55,6 +33,31 @@ const ContentWrapper = styled('div')`
  */
 function Contact(props: Props) {
   const {} = props
+  const contactOptions = [
+    {
+      name: 'EMAIL ME',
+      href: 'mailto:vajnoe-dima@mail.ru',
+      type: 'email',
+      copyPlaceholder: 'email',
+      value: 'vajnoe-dima@mail.ru',
+    },
+    {
+      name: 'CALL ME',
+      href: 'tel:+375447278635',
+      type: 'text',
+      copyPlaceholder: 'phone num',
+      value: '+375447278635',
+    },
+    {
+      name: 'LINKEDIN ME',
+      href: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
+      type: 'text',
+      copyPlaceholder: 'linkedin url',
+      value: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
+      rel: 'noreferrer noopener',
+      target: '_blank',
+    },
+  ]
   return (
     <ScrollContextProvider>
       <Root>
@@ -63,40 +66,9 @@ function Contact(props: Props) {
         >
           <StandOutText>Click To</StandOutText>
           <OptionsWrapper>
-            <ContactOption>
-              <ContactInfo href="mailto:vajnoe-dima@mail.ru">
-                EMAIL ME
-              </ContactInfo>
-              <CopyTextVal
-                topMargin={-22}
-                type="email"
-                value="vajnoe-dima@mail.ru"
-              >
-                or click here to copy email
-              </CopyTextVal>
-            </ContactOption>
-            <ContactOption>
-              <ContactInfo href="tel:+375447278635">CALL ME</ContactInfo>
-              <CopyTextVal topMargin={-22} type="text" value="+375447278635">
-                or click here to copy phone num
-              </CopyTextVal>
-            </ContactOption>
-            <ContactOption>
-              <ContactInfo
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://www.linkedin.com/in/deema-baranov-b96106159/"
-              >
-                LINKEDIN ME
-              </ContactInfo>
-              <CopyTextVal
-                topMargin={-22}
-                type="text"
-                value="https://www.linkedin.com/in/deema-baranov-b96106159/"
-              >
-                or click here to copy linkedin url
-              </CopyTextVal>
-            </ContactOption>
+            {contactOptions.map(contactOption => (
+              <ContactOption {...contactOption} />
+            ))}
           </OptionsWrapper>
         </ContentWrapper>
       </Root>

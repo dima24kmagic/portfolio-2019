@@ -3,7 +3,6 @@ import { useSpring } from 'react-spring'
 import { easeExpInOut } from 'd3-ease'
 
 const useCopyAnimation = () => {
-  const [isHovered, setHovered] = useState(false)
   const [wasClicked, setWasClicked] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
@@ -23,12 +22,6 @@ const useCopyAnimation = () => {
       easing: easeExpInOut,
     },
   })
-  const handleMouseIn = () => {
-    setHovered(true)
-  }
-  const handleMouseOut = () => {
-    setHovered(false)
-  }
 
   const handleCopy = (cb: () => void) => {
     setWasClicked(true)
@@ -46,11 +39,8 @@ const useCopyAnimation = () => {
 
   return {
     handleCopyAnimation: handleCopy,
-    handleMouseIn,
-    handleMouseOut,
     invertSpring,
     successMessageSpring,
-    isHovered
   }
 }
 

@@ -15,7 +15,6 @@ const InputCopyValueWrapper = styled('div')`
   position: fixed;
   top: 0;
   left: 0;
-  //display: none;
   height: 1px;
   width: 1px;
   overflow: hidden;
@@ -29,9 +28,10 @@ const InputCopyValue = styled('textarea')`
 const ClickToCopy = styled('div')`
   display: flex;
   position: relative;
-  cursor: pointer;
   color: ${({ theme }) => theme.color.primary};
   background: ${({ theme }) => theme.bg.primary};
+  transition: color ${({ theme }) => theme.transitionSpeed},
+    background ${({ theme }) => theme.transitionSpeed};
   overflow: hidden;
   padding: 4px 16px 4px;
 `
@@ -41,9 +41,9 @@ const NegotiateDiv = styled(animated.div)`
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 2px);
-  backdrop-filter: invert(90%);
+  height: 100%;
   background: ${({ theme }) => theme.color.primary};
+  transition: background ${({ theme }) => theme.transitionSpeed};
   z-index: 2;
   transform: translate3d(-100%, 0, 0);
 `
@@ -54,11 +54,14 @@ const CopiedMessage = styled(animated.div)`
   left: 50%;
   height: 100%;
   color: ${({ theme }) => theme.bg.primary};
+  transition: color ${({ theme }) => theme.transitionSpeed};
   z-index: 3;
 `
 
 const Root = styled('div')`
   position: relative;
+  cursor: pointer;
+
   margin-top: 0;
   @media (min-width: 650px) {
     margin-top: -12px;
@@ -71,10 +74,7 @@ const Root = styled('div')`
 function CopyTextVal(props: Props) {
   const {
     invertSpring,
-    handleMouseOut,
-    handleMouseIn,
     handleCopyAnimation,
-    isHovered,
     successMessageSpring,
   } = useCopyAnimation()
 
@@ -90,21 +90,13 @@ function CopyTextVal(props: Props) {
 
   const { children, topMargin = 0, value, type } = props
   return (
-    <Root>
-      <ClickToCopy
-        onClick={handleOnClick}
-        onFocus={handleMouseIn}
-        onBlur={handleMouseOut}
-        onMouseOver={handleMouseIn}
-        onMouseLeave={handleMouseOut}
-        marginTop={topMargin}
-      >
+    <Root onClick={handleOnClick}>
+      <ClickToCopy marginTop={topMargin}>
         <NegotiateDiv style={invertSpring} />
         {children}{' '}
         <InputCopyValueWrapper>
           <InputCopyValue tabIndex={-1} ref={inputRef} value={value} />
         </InputCopyValueWrapper>
-        <Underline isShow={isHovered} />
       </ClickToCopy>
       <CopiedMessage style={successMessageSpring}>Copied!</CopiedMessage>
     </Root>
