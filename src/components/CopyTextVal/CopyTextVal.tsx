@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Underline from '../Underline'
 import { animated } from 'react-spring'
 import useCopyAnimation from './hooks/useCopyAnimation'
+import { text } from '@storybook/addon-knobs'
 
 interface Props {
   children: string
@@ -72,30 +73,36 @@ const Root = styled('div')`
  * Click to copy
  */
 function CopyTextVal(props: Props) {
+  const { children, topMargin = 0, value, type } = props
   const {
     invertSpring,
     handleCopyAnimation,
     successMessageSpring,
   } = useCopyAnimation()
 
-  const inputRef = useRef<HTMLTextAreaElement>()
+  const inputWrapperRef = useRef<HTMLDivElement>()
   const handleCopy = () => {
-    inputRef.current.focus()
-    inputRef.current.select()
+    const textarea = document.createElement('textarea')
+    textarea.style.border = 'none'
+    textarea.style.outline = 'none'
+    textarea.value = value
+    inputWrapperRef.current.appendChild(textarea)
+    textarea.focus()
+    textarea.select()
     document.execCommand('copy')
+    inputWrapperRef.current.removeChild(textarea)
   }
   const handleOnClick = () => {
     handleCopyAnimation(handleCopy)
   }
 
-  const { children, topMargin = 0, value, type } = props
   return (
     <Root onClick={handleOnClick}>
       <ClickToCopy marginTop={topMargin}>
         <NegotiateDiv style={invertSpring} />
         {children}{' '}
-        <InputCopyValueWrapper>
-          <InputCopyValue tabIndex={-1} ref={inputRef} value={value} />
+        <InputCopyValueWrapper ref={inputWrapperRef}>
+          <InputCopyValue tabIndex={-1} value={value} />
         </InputCopyValueWrapper>
       </ClickToCopy>
       <CopiedMessage style={successMessageSpring}>Copied!</CopiedMessage>
