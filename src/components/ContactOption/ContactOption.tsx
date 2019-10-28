@@ -2,16 +2,9 @@ import React from 'react'
 import CopyTextVal from '../CopyTextVal'
 import { animated } from 'react-spring'
 import styled from 'styled-components'
+import ContactOptionType from '../../types/ContactOption'
 
-interface Props {
-  name: string
-  value: string
-  type: string
-  copyPlaceholder: string
-  href: string
-  rel?: string
-  target?: string
-}
+interface Props extends ContactOptionType {}
 
 const Root = styled(animated.div)`
   display: flex;

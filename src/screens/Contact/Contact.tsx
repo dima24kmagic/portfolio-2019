@@ -5,6 +5,7 @@ import ScrollContextProvider from '../../components/SmoothScroll'
 import { Root, StandOutText } from '../screenStyles'
 import CopyTextVal from '../../components/CopyTextVal'
 import ContactOption from '../../components/ContactOption'
+import ContactOptionType from '../../types/ContactOption'
 
 interface Props {}
 
@@ -28,36 +29,37 @@ const ContentWrapper = styled('div')`
   }
 `
 
+const contactOptions: ContactOptionType[] = [
+  {
+    name: 'EMAIL ME',
+    href: 'mailto:vajnoe-dima@mail.ru',
+    type: 'email',
+    copyPlaceholder: 'email',
+    value: 'vajnoe-dima@mail.ru',
+  },
+  {
+    name: 'CALL ME',
+    href: 'tel:+375447278635',
+    type: 'text',
+    copyPlaceholder: 'phone num',
+    value: '+375447278635',
+  },
+  {
+    name: 'LINKEDIN ME',
+    href: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
+    type: 'text',
+    copyPlaceholder: 'linkedin url',
+    value: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
+    rel: 'noreferrer noopener',
+    target: '_blank',
+  },
+]
+
 /**
  * ContactPage page
  */
 function Contact(props: Props) {
   const {} = props
-  const contactOptions = [
-    {
-      name: 'EMAIL ME',
-      href: 'mailto:vajnoe-dima@mail.ru',
-      type: 'email',
-      copyPlaceholder: 'email',
-      value: 'vajnoe-dima@mail.ru',
-    },
-    {
-      name: 'CALL ME',
-      href: 'tel:+375447278635',
-      type: 'text',
-      copyPlaceholder: 'phone num',
-      value: '+375447278635',
-    },
-    {
-      name: 'LINKEDIN ME',
-      href: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
-      type: 'text',
-      copyPlaceholder: 'linkedin url',
-      value: 'https://www.linkedin.com/in/deema-baranov-b96106159/',
-      rel: 'noreferrer noopener',
-      target: '_blank',
-    },
-  ]
   return (
     <ScrollContextProvider>
       <Root>

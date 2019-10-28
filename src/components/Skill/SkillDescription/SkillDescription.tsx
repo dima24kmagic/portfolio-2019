@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { animated, useTransition } from 'react-spring'
 import { PlainText } from '../../../screens/screenStyles'
+import { easeCubicInOut } from 'd3-ease'
 
 interface Props {
   descriptions: string[]
@@ -53,7 +54,7 @@ function SkillDescription(props: Props) {
         transform: 'translate3d(8px, 0, 0)',
         opacity: 0,
       },
-      config: { duration: DURATION },
+      config: { duration: DURATION, easing: easeCubicInOut },
     },
   )
 

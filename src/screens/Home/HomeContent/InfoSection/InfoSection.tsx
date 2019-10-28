@@ -52,19 +52,35 @@ function InfoSection() {
             </PlainText>
             <TextDivider />
             <PlainText>
-              My ideal life is look like this - I sniffing cocaine outta model-hoe
-              butt, on my yacht, somewhere in Mongo-Congo. While my multiple
-              sources of income generating me enough money to buy this
-              Mongo-Congo and install Solar Systems everywhere.
+              My ideal position should involve such technologies as React, Redux
+              for state management (I was working whole 2019 with
+              Apollo-Client), I mean, that's was nice, but I want some control
+              over my data because cache updates in apollo are kinda tough.
+              Also, I want to build systems, where localStorage is used to
+              reduce API calls as much as they can. + I wanna create beautiful
+              UX for the components, achieving this with animations.
             </PlainText>
             <TextDivider />
             <PlainText>
-              I would like to solve trash issue in the world, because I'm cool.
+              IMPORTANT: I don't work without a design or designer on board
+            </PlainText>
+            <TextDivider />
+            <PlainText>
+              My ideal life looks like this - I sniffing cocaine outta model
+              butt, on my yacht, somewhere in Mongo-Congo. While multiple
+              sources of income generating me enough money to install Solar Systems everywhere.
+            </PlainText>
+            <TextDivider />
+            <PlainText>
+              Also, I would like to solve the trash issue in the world because
+              I'm cool.
             </PlainText>
             <TextDivider />
             <PlainText>Fantasy books lover :3</PlainText>
             <TextDivider />
-            <PlainText>I like BEANS GREENS POTATOES TOMATOES LAMB RAM HOG DOG</PlainText>
+            <PlainText>
+              I like BEANS GREENS POTATOES TOMATOES LAMB RAM HOG DOG
+            </PlainText>
           </>
         ),
         [],

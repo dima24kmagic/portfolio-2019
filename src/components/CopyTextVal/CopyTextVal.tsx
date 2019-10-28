@@ -100,10 +100,7 @@ function CopyTextVal(props: Props) {
     <Root onClick={handleOnClick}>
       <ClickToCopy marginTop={topMargin}>
         <NegotiateDiv style={invertSpring} />
-        {children}{' '}
-        <InputCopyValueWrapper ref={inputWrapperRef}>
-          <InputCopyValue tabIndex={-1} value={value} />
-        </InputCopyValueWrapper>
+        {children} <InputCopyValueWrapper ref={inputWrapperRef} />
       </ClickToCopy>
       <CopiedMessage style={successMessageSpring}>Copied!</CopiedMessage>
     </Root>
