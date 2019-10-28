@@ -40,11 +40,11 @@ const skills: SkillType[] = [
   {
     name: 'VCS',
     description: [
-      'Git',
+      'Familiar with Git',
       'Github',
       'Gitlab',
-      'Pull Requests',
-      'Fixing merge conflicts',
+      'Able to code review Pull Requests',
+      'Know how to fix merge conflicts (and also how to avoid them)',
     ],
     img: 'https://images4.alphacoders.com/985/thumb-1920-985805.png',
   },
@@ -53,7 +53,7 @@ const skills: SkillType[] = [
     description: [
       "I'm always trying to listen to other people",
       'Not afraid to ask questions',
-      "I got sort of aesthetics feel, tho I'm not always able to represent them in life :P",
+      "I got sort of aesthetics feels, tho I'm not always able to represent them in life :P",
     ],
     img:
       'https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',

@@ -66,21 +66,12 @@ function InfoSection() {
             </PlainText>
             <TextDivider />
             <PlainText>
-              My ideal life looks like this - I sniffing cocaine outta model
-              butt, on my yacht, somewhere in Mongo-Congo. While multiple
-              sources of income generating me enough money to install Solar Systems everywhere.
-            </PlainText>
-            <TextDivider />
-            <PlainText>
-              Also, I would like to solve the trash issue in the world because
-              I'm cool.
+              Also, I would like to solve the trash issue in the world and
+              install solar systems everywhere because I'm cool.
             </PlainText>
             <TextDivider />
             <PlainText>Fantasy books lover :3</PlainText>
             <TextDivider />
-            <PlainText>
-              I like BEANS GREENS POTATOES TOMATOES LAMB RAM HOG DOG
-            </PlainText>
           </>
         ),
         [],

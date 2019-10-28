@@ -7,7 +7,6 @@ import {
   PreviewImage,
 } from '../PreviewContent'
 import AnimatedName from '../../AnimatedName'
-import mePortraitImg from '../../../images/Me Portrait.jpg'
 
 interface Props {
   onReadMore?: (e: MouseEvent<HTMLDivElement>) => void
@@ -36,7 +35,7 @@ function HomePreview(props: Props) {
 
   return (
     <PreviewContent>
-      <PreviewImage src={mePortraitImg} />
+      <PreviewImage />
       <AnimatedName />
       <NavigateMoreButton onClick={onReadMore} style={showMoreButtonStyled}>
         Check My Skills
