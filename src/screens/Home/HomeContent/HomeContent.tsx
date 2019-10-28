@@ -22,7 +22,7 @@ const HomeContent = () => {
         <SkillsSection />
         <InfoSection />
         <ChangeThemeButton onClick={toggleTheme}>
-          Want some more? Change Theme!)
+          Want some action? Change Theme!)
         </ChangeThemeButton>
       </Root>
     </div>
