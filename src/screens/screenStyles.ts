@@ -97,5 +97,6 @@ export const ChangeThemeButton = styled('div')`
   margin: 20px auto 60px;
   cursor: pointer;
   color: ${({ theme }) => theme.color.accent}
+  text-align: center;
   transition: color ${({ theme }) => theme.transitionSpeed};
 `
