@@ -1,12 +1,11 @@
 import React from 'react'
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { useTheme } from '../theme/theme'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = () => {
-  const theme = useTheme()
   const Inject = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Chivo:300,700,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap');
   *{
     margin: 0;
     padding: 0;
@@ -14,9 +13,8 @@ const GlobalStyle = () => {
     font-family: 'Lato', sans-serif;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
-     //scroll-behavior: smooth;
  }
-  html,
+  html, 
   body {
     margin: 0;
     padding: 0;
@@ -26,12 +24,7 @@ const GlobalStyle = () => {
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
     segoe ui, arial, sans-serif;
-    background: ${({
-      theme: {
-        bg: { primary },
-      },
-    }) => primary};
-    transition: background ${({ theme }) => theme.transitionSpeed};
+    background: #fff;
   }
   
   #root {
@@ -40,9 +33,7 @@ const GlobalStyle = () => {
   }
 `
   return (
-    <ThemeProvider theme={theme}>
       <Inject />
-    </ThemeProvider>
   )
 }
 export default GlobalStyle
