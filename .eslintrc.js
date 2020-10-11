@@ -25,6 +25,7 @@ module.exports = {
     'no-shadow': 0,
     'react/jsx-props-no-spreading': 0,
     'no-param-reassign': 'warn',
+    'import/prefer-default-export': 1,
   },
   settings: {
     react: {

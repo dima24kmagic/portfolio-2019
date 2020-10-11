@@ -10,7 +10,8 @@ const GlobalStyle = () => {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: "Work Sans", -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu,sans-serif, roboto, noto,
+    segoe ui, arial;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
  }
@@ -20,20 +21,16 @@ const GlobalStyle = () => {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;
     user-select: none;
-    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
-    segoe ui, arial, sans-serif;
     background: #fff;
   }
   
   #root {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
   }
 `
-  return (
-      <Inject />
-  )
+  return <Inject />
 }
 export default GlobalStyle
