@@ -6,6 +6,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from '../../../components/StyledComponents'
+import WithGlow from '../../../components/WithGlow/WithGlow'
 
 export interface ISkillsProps {}
 
@@ -79,51 +80,56 @@ interface ISkillProps {
 }
 const Skill = ({ description, logoHref, name }: ISkillProps) => {
   return (
-    <SkillRoot>
-      <SkillWrapper>
-        <SkillLogoWrapper>
-          <SkillImage src={logoHref} alt={name} />
+    <WithGlow
+      shadows={[
+        {
+          offsetX: 0,
+          offsetY: 0,
+          blur: 120,
+          top: 0,
+          left: 0,
+          width: 176,
+          height: 64,
+          color: '#0094FF',
+          spread: 5,
+          borderRadius: '80px',
+        },
+        {
+          offsetX: 0,
+          offsetY: 0,
+          blur: 120,
+          top: 60,
+          left: 100,
+          width: 176,
+          height: 64,
+          color: '#2BB090',
+          spread: 5,
+          borderRadius: '80px',
+        },
+      ]}
+    >
+      <SkillRoot>
+        <SkillWrapper>
+          <SkillLogoWrapper>
+            <SkillImage src={logoHref} alt={name} />
+            <Typography
+              fontSize={24}
+              weight={TypographyWeight.SemiBold}
+              color={TypographyColors.Primary}
+            >
+              {name}
+            </Typography>
+          </SkillLogoWrapper>
           <Typography
-            fontSize={24}
-            weight={TypographyWeight.SemiBold}
-            color={TypographyColors.Primary}
+            fontSize={16}
+            weight={TypographyWeight.Light}
+            color="#88839A"
           >
-            {name}
+            {description}
           </Typography>
-        </SkillLogoWrapper>
-        <Typography
-          fontSize={16}
-          weight={TypographyWeight.Light}
-          color="#88839A"
-        >
-          {description}
-        </Typography>
-      </SkillWrapper>
-      <ShadowLight
-        offsetX={0}
-        offsetY={0}
-        blur={120}
-        top={0}
-        left={0}
-        width={176}
-        height={64}
-        color="#0094FF"
-        spread={5}
-        borderRadius="80px"
-      />
-      <ShadowLight
-        offsetX={0}
-        offsetY={0}
-        blur={120}
-        top={60}
-        left={100}
-        width={176}
-        height={64}
-        color="#2BB090"
-        spread={5}
-        borderRadius="80px"
-      />
-    </SkillRoot>
+        </SkillWrapper>
+      </SkillRoot>
+    </WithGlow>
   )
 }
 

@@ -86,5 +86,6 @@ export const ShadowLight = styled.div<IShadowLightProps>`
   left: ${({ left }) => left}px;
   border-radius: ${({ borderRadius = 0 }) =>
   // @ts-ignore
+  // eslint-disable-next-line no-restricted-globals
   `${borderRadius}${isNaN(borderRadius) ? '' : 'px'}`};
 `

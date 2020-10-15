@@ -55,8 +55,6 @@ const ProfilePic = styled.div`
   background-image: url(${heroImage});
   background-size: cover;
   position: absolute;
-  top: 115px;
-  right: 270px;
   z-index: 2;
 `
 
@@ -152,13 +150,21 @@ function Introduction(props: IIntorductionProps) {
           </Button>
         </ButtonsWrapper>
         <WithGlow
+          style={{
+            width: '650px',
+            height: '650px',
+            position: 'absolute',
+            top: '115px',
+            right: '270px',
+            zIndex: 2,
+          }}
           shadows={[
             {
               offsetX: 0,
               offsetY: 0,
               blur: 150,
-              top: 220,
-              left: 940,
+              top: 120,
+              left: 80,
               width: 470,
               height: 470,
               color: '#1A4B78',
