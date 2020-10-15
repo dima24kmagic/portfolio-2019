@@ -5,6 +5,7 @@ import { IShadowLightProps, ShadowLight } from '../StyledComponents'
 export interface IWithGlowProps {
   children: any
   shadows: IShadowLightProps[]
+  CustomWrapper?: any
   style?: CSSProperties
 }
 
@@ -20,15 +21,16 @@ const ContentWrapper = styled.div`
  * Wrapper to provide glow behind elements
  */
 function WithGlow(props: IWithGlowProps) {
-  const { children, shadows, style } = props
+  const { children, shadows, style, CustomWrapper } = props
+  const Wrapper = CustomWrapper || Root
   return (
-    <Root style={style}>
+    <Wrapper style={style}>
       {shadows.map((shadow, i) => (
         // eslint-disable-next-line react/no-array-index-key
         <ShadowLight key={i} {...shadow} />
       ))}
       <ContentWrapper>{children}</ContentWrapper>
-    </Root>
+    </Wrapper>
   )
 }
 

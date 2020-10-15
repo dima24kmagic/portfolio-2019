@@ -39,12 +39,42 @@ const SkillsWrapper = styled.div`
   background: linear-gradient(104.67deg, #060d20 -1.93%, #121a2e 110.39%);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15), 0px 29px 74px rgba(0, 0, 0, 0.2);
   border-radius: 64px;
+  overflow: hidden;
+
+  @media (max-width: 980px) {
+    width: 80%;
+    border-radius: 24px;
+    padding: 28px 0px 28px 32px;
+  }
+  @media (max-width: 820px) {
+    width: 90%;
+    border-radius: 24px;
+    padding: 28px 0px 28px 18px;
+  }
+  @media (max-width: 360px) {
+    width: 100%;
+    border-radius: 16px;
+    padding: 28px 0px;
+  }
 `
 
 const SkillRoot = styled.div`
   position: relative;
   margin-bottom: var(--skillCardMarginBottom);
   margin-right: 42px;
+
+  @media (max-width: 980px) {
+    margin-bottom: 32px;
+    margin-right: 32px;
+  }
+  @media (max-width: 820px) {
+    margin-bottom: 18px;
+    margin-right: 18px;
+  }
+  @media (max-width: 360px) {
+    margin-bottom: 18px;
+    margin-right: 0;
+  }
 `
 
 const SkillWrapper = styled.div`

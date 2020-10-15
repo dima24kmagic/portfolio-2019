@@ -16,7 +16,8 @@ export interface IIntorductionProps {}
 const Root = styled.div`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow-x: hidden;
