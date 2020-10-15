@@ -1,12 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 import {
   Button,
   HighlightWord,
+  ShadowLight,
   Typography,
   TypographyColors,
   TypographyWeight,
 } from '../../../components/StyledComponents'
-import styled from 'styled-components'
 import heroImage from '../../../res/images/42C1AECA-94DF-40DC-AD92-C1CFE3A63419_1_105_c.jpeg'
 
 export interface IIntorductionProps {}
@@ -28,31 +29,6 @@ const BG = styled.div`
   top: 0;
   left: 0;
   z-index: -1;
-`
-
-interface IShadowLightProps {
-  width: number
-  height: number
-  color: string
-  blur: number
-  spread?: number
-  top: number
-  left: number
-  offsetX: number
-  offsetY: number
-  borderRadius?: number
-}
-const ShadowLight = styled.div<IShadowLightProps>`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  background: transparent;
-  box-shadow: ${({ offsetX }) => offsetX}px ${({ offsetY }) => offsetY}px
-    ${({ blur }) => blur}px ${({ spread = 0 }) => spread}px
-    ${({ color }) => color};
-  position: absolute;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
-  border-radius: ${({ borderRadius = 0 }) => borderRadius}px;
 `
 
 const TagsCloud = styled.span`
@@ -80,6 +56,7 @@ const ProfilePic = styled.div`
   position: absolute;
   top: 115px;
   right: 270px;
+  z-index: 2;
 `
 
 const TitleWrapper = styled.div`
@@ -126,10 +103,11 @@ function Introduction(props: IIntorductionProps) {
           Hey, my name is Dzmitry, and I’m a
         </Typography>
         <Typography
+          tag="h1"
           fontSize={72}
           color={TypographyColors.Primary}
           weight={TypographyWeight.Bold}
-          style={{ zIndex: 2 }}
+          style={{ zIndex: 10 }}
           mB="12px"
         >
           Frontend Developer
@@ -141,6 +119,7 @@ function Introduction(props: IIntorductionProps) {
           letterSpacing={3}
           width="510px"
           mB="58px"
+          style={{ zIndex: 10 }}
         >
           Doing <HighlightWord>React</HighlightWord> development, testing,
           reviewing. <br />
@@ -148,9 +127,12 @@ function Introduction(props: IIntorductionProps) {
         </Typography>
         <ButtonsWrapper>
           <Button width="218px">
-            <Typography fontSize={20}>Download CV</Typography>
+            <Typography style={{ zIndex: 10 }} fontSize={20}>
+              Download CV
+            </Typography>
           </Button>
           <Typography
+            style={{ zIndex: 10 }}
             weight={TypographyWeight.Light}
             color={TypographyColors.Secondary}
             fontSize={16}
@@ -159,12 +141,28 @@ function Introduction(props: IIntorductionProps) {
             or
           </Typography>
           <Button width="218px" background="#4B65EB">
-            <Typography weight={TypographyWeight.SemiBold} fontSize={24}>
+            <Typography
+              style={{ zIndex: 10 }}
+              weight={TypographyWeight.SemiBold}
+              fontSize={24}
+            >
               Contact Me
             </Typography>
           </Button>
         </ButtonsWrapper>
         <ProfilePic />
+        <ShadowLight
+          offsetX={0}
+          offsetY={0}
+          blur={150}
+          top={220}
+          left={940}
+          width={470}
+          height={470}
+          color="#1A4B78"
+          spread={40}
+          borderRadius="100%"
+        />
       </TitleWrapper>
       <Curve />
       <BG>
