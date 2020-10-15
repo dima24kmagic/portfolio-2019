@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { FlattenSimpleInterpolation } from 'styled-components'
 import React, { CSSProperties } from 'react'
 
 export enum TypographyColors {
@@ -13,31 +13,33 @@ export enum TypographyWeight {
 }
 interface ITypographyProps {
   color?: TypographyColors | string
-  fontSize: number
+  fontSize: string
   letterSpacing?: number
   weight?: TypographyWeight | number
   mB?: string
   width?: string
   children?: any
   tag?: string
-  style?: CSSProperties | any
   textAlign?: string
+  styles?: FlattenSimpleInterpolation
 }
 export const Typography = ({
   children = '',
   tag = 'p',
+  styles = [''],
   ...other
 }: ITypographyProps) => {
-  const Tag = styled[tag]({
-    color: other.color,
-    marginBottom: other.mB,
-    letterSpacing: other.letterSpacing,
-    fontSize: other.fontSize,
-    fontWeight: other.weight,
-    width: other.width,
-    textAlign: other.textAlign,
-    ...other.style,
-  })
+  // @ts-ignore
+  const Tag = styled[tag]`
+    color: ${other.color};
+    margin-bottom: ${other.mB};
+    letter-spacing: ${other.letterSpacing};
+    font-size: ${other.fontSize};
+    font-weight: ${other.weight};
+    width: ${other.width};
+    text-align: ${other.textAlign};
+    ${styles}
+  `
   return <Tag>{children}</Tag>
 }
 export const HighlightWord = styled.span`
@@ -60,7 +62,6 @@ export const Button = styled.button<IButtonProps>`
   border: none;
   border-radius: 8px;
 `
-
 
 export interface IShadowLightProps {
   width: number
@@ -85,7 +86,7 @@ export const ShadowLight = styled.div<IShadowLightProps>`
   top: ${({ top }) => top}px;
   left: ${({ left }) => left}px;
   border-radius: ${({ borderRadius = 0 }) =>
-  // @ts-ignore
-  // eslint-disable-next-line no-restricted-globals
-  `${borderRadius}${isNaN(borderRadius) ? '' : 'px'}`};
+    // @ts-ignore
+    // eslint-disable-next-line no-restricted-globals
+    `${borderRadius}${isNaN(borderRadius) ? '' : 'px'}`};
 `

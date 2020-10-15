@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
 import {
-  ShadowLight,
   Typography,
   TypographyColors,
   TypographyWeight,
@@ -143,7 +143,7 @@ const Skill = ({ description, logoHref, name }: ISkillProps) => {
           <SkillLogoWrapper>
             <SkillImage src={logoHref} alt={name} />
             <Typography
-              fontSize={24}
+              fontSize="24px"
               weight={TypographyWeight.SemiBold}
               color={TypographyColors.Primary}
             >
@@ -151,7 +151,7 @@ const Skill = ({ description, logoHref, name }: ISkillProps) => {
             </Typography>
           </SkillLogoWrapper>
           <Typography
-            fontSize={16}
+            fontSize="16px"
             weight={TypographyWeight.Light}
             color="#88839A"
           >
@@ -227,14 +227,14 @@ function Skills(props: ISkillsProps) {
   return (
     <Root>
       <Typography
-        style={{
-          display: 'inline-flex',
-          background: 'linear-gradient(-10deg, #2BB0DA 30%, #3C4DE7)',
-          '-webkit-background-clip': 'text',
-          '-webkit-text-fill-color': 'transparent',
-        }}
+        styles={css`
+          display: inline-flex;
+          background: linear-gradient(-10deg, #2bb0da 30%, #3c4de7);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        `}
         weight={TypographyWeight.Bold}
-        fontSize={62}
+        fontSize="62px"
         tag="span"
         textAlign="center"
         width="fit-content"

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   Button,
   HighlightWord,
@@ -104,7 +104,7 @@ function Introduction(props: IIntorductionProps) {
       <TitleWrapper>
         <Initials>
           <Typography
-            fontSize={18}
+            fontSize="18px"
             color={TypographyColors.Secondary}
             weight={TypographyWeight.Light}
             letterSpacing={2}
@@ -114,10 +114,12 @@ function Introduction(props: IIntorductionProps) {
           </Typography>
           <Typography
             tag="h1"
-            fontSize={72}
+            fontSize="72px"
             color={TypographyColors.Primary}
             weight={TypographyWeight.Bold}
-            style={{ zIndex: 10 }}
+            styles={css`
+              z-index: 10;
+            `}
             mB="12px"
           >
             Frontend Developer
@@ -147,13 +149,15 @@ function Introduction(props: IIntorductionProps) {
           </WithGlow>
         </Initials>
         <Typography
-          fontSize={24}
+          fontSize="24px"
           color={TypographyColors.Secondary}
           weight={TypographyWeight.SemiBold}
           letterSpacing={3}
           width="510px"
           mB="58px"
-          style={{ zIndex: 10 }}
+          styles={css`
+            z-index: 10;
+          `}
         >
           Doing <HighlightWord>React</HighlightWord> development, testing,
           reviewing. <br />
@@ -161,24 +165,33 @@ function Introduction(props: IIntorductionProps) {
         </Typography>
         <ButtonsWrapper>
           <Button width="218px">
-            <Typography style={{ zIndex: 10 }} fontSize={20}>
+            <Typography
+              styles={css`
+                z-index: 10;
+              `}
+              fontSize="20px"
+            >
               Download CV
             </Typography>
           </Button>
           <Typography
-            style={{ zIndex: 10 }}
+            styles={css`
+              z-index: 10;
+            `}
             weight={TypographyWeight.Light}
             color={TypographyColors.Secondary}
-            fontSize={16}
+            fontSize="16px"
             letterSpacing={2}
           >
             or
           </Typography>
           <Button width="218px" background="#4B65EB">
             <Typography
-              style={{ zIndex: 10 }}
+              styles={css`
+                z-index: 10;
+              `}
               weight={TypographyWeight.SemiBold}
-              fontSize={24}
+              fontSize="24px"
             >
               Contact Me
             </Typography>
