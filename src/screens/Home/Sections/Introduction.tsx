@@ -9,6 +9,7 @@ import {
   TypographyWeight,
 } from '../../../components/StyledComponents'
 import heroImage from '../../../res/images/42C1AECA-94DF-40DC-AD92-C1CFE3A63419_1_105_c.jpeg'
+import WithGlow from '../../../components/WithGlow/WithGlow'
 
 export interface IIntorductionProps {}
 
@@ -150,19 +151,24 @@ function Introduction(props: IIntorductionProps) {
             </Typography>
           </Button>
         </ButtonsWrapper>
-        <ProfilePic />
-        <ShadowLight
-          offsetX={0}
-          offsetY={0}
-          blur={150}
-          top={220}
-          left={940}
-          width={470}
-          height={470}
-          color="#1A4B78"
-          spread={40}
-          borderRadius="100%"
-        />
+        <WithGlow
+          shadows={[
+            {
+              offsetX: 0,
+              offsetY: 0,
+              blur: 150,
+              top: 220,
+              left: 940,
+              width: 470,
+              height: 470,
+              color: '#1A4B78',
+              spread: 40,
+              borderRadius: '100%',
+            },
+          ]}
+        >
+          <ProfilePic />
+        </WithGlow>
       </TitleWrapper>
       <Curve />
       <BG>

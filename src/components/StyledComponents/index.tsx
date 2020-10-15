@@ -62,7 +62,7 @@ export const Button = styled.button<IButtonProps>`
 `
 
 
-interface IShadowLightProps {
+export interface IShadowLightProps {
   width: number
   height: number
   color: string
