@@ -15,6 +15,7 @@ export interface IIntorductionProps {}
 
 const Root = styled.div`
   display: flex;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   position: relative;
@@ -46,6 +47,24 @@ const TagsCloud = styled.span`
   z-index: 0;
 `
 
+const TitleWrapper = styled.div`
+  --profilePicSize: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 214px;
+  padding-top: 240px;
+  width: auto;
+  margin-left: calc(var(--profilePicSize) * -1);
+`
+
+const Initials = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`
+
 const ProfilePic = styled.div`
   width: 650px;
   height: 650px;
@@ -54,17 +73,14 @@ const ProfilePic = styled.div`
     0px 101px 157px rgba(0, 0, 0, 0.28);
   background-image: url(${heroImage});
   background-size: cover;
-  position: absolute;
-  z-index: 2;
+  position: relative;
 `
 
-const TitleWrapper = styled.div`
+const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-left: 214px;
-  padding-top: 240px;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
 `
 
 const Curve = styled.div`
@@ -74,14 +90,7 @@ const Curve = styled.div`
   border-radius: 100%;
   height: 150px;
   width: 110%;
-  transform: translateX(-4.5%) scaleY(1.5);
-`
-
-const ButtonsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 480px;
+  transform: scaleY(1.5);
 `
 
 /**
@@ -92,25 +101,50 @@ function Introduction(props: IIntorductionProps) {
   return (
     <Root>
       <TitleWrapper>
-        <Typography
-          fontSize={18}
-          color={TypographyColors.Secondary}
-          weight={TypographyWeight.Light}
-          letterSpacing={2}
-          mB="6px"
-        >
-          Hey, my name is Dzmitry, and I’m a
-        </Typography>
-        <Typography
-          tag="h1"
-          fontSize={72}
-          color={TypographyColors.Primary}
-          weight={TypographyWeight.Bold}
-          style={{ zIndex: 10 }}
-          mB="12px"
-        >
-          Frontend Developer
-        </Typography>
+        <Initials>
+          <Typography
+            fontSize={18}
+            color={TypographyColors.Secondary}
+            weight={TypographyWeight.Light}
+            letterSpacing={2}
+            mB="6px"
+          >
+            Hey, my name is Dzmitry, and I’m a
+          </Typography>
+          <Typography
+            tag="h1"
+            fontSize={72}
+            color={TypographyColors.Primary}
+            weight={TypographyWeight.Bold}
+            style={{ zIndex: 10 }}
+            mB="12px"
+          >
+            Frontend Developer
+          </Typography>
+          <WithGlow
+            style={{
+              position: 'absolute',
+              left: 650,
+              top: -100,
+            }}
+            shadows={[
+              {
+                offsetX: 0,
+                offsetY: 0,
+                blur: 150,
+                top: 120,
+                left: 80,
+                width: 470,
+                height: 470,
+                color: '#1A4B78',
+                spread: 40,
+                borderRadius: '100%',
+              },
+            ]}
+          >
+            <ProfilePic />
+          </WithGlow>
+        </Initials>
         <Typography
           fontSize={24}
           color={TypographyColors.Secondary}
@@ -149,32 +183,6 @@ function Introduction(props: IIntorductionProps) {
             </Typography>
           </Button>
         </ButtonsWrapper>
-        <WithGlow
-          style={{
-            width: '650px',
-            height: '650px',
-            position: 'absolute',
-            top: '115px',
-            right: '270px',
-            zIndex: 2,
-          }}
-          shadows={[
-            {
-              offsetX: 0,
-              offsetY: 0,
-              blur: 150,
-              top: 120,
-              left: 80,
-              width: 470,
-              height: 470,
-              color: '#1A4B78',
-              spread: 40,
-              borderRadius: '100%',
-            },
-          ]}
-        >
-          <ProfilePic />
-        </WithGlow>
       </TitleWrapper>
       <Curve />
       <BG>
