@@ -150,6 +150,16 @@ const ProfilePic = styled.div`
   }
   ${({
     theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    width: 100%;
+    height: 300px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+  }
+  ${({
+    theme: {
       breakpoints: { xxs },
     },
   }) => xxs} {
@@ -250,7 +260,7 @@ function Introduction(props: IIntorductionProps) {
                 },
               }) => xs} {
                 font-size: 68px;
-                line-height: 64px;
+                line-height: 62px;
               }
               ${({
                 theme: {
@@ -261,7 +271,7 @@ function Introduction(props: IIntorductionProps) {
                 line-height: 44px;
               }
             `}
-            mB="12px"
+            mB="24px"
           >
             Frontend Developer
           </Typography>
@@ -330,17 +340,18 @@ function Introduction(props: IIntorductionProps) {
 
             ${({
               theme: {
-                breakpoints: { md },
-              },
-            }) => md} {
-              margin-bottom: 74px;
-            }
-            ${({
-              theme: {
                 breakpoints: { sm },
               },
             }) => sm} {
               width: 100%;
+            }
+            ${({
+              theme: {
+                breakpoints: { xxs },
+              },
+            }) => xxs} {
+              width: 100%;
+              font-size: 20px;
             }
           `}
         >
@@ -358,6 +369,7 @@ function Introduction(props: IIntorductionProps) {
                 },
               }) => md} {
                 width: 100%;
+                background: #0b0b0b;
               }
             `}
           >
@@ -373,6 +385,14 @@ function Introduction(props: IIntorductionProps) {
           <Typography
             customStyles={css`
               z-index: 10;
+              ${({
+                theme: {
+                  breakpoints: { md },
+                },
+              }) => md} {
+                margin-bottom: 8px;
+                margin-top: 8px;
+              }
             `}
             weight={TypographyWeight.Light}
             color={TypographyColors.Secondary}

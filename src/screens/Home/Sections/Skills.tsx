@@ -57,16 +57,27 @@ const SkillsWrapper = styled.div`
   }) => md} {
     width: 90%;
     border-radius: 24px;
-    padding: 28px 0px 28px 18px;
+    padding: 64px 0px 28px 18px;
   }
+
   ${({
     theme: {
-      breakpoints: { sm },
+      breakpoints: { xs },
     },
-  }) => sm} {
-    width: 100%;
-    border-radius: 16px;
-    padding: 28px 0px;
+  }) => xs} {
+    width: 95%;
+    border-radius: 24px;
+    padding: 48px 0px 28px 0px;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    width: 95%;
+    border-radius: 8px;
+    padding: 48px 0px 28px 0px;
   }
 `
 
@@ -75,16 +86,36 @@ const SkillRoot = styled.div`
   margin-bottom: var(--skillCardMarginBottom);
   margin-right: 42px;
 
-  @media (max-width: 980px) {
+  ${({
+    theme: {
+      breakpoints: { l },
+    },
+  }) => l} {
     margin-bottom: 32px;
     margin-right: 32px;
   }
-  @media (max-width: 820px) {
-    margin-bottom: 18px;
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    margin-bottom: 32px;
     margin-right: 18px;
   }
-  @media (max-width: 360px) {
-    margin-bottom: 18px;
+  ${({
+    theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    margin-bottom: 32px;
+    margin-right: 0;
+  }
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    margin-bottom: 32px;
     margin-right: 0;
   }
 `
@@ -240,10 +271,18 @@ function Skills(props: ISkillsProps) {
     <Root>
       <Typography
         customStyles={css`
-          display: inline-flex;
+          display: inline-block;
           background: linear-gradient(-10deg, #2bb0da 30%, #3c4de7);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          color: red;
+          ${({
+            theme: {
+              breakpoints: { xs },
+            },
+          }) => xs} {
+            font-size: 44px;
+          }
         `}
         weight={TypographyWeight.Bold}
         fontSize="62px"

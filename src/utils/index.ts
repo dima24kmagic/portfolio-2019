@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const checkIsMobile = () => {
   let check = false
   ;(function checkIsMobile(a) {
