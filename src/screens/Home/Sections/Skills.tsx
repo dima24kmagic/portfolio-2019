@@ -41,17 +41,29 @@ const SkillsWrapper = styled.div`
   border-radius: 64px;
   overflow: hidden;
 
-  @media (max-width: 980px) {
+  ${({
+    theme: {
+      breakpoints: { l },
+    },
+  }) => l} {
     width: 80%;
     border-radius: 24px;
     padding: 28px 0px 28px 32px;
   }
-  @media (max-width: 820px) {
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
     width: 90%;
     border-radius: 24px;
     padding: 28px 0px 28px 18px;
   }
-  @media (max-width: 360px) {
+  ${({
+    theme: {
+      breakpoints: { sm },
+    },
+  }) => sm} {
     width: 100%;
     border-radius: 16px;
     padding: 28px 0px;

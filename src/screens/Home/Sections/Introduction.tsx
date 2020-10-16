@@ -54,7 +54,7 @@ const TitleWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  padding-left: 214px;
+  padding-left: 10%;
   padding-top: 240px;
   width: auto;
   margin-left: calc(var(--profilePicSize) * -1);

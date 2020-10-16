@@ -18,7 +18,7 @@ function ProvideStoriesTheme({ children }: Props) {
     <div style={{ overflow: 'auto', height: '100%' }}>
       <div
         style={{
-          background: lightTheme.bg.primary,
+          background: '#fff',
           width: '100%',
           minHeight: '50%',
           overflow: 'auto',
@@ -32,7 +32,7 @@ function ProvideStoriesTheme({ children }: Props) {
       </div>
       <div
         style={{
-          background: darkTheme.bg.primary,
+          background: '#000',
           width: '100%',
           minHeight: '50%',
           overflow: 'auto',
