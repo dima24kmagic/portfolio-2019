@@ -22,6 +22,14 @@ const Root = styled.div`
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    padding-bottom: 180px;
+  }
 `
 
 const BG = styled.div`
@@ -49,7 +57,8 @@ const TagsCloud = styled.span`
 `
 
 const TitleWrapper = styled.div`
-  --profilePicSize: 650px;
+  --profilePicSize-xxxl: 650px;
+  --profilePicSize-xxl: 500px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -57,24 +66,98 @@ const TitleWrapper = styled.div`
   padding-left: 10%;
   padding-top: 240px;
   width: auto;
-  margin-left: calc(var(--profilePicSize) * -1);
+  margin-left: calc(var(--profilePicSize-xxxl) * -1);
+
+  ${({
+    theme: {
+      breakpoints: { xxl },
+    },
+  }) => xxl} {
+    margin-left: calc(var(--profilePicSize-xxl) * -1);
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 60px;
+    align-items: center;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    width: 100%;
+  }
 `
 
 const Initials = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    align-items: center;
+  }
 `
 
 const ProfilePic = styled.div`
-  width: 650px;
-  height: 650px;
+  width: var(--profilePicSize-xxxl);
+  height: var(--profilePicSize-xxxl);
   border-radius: 160px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 30px 42px rgba(0, 0, 0, 0.1),
     0px 101px 157px rgba(0, 0, 0, 0.28);
   background-image: url(${heroImage});
   background-size: cover;
   position: relative;
+
+  ${({
+    theme: {
+      breakpoints: { xxl },
+    },
+  }) => xxl} {
+    width: var(--profilePicSize-xxl);
+    height: var(--profilePicSize-xxl);
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { sm },
+    },
+  }) => sm} {
+    width: 100%;
+    height: 90vw;
+    border-radius: 30px;
+    margin-bottom: 24px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    width: 100%;
+    height: 250px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+  }
 `
 
 const ButtonsWrapper = styled.div`
@@ -82,6 +165,15 @@ const ButtonsWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 480px;
+
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    width: 80%;
+    flex-direction: column;
+  }
 `
 
 const Curve = styled.div`
@@ -92,6 +184,16 @@ const Curve = styled.div`
   height: 150px;
   width: 110%;
   transform: scaleY(1.5);
+
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    transform: scaleY(1);
+    bottom: -38px;
+    height: 90px;
+  }
 `
 
 /**
@@ -109,6 +211,22 @@ function Introduction(props: IIntorductionProps) {
             weight={TypographyWeight.Light}
             letterSpacing={2}
             mB="6px"
+            customStyles={css`
+              ${({
+                theme: {
+                  breakpoints: { xl },
+                },
+              }) => xl} {
+                text-align: center;
+              }
+              ${({
+                theme: {
+                  breakpoints: { xxs },
+                },
+              }) => xxs} {
+                font-size: 14px;
+              }
+            `}
           >
             Hey, my name is Dzmitry, and I’m a
           </Typography>
@@ -117,31 +235,75 @@ function Introduction(props: IIntorductionProps) {
             fontSize="72px"
             color={TypographyColors.Primary}
             weight={TypographyWeight.Bold}
-            styles={css`
+            customStyles={css`
               z-index: 10;
+              ${({
+                theme: {
+                  breakpoints: { xl },
+                },
+              }) => xl} {
+                text-align: center;
+              }
+              ${({
+                theme: {
+                  breakpoints: { xs },
+                },
+              }) => xs} {
+                font-size: 68px;
+                line-height: 64px;
+              }
+              ${({
+                theme: {
+                  breakpoints: { xxs },
+                },
+              }) => xxs} {
+                font-size: 48px;
+                line-height: 44px;
+              }
             `}
             mB="12px"
           >
             Frontend Developer
           </Typography>
           <WithGlow
-            style={{
-              position: 'absolute',
-              left: 650,
-              top: -100,
-            }}
+            style={css`
+              position: absolute;
+              left: 650px;
+              top: -100px;
+              justify-content: center;
+              display: flex;
+              ${({
+                theme: {
+                  breakpoints: { xl },
+                },
+              }) => xl} {
+                position: relative;
+                top: 0;
+                left: 0;
+              }
+              ${({
+                theme: {
+                  breakpoints: { md },
+                },
+              }) => md} {
+                width: 80%;
+              }
+            `}
             shadows={[
               {
                 offsetX: 0,
                 offsetY: 0,
                 blur: 150,
-                top: 120,
-                left: 80,
-                width: 470,
-                height: 470,
+                top: '50%',
+                left: '50%',
+                width: '60%',
+                height: '60%',
                 color: '#1A4B78',
                 spread: 40,
                 borderRadius: '100%',
+                customStyles: css`
+                  transform: translate(-50%, -50%);
+                `,
               },
             ]}
           >
@@ -155,8 +317,31 @@ function Introduction(props: IIntorductionProps) {
           letterSpacing={3}
           width="510px"
           mB="58px"
-          styles={css`
+          customStyles={css`
             z-index: 10;
+
+            ${({
+              theme: {
+                breakpoints: { xl },
+              },
+            }) => xl} {
+              text-align: center;
+            }
+
+            ${({
+              theme: {
+                breakpoints: { md },
+              },
+            }) => md} {
+              margin-bottom: 74px;
+            }
+            ${({
+              theme: {
+                breakpoints: { sm },
+              },
+            }) => sm} {
+              width: 100%;
+            }
           `}
         >
           Doing <HighlightWord>React</HighlightWord> development, testing,
@@ -164,9 +349,20 @@ function Introduction(props: IIntorductionProps) {
           Also doing <HighlightWord>NodeJS</HighlightWord>.
         </Typography>
         <ButtonsWrapper>
-          <Button width="218px">
+          <Button
+            width="218px"
+            customStyle={css`
+              ${({
+                theme: {
+                  breakpoints: { md },
+                },
+              }) => md} {
+                width: 100%;
+              }
+            `}
+          >
             <Typography
-              styles={css`
+              customStyles={css`
                 z-index: 10;
               `}
               fontSize="20px"
@@ -175,7 +371,7 @@ function Introduction(props: IIntorductionProps) {
             </Typography>
           </Button>
           <Typography
-            styles={css`
+            customStyles={css`
               z-index: 10;
             `}
             weight={TypographyWeight.Light}
@@ -185,9 +381,21 @@ function Introduction(props: IIntorductionProps) {
           >
             or
           </Typography>
-          <Button width="218px" background="#4B65EB">
+          <Button
+            width="218px"
+            background="#4B65EB"
+            customStyle={css`
+              ${({
+                theme: {
+                  breakpoints: { md },
+                },
+              }) => md} {
+                width: 100%;
+              }
+            `}
+          >
             <Typography
-              styles={css`
+              customStyles={css`
                 z-index: 10;
               `}
               weight={TypographyWeight.SemiBold}
@@ -204,10 +412,10 @@ function Introduction(props: IIntorductionProps) {
           offsetX={120}
           offsetY={350}
           blur={150}
-          top={-550}
-          left={-550}
-          width={550}
-          height={550}
+          top="-550px"
+          left="-550px"
+          width="550px"
+          height="550px"
           color="rgba(105,66,219,0.15)"
           spread={80}
           borderRadius={70}
@@ -216,10 +424,10 @@ function Introduction(props: IIntorductionProps) {
           offsetX={80}
           offsetY={180}
           blur={150}
-          top={-550}
-          left={-150}
-          width={550}
-          height={550}
+          top="-550px"
+          left="-150px"
+          width="550px"
+          height="550px"
           color="rgba(38,124,203,0.2)"
           spread={30}
           borderRadius={60}

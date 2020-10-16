@@ -1,19 +1,30 @@
 import React, { CSSProperties } from 'react'
-import styled from 'styled-components'
+import styled, {
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
 import { IShadowLightProps, ShadowLight } from '../StyledComponents'
 
 export interface IWithGlowProps {
   children: any
   shadows: IShadowLightProps[]
-  CustomWrapper?: any
-  style?: CSSProperties
+  style?: FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 
 const Root = styled.span`
   position: relative;
+  ${({
+    customStyles,
+  }: {
+    customStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  }) => customStyles}
 `
 
 const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
   z-index: ${({ zIndex = 2 }: { zIndex?: number }) => zIndex};
 `
 
@@ -21,16 +32,15 @@ const ContentWrapper = styled.div`
  * Wrapper to provide glow behind elements
  */
 function WithGlow(props: IWithGlowProps) {
-  const { children, shadows, style, CustomWrapper } = props
-  const Wrapper = CustomWrapper || Root
+  const { children, shadows, style } = props
   return (
-    <Wrapper style={style}>
+    <Root customStyles={style}>
       {shadows.map((shadow, i) => (
         // eslint-disable-next-line react/no-array-index-key
         <ShadowLight key={i} {...shadow} />
       ))}
       <ContentWrapper>{children}</ContentWrapper>
-    </Wrapper>
+    </Root>
   )
 }
 

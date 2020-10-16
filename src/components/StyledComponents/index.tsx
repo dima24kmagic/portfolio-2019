@@ -1,4 +1,9 @@
-import styled, { FlattenSimpleInterpolation } from 'styled-components'
+import styled, {
+  FlattenSimpleInterpolation,
+  FlattenInterpolation,
+  ThemeProps,
+  DefaultTheme,
+} from 'styled-components'
 import React, { CSSProperties } from 'react'
 
 export enum TypographyColors {
@@ -21,12 +26,12 @@ interface ITypographyProps {
   children?: any
   tag?: string
   textAlign?: string
-  styles?: FlattenSimpleInterpolation
+  customStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 export const Typography = ({
   children = '',
   tag = 'p',
-  styles = [''],
+  customStyles = [''],
   ...other
 }: ITypographyProps) => {
   // @ts-ignore
@@ -38,7 +43,7 @@ export const Typography = ({
     font-weight: ${other.weight};
     width: ${other.width};
     text-align: ${other.textAlign};
-    ${styles}
+    ${customStyles}
   `
   return <Tag>{children}</Tag>
 }
@@ -51,6 +56,7 @@ interface IButtonProps {
   background?: string
   fontSize?: number
   fontWeight?: TypographyWeight
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 export const Button = styled.button<IButtonProps>`
   width: ${({ width = 'auto' }) => width};
@@ -61,32 +67,37 @@ export const Button = styled.button<IButtonProps>`
   height: 52px;
   border: none;
   border-radius: 8px;
+
+  ${({ customStyle }) => customStyle}
 `
 
 export interface IShadowLightProps {
-  width: number
-  height: number
+  width: string
+  height: string
   color: string
   blur: number
   spread?: number
-  top: number
-  left: number
+  top: string
+  left: string
   offsetX: number
   offsetY: number
   borderRadius?: number | string
+  customStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
 export const ShadowLight = styled.div<IShadowLightProps>`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   background: transparent;
   box-shadow: ${({ offsetX }) => offsetX}px ${({ offsetY }) => offsetY}px
     ${({ blur }) => blur}px ${({ spread = 0 }) => spread}px
     ${({ color }) => color};
   position: absolute;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
   border-radius: ${({ borderRadius = 0 }) =>
     // @ts-ignore
     // eslint-disable-next-line no-restricted-globals
     `${borderRadius}${isNaN(borderRadius) ? '' : 'px'}`};
+
+  ${({ customStyles }) => customStyles}
 `

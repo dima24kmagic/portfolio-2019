@@ -128,10 +128,10 @@ const Skill = ({ description, logoHref, name }: ISkillProps) => {
           offsetX: 0,
           offsetY: 0,
           blur: 120,
-          top: 0,
-          left: 0,
-          width: 176,
-          height: 64,
+          top: '0',
+          left: '0',
+          width: '176px',
+          height: '64px',
           color: '#0094FF',
           spread: 5,
           borderRadius: '80px',
@@ -140,10 +140,10 @@ const Skill = ({ description, logoHref, name }: ISkillProps) => {
           offsetX: 0,
           offsetY: 0,
           blur: 120,
-          top: 60,
-          left: 100,
-          width: 176,
-          height: 64,
+          top: '60px',
+          left: '100px',
+          width: '176px',
+          height: '64px',
           color: '#2BB090',
           spread: 5,
           borderRadius: '80px',
@@ -239,7 +239,7 @@ function Skills(props: ISkillsProps) {
   return (
     <Root>
       <Typography
-        styles={css`
+        customStyles={css`
           display: inline-flex;
           background: linear-gradient(-10deg, #2bb0da 30%, #3c4de7);
           -webkit-background-clip: text;

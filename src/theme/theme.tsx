@@ -8,33 +8,19 @@ function getModeValue(mode: ThemeMode, lightVal: string, darkVal: string) {
 export const theme = {
   transitionSpeed: '0.5s',
   breakpoints: {
-    l: `
-        @media (max-width: 980px)
-      `,
-    md: `
-        @media (max-width: 820px)
-      `,
-    sm: `
-        @media (max-width: 360px)
-      `,
+    xxxl: `@media (max-width: 1420px)`,
+    xxl: `@media (max-width: 1360px)`,
+    xl: `@media (max-width: 1240px)`,
+    l: `@media (max-width: 980px)`,
+    md: `@media (max-width: 820px)`,
+    sm: `@media (max-width: 580px)`,
+    xs: `@media (max-width: 480px)`,
+    xxs: `@media (max-width: 360px)`,
   },
 }
 
 export const getConvertedTheme = (mode: ThemeMode): typeof theme => {
-  return {
-    transitionSpeed: '0.5s',
-    breakpoints: {
-      l: `
-        @media (max-width: 980px)
-      `,
-      md: `
-        @media (max-width: 980px)
-      `,
-      sm: `
-        @media (max-width: 980px)
-      `,
-    },
-  }
+  return theme
 }
 
 export const useTheme = () => {
