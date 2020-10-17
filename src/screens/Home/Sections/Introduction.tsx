@@ -1,8 +1,14 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
 import {
   Button,
   HighlightWord,
+  ICustomStyles,
   ShadowLight,
   Typography,
   TypographyColors,
@@ -186,24 +192,27 @@ const ButtonsWrapper = styled.div`
   }
 `
 
-const Curve = styled.div`
+export const Curve = styled.div`
   background: #fff;
-  position: absolute;
-  bottom: -120px;
   border-radius: 100%;
-  height: 150px;
+  height: 80px;
   width: 110%;
-  transform: scaleY(1.5);
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1.5);
 
   ${({
     theme: {
       breakpoints: { md },
     },
   }) => md} {
-    transform: scaleY(1);
+    transform: translateX(-50%) scaleY(1);
     bottom: -38px;
     height: 90px;
   }
+
+  ${({ customStyles }: { customStyles?: ICustomStyles }) => customStyles}
 `
 
 /**

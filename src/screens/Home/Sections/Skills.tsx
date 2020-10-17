@@ -284,7 +284,7 @@ function Skills(props: ISkillsProps) {
             font-size: 44px;
           }
         `}
-        weight={TypographyWeight.Bold}
+        weight={TypographyWeight.Black}
         fontSize="62px"
         tag="span"
         textAlign="center"

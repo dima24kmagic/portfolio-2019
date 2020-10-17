@@ -6,11 +6,13 @@ import styled, {
 } from 'styled-components'
 import React, { CSSProperties } from 'react'
 
+export type ICustomStyles = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export enum TypographyColors {
   Primary = '#fff',
   Secondary = 'rgba(136, 131, 154, 1)',
 }
 export enum TypographyWeight {
+  'Black' = '900',
   'Bold' = '700',
   'SemiBold' = '600',
   'Light' = '300',
@@ -26,7 +28,7 @@ interface ITypographyProps {
   children?: any
   tag?: string
   textAlign?: string
-  customStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  customStyles?: ICustomStyles
 }
 export const Typography = ({
   children = '',
@@ -56,7 +58,7 @@ interface IButtonProps {
   background?: string
   fontSize?: number
   fontWeight?: TypographyWeight
-  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  customStyle?: ICustomStyles
 }
 export const Button = styled.button<IButtonProps>`
   width: ${({ width = 'auto' }) => width};
@@ -82,7 +84,7 @@ export interface IShadowLightProps {
   offsetX: number
   offsetY: number
   borderRadius?: number | string
-  customStyles?: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  customStyles?: ICustomStyles
 }
 export const ShadowLight = styled.div<IShadowLightProps>`
   width: ${({ width }) => width};

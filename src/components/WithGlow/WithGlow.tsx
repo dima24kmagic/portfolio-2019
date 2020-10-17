@@ -4,12 +4,12 @@ import styled, {
   FlattenInterpolation,
   ThemeProps,
 } from 'styled-components'
-import { IShadowLightProps, ShadowLight } from '../StyledComponents'
+import { ICustomStyles, IShadowLightProps, ShadowLight } from '../StyledComponents'
 
 export interface IWithGlowProps {
   children: any
   shadows: IShadowLightProps[]
-  style?: FlattenInterpolation<ThemeProps<DefaultTheme>>
+  style?: ICustomStyles
 }
 
 const Root = styled.span`
@@ -17,7 +17,7 @@ const Root = styled.span`
   ${({
     customStyles,
   }: {
-    customStyles: FlattenInterpolation<ThemeProps<DefaultTheme>>
+    customStyles: ICustomStyles
   }) => customStyles}
 `
 
