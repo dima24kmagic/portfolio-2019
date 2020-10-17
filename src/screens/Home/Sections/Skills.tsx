@@ -5,6 +5,7 @@ import {
   Typography,
   TypographyColors,
   TypographyWeight,
+  GradientTypography,
 } from '../../../components/StyledComponents'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 
@@ -269,13 +270,9 @@ function Skills(props: ISkillsProps) {
   const {} = props
   return (
     <Root>
-      <Typography
+      <GradientTypography
         customStyles={css`
-          display: inline-block;
           background: linear-gradient(-10deg, #2bb0da 30%, #3c4de7);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: red;
           ${({
             theme: {
               breakpoints: { xs },
@@ -292,7 +289,7 @@ function Skills(props: ISkillsProps) {
         mB="24px"
       >
         Skills Stack
-      </Typography>
+      </GradientTypography>
       <SkillsWrapper>
         {skills.map((skill) => (
           <Skill key={skill.name} {...skill} />

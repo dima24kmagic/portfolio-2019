@@ -3,6 +3,7 @@ import styled, {
   FlattenInterpolation,
   ThemeProps,
   DefaultTheme,
+  css,
 } from 'styled-components'
 import React, { CSSProperties } from 'react'
 
@@ -48,6 +49,23 @@ export const Typography = ({
     ${customStyles}
   `
   return <Tag>{children}</Tag>
+}
+
+export const GradientTypography = ({
+  customStyles,
+  ...other
+}: ITypographyProps) => {
+  return (
+    <Typography
+      {...other}
+      customStyles={css`
+        ${customStyles};
+        display: inline-block;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      `}
+    />
+  )
 }
 export const HighlightWord = styled.span`
   color: rgba(183, 174, 214, 1);

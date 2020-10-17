@@ -14,7 +14,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from '../../../components/StyledComponents'
-import heroImage from '../../../res/images/42C1AECA-94DF-40DC-AD92-C1CFE3A63419_1_105_c.jpeg'
+import heroImage from '../../../res/images/myPic.jpeg'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 
 export interface IIntorductionProps {}
