@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   Typography,
   TypographyColors,
@@ -30,7 +30,14 @@ const ProjectLink = styled.a`
   color: #7ab7ff;
 `
 
-const ImagesWrapper = styled.div``
+const ImagesWrapper = styled.div`
+  position: absolute;
+  left: calc((var(--imagePreviewWidth)) * -1);
+  top: -90px;
+
+  width: var(--imagePreviewWidth);
+  height: var(--imagePreviewHeight);
+`
 
 interface IImgStyleProps {
   imgOffsetX: string
@@ -38,21 +45,18 @@ interface IImgStyleProps {
   imgIndex: number
 }
 const ProjectImage = styled.img<IImgStyleProps>`
-  background: #4a769d;
-  border-radius: 16px;
-  width: var(--imagePreviewWidth);
-  height: var(--imagePreviewHeight);
+  background: ${({ src }) => (src === '' ? '#4a769d' : 'transparent')};
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-  box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1), 0px 0px 1px #000000,
-    0px 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1), 0px 20px 40px rgba(0, 0, 0, 0.2);
 
   position: absolute;
   top: ${({ imgOffsetX }) => imgOffsetX};
   left: calc(
-    (
-        var(--imagePreviewWidth) +
-          ${({ imgOffsetY }) => (imgOffsetY === '0px' ? '60px' : imgOffsetY)}
-      ) * -1
+    (${({ imgOffsetY }) => (imgOffsetY === '0px' ? '60px' : imgOffsetY)}) * -1
   );
 
   opacity: ${({ imgIndex }) => (imgIndex === 1 ? 1 : 0.2)};
@@ -79,6 +83,25 @@ function Project(props: IProjectProps) {
           {link.label}
         </Typography>
       </ProjectLink>
+      <WithGlow
+        shadows={[
+          {
+            offsetX: 0,
+            offsetY: 0,
+            blur: 120,
+            top: '118px',
+            left: 'calc(-100% - 25px)',
+            width: '570px',
+            height: '280px',
+            color: shadowColor,
+            spread: 5,
+            borderRadius: '80px',
+            customStyles: css`
+              transform: translate(-50%, -50%);
+            `,
+          },
+        ]}
+      >
         <ImagesWrapper>
           {images.map(({ alt, href }, i) => (
             <ProjectImage
@@ -91,6 +114,7 @@ function Project(props: IProjectProps) {
             />
           ))}
         </ImagesWrapper>
+      </WithGlow>
       <Typography
         fontSize="20px"
         color="#88839A"

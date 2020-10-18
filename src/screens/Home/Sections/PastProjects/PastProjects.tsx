@@ -8,6 +8,8 @@ import {
 import Project, { IProjectProps } from './components/Project'
 import ricexPic1 from '../../../../res/images/riceex1.png'
 import ricexPic2 from '../../../../res/images/ricex2.png'
+import roundRushPic1 from '../../../../res/images/roundrush_board-1.png'
+import roundRushPic2 from '../../../../res/images/roundrush_leaderboard.png'
 
 export interface IPastProjectsProps {}
 
@@ -38,13 +40,13 @@ const projects: IProjectProps[] = [
     name: 'Round Rush',
     link: { href: 'https://app.roundrush.com/', label: 'app.roundrush.com' },
     images: [
-      { href: ricexPic2, alt: 'rice exchange proposals board' },
-      { href: ricexPic1, alt: 'rice exchange website login' },
+      { href: roundRushPic2, alt: 'Round rush leader board' },
+      { href: roundRushPic1, alt: 'Round rush project board' },
     ],
     description:
       'Roudrush is the software developed for professionals that work with agile methodology. Rather than other similar software, it is very easy to setup and user-friendly. The workflow is smooth and help you to manage your teams work in order to deliver every project with the best efficiency and quality',
     shadowColor: '#D16499',
-  }
+  },
 ]
 
 /**
