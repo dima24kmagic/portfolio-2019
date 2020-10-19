@@ -10,6 +10,8 @@ import ricexPic1 from '../../../../res/images/riceex1.png'
 import ricexPic2 from '../../../../res/images/ricex2.png'
 import roundRushPic1 from '../../../../res/images/roundrush_board-1.png'
 import roundRushPic2 from '../../../../res/images/roundrush_leaderboard.png'
+import TRPic1 from '../../../../res/images/TR1.png'
+import TRPic2 from '../../../../res/images/TR2.png'
 
 export interface IPastProjectsProps {}
 
@@ -46,6 +48,20 @@ const projects: IProjectProps[] = [
     description:
       'Roudrush is the software developed for professionals that work with agile methodology. Rather than other similar software, it is very easy to setup and user-friendly. The workflow is smooth and help you to manage your teams work in order to deliver every project with the best efficiency and quality',
     shadowColor: '#D16499',
+  },
+  {
+    name: 'TR Tax Store',
+    link: {
+      href: 'https://store.tax.thomsonreuters.com/accounting/',
+      label: 'development is ongoing',
+    },
+    images: [
+      { href: TRPic2, alt: 'Round rush leader board' },
+      { href: TRPic1, alt: 'Round rush project board' },
+    ],
+    description:
+      'Online Store used by Thomson Reuters to sell tax, audit, accounting and finance products, trusted by professionals around the world',
+    shadowColor: '#ce4f0c',
   },
 ]
 
