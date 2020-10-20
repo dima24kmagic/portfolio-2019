@@ -74,6 +74,7 @@ export const HighlightWord = styled.span`
 interface IButtonProps {
   width?: string
   background?: string
+  bgHover?: string
   fontSize?: number
   fontWeight?: TypographyWeight
   customStyle?: ICustomStyles
@@ -87,6 +88,13 @@ export const Button = styled.button<IButtonProps>`
   height: 52px;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ bgHover = '#1a1a1a' }) => bgHover};
+  }
+
+  transition: background-color 0.15s;
 
   ${({ customStyle }) => customStyle}
 `

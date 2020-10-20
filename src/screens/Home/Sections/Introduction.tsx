@@ -1,10 +1,5 @@
 import React from 'react'
-import styled, {
-  css,
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemeProps,
-} from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   Button,
   HighlightWord,
@@ -369,28 +364,35 @@ function Introduction(props: IIntorductionProps) {
           Also doing <HighlightWord>NodeJS</HighlightWord>.
         </Typography>
         <ButtonsWrapper>
-          <Button
-            width="218px"
-            customStyle={css`
-              ${({
-                theme: {
-                  breakpoints: { md },
-                },
-              }) => md} {
-                width: 100%;
-                background: #0b0b0b;
-              }
-            `}
+          <a
+            // eslint-disable-next-line global-require
+            href={require('../../../res/PDF Portfolio.pdf')}
+            download="FrontendDev_Dzmitry_Baranau_Portfolio"
           >
-            <Typography
-              customStyles={css`
-                z-index: 10;
+            <Button
+              tabIndex={-1}
+              width="218px"
+              customStyle={css`
+                ${({
+                  theme: {
+                    breakpoints: { md },
+                  },
+                }) => md} {
+                  width: 100%;
+                  background: #0b0b0b;
+                }
               `}
-              fontSize="20px"
             >
-              Download CV
-            </Typography>
-          </Button>
+              <Typography
+                customStyles={css`
+                  z-index: 10;
+                `}
+                fontSize="20px"
+              >
+                Download CV
+              </Typography>
+            </Button>
+          </a>
           <Typography
             customStyles={css`
               z-index: 10;
@@ -413,6 +415,7 @@ function Introduction(props: IIntorductionProps) {
           <Button
             width="218px"
             background="#4B65EB"
+            bgHover="#5670f3"
             customStyle={css`
               ${({
                 theme: {
