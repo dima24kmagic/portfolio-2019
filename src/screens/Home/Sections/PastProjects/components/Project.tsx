@@ -22,8 +22,18 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-left: calc(var(--imagePreviewWidth) + 90px);
+  margin-left: calc(var(--imagePreviewWidth) + 96px);
   margin-bottom: 220px;
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    --imagePreviewWidth: 520px;
+    --imagePreviewHeight: 320px;
+    margin-left: calc(var(--imagePreviewWidth) + 96px);
+  }
 `
 
 const ProjectLink = styled.a`
@@ -31,12 +41,21 @@ const ProjectLink = styled.a`
 `
 
 const ImagesWrapper = styled.div`
+  --imagesWrapperMarginRight: 60px;
   position: absolute;
-  left: calc((var(--imagePreviewWidth)) * -1);
+  left: calc((var(--imagePreviewWidth) + var(--imagesWrapperMarginRight)) * -1);
   top: -90px;
 
   width: var(--imagePreviewWidth);
   height: var(--imagePreviewHeight);
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    --imagesWrapperMarginRight: 40px;
+  }
 `
 
 interface IImgStyleProps {
@@ -45,6 +64,8 @@ interface IImgStyleProps {
   imgIndex: number
 }
 const ProjectImage = styled.img<IImgStyleProps>`
+  --imageOffsetX: 28px;
+
   background: ${({ src }) => (src === '' ? '#4a769d' : 'transparent')};
   border-radius: 24px;
   width: 100%;
@@ -54,10 +75,8 @@ const ProjectImage = styled.img<IImgStyleProps>`
   box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1), 0px 20px 40px rgba(0, 0, 0, 0.2);
 
   position: absolute;
-  top: ${({ imgOffsetX }) => imgOffsetX};
-  left: calc(
-    (${({ imgOffsetY }) => (imgOffsetY === '0px' ? '60px' : imgOffsetY)}) * -1
-  );
+  top: ${({ imgOffsetY }) => imgOffsetY};
+  left: calc((var(--imageOffsetX) * -1) * ${({ imgIndex }) => imgIndex});
 
   opacity: ${({ imgIndex }) => (imgIndex === 1 ? 1 : 0.2)};
 `
@@ -90,14 +109,30 @@ function Project(props: IProjectProps) {
             offsetY: 0,
             blur: 120,
             top: '118px',
-            left: 'calc(-100% - 25px)',
+            left: '0px',
             width: '570px',
             height: '280px',
             color: shadowColor,
             spread: 5,
             borderRadius: '80px',
             customStyles: css`
-              transform: translate(-50%, -50%);
+              --shadowOffset: 75px;
+
+              transform: translate(-50%, -10%);
+              width: calc(var(--imagePreviewWidth) - 50px);
+              left: calc(
+                ((var(--imagePreviewWidth) / 2) * -1) - var(--shadowOffset)
+              );
+              height: calc(var(--imagePreviewHeight) - 50px);
+              top: 50%;
+
+              ${({
+                theme: {
+                  breakpoints: { xl },
+                },
+              }) => xl} {
+                --shadowOffset: 60px;
+              }
             `,
           },
         ]}
@@ -106,8 +141,8 @@ function Project(props: IProjectProps) {
           {images.map(({ alt, href }, i) => (
             <ProjectImage
               imgIndex={i}
-              imgOffsetX={`${i * 28}px`}
-              imgOffsetY={`${i * 95}px`}
+              imgOffsetX={`${i * 95}px`}
+              imgOffsetY={`${i * 28}px`}
               key={href}
               alt={alt}
               src={href}
