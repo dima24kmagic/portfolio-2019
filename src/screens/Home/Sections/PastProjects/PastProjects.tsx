@@ -86,10 +86,32 @@ function PastProjects(props: IPastProjectsProps) {
           color: red;
           ${({
             theme: {
+              breakpoints: { l },
+            },
+          }) => l} {
+            margin-bottom: 52px;
+          }
+          ${({
+            theme: {
+              breakpoints: { sm },
+            },
+          }) => sm} {
+            margin-bottom: 32px;
+          }
+          ${({
+            theme: {
               breakpoints: { xs },
             },
           }) => xs} {
             font-size: 44px;
+            margin-bottom: 22px;
+          }
+          ${({
+            theme: {
+              breakpoints: { xxs },
+            },
+          }) => xxs} {
+            font-size: 40px;
           }
         `}
         weight={TypographyWeight.Black}
