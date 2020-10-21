@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Introduction from './Sections/Introduction'
 import Skills from './Sections/Skills'
 import PastProjects from './Sections/PastProjects'
+import Interested from './Sections/Interested'
 
 export interface IHomeProps {}
 
@@ -22,6 +23,7 @@ function Home(props: IHomeProps) {
       <Introduction />
       <Skills />
       <PastProjects />
+      <Interested />
     </Root>
   )
 }

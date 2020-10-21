@@ -24,6 +24,14 @@ const Root = styled.div`
   padding: 130px 0;
   position: relative;
   overflow: hidden;
+
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    padding: 130px 0 0px;
+  }
 `
 
 const projects: IProjectProps[] = [
