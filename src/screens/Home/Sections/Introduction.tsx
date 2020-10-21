@@ -128,17 +128,15 @@ const ProfilePic = styled.div`
   }) => xxl} {
     width: var(--profilePicSize-xxl);
     height: var(--profilePicSize-xxl);
+    border-radius: 120px;
   }
-
   ${({
     theme: {
       breakpoints: { xl },
     },
   }) => xl} {
     border-radius: 100px;
-    margin-bottom: 14px;
   }
-
   ${({
     theme: {
       breakpoints: { sm },
@@ -147,7 +145,6 @@ const ProfilePic = styled.div`
     width: 100%;
     height: 90vw;
     border-radius: 30px;
-    margin-bottom: 24px;
   }
   ${({
     theme: {
@@ -157,8 +154,8 @@ const ProfilePic = styled.div`
     width: 100%;
     height: 300px;
     border-radius: 30px;
-    margin-bottom: 24px;
   }
+
   ${({
     theme: {
       breakpoints: { xxs },
@@ -167,7 +164,64 @@ const ProfilePic = styled.div`
     width: 100%;
     height: 250px;
     border-radius: 30px;
-    margin-bottom: 24px;
+  }
+`
+
+const SideNote = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  padding: 25px 0;
+  min-height: 30%;
+
+  border-bottom-right-radius: 160px;
+  border-bottom-left-radius: 160px;
+
+  ${({
+    theme: {
+      breakpoints: { xxl },
+    },
+  }) => xxl} {
+    border-bottom-right-radius: 120px;
+    border-bottom-left-radius: 120px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xl },
+    },
+  }) => xl} {
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+  }
+  ${({
+    theme: {
+      breakpoints: { sm },
+    },
+  }) => sm} {
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 10px 0;
   }
 `
 
@@ -184,6 +238,18 @@ const ButtonsWrapper = styled.div`
   }) => md} {
     width: 80%;
     flex-direction: column;
+  }
+`
+
+const Link = styled.a`
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    width: 100%;
+    background: #0b0b0b;
+    border-radius: 8px;
   }
 `
 
@@ -258,6 +324,7 @@ function Introduction(props: IIntorductionProps) {
               }) => xl} {
                 text-align: center;
               }
+
               ${({
                 theme: {
                   breakpoints: { xs },
@@ -288,19 +355,41 @@ function Introduction(props: IIntorductionProps) {
               display: flex;
               ${({
                 theme: {
-                  breakpoints: { xl },
+                  breakpoints: { xxs },
                 },
-              }) => xl} {
-                position: relative;
-                top: 0;
-                left: 0;
+              }) => xxs} {
+                margin-bottom: 24px;
+              }
+              ${({
+                theme: {
+                  breakpoints: { xs },
+                },
+              }) => xs} {
+                margin-bottom: 24px;
+              }
+              ${({
+                theme: {
+                  breakpoints: { sm },
+                },
+              }) => sm} {
+                margin-bottom: 24px;
+                width: 80%;
               }
               ${({
                 theme: {
                   breakpoints: { md },
                 },
               }) => md} {
-                width: 80%;
+              }
+              ${({
+                theme: {
+                  breakpoints: { xl },
+                },
+              }) => xl} {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 14px;
               }
             `}
             shadows={[
@@ -321,7 +410,48 @@ function Introduction(props: IIntorductionProps) {
               },
             ]}
           >
-            <ProfilePic />
+            <>
+              <SideNote>
+                <Typography
+                  fontSize="18px"
+                  color={TypographyColors.Primary}
+                  weight={TypographyWeight.Light}
+                  textAlign="center"
+                  customStyles={css`
+                    font-family: -apple-system, BlinkMacSystemFont, avenir next,
+                      avenir, helvetica neue, helvetica, ubuntu, sans-serif,
+                      roboto, noto, segoe ui, arial;
+                    font-weight: 100;
+                    font-style: italic;
+                    color: rgba(255, 255, 255, 0.65);
+                    width: 80%;
+                    margin: 0 auto;
+                    line-height: 28px;
+                    ${({
+                      theme: {
+                        breakpoints: { sm },
+                      },
+                    }) => sm} {
+                      font-size: 16px;
+                      line-height: 22px;
+                    }
+                    ${({
+                      theme: {
+                        breakpoints: { xxs },
+                      },
+                    }) => xxs} {
+                      font-size: 14px;
+                      line-height: 20px;
+                    }
+                  `}
+                >
+                  Passionate developer. Love good design, clean code,
+                  well-tested components. Looking for remote work opportunities
+                  also interested in immigrating to Canada.{' '}
+                </Typography>
+              </SideNote>
+              <ProfilePic />
+            </>
           </WithGlow>
         </Initials>
         <Typography
@@ -333,15 +463,14 @@ function Introduction(props: IIntorductionProps) {
           mB="58px"
           customStyles={css`
             z-index: 10;
-
             ${({
               theme: {
-                breakpoints: { xl },
+                breakpoints: { xxs },
               },
-            }) => xl} {
-              text-align: center;
+            }) => xxs} {
+              width: 100%;
+              font-size: 20px;
             }
-
             ${({
               theme: {
                 breakpoints: { sm },
@@ -351,11 +480,10 @@ function Introduction(props: IIntorductionProps) {
             }
             ${({
               theme: {
-                breakpoints: { xxs },
+                breakpoints: { xl },
               },
-            }) => xxs} {
-              width: 100%;
-              font-size: 20px;
+            }) => xl} {
+              text-align: center;
             }
           `}
         >
@@ -364,7 +492,7 @@ function Introduction(props: IIntorductionProps) {
           Also doing <HighlightWord>NodeJS</HighlightWord>.
         </Typography>
         <ButtonsWrapper>
-          <a
+          <Link
             // eslint-disable-next-line global-require
             href={require('../../../res/PDF Portfolio.pdf')}
             download="FrontendDev_Dzmitry_Baranau_Portfolio"
@@ -392,7 +520,7 @@ function Introduction(props: IIntorductionProps) {
                 Download CV
               </Typography>
             </Button>
-          </a>
+          </Link>
           <Typography
             customStyles={css`
               z-index: 10;
