@@ -176,8 +176,8 @@ const SideNote = styled.div`
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
   z-index: 3;
-  padding: 25px 0;
-  min-height: 30%;
+  padding: 0 0;
+  min-height: 25%;
 
   border-bottom-right-radius: 160px;
   border-bottom-left-radius: 160px;
@@ -213,6 +213,7 @@ const SideNote = styled.div`
   }) => xs} {
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
+    padding: 10px 0;
   }
   ${({
     theme: {
