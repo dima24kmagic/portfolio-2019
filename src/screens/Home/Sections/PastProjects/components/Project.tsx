@@ -34,6 +34,55 @@ const Root = styled.div`
     --imagePreviewHeight: 320px;
     margin-left: calc(var(--imagePreviewWidth) + 96px);
   }
+  ${({
+    theme: {
+      breakpoints: { l },
+    },
+  }) => l} {
+    align-items: center;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    margin-bottom: 140px;
+  }
+  ${({
+    theme: {
+      breakpoints: { sm },
+    },
+  }) => sm} {
+    --imagePreviewWidth: 420px;
+    --imagePreviewHeight: 260px;
+      margin-bottom: 80px;
+}
+  ${({
+    theme: {
+      breakpoints: { sm },
+    },
+  }) => sm} {
+    --imagePreviewWidth: 340px;
+    --imagePreviewHeight: 220px;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    width: 100%;
+    --imagePreviewWidth: 280px;
+    --imagePreviewHeight: 200px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    width: 100%;
+    --imagePreviewWidth: 260px;
+    --imagePreviewHeight: 180px;
+  }
 `
 
 const ProjectLink = styled.a`
@@ -56,15 +105,36 @@ const ImagesWrapper = styled.div`
   }) => xl} {
     --imagesWrapperMarginRight: 40px;
   }
+  ${({
+    theme: {
+      breakpoints: { l },
+    },
+  }) => l} {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 48px;
+    margin-top: 20px;
+  }
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 28px;
+    margin-top: 20px;
+  }
 `
 
 interface IImgStyleProps {
-  imgOffsetX: string
-  imgOffsetY: string
   imgIndex: number
 }
 const ProjectImage = styled.img<IImgStyleProps>`
   --imageOffsetX: 28px;
+  --imageOffsetY: 28px;
 
   background: ${({ src }) => (src === '' ? '#4a769d' : 'transparent')};
   border-radius: 24px;
@@ -75,10 +145,19 @@ const ProjectImage = styled.img<IImgStyleProps>`
   box-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1), 0px 20px 40px rgba(0, 0, 0, 0.2);
 
   position: absolute;
-  top: ${({ imgOffsetY }) => imgOffsetY};
+  top: calc(${({ imgIndex }) => imgIndex} * var(--imageOffsetY));
   left: calc((var(--imageOffsetX) * -1) * ${({ imgIndex }) => imgIndex});
 
   opacity: ${({ imgIndex }) => (imgIndex === 1 ? 1 : 0.2)};
+
+  ${({
+    theme: {
+      breakpoints: { xxs },
+    },
+  }) => xxs} {
+    --imageOffsetX: 14px;
+    --imageOffsetY: 14px;
+  }
 `
 
 /**
@@ -96,13 +175,8 @@ function Project(props: IProjectProps) {
       >
         {name}
       </Typography>
-
-      <ProjectLink href={link.href} target="_blank">
-        <Typography mB="22px" fontSize="16px" weight={TypographyWeight.Light}>
-          {link.label}
-        </Typography>
-      </ProjectLink>
       <WithGlow
+        style={css``}
         shadows={[
           {
             offsetX: 0,
@@ -133,28 +207,64 @@ function Project(props: IProjectProps) {
               }) => xl} {
                 --shadowOffset: 60px;
               }
+              ${({
+                theme: {
+                  breakpoints: { l },
+                },
+              }) => l} {
+                top: 25%;
+                left: 47%;
+              }
             `,
           },
         ]}
       >
         <ImagesWrapper>
           {images.map(({ alt, href }, i) => (
-            <ProjectImage
-              imgIndex={i}
-              imgOffsetX={`${i * 95}px`}
-              imgOffsetY={`${i * 28}px`}
-              key={href}
-              alt={alt}
-              src={href}
-            />
+            <ProjectImage imgIndex={i} key={href} alt={alt} src={href} />
           ))}
         </ImagesWrapper>
       </WithGlow>
+      <ProjectLink href={link.href} target="_blank">
+        <Typography mB="22px" fontSize="16px" weight={TypographyWeight.Light}>
+          {link.label}
+        </Typography>
+      </ProjectLink>
+
       <Typography
         fontSize="20px"
         color="#88839A"
         width="380px"
         weight={TypographyWeight.Regular}
+        customStyles={css`
+          ${({
+            theme: {
+              breakpoints: { l },
+            },
+          }) => l} {
+            text-align: center;
+            width: var(--imagePreviewWidth);
+            padding: 0 10px;
+          }
+          ${({
+            theme: {
+              breakpoints: { sm },
+            },
+          }) => sm} {
+            text-align: center;
+            width: 80%;
+            //padding: 0 10px;
+          }
+          ${({
+            theme: {
+              breakpoints: { xs },
+            },
+          }) => xs} {
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+          }
+        `}
       >
         {description}
       </Typography>

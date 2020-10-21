@@ -21,7 +21,7 @@ const Root = styled.div`
   align-items: center;
   background: linear-gradient(118.15deg, #0e1a35 0.44%, #060d1e 98.94%);
   width: 100%;
-  padding: 130px;
+  padding: 130px 0;
   position: relative;
   overflow: hidden;
 `
