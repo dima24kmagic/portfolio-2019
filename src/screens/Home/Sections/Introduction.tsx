@@ -9,7 +9,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from '../../../components/StyledComponents'
-import heroImage from '../../../res/images/myPic.jpeg'
+import heroImage from '../../../res/images/myPic-min.jpeg'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 import InitiativeButtons from './components/InitiativeButtons'
 

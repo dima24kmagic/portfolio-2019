@@ -9,6 +9,16 @@ import {
 } from '../../../components/StyledComponents'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 
+import apiIcon from '../../../res/icons/api-min.png'
+import cssIcon from '../../../res/icons/css.png'
+import figmaIcon from '../../../res/icons/figma-min.png'
+import gitIcon from '../../../res/icons/git-min.png'
+import jsIcon from '../../../res/icons/js-min.png'
+import languagesIcon from '../../../res/icons/languages-min.png'
+import nodeIcon from '../../../res/icons/nodejs-min.png'
+import reactIcon from '../../../res/icons/react-min.png'
+import testingIcon from '../../../res/icons/testing.png'
+
 export interface ISkillsProps {}
 
 const Root = styled.div`
@@ -211,55 +221,47 @@ const skills: ISkillProps[] = [
   {
     name: 'React',
     description: 'Redux, Hooks, tests, animation, styleld, Apollo, material-ui',
-    logoHref:
-      'https://icons-for-free.com/iconfiles/png/512/design+development+facebook+framework+mobile+react+icon-1320165723839064798.png',
+    logoHref: reactIcon,
   },
   {
     name: 'JavaScript',
     description: 'Typescript, async/await, promises, ES 6',
-    logoHref:
-      'https://optimasolution.co.id/web/images/icon_software/javascript%20-%20Copy%20(3).png',
+    logoHref: jsIcon,
   },
   {
     name: 'Styling',
     description: 'Styled, css, sass, css-in-js, bootstrap, material-ui',
-    logoHref:
-      'https://cdn4.iconfinder.com/data/icons/iconsimple-programming/512/css-512.png',
+    logoHref: cssIcon,
   },
   {
     name: 'API integration',
     description: 'Async endpoints calls, GraphQL queries',
-    logoHref: 'https://image.flaticon.com/icons/png/512/1485/1485231.png',
+    logoHref: apiIcon,
   },
   {
     name: 'Design',
     description: 'Worked and create with Figma, AdobeXD. Used Abstract',
-    logoHref:
-      'https://i.pinimg.com/originals/66/8c/cc/668cccb3f734f342e07c0185e6d9a975.png',
+    logoHref: figmaIcon,
   },
   {
     name: 'Testing',
     description: 'Unit, Integration tests, jest, enzyme, react-testing-library',
-    logoHref:
-      'https://raw.githubusercontent.com/testing-library/react-testing-library/master/other/goat.png',
+    logoHref: testingIcon,
   },
   {
     name: 'NodeJS',
     description: 'Working with the endpoints, transforming and storing data',
-    logoHref:
-      'https://cdn4.iconfinder.com/data/icons/logos-3/504/node_js-512.png',
+    logoHref: nodeIcon,
   },
   {
     name: 'Languages',
     description: 'English (C1) + Russian (native), Want to learn Spanish',
-    logoHref:
-      'https://cdn2.iconfinder.com/data/icons/new-year-resolutions/64/resolutions-06-512.png',
+    logoHref: languagesIcon,
   },
   {
     name: 'Git + WMS',
     description: 'Github, gitlab, jira, asana, redmine (please no god)',
-    logoHref:
-      'https://icons-for-free.com/iconfiles/png/512/code+collaboration+github+network+round+social+icon-1320086084536018107.png',
+    logoHref: gitIcon,
   },
 ]
 

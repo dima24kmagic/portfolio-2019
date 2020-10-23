@@ -6,12 +6,12 @@ import {
   TypographyWeight,
 } from '../../../../components/StyledComponents'
 import Project, { IProjectProps } from './components/Project'
-import ricexPic1 from '../../../../res/images/riceex1.png'
-import ricexPic2 from '../../../../res/images/ricex2.png'
-import roundRushPic1 from '../../../../res/images/roundrush_board-1.png'
-import roundRushPic2 from '../../../../res/images/roundrush_leaderboard.png'
-import TRPic1 from '../../../../res/images/TR1.png'
-import TRPic2 from '../../../../res/images/TR2.png'
+import ricexPic1 from '../../../../res/images/riceex1-min.png'
+import ricexPic2 from '../../../../res/images/ricex2-min.png'
+import roundRushPic1 from '../../../../res/images/roundrush_board-1-min.png'
+import roundRushPic2 from '../../../../res/images/roundrush_leaderboard-min.png'
+import TRPic1 from '../../../../res/images/TR1-min.png'
+import TRPic2 from '../../../../res/images/TR2-min.png'
 
 export interface IPastProjectsProps {}
 
