@@ -60,10 +60,10 @@ const ContactOption = ({
   return (
     <Root>
       <ValueToCopy
+        defaultValue={copyValue}
         tabIndex={-1}
         aria-hidden="true"
         ref={textAreaRef}
-        value={copyValue}
       />
       <a href={href} {...options}>
         <GradientTypography

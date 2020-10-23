@@ -17,14 +17,14 @@ const BGOverlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(21, 21, 21, 0.75);
   z-index: 95;
 `
 
-const Root = styled.div`
+const Root = styled.dialog`
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -190,19 +190,25 @@ const contactOptions: IContactOptionProps[] = [
  */
 function ContactModal(props: IContactModalProps) {
   const { onClose } = props
-  const rootRef = useRef<HTMLDivElement>()
+  const rootRef = useRef<HTMLDialogElement>()
   useEffect(() => {
     rootRef.current.focus()
   })
   const handleKeyDown = (e) => {
-    console.log(e.key)
     if (e.key === 'Escape') {
       onClose()
     }
   }
+  const preventClosingOnClick = (e) => {
+    e.stopPropagation()
+  }
+
+  // TODO: Trap focus in dialog only
+  // TODO: Animate dialog
   return (
-    <>
+    <BGOverlay onClick={onClose}>
       <Root
+        onClick={preventClosingOnClick}
         onKeyDown={handleKeyDown}
         aria-modal="true"
         role="dialog"
@@ -266,8 +272,7 @@ function ContactModal(props: IContactModalProps) {
           ))}
         </ContactOptionsWrapper>
       </Root>
-      <BGOverlay onClick={onClose} />
-    </>
+    </BGOverlay>
   )
 }
 
