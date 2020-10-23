@@ -194,9 +194,16 @@ function ContactModal(props: IContactModalProps) {
   useEffect(() => {
     rootRef.current.focus()
   })
+  const handleKeyDown = (e) => {
+    console.log(e.key)
+    if (e.key === 'Escape') {
+      onClose()
+    }
+  }
   return (
     <>
       <Root
+        onKeyDown={handleKeyDown}
         aria-modal="true"
         role="dialog"
         aria-labelledby="modalTitle"
@@ -259,7 +266,7 @@ function ContactModal(props: IContactModalProps) {
           ))}
         </ContactOptionsWrapper>
       </Root>
-      <BGOverlay />
+      <BGOverlay onClick={onClose} />
     </>
   )
 }
