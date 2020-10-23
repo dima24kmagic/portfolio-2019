@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import {
   Button,
+  GradientTypography,
   HighlightWord,
   ICustomStyles,
   ShadowLight,
@@ -47,9 +48,8 @@ const BG = styled.div`
   z-index: 0;
 `
 
-const TagsCloud = styled.span`
-  font-size: 115px;
-  color: rgba(255, 255, 255, 0.003);
+const TagsCloud = styled(GradientTypography)`
+  color: rgba(0, 57, 66, 0.1);
   font-weight: 900;
   text-align: center;
   width: 100%;
@@ -500,7 +500,16 @@ function Introduction(props: IIntorductionProps) {
           spread={30}
           borderRadius={60}
         />
-        <TagsCloud>
+        <TagsCloud
+          fontSize="115px"
+          weight={TypographyWeight.Black}
+          customStyles={css`
+            background: linear-gradient(
+              rgba(56, 64, 90, 0.1),
+              rgba(2, 7, 22, 0.1)
+            );
+          `}
+        >
           SOFTWARE ENGINEER FRONTEND DEVELOPER REACT JAVASCRIPT HTML SASS CSS
           ACCESSIBILITY EXPERIENCED NODEJS CODE REVIEW EPAM THOMSON REUTERS
         </TagsCloud>
