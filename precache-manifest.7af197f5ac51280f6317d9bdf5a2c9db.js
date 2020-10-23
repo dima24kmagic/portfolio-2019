@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cbf43700627acee04c1aab04eda9af8c",
+    "revision": "ebb1345e7933ff1a98128ac93b92a9eb",
     "url": "/portfolio-2019/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio-2019/static/js/2.98e8a62c.chunk.js"
   },
   {
-    "revision": "cc881a706dba2f41adcd",
-    "url": "/portfolio-2019/static/js/main.126e4e9b.chunk.js"
+    "revision": "15c6b732b31ae47636d9",
+    "url": "/portfolio-2019/static/js/main.99e1f1a7.chunk.js"
   },
   {
     "revision": "4fb87b7048656ba76863",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio-2019/static/media/myPic-min.6de0bec7.jpeg"
   },
   {
-    "revision": "4c8901dcf418650e80d72abce9c1b8e6",
-    "url": "/portfolio-2019/static/media/riceex1-min.4c8901dc.png"
+    "revision": "0e3682b678420afd0982a50533d546d1",
+    "url": "/portfolio-2019/static/media/riceex1-min.0e3682b6.jpg"
   },
   {
     "revision": "caa11bda4966ab0d2932143376802d1e",
