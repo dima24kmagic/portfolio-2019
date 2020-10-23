@@ -20,6 +20,14 @@ const Root = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 18px;
+
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    align-items: center;
+  }
 `
 
 const ValueToCopy = styled.textarea`
@@ -51,7 +59,12 @@ const ContactOption = ({
   }
   return (
     <Root>
-      <ValueToCopy tabIndex={-1} aria-hidden="true" ref={textAreaRef} value={copyValue} />
+      <ValueToCopy
+        tabIndex={-1}
+        aria-hidden="true"
+        ref={textAreaRef}
+        value={copyValue}
+      />
       <a href={href} {...options}>
         <GradientTypography
           customStyles={css`

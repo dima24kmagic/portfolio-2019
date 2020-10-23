@@ -37,6 +37,15 @@ const Root = styled.div`
   box-shadow: 0px 77px 179px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 100;
+  outline: none;
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const SidePanel = styled.div`
@@ -44,14 +53,14 @@ const SidePanel = styled.div`
   height: 100%;
   background: linear-gradient(171.72deg, #7959d6 0%, #751644 97.85%);
   box-shadow: 8px 0px 32px #929292;
-  border-radius: 8px 0px 0px 8px;
 
   ${({
     theme: {
-      breakpoints: { sm },
+      breakpoints: { md },
     },
-  }) => sm} {
-    display: none;
+  }) => md} {
+    width: 100%;
+    height: 72px;
   }
 `
 
@@ -60,6 +69,26 @@ const ContactOptionsWrapper = styled.div`
   flex-direction: column;
   margin-left: 76px;
   margin-top: 90px;
+
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    margin-top: 54px;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { xs },
+    },
+  }) => xs} {
+    margin-top: 38px;
+    margin-left: 0;
+    align-items: center;
+  }
 `
 
 const CloseButton = styled(Button)<IButtonProps>`
@@ -77,6 +106,19 @@ const CloseButton = styled(Button)<IButtonProps>`
   &:hover,
   &:focus {
     --closeButtonContentColor: #212121;
+  }
+
+  ${({
+    theme: {
+      breakpoints: { md },
+    },
+  }) => md} {
+    --closeButtonContentColor: #e3e3e3;
+
+    &:hover,
+    &:focus {
+      --closeButtonContentColor: #ffffff;
+    }
   }
 `
 
@@ -148,20 +190,21 @@ const contactOptions: IContactOptionProps[] = [
  */
 function ContactModal(props: IContactModalProps) {
   const { onClose } = props
-  const closeButtonRef = useRef<HTMLButtonElement>()
+  const rootRef = useRef<HTMLDivElement>()
   useEffect(() => {
-    closeButtonRef.current.focus()
+    rootRef.current.focus()
   })
   return (
     <>
-      <Root>
+      <Root
+        aria-modal="true"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        ref={rootRef}
+        tabIndex={0}
+      >
         <SidePanel />
-        <CloseButton
-          ref={closeButtonRef}
-          aria-labelledby="modalTitle"
-          onClick={onClose}
-          pure
-        >
+        <CloseButton onClick={onClose} pure>
           <Typography
             letterSpacing={5}
             fontSize="14px"
@@ -177,11 +220,37 @@ function ContactModal(props: IContactModalProps) {
         </CloseButton>
         <ContactOptionsWrapper>
           <Typography
+            tag="h4"
             id="modalTitle"
             color="#424242"
             fontSize="62px"
             mB="24px"
             weight={TypographyWeight.ExtraThin}
+            customStyles={css`
+              ${({
+                theme: {
+                  breakpoints: { l },
+                },
+              }) => l} {
+                font-size: 52px;
+              }
+
+              ${({
+                theme: {
+                  breakpoints: { xs },
+                },
+              }) => xs} {
+                font-size: 38px;
+              }
+
+              ${({
+                theme: {
+                  breakpoints: { xxs },
+                },
+              }) => xxs} {
+                font-size: 30px;
+              }
+            `}
           >
             Contact me with
           </Typography>

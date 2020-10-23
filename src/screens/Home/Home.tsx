@@ -22,7 +22,7 @@ const Root = styled.div`
  */
 function Home(props: IHomeProps) {
   const {} = props
-  const [isContactModalOpen, setContactModalOpen] = useState(false)
+  const [isContactModalOpen, setContactModalOpen] = useState(true)
   const handleToggleContactModal = () =>
     setContactModalOpen(!isContactModalOpen)
   return (
