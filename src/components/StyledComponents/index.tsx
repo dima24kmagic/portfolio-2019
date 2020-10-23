@@ -13,11 +13,13 @@ export enum TypographyColors {
   Secondary = 'rgba(136, 131, 154, 1)',
 }
 export enum TypographyWeight {
-  'Black' = '900',
-  'Bold' = '700',
-  'SemiBold' = '600',
+  ExtraThin = '100',
+  Thin = '200',
   'Light' = '300',
   'Regular' = '400',
+  'SemiBold' = '600',
+  'Bold' = '700',
+  'Black' = '900',
 }
 interface ITypographyProps {
   color?: TypographyColors | string
@@ -41,7 +43,7 @@ export const Typography = ({
   const Tag = styled[tag]`
     color: ${other.color};
     margin-bottom: ${other.mB};
-    letter-spacing: ${other.letterSpacing};
+    letter-spacing: ${other.letterSpacing}px;
     font-size: ${other.fontSize};
     font-weight: ${other.weight};
     width: ${other.width};
@@ -71,28 +73,47 @@ export const HighlightWord = styled.span`
   color: rgba(183, 174, 214, 1);
 `
 
-interface IButtonProps {
+export interface IButtonProps {
   width?: string
   background?: string
   bgHover?: string
   fontSize?: number
   fontWeight?: TypographyWeight
   customStyle?: ICustomStyles
+  pure?: boolean
 }
 export const Button = styled.button<IButtonProps>`
-  width: ${({ width = 'auto' }) => width};
-  background: ${({ background = '#171717' }) => background};
-  font-size: ${({ fontSize = 20 }) => fontSize}px;
-  font-weight: ${({ fontWeight = TypographyWeight.Regular }) => fontWeight};
-  color: #fff;
-  height: 52px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  --pureButtonPaddingX: 12px;
+  --pureButtonPaddingY: 4px;
 
-  &:hover {
-    background: ${({ bgHover = '#1a1a1a' }) => bgHover};
-  }
+  ${({ pure = false }) =>
+    !pure &&
+    css<IButtonProps>`
+      width: ${({ width = 'auto' }) => width};
+      background: ${({ background = '#171717' }) => background};
+      font-size: ${({ fontSize = 20 }) => fontSize}px;
+      font-weight: ${({ fontWeight = TypographyWeight.Regular }) => fontWeight};
+      color: #fff;
+      height: 52px;
+      border: none;
+      &:hover {
+        background: ${({ bgHover = '#1a1a1a' }) => bgHover};
+      }
+    `};
+
+  ${({ pure = false }) =>
+    pure &&
+    css<IButtonProps>`
+      background: transparent;
+      width: auto;
+      border: none;
+      &:focus {
+        outline: 1px solid #161616;
+      }
+    `};
+
+  cursor: pointer;
+  border-radius: 8px;
 
   transition: background-color 0.15s;
 

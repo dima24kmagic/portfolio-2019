@@ -7,7 +7,10 @@ import {
   TypographyWeight,
 } from '../../../../components/StyledComponents'
 
-export interface IInitiativeButtonsProps {}
+export interface IInitiativeButtonsProps {
+  onContactMeClick: () => void
+  isModalOpen: boolean
+}
 
 const ButtonsWrapper = styled.div`
   display: flex;
@@ -41,7 +44,7 @@ const Link = styled.a`
  * Buttons to initiate action
  */
 function InitiativeButtons(props: IInitiativeButtonsProps) {
-  const {} = props
+  const { onContactMeClick, isModalOpen } = props
   return (
     <ButtonsWrapper>
       <Link
@@ -93,9 +96,12 @@ function InitiativeButtons(props: IInitiativeButtonsProps) {
         or
       </Typography>
       <Button
+        aria-haspopup="true"
+        aria-expanded={isModalOpen}
         width="218px"
         background="#4B65EB"
         bgHover="#5670f3"
+        onClick={onContactMeClick}
         customStyle={css`
           ${({
             theme: {

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { ThemeProvider, withTheme } from 'styled-components'
 import AnimatedSwitch from '../components/AnimatedSwitch'
 import HomePage from '../screens/Home'
 import GlobalStyle from './GlobalStyles'
 import { theme } from '../theme/theme'
+import ContactModal from '../components/ContactModal/ContactModal'
 
 /**
  * App

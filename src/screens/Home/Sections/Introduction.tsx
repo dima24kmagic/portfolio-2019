@@ -13,7 +13,10 @@ import heroImage from '../../../res/images/myPic.jpeg'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 import InitiativeButtons from './components/InitiativeButtons'
 
-export interface IIntorductionProps {}
+export interface IIntorductionProps {
+  onContactMeClick: () => void
+  isModalOpen: boolean
+}
 
 const Root = styled.div`
   display: flex;
@@ -41,7 +44,7 @@ const BG = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
 `
 
 const TagsCloud = styled.span`
@@ -69,6 +72,7 @@ const TitleWrapper = styled.div`
   padding-top: 240px;
   width: auto;
   margin-left: calc(var(--profilePicSize-xxxl) * -1);
+  z-index: 1;
 
   ${({
     theme: {
@@ -236,7 +240,7 @@ export const Curve = styled.div`
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%) scaleY(1.5);
-
+  z-index: 1;
   ${({
     theme: {
       breakpoints: { md },
@@ -254,7 +258,7 @@ export const Curve = styled.div`
  * Intro section
  */
 function Introduction(props: IIntorductionProps) {
-  const {} = props
+  const { onContactMeClick, isModalOpen } = props
   return (
     <Root>
       <TitleWrapper>
@@ -421,7 +425,7 @@ function Introduction(props: IIntorductionProps) {
                 >
                   Passionate developer. Love good design, clean code,
                   well-tested components. Looking for remote work opportunities
-                  also interested in immigrating to Canada.{' '}
+                  + interested in immigrating to Canada/USA.
                 </Typography>
               </SideNote>
               <ProfilePic />
@@ -465,7 +469,10 @@ function Introduction(props: IIntorductionProps) {
           reviewing. <br />
           Also doing <HighlightWord>NodeJS</HighlightWord>.
         </Typography>
-        <InitiativeButtons />
+        <InitiativeButtons
+          isModalOpen={isModalOpen}
+          onContactMeClick={onContactMeClick}
+        />
       </TitleWrapper>
       <Curve />
       <BG>

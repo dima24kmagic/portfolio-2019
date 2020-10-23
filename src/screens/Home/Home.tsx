@@ -1,10 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
 import Introduction from './Sections/Introduction'
 import Skills from './Sections/Skills'
 import PastProjects from './Sections/PastProjects'
 import Interested from './Sections/Interested'
 import Footer from '../../components/Footer'
+import ContactModal from '../../components/ContactModal/ContactModal'
 
 export interface IHomeProps {}
 
@@ -12,6 +13,8 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: auto;
+  position: relative;
 `
 
 /**
@@ -19,12 +22,24 @@ const Root = styled.div`
  */
 function Home(props: IHomeProps) {
   const {} = props
+  const [isContactModalOpen, setContactModalOpen] = useState(false)
+  const handleToggleContactModal = () =>
+    setContactModalOpen(!isContactModalOpen)
   return (
     <Root>
-      <Introduction />
+      {isContactModalOpen && (
+        <ContactModal onClose={handleToggleContactModal} />
+      )}
+      <Introduction
+        isModalOpen={isContactModalOpen}
+        onContactMeClick={handleToggleContactModal}
+      />
       <Skills />
       <PastProjects />
-      <Interested />
+      <Interested
+        isModalOpen={isContactModalOpen}
+        onContactMeClick={handleToggleContactModal}
+      />
       <Footer />
     </Root>
   )

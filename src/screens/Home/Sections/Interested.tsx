@@ -6,8 +6,12 @@ import {
   TypographyWeight,
 } from '../../../components/StyledComponents'
 import InitiativeButtons from './components/InitiativeButtons'
+import Introduction from './Introduction'
 
-export interface IInterestedProps {}
+export interface IInterestedProps {
+  onContactMeClick: () => void
+  isModalOpen: boolean
+}
 
 const Root = styled.div`
   display: flex;
@@ -37,7 +41,7 @@ const Root = styled.div`
  * Section for action initiation
  */
 function Interested(props: IInterestedProps) {
-  const {} = props
+  const { onContactMeClick, isModalOpen } = props
   return (
     <Root>
       <Typography
@@ -94,7 +98,10 @@ function Interested(props: IInterestedProps) {
       >
         to get more info
       </Typography>
-      <InitiativeButtons />
+      <InitiativeButtons
+        isModalOpen={isModalOpen}
+        onContactMeClick={onContactMeClick}
+      />
     </Root>
   )
 }
