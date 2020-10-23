@@ -4,6 +4,7 @@ import Introduction from './Sections/Introduction'
 import Skills from './Sections/Skills'
 import PastProjects from './Sections/PastProjects'
 import Interested from './Sections/Interested'
+import Footer from '../../components/Footer'
 
 export interface IHomeProps {}
 
@@ -24,6 +25,7 @@ function Home(props: IHomeProps) {
       <Skills />
       <PastProjects />
       <Interested />
+      <Footer />
     </Root>
   )
 }
