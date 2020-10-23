@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import ContactOption, { IContactOptionProps } from './components/ContactOption'
 import {
@@ -148,11 +148,20 @@ const contactOptions: IContactOptionProps[] = [
  */
 function ContactModal(props: IContactModalProps) {
   const { onClose } = props
+  const closeButtonRef = useRef<HTMLButtonElement>()
+  useEffect(() => {
+    closeButtonRef.current.focus()
+  })
   return (
     <>
       <Root>
         <SidePanel />
-        <CloseButton onClick={onClose} pure>
+        <CloseButton
+          ref={closeButtonRef}
+          aria-labelledby="modalTitle"
+          onClick={onClose}
+          pure
+        >
           <Typography
             letterSpacing={5}
             fontSize="14px"
@@ -168,6 +177,7 @@ function ContactModal(props: IContactModalProps) {
         </CloseButton>
         <ContactOptionsWrapper>
           <Typography
+            id="modalTitle"
             color="#424242"
             fontSize="62px"
             mB="24px"

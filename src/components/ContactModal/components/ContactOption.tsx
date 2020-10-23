@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled, { css } from 'styled-components'
 import {
   Button,
@@ -22,6 +22,16 @@ const Root = styled.div`
   margin-bottom: 18px;
 `
 
+const ValueToCopy = styled.textarea`
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+`
+
 /**
  * Contact option
  */
@@ -33,8 +43,15 @@ const ContactOption = ({
   copyLabel,
   copyValue,
 }: IContactOptionProps) => {
+  const textAreaRef = useRef<HTMLTextAreaElement>()
+  const handleCopy = () => {
+    textAreaRef.current.select()
+    document.execCommand('copy')
+    textAreaRef.current.blur()
+  }
   return (
     <Root>
+      <ValueToCopy tabIndex={-1} aria-hidden="true" ref={textAreaRef} value={copyValue} />
       <a href={href} {...options}>
         <GradientTypography
           customStyles={css`
@@ -51,6 +68,7 @@ const ContactOption = ({
         </GradientTypography>
       </a>
       <Button
+        onClick={handleCopy}
         pure
         customStyle={css`
           &:focus {

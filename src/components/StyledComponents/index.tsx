@@ -5,7 +5,7 @@ import styled, {
   DefaultTheme,
   css,
 } from 'styled-components'
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, HTMLAttributes } from 'react'
 
 export type ICustomStyles = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export enum TypographyColors {
@@ -21,7 +21,7 @@ export enum TypographyWeight {
   'Bold' = '700',
   'Black' = '900',
 }
-interface ITypographyProps {
+interface ITypographyProps extends HTMLAttributes<any> {
   color?: TypographyColors | string
   fontSize: string
   letterSpacing?: number
@@ -73,7 +73,7 @@ export const HighlightWord = styled.span`
   color: rgba(183, 174, 214, 1);
 `
 
-export interface IButtonProps {
+export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   width?: string
   background?: string
   bgHover?: string
