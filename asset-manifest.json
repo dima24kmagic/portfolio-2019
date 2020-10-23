@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.js": "/portfolio-2019/static/js/main.049956d5.chunk.js",
-    "main.js.map": "/portfolio-2019/static/js/main.049956d5.chunk.js.map",
+    "main.js": "/portfolio-2019/static/js/main.4a204c0e.chunk.js",
+    "main.js.map": "/portfolio-2019/static/js/main.4a204c0e.chunk.js.map",
     "runtime-main.js": "/portfolio-2019/static/js/runtime-main.3577c18b.js",
     "runtime-main.js.map": "/portfolio-2019/static/js/runtime-main.3577c18b.js.map",
-    "static/js/2.5647db73.chunk.js": "/portfolio-2019/static/js/2.5647db73.chunk.js",
-    "static/js/2.5647db73.chunk.js.map": "/portfolio-2019/static/js/2.5647db73.chunk.js.map",
+    "static/js/2.98e8a62c.chunk.js": "/portfolio-2019/static/js/2.98e8a62c.chunk.js",
+    "static/js/2.98e8a62c.chunk.js.map": "/portfolio-2019/static/js/2.98e8a62c.chunk.js.map",
     "index.html": "/portfolio-2019/index.html",
-    "precache-manifest.f2dd47ee582b94daa5cd7dae34c70132.js": "/portfolio-2019/precache-manifest.f2dd47ee582b94daa5cd7dae34c70132.js",
+    "precache-manifest.f89d82365914f061a0037907ebcaa9e9.js": "/portfolio-2019/precache-manifest.f89d82365914f061a0037907ebcaa9e9.js",
     "service-worker.js": "/portfolio-2019/service-worker.js",
     "static/media/PDF Portfolio.pdf": "/portfolio-2019/static/media/PDF Portfolio.b6c38a2a.pdf",
-    "static/media/TR1.png": "/portfolio-2019/static/media/TR1.aaa18cf9.png",
-    "static/media/TR2.png": "/portfolio-2019/static/media/TR2.d3286426.png",
-    "static/media/myPic.jpeg": "/portfolio-2019/static/media/myPic.1f82471f.jpeg",
-    "static/media/riceex1.png": "/portfolio-2019/static/media/riceex1.8adb587c.png",
-    "static/media/ricex2.png": "/portfolio-2019/static/media/ricex2.6bbbabeb.png",
-    "static/media/roundrush_board-1.png": "/portfolio-2019/static/media/roundrush_board-1.3d34e519.png",
-    "static/media/roundrush_leaderboard.png": "/portfolio-2019/static/media/roundrush_leaderboard.1830d4ab.png"
+    "static/media/TR1-min.png": "/portfolio-2019/static/media/TR1-min.588cc9be.png",
+    "static/media/TR2-min.png": "/portfolio-2019/static/media/TR2-min.2e4833af.png",
+    "static/media/api-min.png": "/portfolio-2019/static/media/api-min.ffeedaad.png",
+    "static/media/myPic-min.jpeg": "/portfolio-2019/static/media/myPic-min.6de0bec7.jpeg",
+    "static/media/riceex1-min.png": "/portfolio-2019/static/media/riceex1-min.4c8901dc.png",
+    "static/media/ricex2-min.png": "/portfolio-2019/static/media/ricex2-min.caa11bda.png",
+    "static/media/roundrush_board-1-min.png": "/portfolio-2019/static/media/roundrush_board-1-min.17841585.png",
+    "static/media/roundrush_leaderboard-min.png": "/portfolio-2019/static/media/roundrush_leaderboard-min.f2c4482b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3577c18b.js",
-    "static/js/2.5647db73.chunk.js",
-    "static/js/main.049956d5.chunk.js"
+    "static/js/2.98e8a62c.chunk.js",
+    "static/js/main.4a204c0e.chunk.js"
   ]
 }
