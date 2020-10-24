@@ -8,7 +8,7 @@ import {
 
 export interface IFooterProps {}
 
-const Root = styled.div`
+const Root = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,13 +23,13 @@ function Footer(props: IFooterProps) {
   const {} = props
   return (
     <Root>
+      {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
       <Typography
         color={TypographyColors.Secondary}
         weight={TypographyWeight.Light}
         fontSize="18px"
       >
-        {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-        Dzmitry Baranau (2020) <span role="img">❤️</span>
+        Dzmitry Baranau (2020) ❤️
       </Typography>
     </Root>
   )

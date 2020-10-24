@@ -19,7 +19,7 @@ export interface IIntorductionProps {
   isModalOpen: boolean
 }
 
-const Root = styled.div`
+const Root = styled.section`
   display: flex;
   justify-content: center;
   height: auto;

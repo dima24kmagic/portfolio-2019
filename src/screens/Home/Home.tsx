@@ -9,7 +9,7 @@ import ContactModal from '../../components/ContactModal/ContactModal'
 
 export interface IHomeProps {}
 
-const Root = styled.div`
+const Root = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;

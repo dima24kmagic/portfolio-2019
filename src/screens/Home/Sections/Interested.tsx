@@ -6,7 +6,6 @@ import {
   TypographyWeight,
 } from '../../../components/StyledComponents'
 import InitiativeButtons from './components/InitiativeButtons'
-import Introduction from './Introduction'
 import { theme } from '../../../theme/theme'
 
 export interface IInterestedProps {
@@ -14,7 +13,7 @@ export interface IInterestedProps {
   isModalOpen: boolean
 }
 
-const Root = styled.div`
+const Root = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +42,7 @@ function Interested(props: IInterestedProps) {
         color="#282828"
         textAlign="center"
         mB="14px"
+        tag="h2"
         customStyles={css`
           ${theme.breakpoints.sm} {
             font-size: 52px;

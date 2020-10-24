@@ -22,7 +22,7 @@ import { theme } from '../../../theme/theme'
 
 export interface ISkillsProps {}
 
-const Root = styled.div`
+const Root = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -250,7 +250,7 @@ function Skills(props: ISkillsProps) {
         `}
         weight={TypographyWeight.Black}
         fontSize="62px"
-        tag="span"
+        tag="h2"
         textAlign="center"
         width="fit-content"
         mB="24px"

@@ -16,7 +16,7 @@ import { theme } from '../../../../theme/theme'
 
 export interface IPastProjectsProps {}
 
-const Root = styled.div`
+const Root = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +105,7 @@ function PastProjects(props: IPastProjectsProps) {
         `}
         weight={TypographyWeight.Black}
         fontSize="62px"
-        tag="span"
+        tag="h2"
         textAlign="center"
         width="fit-content"
         mB="82px"
