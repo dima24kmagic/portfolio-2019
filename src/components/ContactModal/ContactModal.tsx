@@ -35,10 +35,12 @@ const Root = styled.dialog`
   max-height: 80vh;
   background: #fff;
   border-radius: 8px;
+  border: none;
   box-shadow: 0px 77px 179px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 100;
   outline: none;
+
   ${theme.breakpoints.md} {
     flex-direction: column;
     align-items: center;
