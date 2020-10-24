@@ -96,7 +96,7 @@ const Initials = styled.div`
   }
 `
 
-const ProfilePic = styled.div`
+const ProfilePic = styled.img`
   width: var(--profilePicSize-xxxl);
   height: var(--profilePicSize-xxxl);
   border-radius: 160px;
@@ -316,7 +316,10 @@ function Introduction(props: IIntorductionProps) {
                   + interested in immigrating to Canada/USA.
                 </Typography>
               </SideNote>
-              <ProfilePic />
+              <ProfilePic
+                src={heroImage}
+                alt="Dzmitry Baranau, Frontend developer"
+              />
             </>
           </WithGlow>
         </Initials>
