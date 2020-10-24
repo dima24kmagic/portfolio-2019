@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf4f08a639fff1c69d63ae943814103e",
+    "revision": "53afd25215ebcd0d26348d66a1b0bbdf",
     "url": "/portfolio-2019/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio-2019/static/js/2.98e8a62c.chunk.js"
   },
   {
-    "revision": "d3981cb77d299e477443",
-    "url": "/portfolio-2019/static/js/main.f1d14f29.chunk.js"
+    "revision": "db36c593354e07d9418e",
+    "url": "/portfolio-2019/static/js/main.94aa0721.chunk.js"
   },
   {
     "revision": "4fb87b7048656ba76863",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio-2019/static/media/myPic-min.6de0bec7.jpeg"
   },
   {
-    "revision": "4c8901dcf418650e80d72abce9c1b8e6",
-    "url": "/portfolio-2019/static/media/riceex1-min.4c8901dc.png"
+    "revision": "fc2d3a2d0c82b34f8cd16d35dee4e534",
+    "url": "/portfolio-2019/static/media/riceex1-min.fc2d3a2d.jpg"
   },
   {
     "revision": "caa11bda4966ab0d2932143376802d1e",
