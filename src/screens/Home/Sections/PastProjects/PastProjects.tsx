@@ -6,7 +6,7 @@ import {
   TypographyWeight,
 } from '../../../../components/StyledComponents'
 import Project, { IProjectProps } from './components/Project'
-import ricexPic1 from '../../../../res/images/riceex1-min.jpg'
+import ricexPic1 from '../../../../res/images/riceex1-min.png'
 import ricexPic2 from '../../../../res/images/ricex2-min.png'
 import roundRushPic1 from '../../../../res/images/roundrush_board-1-min.png'
 import roundRushPic2 from '../../../../res/images/roundrush_leaderboard-min.png'
