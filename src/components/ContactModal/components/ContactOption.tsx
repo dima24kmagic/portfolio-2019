@@ -5,6 +5,7 @@ import {
   GradientTypography,
   TypographyWeight,
 } from '../../StyledComponents'
+import { theme } from '../../../theme/theme'
 
 export interface IContactOptionProps {
   label: string
@@ -21,11 +22,7 @@ const Root = styled.div`
   align-items: flex-start;
   margin-bottom: 18px;
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     align-items: center;
   }
 `

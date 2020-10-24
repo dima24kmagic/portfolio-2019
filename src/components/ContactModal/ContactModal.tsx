@@ -7,6 +7,7 @@ import {
   Typography,
   TypographyWeight,
 } from '../StyledComponents'
+import { theme } from '../../theme/theme'
 
 export interface IContactModalProps {
   onClose: () => void
@@ -38,11 +39,7 @@ const Root = styled.dialog`
   overflow: hidden;
   z-index: 100;
   outline: none;
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     flex-direction: column;
     align-items: center;
   }
@@ -54,11 +51,7 @@ const SidePanel = styled.div`
   background: linear-gradient(171.72deg, #7959d6 0%, #751644 97.85%);
   box-shadow: 8px 0px 32px #929292;
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     width: 100%;
     height: 72px;
   }
@@ -70,21 +63,13 @@ const ContactOptionsWrapper = styled.div`
   margin-left: 76px;
   margin-top: 90px;
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     margin-top: 54px;
     margin-left: 0;
     align-items: center;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     margin-top: 38px;
     margin-left: 0;
     align-items: center;
@@ -108,11 +93,7 @@ const CloseButton = styled(Button)<IButtonProps>`
     --closeButtonContentColor: #212121;
   }
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     --closeButtonContentColor: #e3e3e3;
 
     &:hover,
@@ -240,27 +221,15 @@ function ContactModal(props: IContactModalProps) {
             mB="24px"
             weight={TypographyWeight.ExtraThin}
             customStyles={css`
-              ${({
-                theme: {
-                  breakpoints: { l },
-                },
-              }) => l} {
+              ${theme.breakpoints.l} {
                 font-size: 52px;
               }
 
-              ${({
-                theme: {
-                  breakpoints: { xs },
-                },
-              }) => xs} {
+              ${theme.breakpoints.xs} {
                 font-size: 38px;
               }
 
-              ${({
-                theme: {
-                  breakpoints: { xxs },
-                },
-              }) => xxs} {
+              ${theme.breakpoints.xxs} {
                 font-size: 30px;
               }
             `}

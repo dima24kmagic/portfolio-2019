@@ -12,9 +12,9 @@ import ContactModal from '../components/ContactModal/ContactModal'
  */
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
-      <AnimatedSwitch>
+      <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -24,8 +24,8 @@ function App() {
         <Route>
           <div>Oops, check your URL, seems this is wrong path;)</div>
         </Route>
-      </AnimatedSwitch>
-    </ThemeProvider>
+      </Switch>
+    </>
   )
 }
 

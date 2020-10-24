@@ -18,6 +18,7 @@ import languagesIcon from '../../../res/icons/languages-min.png'
 import nodeIcon from '../../../res/icons/nodejs-min.png'
 import reactIcon from '../../../res/icons/react-min.png'
 import testingIcon from '../../../res/icons/testing.png'
+import { theme } from '../../../theme/theme'
 
 export interface ISkillsProps {}
 
@@ -52,40 +53,24 @@ const SkillsWrapper = styled.div`
   border-radius: 64px;
   overflow: hidden;
 
-  ${({
-    theme: {
-      breakpoints: { l },
-    },
-  }) => l} {
+  ${theme.breakpoints.l} {
     width: 80%;
     border-radius: 24px;
     padding: 28px 0px 28px 32px;
   }
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     width: 90%;
     border-radius: 24px;
     padding: 64px 0px 28px 18px;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     width: 95%;
     border-radius: 24px;
     padding: 48px 0px 28px 0px;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     width: 95%;
     border-radius: 8px;
     padding: 48px 0px 28px 0px;
@@ -97,35 +82,19 @@ const SkillRoot = styled.div`
   margin-bottom: var(--skillCardMarginBottom);
   margin-right: 42px;
 
-  ${({
-    theme: {
-      breakpoints: { l },
-    },
-  }) => l} {
+  ${theme.breakpoints.l} {
     margin-bottom: 32px;
     margin-right: 32px;
   }
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     margin-bottom: 32px;
     margin-right: 18px;
   }
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     margin-bottom: 32px;
     margin-right: 0;
   }
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     margin-bottom: 32px;
     margin-right: 0;
   }
@@ -275,11 +244,7 @@ function Skills(props: ISkillsProps) {
       <GradientTypography
         customStyles={css`
           background: linear-gradient(-10deg, #2bb0da 30%, #3c4de7);
-          ${({
-            theme: {
-              breakpoints: { xs },
-            },
-          }) => xs} {
+          ${theme.breakpoints.xs} {
             font-size: 44px;
           }
         `}

@@ -6,6 +6,7 @@ import {
   TypographyWeight,
 } from '../../../../../components/StyledComponents'
 import WithGlow from '../../../../../components/WithGlow/WithGlow'
+import { theme } from '../../../../../theme/theme'
 
 export interface IProjectProps {
   name: string
@@ -25,20 +26,12 @@ const Root = styled.div`
   margin-left: calc(var(--imagePreviewWidth) + 96px);
   margin-bottom: 220px;
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     --imagePreviewWidth: 520px;
     --imagePreviewHeight: 320px;
     margin-left: calc(var(--imagePreviewWidth) + 96px);
   }
-  ${({
-    theme: {
-      breakpoints: { l },
-    },
-  }) => l} {
+  ${theme.breakpoints.l} {
     align-items: center;
 
     position: relative;
@@ -47,38 +40,22 @@ const Root = styled.div`
     margin-left: 0;
     margin-bottom: 140px;
   }
-  ${({
-    theme: {
-      breakpoints: { sm },
-    },
-  }) => sm} {
+  ${theme.breakpoints.sm} {
     --imagePreviewWidth: 420px;
     --imagePreviewHeight: 260px;
       margin-bottom: 80px;
 }
-  ${({
-    theme: {
-      breakpoints: { sm },
-    },
-  }) => sm} {
+  ${theme.breakpoints.sm} {
     --imagePreviewWidth: 340px;
     --imagePreviewHeight: 220px;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     width: 100%;
     --imagePreviewWidth: 280px;
     --imagePreviewHeight: 200px;
   }
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     width: 100%;
     --imagePreviewWidth: 260px;
     --imagePreviewHeight: 180px;
@@ -98,29 +75,17 @@ const ImagesWrapper = styled.div`
   width: var(--imagePreviewWidth);
   height: var(--imagePreviewHeight);
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     --imagesWrapperMarginRight: 40px;
   }
-  ${({
-    theme: {
-      breakpoints: { l },
-    },
-  }) => l} {
+  ${theme.breakpoints.l} {
     position: relative;
     top: 0;
     left: 0;
     margin-bottom: 48px;
     margin-top: 20px;
   }
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     position: relative;
     top: 0;
     left: 0;
@@ -150,11 +115,7 @@ const ProjectImage = styled.img<IImgStyleProps>`
 
   opacity: ${({ imgIndex }) => (imgIndex === 1 ? 1 : 0.2)};
 
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     --imageOffsetX: 14px;
     --imageOffsetY: 14px;
   }
@@ -200,18 +161,10 @@ function Project(props: IProjectProps) {
               height: calc(var(--imagePreviewHeight) - 50px);
               top: 50%;
 
-              ${({
-                theme: {
-                  breakpoints: { xl },
-                },
-              }) => xl} {
+              ${theme.breakpoints.xl} {
                 --shadowOffset: 60px;
               }
-              ${({
-                theme: {
-                  breakpoints: { l },
-                },
-              }) => l} {
+              ${theme.breakpoints.l} {
                 top: 25%;
                 left: 47%;
               }
@@ -237,29 +190,17 @@ function Project(props: IProjectProps) {
         width="380px"
         weight={TypographyWeight.Regular}
         customStyles={css`
-          ${({
-            theme: {
-              breakpoints: { l },
-            },
-          }) => l} {
+          ${theme.breakpoints.l} {
             text-align: center;
             width: var(--imagePreviewWidth);
             padding: 0 10px;
           }
-          ${({
-            theme: {
-              breakpoints: { sm },
-            },
-          }) => sm} {
+          ${theme.breakpoints.sm} {
             text-align: center;
             width: 80%;
             //padding: 0 10px;
           }
-          ${({
-            theme: {
-              breakpoints: { xs },
-            },
-          }) => xs} {
+          ${theme.breakpoints.xs} {
             text-align: center;
             width: 100%;
             padding: 0 10px;

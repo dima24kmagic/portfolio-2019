@@ -12,6 +12,7 @@ import roundRushPic1 from '../../../../res/images/roundrush_board-1-min.png'
 import roundRushPic2 from '../../../../res/images/roundrush_leaderboard-min.png'
 import TRPic1 from '../../../../res/images/TR1-min.png'
 import TRPic2 from '../../../../res/images/TR2-min.png'
+import { theme } from '../../../../theme/theme'
 
 export interface IPastProjectsProps {}
 
@@ -25,11 +26,7 @@ const Root = styled.div`
   position: relative;
   overflow: hidden;
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     padding: 130px 0 0px;
   }
 `
@@ -92,33 +89,17 @@ function PastProjects(props: IPastProjectsProps) {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           color: red;
-          ${({
-            theme: {
-              breakpoints: { l },
-            },
-          }) => l} {
+          ${theme.breakpoints.l} {
             margin-bottom: 52px;
           }
-          ${({
-            theme: {
-              breakpoints: { sm },
-            },
-          }) => sm} {
+          ${theme.breakpoints.sm} {
             margin-bottom: 32px;
           }
-          ${({
-            theme: {
-              breakpoints: { xs },
-            },
-          }) => xs} {
+          ${theme.breakpoints.xs} {
             font-size: 44px;
             margin-bottom: 22px;
           }
-          ${({
-            theme: {
-              breakpoints: { xxs },
-            },
-          }) => xxs} {
+          ${theme.breakpoints.xxs} {
             font-size: 40px;
           }
         `}

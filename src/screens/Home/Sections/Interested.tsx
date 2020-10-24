@@ -7,6 +7,7 @@ import {
 } from '../../../components/StyledComponents'
 import InitiativeButtons from './components/InitiativeButtons'
 import Introduction from './Introduction'
+import { theme } from '../../../theme/theme'
 
 export interface IInterestedProps {
   onContactMeClick: () => void
@@ -21,18 +22,10 @@ const Root = styled.div`
   padding: 95px 0;
   height: 480px;
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     padding: 64px 0;
   }
-  ${({
-    theme: {
-      breakpoints: { sm },
-    },
-  }) => sm} {
+  ${theme.breakpoints.sm} {
     padding: 52px 0;
   }
 `
@@ -51,19 +44,11 @@ function Interested(props: IInterestedProps) {
         textAlign="center"
         mB="14px"
         customStyles={css`
-          ${({
-            theme: {
-              breakpoints: { sm },
-            },
-          }) => sm} {
+          ${theme.breakpoints.sm} {
             font-size: 52px;
             margin-bottom: 10px;
           }
-          ${({
-            theme: {
-              breakpoints: { xxs },
-            },
-          }) => xxs} {
+          ${theme.breakpoints.xxs} {
             font-size: 48px;
             margin-bottom: 10px;
           }
@@ -78,19 +63,11 @@ function Interested(props: IInterestedProps) {
         textAlign="center"
         mB="52px"
         customStyles={css`
-          ${({
-            theme: {
-              breakpoints: { sm },
-            },
-          }) => sm} {
+          ${theme.breakpoints.sm} {
             font-size: 20px;
             margin-bottom: 52px;
           }
-          ${({
-            theme: {
-              breakpoints: { xxs },
-            },
-          }) => xxs} {
+          ${theme.breakpoints.xxs} {
             font-size: 18px;
             margin-bottom: 44px;
           }

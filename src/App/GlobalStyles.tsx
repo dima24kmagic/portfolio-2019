@@ -14,7 +14,8 @@ const GlobalStyle = () => {
     segoe ui, arial;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
- }
+    user-select: text !important;
+}
   html, 
   body {
     margin: 0;

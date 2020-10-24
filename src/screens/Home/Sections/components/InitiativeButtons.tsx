@@ -6,6 +6,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from '../../../../components/StyledComponents'
+import { theme } from '../../../../theme/theme'
 
 export interface IInitiativeButtonsProps {
   onContactMeClick: () => void
@@ -18,22 +19,14 @@ const ButtonsWrapper = styled.div`
   justify-content: space-between;
   width: 480px;
 
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     width: 80%;
     flex-direction: column;
   }
 `
 
 const Link = styled.a`
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     width: 100%;
     background: #0b0b0b;
     border-radius: 8px;
@@ -56,11 +49,7 @@ function InitiativeButtons(props: IInitiativeButtonsProps) {
           tabIndex={-1}
           width="218px"
           customStyle={css`
-            ${({
-              theme: {
-                breakpoints: { md },
-              },
-            }) => md} {
+            ${theme.breakpoints.md} {
               width: 100%;
               background: #0b0b0b;
             }
@@ -79,11 +68,7 @@ function InitiativeButtons(props: IInitiativeButtonsProps) {
       <Typography
         customStyles={css`
           z-index: 10;
-          ${({
-            theme: {
-              breakpoints: { md },
-            },
-          }) => md} {
+          ${theme.breakpoints.md} {
             margin-bottom: 8px;
             margin-top: 8px;
           }
@@ -103,11 +88,7 @@ function InitiativeButtons(props: IInitiativeButtonsProps) {
         bgHover="#5670f3"
         onClick={onContactMeClick}
         customStyle={css`
-          ${({
-            theme: {
-              breakpoints: { md },
-            },
-          }) => md} {
+          ${theme.breakpoints.md} {
             width: 100%;
           }
         `}

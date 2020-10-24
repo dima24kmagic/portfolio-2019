@@ -1,7 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Button,
   GradientTypography,
   HighlightWord,
   ICustomStyles,
@@ -13,6 +12,7 @@ import {
 import heroImage from '../../../res/images/myPic-min.jpeg'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 import InitiativeButtons from './components/InitiativeButtons'
+import { theme } from '../../../theme/theme'
 
 export interface IIntorductionProps {
   onContactMeClick: () => void
@@ -29,11 +29,7 @@ const Root = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     padding-bottom: 180px;
   }
 `
@@ -74,30 +70,18 @@ const TitleWrapper = styled.div`
   margin-left: calc(var(--profilePicSize-xxxl) * -1);
   z-index: 1;
 
-  ${({
-    theme: {
-      breakpoints: { xxl },
-    },
-  }) => xxl} {
+  ${theme.breakpoints.xxl} {
     margin-left: calc(var(--profilePicSize-xxl) * -1);
   }
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     margin-left: 0;
     padding-left: 0;
     padding-top: 60px;
     align-items: center;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     width: 100%;
   }
 `
@@ -107,11 +91,7 @@ const Initials = styled.div`
   flex-direction: column;
   position: relative;
 
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     align-items: center;
   }
 `
@@ -126,46 +106,26 @@ const ProfilePic = styled.div`
   background-size: cover;
   position: relative;
 
-  ${({
-    theme: {
-      breakpoints: { xxl },
-    },
-  }) => xxl} {
+  ${theme.breakpoints.xxl} {
     width: var(--profilePicSize-xxl);
     height: var(--profilePicSize-xxl);
     border-radius: 120px;
   }
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     border-radius: 100px;
   }
-  ${({
-    theme: {
-      breakpoints: { sm },
-    },
-  }) => sm} {
+  ${theme.breakpoints.sm} {
     width: 100%;
     height: 90vw;
     border-radius: 30px;
   }
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     width: 100%;
     height: 300px;
     border-radius: 30px;
   }
 
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     width: 100%;
     height: 250px;
     border-radius: 30px;
@@ -187,44 +147,24 @@ const SideNote = styled.div`
   border-bottom-right-radius: 160px;
   border-bottom-left-radius: 160px;
 
-  ${({
-    theme: {
-      breakpoints: { xxl },
-    },
-  }) => xxl} {
+  ${theme.breakpoints.xxl} {
     border-bottom-right-radius: 120px;
     border-bottom-left-radius: 120px;
   }
-  ${({
-    theme: {
-      breakpoints: { xl },
-    },
-  }) => xl} {
+  ${theme.breakpoints.xl} {
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
   }
-  ${({
-    theme: {
-      breakpoints: { sm },
-    },
-  }) => sm} {
+  ${theme.breakpoints.sm} {
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
   }
-  ${({
-    theme: {
-      breakpoints: { xs },
-    },
-  }) => xs} {
+  ${theme.breakpoints.xs} {
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     padding: 10px 0;
   }
-  ${({
-    theme: {
-      breakpoints: { xxs },
-    },
-  }) => xxs} {
+  ${theme.breakpoints.xxs} {
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     padding: 10px 0;
@@ -241,11 +181,7 @@ export const Curve = styled.div`
   left: 50%;
   transform: translateX(-50%) scaleY(1.5);
   z-index: 1;
-  ${({
-    theme: {
-      breakpoints: { md },
-    },
-  }) => md} {
+  ${theme.breakpoints.md} {
     transform: translateX(-50%) scaleY(1);
     bottom: -38px;
     height: 90px;
@@ -270,18 +206,10 @@ function Introduction(props: IIntorductionProps) {
             letterSpacing={2}
             mB="6px"
             customStyles={css`
-              ${({
-                theme: {
-                  breakpoints: { xl },
-                },
-              }) => xl} {
+              ${theme.breakpoints.xl} {
                 text-align: center;
               }
-              ${({
-                theme: {
-                  breakpoints: { xxs },
-                },
-              }) => xxs} {
+              ${theme.breakpoints.xxs} {
                 font-size: 14px;
               }
             `}
@@ -295,27 +223,15 @@ function Introduction(props: IIntorductionProps) {
             weight={TypographyWeight.Bold}
             customStyles={css`
               z-index: 10;
-              ${({
-                theme: {
-                  breakpoints: { xl },
-                },
-              }) => xl} {
+              ${theme.breakpoints.xl} {
                 text-align: center;
               }
 
-              ${({
-                theme: {
-                  breakpoints: { xs },
-                },
-              }) => xs} {
+              ${theme.breakpoints.xs} {
                 font-size: 68px;
                 line-height: 62px;
               }
-              ${({
-                theme: {
-                  breakpoints: { xxs },
-                },
-              }) => xxs} {
+              ${theme.breakpoints.xxs} {
                 font-size: 48px;
                 line-height: 44px;
               }
@@ -331,39 +247,19 @@ function Introduction(props: IIntorductionProps) {
               top: -100px;
               justify-content: center;
               display: flex;
-              ${({
-                theme: {
-                  breakpoints: { xxs },
-                },
-              }) => xxs} {
+              ${theme.breakpoints.xxs} {
                 margin-bottom: 24px;
               }
-              ${({
-                theme: {
-                  breakpoints: { xs },
-                },
-              }) => xs} {
+              ${theme.breakpoints.xs} {
                 margin-bottom: 24px;
               }
-              ${({
-                theme: {
-                  breakpoints: { sm },
-                },
-              }) => sm} {
+              ${theme.breakpoints.sm} {
                 margin-bottom: 24px;
                 width: 80%;
               }
-              ${({
-                theme: {
-                  breakpoints: { md },
-                },
-              }) => md} {
+              ${theme.breakpoints.md} {
               }
-              ${({
-                theme: {
-                  breakpoints: { xl },
-                },
-              }) => xl} {
+              ${theme.breakpoints.xl} {
                 position: relative;
                 top: 0;
                 left: 0;
@@ -405,19 +301,11 @@ function Introduction(props: IIntorductionProps) {
                     width: 80%;
                     margin: 0 auto;
                     line-height: 28px;
-                    ${({
-                      theme: {
-                        breakpoints: { sm },
-                      },
-                    }) => sm} {
+                    ${theme.breakpoints.sm} {
                       font-size: 16px;
                       line-height: 22px;
                     }
-                    ${({
-                      theme: {
-                        breakpoints: { xxs },
-                      },
-                    }) => xxs} {
+                    ${theme.breakpoints.xxs} {
                       font-size: 14px;
                       line-height: 20px;
                     }
@@ -441,26 +329,14 @@ function Introduction(props: IIntorductionProps) {
           mB="58px"
           customStyles={css`
             z-index: 10;
-            ${({
-              theme: {
-                breakpoints: { xxs },
-              },
-            }) => xxs} {
+            ${theme.breakpoints.xxs} {
               width: 100%;
               font-size: 20px;
             }
-            ${({
-              theme: {
-                breakpoints: { sm },
-              },
-            }) => sm} {
+            ${theme.breakpoints.sm} {
               width: 100%;
             }
-            ${({
-              theme: {
-                breakpoints: { xl },
-              },
-            }) => xl} {
+            ${theme.breakpoints.xl} {
               text-align: center;
             }
           `}
@@ -508,6 +384,7 @@ function Introduction(props: IIntorductionProps) {
               rgba(56, 64, 90, 0.1),
               rgba(2, 7, 22, 0.1)
             );
+            user-select: none !important;
           `}
         >
           SOFTWARE ENGINEER FRONTEND DEVELOPER REACT JAVASCRIPT HTML SASS CSS
