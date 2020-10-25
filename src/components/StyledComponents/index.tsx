@@ -1,11 +1,10 @@
 import styled, {
-  FlattenSimpleInterpolation,
+  css,
+  DefaultTheme,
   FlattenInterpolation,
   ThemeProps,
-  DefaultTheme,
-  css,
 } from 'styled-components'
-import React, { CSSProperties, HTMLAttributes } from 'react'
+import React, { HTMLAttributes } from 'react'
 
 export type ICustomStyles = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export enum TypographyColors {
@@ -29,27 +28,31 @@ interface ITypographyProps extends HTMLAttributes<any> {
   mB?: string
   width?: string
   children?: any
-  tag?: string
+  tag?: any
   textAlign?: string
   customStyles?: ICustomStyles
 }
+const Text = styled.p<ITypographyProps>`
+  color: ${({ color }) => color};
+  margin-bottom: ${({ mB }) => mB};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing}px;
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ weight }) => weight};
+  width: ${({ width }) => width};
+  text-align: ${({ textAlign }) => textAlign};
+  ${({ customStyles }) => customStyles};
+`
 export const Typography = ({
   children = '',
   tag = 'p',
   customStyles,
   ...other
 }: ITypographyProps) => {
-  const Tag = styled[tag]`
-    color: ${other.color};
-    margin-bottom: ${other.mB};
-    letter-spacing: ${other.letterSpacing}px;
-    font-size: ${other.fontSize};
-    font-weight: ${other.weight};
-    width: ${other.width};
-    text-align: ${other.textAlign};
-    ${customStyles};
-  `
-  return <Tag>{children}</Tag>
+  return (
+    <Text {...other} customStyles={customStyles} as={tag}>
+      {children}
+    </Text>
+  )
 }
 
 export const GradientTypography = ({
