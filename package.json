@@ -176,13 +176,7 @@
     "plugins": [
       [
         "babel-plugin-styled-components",
-        {
-          "fileName": false,
-          "displayName": false,
-          "minify": true,
-          "transpileTemplateLiterals": true,
-          "pure": true
-        }
+        {}
       ]
     ]
   }
