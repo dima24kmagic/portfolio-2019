@@ -36,10 +36,9 @@ interface ITypographyProps extends HTMLAttributes<any> {
 export const Typography = ({
   children = '',
   tag = 'p',
-  customStyles = [''],
+  customStyles,
   ...other
 }: ITypographyProps) => {
-  // @ts-ignore
   const Tag = styled[tag]`
     color: ${other.color};
     margin-bottom: ${other.mB};
@@ -48,7 +47,7 @@ export const Typography = ({
     font-weight: ${other.weight};
     width: ${other.width};
     text-align: ${other.textAlign};
-    ${customStyles}
+    ${customStyles};
   `
   return <Tag>{children}</Tag>
 }
