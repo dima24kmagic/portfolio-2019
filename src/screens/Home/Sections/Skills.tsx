@@ -18,6 +18,7 @@ import languagesIcon from '../../../res/icons/languages-min.png'
 import nodeIcon from '../../../res/icons/nodejs-min.png'
 import reactIcon from '../../../res/icons/react-min.png'
 import testingIcon from '../../../res/icons/testing.png'
+import cardGlow from '../../../res/images/card-glow-min.png'
 import { theme } from '../../../theme/theme'
 
 export interface ISkillsProps {}
@@ -44,7 +45,8 @@ const SkillsWrapper = styled.div`
   width: 70%;
   height: auto;
   // 82px is padding top, 51 is skill card height
-  padding: var(--skillsWrapperPaddingTop) 0 calc(82px - var(--skillCardMarginBottom)) var(--skillCardMarginRight);
+  padding: var(--skillsWrapperPaddingTop) 0
+    calc(82px - var(--skillCardMarginBottom)) var(--skillCardMarginRight);
   background: #060d20;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15), 0px 29px 74px rgba(0, 0, 0, 0.2);
   border-radius: 64px;
@@ -97,6 +99,16 @@ const SkillRoot = styled.div`
   }
 `
 
+const SkillGlow = styled.span`
+  position: absolute;
+  background: url(${cardGlow});
+  width: 480px;
+  height: 350px;
+  background-size: cover;
+  top: -116px;
+  left: -115px;
+`
+
 const SkillWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,56 +142,28 @@ interface ISkillProps {
 }
 const Skill = ({ description, logoHref, name }: ISkillProps) => {
   return (
-    <WithGlow
-      shadows={[
-        {
-          offsetX: 0,
-          offsetY: 0,
-          blur: 120,
-          top: '0',
-          left: '0',
-          width: '176px',
-          height: '64px',
-          color: '#0094FF',
-          spread: 5,
-          borderRadius: '80px',
-        },
-        {
-          offsetX: 0,
-          offsetY: 0,
-          blur: 120,
-          top: '60px',
-          left: '100px',
-          width: '176px',
-          height: '64px',
-          color: '#2BB090',
-          spread: 5,
-          borderRadius: '80px',
-        },
-      ]}
-    >
-      <SkillRoot>
-        <SkillWrapper>
-          <SkillLogoWrapper>
-            <SkillImage src={logoHref} alt={name} />
-            <Typography
-              fontSize="24px"
-              weight={TypographyWeight.SemiBold}
-              color={TypographyColors.Primary}
-            >
-              {name}
-            </Typography>
-          </SkillLogoWrapper>
+    <SkillRoot>
+      <SkillGlow />
+      <SkillWrapper>
+        <SkillLogoWrapper>
+          <SkillImage src={logoHref} alt={name} />
           <Typography
-            fontSize="16px"
-            weight={TypographyWeight.Light}
-            color="#88839A"
+            fontSize="24px"
+            weight={TypographyWeight.SemiBold}
+            color={TypographyColors.Primary}
           >
-            {description}
+            {name}
           </Typography>
-        </SkillWrapper>
-      </SkillRoot>
-    </WithGlow>
+        </SkillLogoWrapper>
+        <Typography
+          fontSize="16px"
+          weight={TypographyWeight.Light}
+          color="#88839A"
+        >
+          {description}
+        </Typography>
+      </SkillWrapper>
+    </SkillRoot>
   )
 }
 

@@ -149,6 +149,7 @@ export const ShadowLight = styled.div<IShadowLightProps>`
     // @ts-ignore
     // eslint-disable-next-line no-restricted-globals
     `${borderRadius}${isNaN(borderRadius) ? '' : 'px'}`};
+  will-change: box-shadow;
 
   ${({ customStyles }) => customStyles}
 `
