@@ -44,11 +44,8 @@ const SkillsWrapper = styled.div`
   width: 70%;
   height: auto;
   // 82px is padding top, 51 is skill card height
-  padding-top: var(--skillsWrapperPaddingTop);
-  padding-bottom: calc(82px - var(--skillCardMarginBottom));
-  padding-right: 0;
-  padding-left: var(--skillCardMarginRight);
-  background: linear-gradient(104.67deg, #060d20 -1.93%, #121a2e 110.39%);
+  padding: var(--skillsWrapperPaddingTop) 0 calc(82px - var(--skillCardMarginBottom)) var(--skillCardMarginRight);
+  background: #060d20;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15), 0px 29px 74px rgba(0, 0, 0, 0.2);
   border-radius: 64px;
   overflow: hidden;

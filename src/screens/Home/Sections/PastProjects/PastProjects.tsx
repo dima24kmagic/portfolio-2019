@@ -6,6 +6,7 @@ import {
   TypographyWeight,
 } from '../../../../components/StyledComponents'
 import Project, { IProjectProps } from './components/Project'
+import linearGradientBg from '../../../../res/images/BG2-min.png'
 import ricexPic1 from '../../../../res/images/riceex1-min.jpg'
 import ricexPic2 from '../../../../res/images/ricex2-min.png'
 import roundRushPic1 from '../../../../res/images/roundrush_board-1-min.png'
@@ -20,7 +21,8 @@ const Root = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(118.15deg, #0e1a35 0.44%, #060d1e 98.94%);
+  background: url(${linearGradientBg});
+  background-size: cover;
   width: 100%;
   padding: 130px 0;
   position: relative;

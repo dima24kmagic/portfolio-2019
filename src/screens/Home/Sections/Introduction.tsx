@@ -10,6 +10,7 @@ import {
   TypographyWeight,
 } from '../../../components/StyledComponents'
 import heroImage from '../../../res/images/myPic-min.jpeg'
+import linearGradientBackground from '../../../res/images/BG-min.png'
 import WithGlow from '../../../components/WithGlow/WithGlow'
 import InitiativeButtons from './components/InitiativeButtons'
 import { theme } from '../../../theme/theme'
@@ -37,7 +38,7 @@ const Root = styled.section`
 const BG = styled.div`
   height: 100%;
   width: 100%;
-  background: linear-gradient(#38405a, #03091c);
+  background: url(${linearGradientBackground});
   position: absolute;
   top: 0;
   left: 0;
@@ -354,46 +355,7 @@ function Introduction(props: IIntorductionProps) {
         />
       </TitleWrapper>
       <Curve />
-      <BG>
-        <ShadowLight
-          offsetX={120}
-          offsetY={350}
-          blur={150}
-          top="-550px"
-          left="-550px"
-          width="550px"
-          height="550px"
-          color="rgba(105,66,219,0.15)"
-          spread={80}
-          borderRadius={70}
-        />
-        <ShadowLight
-          offsetX={80}
-          offsetY={180}
-          blur={150}
-          top="-550px"
-          left="-150px"
-          width="550px"
-          height="550px"
-          color="rgba(38,124,203,0.2)"
-          spread={30}
-          borderRadius={60}
-        />
-        <TagsCloud
-          fontSize="115px"
-          weight={TypographyWeight.Black}
-          customStyles={css`
-            background: linear-gradient(
-              rgba(56, 64, 90, 0.1),
-              rgba(2, 7, 22, 0.1)
-            );
-            user-select: none !important;
-          `}
-        >
-          SOFTWARE ENGINEER FRONTEND DEVELOPER REACT JAVASCRIPT HTML SASS CSS
-          ACCESSIBILITY EXPERIENCED NODEJS CODE REVIEW EPAM THOMSON REUTERS
-        </TagsCloud>
-      </BG>
+      <BG />
     </Root>
   )
 }
