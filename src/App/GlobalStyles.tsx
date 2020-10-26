@@ -12,7 +12,6 @@ const GlobalStyle = () => {
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
     user-select: text !important;
-    transform: translate3d(0,0,0);
 }
   html, 
   body {
