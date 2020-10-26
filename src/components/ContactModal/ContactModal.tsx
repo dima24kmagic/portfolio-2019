@@ -149,12 +149,12 @@ const contactOptions: IContactOptionProps[] = [
     copyValue: 'dimabaranov98@gmail.com',
   },
   {
-    label: 'Phone call',
-    href: 'tel:80447278635',
+    label: 'Telegram message',
+    href: 'https://telegram.me/DimaLargeCock',
     options: {},
     gradient: 'linear-gradient(45deg, #F257A1, #EF8F00)',
-    copyLabel: 'click to copy phone number',
-    copyValue: '80447278635',
+    copyLabel: 'click to copy telegram username',
+    copyValue: '@DimaLargeCock',
   },
   {
     label: 'Linkedin',
