@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "619b1463e656446ae0574c870b332289",
+    "revision": "ea3c4a5d057f25cc64bf92e32afd399c",
     "url": "/portfolio-2019/index.html"
   },
   {
-    "revision": "62605a3623fe1b9eaa87",
-    "url": "/portfolio-2019/static/js/2.aa7fb6c1.chunk.js"
+    "revision": "a6d7e81ded15285c3e49",
+    "url": "/portfolio-2019/static/js/2.246c99f8.chunk.js"
   },
   {
-    "revision": "fca2d9b814ac5fe7e7ec",
-    "url": "/portfolio-2019/static/js/main.b3d4bf72.chunk.js"
+    "revision": "9fc1d5af47c61045b3a0",
+    "url": "/portfolio-2019/static/js/main.c4d96163.chunk.js"
   },
   {
     "revision": "4fb87b7048656ba76863",
@@ -38,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ffeedaad5207dc33b777c8246b77b287",
     "url": "/portfolio-2019/static/media/api-min.ffeedaad.png"
+  },
+  {
+    "revision": "0a4094f8e546d7fd6169155b0c3556fa",
+    "url": "/portfolio-2019/static/media/card-glow-min.0a4094f8.png"
   },
   {
     "revision": "6de0bec71bf5f7784a8abceb68924d55",
