@@ -27,6 +27,7 @@ const GlobalStyle = () => {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    will-change: transform;
   }
 `
   return <Inject />
