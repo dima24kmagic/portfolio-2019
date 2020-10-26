@@ -97,6 +97,32 @@ const Initials = styled.div`
   }
 `
 
+const ProfilePicWrapper = styled.div`
+  position: absolute;
+  left: 650px;
+  top: -100px;
+  justify-content: center;
+  display: flex;
+  ${theme.breakpoints.xxs} {
+    margin-bottom: 24px;
+  }
+  ${theme.breakpoints.xs} {
+    margin-bottom: 24px;
+  }
+  ${theme.breakpoints.sm} {
+    margin-bottom: 24px;
+    width: 80%;
+  }
+  ${theme.breakpoints.md} {
+  }
+  ${theme.breakpoints.xl} {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 14px;
+  }
+`
+
 const ProfilePic = styled.img`
   width: var(--profilePicSize-xxxl);
   height: var(--profilePicSize-xxxl);
@@ -241,88 +267,43 @@ function Introduction(props: IIntorductionProps) {
           >
             Frontend Developer
           </Typography>
-          <WithGlow
-            style={css`
-              position: absolute;
-              left: 650px;
-              top: -100px;
-              justify-content: center;
-              display: flex;
-              ${theme.breakpoints.xxs} {
-                margin-bottom: 24px;
-              }
-              ${theme.breakpoints.xs} {
-                margin-bottom: 24px;
-              }
-              ${theme.breakpoints.sm} {
-                margin-bottom: 24px;
-                width: 80%;
-              }
-              ${theme.breakpoints.md} {
-              }
-              ${theme.breakpoints.xl} {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 14px;
-              }
-            `}
-            shadows={[
-              {
-                offsetX: 0,
-                offsetY: 0,
-                blur: 150,
-                top: '50%',
-                left: '50%',
-                width: '60%',
-                height: '60%',
-                color: '#1A4B78',
-                spread: 40,
-                borderRadius: '100%',
-                customStyles: css`
-                  transform: translate(-50%, -50%);
-                `,
-              },
-            ]}
-          >
-            <>
-              <SideNote>
-                <Typography
-                  fontSize="18px"
-                  color={TypographyColors.Primary}
-                  weight={TypographyWeight.Light}
-                  textAlign="center"
-                  customStyles={css`
-                    font-family: -apple-system, BlinkMacSystemFont, avenir next,
-                      avenir, helvetica neue, helvetica, ubuntu, sans-serif,
-                      roboto, noto, segoe ui, arial;
-                    font-weight: 100;
-                    font-style: italic;
-                    color: rgba(255, 255, 255, 0.65);
-                    width: 80%;
-                    margin: 0 auto;
-                    line-height: 28px;
-                    ${theme.breakpoints.sm} {
-                      font-size: 16px;
-                      line-height: 22px;
-                    }
-                    ${theme.breakpoints.xxs} {
-                      font-size: 14px;
-                      line-height: 20px;
-                    }
-                  `}
-                >
-                  Passionate developer. Love good design, clean code,
-                  well-tested components. Looking for remote work opportunities
-                  + interested in immigrating to Canada/USA.
-                </Typography>
-              </SideNote>
-              <ProfilePic
-                src={heroImage}
-                alt="Dzmitry Baranau, Frontend developer"
-              />
-            </>
-          </WithGlow>
+          <ProfilePicWrapper>
+            <SideNote>
+              <Typography
+                fontSize="18px"
+                color={TypographyColors.Primary}
+                weight={TypographyWeight.Light}
+                textAlign="center"
+                customStyles={css`
+                  font-family: -apple-system, BlinkMacSystemFont, avenir next,
+                    avenir, helvetica neue, helvetica, ubuntu, sans-serif,
+                    roboto, noto, segoe ui, arial;
+                  font-weight: 100;
+                  font-style: italic;
+                  color: rgba(255, 255, 255, 0.65);
+                  width: 80%;
+                  margin: 0 auto;
+                  line-height: 28px;
+                  ${theme.breakpoints.sm} {
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  ${theme.breakpoints.xxs} {
+                    font-size: 14px;
+                    line-height: 20px;
+                  }
+                `}
+              >
+                Passionate developer. Love good design, clean code, well-tested
+                components. Looking for remote work opportunities + interested
+                in immigrating to Canada/USA.
+              </Typography>
+            </SideNote>
+            <ProfilePic
+              src={heroImage}
+              alt="Dzmitry Baranau, Frontend developer"
+            />
+          </ProfilePicWrapper>
         </Initials>
         <Typography
           fontSize="24px"

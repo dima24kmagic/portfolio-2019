@@ -4,11 +4,7 @@ import styled, {
   FlattenInterpolation,
   ThemeProps,
 } from 'styled-components'
-import {
-  ICustomStyles,
-  IShadowLightProps,
-  ShadowLight,
-} from '../StyledComponents'
+import { ICustomStyles, IShadowLightProps, ShadowLight } from '../StyledComponents'
 
 export interface IWithGlowProps {
   children: any
@@ -18,7 +14,11 @@ export interface IWithGlowProps {
 
 const Root = styled.span`
   position: relative;
-  ${({ customStyles }: { customStyles: ICustomStyles }) => customStyles}
+  ${({
+    customStyles,
+  }: {
+    customStyles: ICustomStyles
+  }) => customStyles}
 `
 
 const ContentWrapper = styled.div`
@@ -35,6 +35,10 @@ function WithGlow(props: IWithGlowProps) {
   const { children, shadows, style } = props
   return (
     <Root customStyles={style}>
+      {shadows.map((shadow, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <ShadowLight key={i} {...shadow} />
+      ))}
       <ContentWrapper>{children}</ContentWrapper>
     </Root>
   )
