@@ -1,7 +1,6 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { ThemeProvider, withTheme } from 'styled-components'
-import AnimatedSwitch from '../components/AnimatedSwitch'
 import HomePage from '../screens/Home'
 import GlobalStyle from './GlobalStyles'
 import { theme } from '../theme/theme'
@@ -13,7 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <AnimatedSwitch>
+      <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -23,7 +22,7 @@ function App() {
         <Route>
           <div>Oops, check your URL, seems this is wrong path;)</div>
         </Route>
-      </AnimatedSwitch>
+      </Switch>
     </ThemeProvider>
   )
 }
