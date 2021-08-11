@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styled, { css } from 'styled-components'
+import { animated, useTransition } from 'react-spring'
 import ContactOption, { IContactOptionProps } from './components/ContactOption'
 import {
   Button,
@@ -11,16 +12,25 @@ import { theme } from '../../theme/theme'
 
 export interface IContactModalProps {
   onClose: () => void
+  isOpen: boolean
 }
 
-const BGOverlay = styled.div`
+const Wrapper = styled(animated.div)`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(21, 21, 21, 0.75);
   z-index: 95;
+`
+
+const BGOverlay = styled(animated.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(21, 21, 21, 0.75);
 `
 
 const Root = styled.dialog`
@@ -170,14 +180,37 @@ const contactOptions: IContactOptionProps[] = [
   },
 ]
 
+const useModalAnimation = (isOpen: boolean) => {
+  const BGOverlayTransition = useTransition(isOpen, null, {
+    from: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+    },
+    leave: {
+      opacity: 0,
+    },
+  })
+
+  return {
+    BGOverlayTransition,
+  }
+}
+
 /**
  * Modal with contact options
  */
 function ContactModal(props: IContactModalProps) {
-  const { onClose } = props
+  const { onClose, isOpen } = props
   const rootRef = useRef<HTMLDialogElement>()
+
+  const { BGOverlayTransition } = useModalAnimation(isOpen)
+
   useEffect(() => {
-    rootRef.current.focus()
+    if (isOpen) {
+      rootRef.current.focus()
+    }
   })
   const handleKeyDown = (e) => {
     if (e.key === 'Escape') {
@@ -191,61 +224,69 @@ function ContactModal(props: IContactModalProps) {
   // TODO: Trap focus in dialog only
   // TODO: Animate dialog
   return (
-    <BGOverlay onClick={onClose}>
-      <Root
-        onClick={preventClosingOnClick}
-        onKeyDown={handleKeyDown}
-        aria-modal="true"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        ref={rootRef}
-        tabIndex={0}
-      >
-        <SidePanel />
-        <CloseButton onClick={onClose} pure>
-          <Typography
-            letterSpacing={5}
-            fontSize="14px"
-            weight={TypographyWeight.Regular}
-            customStyles={css`
-              text-transform: uppercase;
-              margin-right: 4px;
-            `}
-          >
-            Close
-          </Typography>
-          <CloseIcon />
-        </CloseButton>
-        <ContactOptionsWrapper>
-          <Typography
-            tag="h4"
-            id="modalTitle"
-            color="#424242"
-            fontSize="62px"
-            mB="24px"
-            weight={TypographyWeight.ExtraThin}
-            customStyles={css`
-              ${theme.breakpoints.l} {
-                font-size: 52px;
-              }
+    <>
+      {BGOverlayTransition.map(
+        ({ item, key, props }) =>
+          item && (
+            <Wrapper key={key} style={props}>
+              <BGOverlay onClick={onClose} />,
+              <Root
+                onClick={preventClosingOnClick}
+                onKeyDown={handleKeyDown}
+                aria-modal="true"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                ref={rootRef}
+                tabIndex={0}
+              >
+                <SidePanel />
+                <CloseButton onClick={onClose} pure>
+                  <Typography
+                    letterSpacing={5}
+                    fontSize="14px"
+                    weight={TypographyWeight.Regular}
+                    customStyles={css`
+                      text-transform: uppercase;
+                      margin-right: 4px;
+                    `}
+                  >
+                    Close
+                  </Typography>
+                  <CloseIcon />
+                </CloseButton>
+                <ContactOptionsWrapper>
+                  <Typography
+                    tag="h4"
+                    id="modalTitle"
+                    color="#424242"
+                    fontSize="62px"
+                    mB="24px"
+                    weight={TypographyWeight.ExtraThin}
+                    customStyles={css`
+                      ${theme.breakpoints.l} {
+                        font-size: 52px;
+                      }
 
-              ${theme.breakpoints.xs} {
-                font-size: 38px;
-              }
+                      ${theme.breakpoints.xs} {
+                        font-size: 38px;
+                      }
 
-              ${theme.breakpoints.xxs} {
-                font-size: 30px;
-              }
-            `}
-          >
-            Contact me with
-          </Typography>
-          {contactOptions.map((option) => (
-            <ContactOption {...option} key={option.label} />
-          ))}
-        </ContactOptionsWrapper>
-      </Root>
-    </BGOverlay>
+                      ${theme.breakpoints.xxs} {
+                        font-size: 30px;
+                      }
+                    `}
+                  >
+                    Contact me with
+                  </Typography>
+                  {contactOptions.map((option) => (
+                    <ContactOption {...option} key={option.label} />
+                  ))}
+                </ContactOptionsWrapper>
+              </Root>
+            </Wrapper>
+          ),
+      )}
+    </>
   )
 }
 

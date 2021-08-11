@@ -28,9 +28,10 @@ function Home(props: IHomeProps) {
   }
   return (
     <Root>
-      {isContactModalOpen && (
-        <ContactModal onClose={handleToggleContactModal} />
-      )}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={handleToggleContactModal}
+      />
       <Introduction
         isModalOpen={isContactModalOpen}
         onContactMeClick={handleToggleContactModal}

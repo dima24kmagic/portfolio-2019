@@ -213,6 +213,11 @@ const skills: ISkillProps[] = [
     description: 'Github, gitlab, jira, asana, redmine (please no god)',
     logoHref: gitIcon,
   },
+  {
+    name: 'React Native',
+    description: 'Navigation, error tracking, performance optimisation',
+    logoHref: reactIcon,
+  },
 ]
 
 /**
