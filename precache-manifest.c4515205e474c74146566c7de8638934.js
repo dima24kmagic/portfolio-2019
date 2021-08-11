@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "578598e4588d687e2e81a510a454eb51",
+    "revision": "5db0d773273bcdc32c39521f65ceba4a",
     "url": "/portfolio-2019/index.html"
   },
   {
-    "revision": "a6d7e81ded15285c3e49",
-    "url": "/portfolio-2019/static/js/2.246c99f8.chunk.js"
+    "revision": "767e926fc179c429dcc9",
+    "url": "/portfolio-2019/static/js/2.13ba7684.chunk.js"
   },
   {
-    "revision": "ccfa97f4810e470223f2",
-    "url": "/portfolio-2019/static/js/main.078bbaf5.chunk.js"
+    "revision": "c9adbd13bab76c7b6ee7",
+    "url": "/portfolio-2019/static/js/main.414c981a.chunk.js"
   },
   {
     "revision": "4fb87b7048656ba76863",
@@ -44,8 +44,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio-2019/static/media/card-glow-min.0a4094f8.png"
   },
   {
+    "revision": "676d2c162d86d96ebe20969051600c41",
+    "url": "/portfolio-2019/static/media/connectors-2-min.676d2c16.png"
+  },
+  {
+    "revision": "eede1ff644211c64b59b6fdbee8ad55b",
+    "url": "/portfolio-2019/static/media/connectors-min.eede1ff6.png"
+  },
+  {
     "revision": "6de0bec71bf5f7784a8abceb68924d55",
     "url": "/portfolio-2019/static/media/myPic-min.6de0bec7.jpeg"
+  },
+  {
+    "revision": "b14cf2f3b8b9c8ef80689f747dc105a2",
+    "url": "/portfolio-2019/static/media/newsroom-2-min.b14cf2f3.png"
+  },
+  {
+    "revision": "6d3c0fec05e4beb29f688c336d0c1190",
+    "url": "/portfolio-2019/static/media/newsroom-min.6d3c0fec.png"
   },
   {
     "revision": "fc2d3a2d0c82b34f8cd16d35dee4e534",
