@@ -20,6 +20,7 @@ const Root = styled.div`
   --imagePreviewWidth: 620px;
   --imagePreviewHeight: 380px;
 
+  min-height: 299px;
   display: flex;
   flex-direction: column;
   position: relative;
