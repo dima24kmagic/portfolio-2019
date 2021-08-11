@@ -215,7 +215,7 @@ const skills: ISkillProps[] = [
   },
   {
     name: 'React Native',
-    description: 'Navigation, error tracking, performance optimisation',
+    description: 'Navigation, error tracking, performance optimization',
     logoHref: reactIcon,
   },
 ]
