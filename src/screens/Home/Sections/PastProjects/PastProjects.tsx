@@ -72,6 +72,20 @@ const projects: IProjectProps[] = [
     shadowColor: '#D16499',
   },
   {
+    name: 'TR Tax Store',
+    link: {
+      href: 'https://store.tax.thomsonreuters.com/',
+      label: 'https://store.tax.thomsonreuters.com/',
+    },
+    images: [
+      { href: TRPic2, alt: 'Round rush leader board' },
+      { href: TRPic1, alt: 'Round rush project board' },
+    ],
+    description:
+      'Online Store used by Thomson Reuters to sell tax, audit, accounting and finance products, trusted by professionals around the world',
+    shadowColor: '#ce4f0c',
+  },
+  {
     name: 'Rice exchange',
     link: { href: 'https://www.ricex.io/', label: 'ricex.io' },
     images: [
@@ -81,20 +95,6 @@ const projects: IProjectProps[] = [
     description:
       'The Rice Exchange platform allows buyers to search for rice producers that have been awarded verifiable sustainable certifications giving buyers the certainty that they are purchasing sustainably produced rice. In turn this allows sustainable producers to charge a premium for their product.',
     shadowColor: '#4C81D1',
-  },
-  {
-    name: 'TR Tax Store',
-    link: {
-      href: 'https://store.tax.thomsonreuters.com/accounting/',
-      label: 'development is ongoing',
-    },
-    images: [
-      { href: TRPic2, alt: 'Round rush leader board' },
-      { href: TRPic1, alt: 'Round rush project board' },
-    ],
-    description:
-      'Online Store used by Thomson Reuters to sell tax, audit, accounting and finance products, trusted by professionals around the world',
-    shadowColor: '#ce4f0c',
   },
 ]
 

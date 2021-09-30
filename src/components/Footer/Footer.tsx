@@ -29,7 +29,7 @@ function Footer(props: IFooterProps) {
         weight={TypographyWeight.Light}
         fontSize="18px"
       >
-        Dzmitry Baranau (2020) ❤️
+        Dzmitry Baranau ({new Date().getFullYear()})️ 🌟
       </Typography>
     </Root>
   )

@@ -4,14 +4,12 @@ import {
   GradientTypography,
   HighlightWord,
   ICustomStyles,
-  ShadowLight,
   Typography,
   TypographyColors,
   TypographyWeight,
 } from '../../../components/StyledComponents'
 import heroImage from '../../../res/images/myPic-min.jpeg'
 import linearGradientBackground from '../../../res/images/BG-min.png'
-import WithGlow from '../../../components/WithGlow/WithGlow'
 import InitiativeButtons from './components/InitiativeButtons'
 import { theme } from '../../../theme/theme'
 
@@ -33,12 +31,16 @@ const Root = styled.section`
   ${theme.breakpoints.xl} {
     padding-bottom: 180px;
   }
+  @media (min-height: 1200px) {
+    min-height: 1000px;
+  }
 `
 
 const BG = styled.div`
   height: 100%;
   width: 100%;
   background: url(${linearGradientBackground});
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -130,7 +132,10 @@ const ProfilePic = styled.img`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 30px 42px rgba(0, 0, 0, 0.1),
     0px 101px 157px rgba(0, 0, 0, 0.28);
   background-image: url(${heroImage});
-  background-size: cover;
+  background-size: contain;
+  object-fit: cover;
+  background-position: 0 0;
+  object-position: -10% 80%;
   position: relative;
 
   ${theme.breakpoints.xxl} {
@@ -166,7 +171,7 @@ const SideNote = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 3;
   padding: 0 0;
   min-height: 25%;
