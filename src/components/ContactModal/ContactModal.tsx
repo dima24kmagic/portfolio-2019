@@ -60,8 +60,8 @@ const Root = styled.dialog`
 const SidePanel = styled.div`
   width: 240px;
   height: 100%;
-  background: linear-gradient(171.72deg, #7959d6 0%, #751644 97.85%);
-  box-shadow: 8px 0px 32px #929292;
+  background: linear-gradient(171.72deg, #7c8af6 0%, #7d6dc6 97.85%);
+  box-shadow: 0px 0px 12px #929292;
 
   ${theme.breakpoints.md} {
     width: 100%;
@@ -154,7 +154,7 @@ const contactOptions: IContactOptionProps[] = [
     label: 'E-mail',
     href: 'mailto: dimabaranov98@gmail.com',
     options: {},
-    gradient: 'linear-gradient(45deg, #A715CB, #5553C6)',
+    gradient: 'linear-gradient(171.72deg, #A463F6 0%, #A340C6 97.85%)',
     copyLabel: 'click to copy address',
     copyValue: 'dimabaranov98@gmail.com',
   },

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { ThemeProvider, withTheme } from 'styled-components'
-import HomePage from '../screens/Home'
+import HomePage from '../pages/Home'
 import GlobalStyle from './GlobalStyles'
 import { theme } from '../theme/theme'
+import RedirectAfterFiveSeconds from '../pages/RedirectAfterFiveSeconds'
 
 /**
  * App
@@ -16,11 +17,8 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/contact">
-          <div />
-        </Route>
         <Route>
-          <div>Oops, check your URL, seems this is wrong path;)</div>
+          <RedirectAfterFiveSeconds />
         </Route>
       </Switch>
     </ThemeProvider>
