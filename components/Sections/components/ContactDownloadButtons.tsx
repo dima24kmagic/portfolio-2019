@@ -69,8 +69,6 @@ function ContactDownloadButtons(props: IInitiativeButtonsProps) {
     <ButtonsWrapper>
       <NextLink
         onClick={handleDownload}
-        href={"/static/PDF Portfolio.pdf"}
-        download="FrontendDev_Dzmitry_Baranau_Portfolio"
       >
         <Button
           tabIndex={-1}

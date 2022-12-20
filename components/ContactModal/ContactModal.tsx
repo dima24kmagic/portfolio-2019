@@ -159,13 +159,13 @@ const contactOptions: IContactOptionProps[] = [
   },
   {
     label: "Telegram message",
-    href: "https://telegram.me/DimaLargeCock",
+    href: "https://telegram.me/DimaBreezy",
     options: {
       target: "_blank",
     },
     gradient: "linear-gradient(45deg, #F257A1, #EF8F00)",
     copyLabel: "click to copy telegram username",
-    copyValue: "@DimaLargeCock",
+    copyValue: "@DimaBreezy",
   },
   {
     label: "Linkedin",
