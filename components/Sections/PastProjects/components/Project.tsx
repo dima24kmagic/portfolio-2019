@@ -134,6 +134,7 @@ function Project(props: IProjectProps) {
         fontSize="32px"
         mB="4px"
         weight={TypographyWeight.Bold}
+        textAlign="center"
       >
         {name}
       </Typography>
