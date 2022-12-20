@@ -191,11 +191,13 @@ function ContactModal(props: IContactModalProps) {
       rootRef?.current?.focus();
     }
   });
+  // @ts-ignore
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
       onClose();
     }
   };
+  // @ts-ignore
   const preventClosingOnClick = (e) => {
     e.stopPropagation();
   };

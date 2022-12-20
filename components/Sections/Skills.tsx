@@ -101,7 +101,7 @@ const SkillRoot = styled.div`
 
 const SkillGlow = styled.span`
   position: absolute;
-  background: url(${cardGlow});
+  background: url(${cardGlow.src});
   width: 480px;
   height: 350px;
   background-size: cover;
