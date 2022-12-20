@@ -8,16 +8,16 @@ import {
   TypographyWeight,
 } from "../StyledComponents";
 
-import apiIcon from "../../resources/icons/api-min.png";
-import cssIcon from "../../resources/icons/css.png";
-import figmaIcon from "../../resources/icons/figma-min.png";
-import gitIcon from "../../resources/icons/git-min.png";
-import jsIcon from "../../resources/icons/js-min.png";
-import languagesIcon from "../../resources/icons/languages-min.png";
-import nodeIcon from "../../resources/icons/nodejs-min.png";
-import reactIcon from "../../resources/icons/react-min.png";
-import testingIcon from "../../resources/icons/testing.png";
-import cardGlow from "../../resources/images/card-glow-min.png";
+import apiIcon from "../../static/icons/api-min.png";
+import cssIcon from "../../static/icons/css.png";
+import figmaIcon from "../../static/icons/figma-min.png";
+import gitIcon from "../../static/icons/git-min.png";
+import jsIcon from "../../static/icons/js-min.png";
+import languagesIcon from "../../static/icons/languages-min.png";
+import nodeIcon from "../../static/icons/nodejs-min.png";
+import reactIcon from "../../static/icons/react-min.png";
+import testingIcon from "../../static/icons/testing.png";
+import cardGlow from "../../static/images/card-glow-min.png";
 import { theme } from "../../theme/theme";
 
 export interface ISkillsProps {}

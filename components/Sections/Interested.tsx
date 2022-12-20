@@ -5,7 +5,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from '../StyledComponents'
-import InitiativeButtons from './components/InitiativeButtons'
+import ContactDownloadButtons from './components/ContactDownloadButtons'
 import { theme } from '../../theme/theme'
 
 export interface IInterestedProps {
@@ -75,7 +75,7 @@ function Interested(props: IInterestedProps) {
       >
         to get more info
       </Typography>
-      <InitiativeButtons
+      <ContactDownloadButtons
         isModalOpen={isModalOpen}
         onContactMeClick={onContactMeClick}
       />

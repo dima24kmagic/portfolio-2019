@@ -1,16 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import {
-  GradientTypography,
   HighlightWord,
   ICustomStyles,
   Typography,
   TypographyColors,
   TypographyWeight,
 } from "../StyledComponents";
-import heroImage from "../../resources/images/my-pic-1.jpg";
-import linearGradientBackground from "../../resources/images/BG-min.png";
-import InitiativeButtons from "./components/InitiativeButtons";
+import heroImage from "../../static/images/my-pic-1-min.jpg";
+import linearGradientBackground from "../../static/images/BG-min.png";
+import ContactDownloadButtons from "./components/ContactDownloadButtons";
 import { theme } from "../../theme/theme";
 
 export interface IIntorductionProps {
@@ -327,7 +326,7 @@ function Introduction(props: IIntorductionProps) {
           reviewing. <br />
           Also doing <HighlightWord>NodeJS</HighlightWord>.
         </Typography>
-        <InitiativeButtons
+        <ContactDownloadButtons
           isModalOpen={isModalOpen}
           onContactMeClick={onContactMeClick}
         />

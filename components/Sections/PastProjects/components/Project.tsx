@@ -1,19 +1,19 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from "react";
+import styled, { css } from "styled-components";
 import {
   Typography,
   TypographyColors,
   TypographyWeight,
-} from '../../../StyledComponents'
-import WithGlow from '../../../WithGlow/WithGlow'
-import { theme } from '../../../../theme/theme'
+} from "../../../StyledComponents";
+import WithGlow from "../../../WithGlow/WithGlow";
+import { theme } from "../../../../theme/theme";
 
 export interface IProjectProps {
-  name: string
-  description: string
-  images: { href: string; alt: string }[]
-  link: { label: string; href: string }
-  shadowColor?: string
+  name: string;
+  description: string;
+  images: { href: string; alt: string }[];
+  link: { label: string; href: string };
+  shadowColor?: string;
 }
 
 const Root = styled.div`
@@ -44,8 +44,8 @@ const Root = styled.div`
   ${theme.breakpoints.sm} {
     --imagePreviewWidth: 420px;
     --imagePreviewHeight: 260px;
-      margin-bottom: 80px;
-}
+    margin-bottom: 80px;
+  }
   ${theme.breakpoints.sm} {
     --imagePreviewWidth: 340px;
     --imagePreviewHeight: 220px;
@@ -61,11 +61,11 @@ const Root = styled.div`
     --imagePreviewWidth: 260px;
     --imagePreviewHeight: 180px;
   }
-`
+`;
 
 const ProjectLink = styled.a`
   color: #7ab7ff;
-`
+`;
 
 const ImagesWrapper = styled.div`
   --imagesWrapperMarginRight: 60px;
@@ -93,16 +93,16 @@ const ImagesWrapper = styled.div`
     margin-bottom: 28px;
     margin-top: 20px;
   }
-`
+`;
 
 interface IImgStyleProps {
-  imgIndex: number
+  imgIndex: number;
 }
 const ProjectImage = styled.img<IImgStyleProps>`
   --imageOffsetX: 28px;
   --imageOffsetY: 28px;
 
-  background: ${({ src }) => (src === '' ? '#4a769d' : 'transparent')};
+  background: ${({ src }) => (src === "" ? "#4a769d" : "transparent")};
   border-radius: 24px;
   width: 100%;
   height: 100%;
@@ -120,13 +120,13 @@ const ProjectImage = styled.img<IImgStyleProps>`
     --imageOffsetX: 14px;
     --imageOffsetY: 14px;
   }
-`
+`;
 
 /**
  * Project info
  */
 function Project(props: IProjectProps) {
-  const { name, description, images, link, shadowColor } = props
+  const { name, description, images, link, shadowColor } = props;
   return (
     <Root>
       <Typography
@@ -134,7 +134,12 @@ function Project(props: IProjectProps) {
         fontSize="32px"
         mB="4px"
         weight={TypographyWeight.Bold}
-        textAlign="center"
+        customStyles={css`
+          text-align: left;
+          ${theme.breakpoints.xs} {
+            text-align: center;
+          }
+        `}
       >
         {name}
       </Typography>
@@ -145,13 +150,13 @@ function Project(props: IProjectProps) {
             offsetX: 0,
             offsetY: 0,
             blur: 120,
-            top: '118px',
-            left: '0px',
-            width: '570px',
-            height: '280px',
+            top: "118px",
+            left: "0px",
+            width: "570px",
+            height: "280px",
             color: shadowColor,
             spread: 5,
-            borderRadius: '80px',
+            borderRadius: "80px",
             customStyles: css`
               --shadowOffset: 75px;
 
@@ -212,7 +217,7 @@ function Project(props: IProjectProps) {
         {description}
       </Typography>
     </Root>
-  )
+  );
 }
 
-export default Project
+export default Project;
