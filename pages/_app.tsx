@@ -1,6 +1,7 @@
 import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../theme/theme";
+import heroImage from "../static/images/my-pic-1-min.jpg";
 
 import GlobalStyle from "../components/GlobalStyles";
 import { NextSeo } from "next-seo";
@@ -27,17 +28,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           url: "https://dzmitry-baranau-portfolio.netlify.app/",
           images: [
             {
-              url: "/static/images/my-pic-1-min.jpg",
+              url: `https://dzmitry-baranau-portfolio.netlify.app${heroImage.src}`,
               alt: "My photo",
             },
-            {
-              url: "/static/images/dapperlabs-nfl.png",
-              alt: "Screenshot of project for Dapperlabs",
-            },
-            {
-              url: "/static/images/newsroom-min.png",
-              alt: "Screenshot of project for Depop",
-            },
+            // {
+            //   url: "https://dzmitry-baranau-portfolio.netlify.app/static/images/dapperlabs-nfl.png",
+            //   alt: "Screenshot of project for Dapperlabs",
+            // },
+            // {
+            //   url: "/static/images/newsroom-min.png",
+            //   alt: "Screenshot of project for Depop",
+            // },
           ],
           site_name: "React Developer Portfolio",
         }}
