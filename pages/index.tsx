@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { NextSeo } from "next-seo";
 import styled from "styled-components";
-import { Typography } from "../components/StyledComponents";
 import ContactModal from "../components/ContactModal/ContactModal";
 import Introduction from "../components/Sections/Introduction";
 import Skills from "../components/Sections/Skills";
 import PastProjects from "../components/Sections/PastProjects";
 import Interested from "../components/Sections/Interested";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 const Root = styled.main`
   display: flex;

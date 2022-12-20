@@ -15,6 +15,7 @@
   "dependencies": {
     "next": "^13.0.7",
     "next-pdf": "^0.0.1",
+    "next-seo": "^5.15.0",
     "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
