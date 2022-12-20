@@ -2,6 +2,12 @@ import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../theme/theme";
 import heroImage from "../static/images/my-pic-1-min.jpg";
+import faviconIco from "../public/favicon/favicon.ico";
+import favicon32 from "../public/favicon/favicon-32x32.png";
+import favicon16 from "../public/favicon/favicon-16x16.png";
+import faviconA192 from "../public/favicon/android-chrome-192x192.png";
+import faviconA512 from "../public/favicon/android-chrome-512x512.png";
+import faviconAT from "../public/favicon/apple-touch-icon.png";
 
 import GlobalStyle from "../components/GlobalStyles";
 import { NextSeo } from "next-seo";
@@ -44,6 +50,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
       <Head>
+        <link rel="shortcut icon" type="image/x-icon" href={faviconIco.src} />
+        <link rel="icon" type="image/png" sizes="16x16" href={favicon16.src} />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+        <link rel="icon" type="image/png" sizes="192x192" href={faviconA192.src} />
+        <link rel="icon" type="image/png" sizes="512x512" href={faviconA512.src} />
+        <link rel="apple-touch-icon" sizes="180x180" href={faviconAT.src} />
         <meta
           name="keywords"
           content="react, developer, portfolio, projects, contact"
