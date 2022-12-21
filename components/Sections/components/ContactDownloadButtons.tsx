@@ -40,14 +40,14 @@ function ContactDownloadButtons(props: IInitiativeButtonsProps) {
   const { onContactMeClick, isModalOpen } = props;
   const handleDownload = () => {
     // Get the URL of the PDF file
-    const pdfUrl = "/static/PDF Portfolio.pdf";
+    const pdfUrl = "/files/PDF Portfolio.pdf";
 
     // Create a temporary anchor element
     const anchor = document.createElement("a");
 
     // Set the href and download attributes for the anchor element
     anchor.href = pdfUrl;
-    anchor.download = "PDF Portfolio.pdf";
+    anchor.download = "Frontend Portfolio - Dzmitry Baranau.pdf";
 
     // Append the anchor element to the document
     document.body.appendChild(anchor);
