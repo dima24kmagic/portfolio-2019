@@ -226,7 +226,6 @@ function ContactModal(props: IContactModalProps) {
             transition={{
               duration: 0.35,
               ease: "easeOut",
-              // delay: 1,
             }}
             onClick={preventClosingOnClick}
             onKeyDown={handleKeyDown}
