@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "framer-motion": "^8.0.2",
     "next": "^13.0.7",
     "next-pdf": "^0.0.1",
     "next-seo": "^5.15.0",
