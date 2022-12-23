@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
+import { AnimatePresence, motion } from "framer-motion";
 import ContactOption, { IContactOptionProps } from "./components/ContactOption";
 import {
   Button,
@@ -14,7 +15,7 @@ export interface IContactModalProps {
   isOpen: boolean;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -23,18 +24,19 @@ const Wrapper = styled.div`
   z-index: 95;
 `;
 
-const BGOverlay = styled.div`
-  position: absolute;
+const BGOverlay = styled(motion.div)`
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   background: rgba(21, 21, 21, 0.75);
+  z-index: 95;
 `;
 
-const Root = styled.dialog`
+const Root = styled(motion.dialog)`
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -190,7 +192,8 @@ function ContactModal(props: IContactModalProps) {
     if (isOpen) {
       rootRef?.current?.focus();
     }
-  });
+  }, [isOpen]);
+
   // @ts-ignore
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
@@ -202,68 +205,84 @@ function ContactModal(props: IContactModalProps) {
     e.stopPropagation();
   };
 
-  if (!isOpen) {
-    return null;
-  }
   return (
-    <>
-      <Wrapper>
-        <BGOverlay onClick={onClose} />,
-        <Root
-          onClick={preventClosingOnClick}
-          onKeyDown={handleKeyDown}
-          aria-modal="true"
-          role="dialog"
-          aria-labelledby="modalTitle"
-          ref={rootRef}
-          tabIndex={0}
+    <AnimatePresence>
+      {isOpen && (
+        <BGOverlay
+          key="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 0.15,
+          }}
+          onClick={onClose}
         >
-          <SidePanel />
-          <CloseButton onClick={onClose} pure>
-            <Typography
-              letterSpacing={5}
-              fontSize="14px"
-              weight={TypographyWeight.Regular}
-              customStyles={css`
-                text-transform: uppercase;
-                margin-right: 4px;
-              `}
-            >
-              Close
-            </Typography>
-            <CloseIcon />
-          </CloseButton>
-          <ContactOptionsWrapper>
-            <Typography
-              tag="h4"
-              id="modalTitle"
-              color="#424242"
-              fontSize="62px"
-              mB="24px"
-              weight={TypographyWeight.ExtraThin}
-              customStyles={css`
-                ${theme.breakpoints.l} {
-                  font-size: 52px;
-                }
+          <Root
+            key="modalRoot"
+            initial={{ y: "calc(-50% - 20px)", opacity: 0, x: "-50%" }}
+            animate={{ y: "-50%", opacity: 1 }}
+            exit={{ y: "calc(-50% - 20px)", opacity: 0 }}
+            transition={{
+              duration: 0.35,
+              ease: "easeOut",
+              // delay: 1,
+            }}
+            onClick={preventClosingOnClick}
+            onKeyDown={handleKeyDown}
+            aria-modal="true"
+            role="dialog"
+            aria-labelledby="modalTitle"
+            ref={rootRef}
+            tabIndex={0}
+          >
+            <SidePanel />
+            <CloseButton onClick={onClose} pure>
+              <Typography
+                letterSpacing={5}
+                fontSize="14px"
+                weight={TypographyWeight.Regular}
+                customStyles={css`
+                  text-transform: uppercase;
+                  margin-right: 4px;
+                `}
+              >
+                Close
+              </Typography>
+              <CloseIcon />
+            </CloseButton>
+            <ContactOptionsWrapper>
+              <Typography
+                tag="h4"
+                id="modalTitle"
+                color="#424242"
+                fontSize="62px"
+                mB="24px"
+                weight={TypographyWeight.ExtraThin}
+                customStyles={css`
+                  ${theme.breakpoints.l} {
+                    font-size: 52px;
+                  }
 
-                ${theme.breakpoints.xs} {
-                  font-size: 38px;
-                }
+                  ${theme.breakpoints.xs} {
+                    font-size: 38px;
+                  }
 
-                ${theme.breakpoints.xxs} {
-                  font-size: 30px;
-                }
-              `}
-            >
-              Contact me with
-            </Typography>
-            {contactOptions.map((option) => (
-              <ContactOption {...option} key={option.label} />
-            ))}
-          </ContactOptionsWrapper>
-        </Root>
-      </Wrapper>
-    </>
+                  ${theme.breakpoints.xxs} {
+                    font-size: 30px;
+                  }
+                `}
+              >
+                Contact me with
+              </Typography>
+              {contactOptions.map((option) => (
+                <ContactOption {...option} key={option.label} />
+              ))}
+            </ContactOptionsWrapper>
+          </Root>
+        </BGOverlay>
+      )}
+    </AnimatePresence>
   );
 }
 
