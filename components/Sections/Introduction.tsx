@@ -7,7 +7,7 @@ import {
   TypographyColors,
   TypographyWeight,
 } from "../StyledComponents";
-import heroImage from "../../static/images/my-pic-1-min.jpg";
+import heroImage from "../../static/images/my-pic.jpeg";
 import linearGradientBackground from "../../static/images/BG-min.png";
 import ContactDownloadButtons from "./components/ContactDownloadButtons";
 import { theme } from "../../theme/theme";
@@ -121,7 +121,6 @@ const ProfilePic = styled.img`
   background-size: cover;
   object-fit: cover;
   background-position: 0 0;
-  object-position: 40% 0%;
   position: relative;
 
   ${theme.breakpoints.xxl} {
@@ -290,9 +289,10 @@ function Introduction(props: IIntorductionProps) {
                   }
                 `}
               >
-                Passionate developer. Love good design, clean code, well-tested
-                components. Have worked at different projects in different
-                fields. Currently located in South Portugal
+                I'm a Senior Frontend Developer. I'm a good fit if you look for
+                a person who can write clean code (using best practices ex.
+                SOLID, DRY), demo work to clients, responsible, review others
+                code, brainstorm problems.
               </Typography>
             </SideNote>
             <ProfilePic

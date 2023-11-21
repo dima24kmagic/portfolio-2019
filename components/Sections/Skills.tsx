@@ -13,6 +13,7 @@ import cssIcon from "../../static/icons/css.png";
 import figmaIcon from "../../static/icons/figma-min.png";
 import gitIcon from "../../static/icons/git-min.png";
 import jsIcon from "../../static/icons/js-min.png";
+import tsIcon from "../../static/icons/typescript.png";
 import languagesIcon from "../../static/icons/languages-min.png";
 import nodeIcon from "../../static/icons/nodejs-min.png";
 import reactIcon from "../../static/icons/react-min.png";
@@ -175,8 +176,13 @@ const skills: ISkillProps[] = [
   },
   {
     name: "JavaScript",
-    description: "Typescript, async/await, promises, ES 6",
+    description: "Async/await, promises, ES6",
     logoHref: jsIcon.src,
+  },
+  {
+    name: "Typescript",
+    description: "Generics, Types, Interfaces",
+    logoHref: tsIcon.src,
   },
   {
     name: "Styling",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import {
   Typography,
@@ -97,6 +97,7 @@ const ImagesWrapper = styled.div`
 
 interface IImgStyleProps {
   imgIndex: number;
+  imgIndexSelected: number;
 }
 const ProjectImage = styled.img<IImgStyleProps>`
   --imageOffsetX: 28px;
@@ -113,8 +114,14 @@ const ProjectImage = styled.img<IImgStyleProps>`
   position: absolute;
   top: calc(${({ imgIndex }) => imgIndex} * var(--imageOffsetY));
   left: calc((var(--imageOffsetX) * -1) * ${({ imgIndex }) => imgIndex});
+  cursor: pointer;
 
-  opacity: ${({ imgIndex }) => (imgIndex === 1 ? 1 : 0.2)};
+  opacity: ${({ imgIndex, imgIndexSelected }) =>
+    imgIndex === imgIndexSelected ? 0.2 : 1};
+  z-index: ${({ imgIndex, imgIndexSelected }) =>
+    imgIndex === imgIndexSelected ? 1 : 2};
+
+  transition: opacity 0.15s ease-in;
 
   ${theme.breakpoints.xxs} {
     --imageOffsetX: 14px;
@@ -127,6 +134,11 @@ const ProjectImage = styled.img<IImgStyleProps>`
  */
 function Project(props: IProjectProps) {
   const { name, description, images, link, shadowColor } = props;
+
+  const [imgIndexSelected, setImgIndexSelected] = useState(1);
+  const handleImgIndexSelected = (imgIndex) => () => {
+    setImgIndexSelected(imgIndex);
+  };
   return (
     <Root>
       <Typography
@@ -144,13 +156,14 @@ function Project(props: IProjectProps) {
         {name}
       </Typography>
       <WithGlow
+        zIndex={0}
         style={css``}
         shadows={[
           {
             offsetX: 0,
             offsetY: 0,
             blur: 120,
-            top: "118px",
+            top: "100px",
             left: "0px",
             width: "570px",
             height: "280px",
@@ -160,13 +173,14 @@ function Project(props: IProjectProps) {
             customStyles: css`
               --shadowOffset: 75px;
 
-              transform: translate(-50%, -10%);
+              background: rgb(14 24 52);
+              transform: translate(-50%, -18%);
               width: calc(var(--imagePreviewWidth) - 50px);
               left: calc(
                 ((var(--imagePreviewWidth) / 2) * -1) - var(--shadowOffset)
               );
               height: calc(var(--imagePreviewHeight) - 50px);
-              top: 50%;
+              top: 45%;
 
               ${theme.breakpoints.xl} {
                 --shadowOffset: 60px;
@@ -181,7 +195,14 @@ function Project(props: IProjectProps) {
       >
         <ImagesWrapper>
           {images.map(({ alt, href }, i) => (
-            <ProjectImage imgIndex={i} key={href} alt={alt} src={href} />
+            <ProjectImage
+              onClick={handleImgIndexSelected(i)}
+              imgIndex={i}
+              imgIndexSelected={imgIndexSelected}
+              key={href}
+              alt={alt}
+              src={href}
+            />
           ))}
         </ImagesWrapper>
       </WithGlow>
