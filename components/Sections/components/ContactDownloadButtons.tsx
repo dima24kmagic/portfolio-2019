@@ -40,7 +40,7 @@ function ContactDownloadButtons(props: IInitiativeButtonsProps) {
   const { onContactMeClick, isModalOpen } = props;
   const handleDownload = () => {
     // Get the URL of the PDF file
-    const pdfUrl = "/files/CV - Dzmitry Baranau.pdf";
+    const pdfUrl = "/files/Dzmitry Baranau - CV.pdf";
 
     // Create a temporary anchor element
     const anchor = document.createElement("a");
