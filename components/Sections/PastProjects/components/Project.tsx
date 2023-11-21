@@ -156,6 +156,7 @@ function Project(props: IProjectProps) {
         {name}
       </Typography>
       <WithGlow
+        // @ts-ignore
         zIndex={0}
         style={css``}
         shadows={[
