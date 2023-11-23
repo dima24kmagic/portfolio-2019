@@ -256,7 +256,7 @@ function Introduction(props: IIntorductionProps) {
             `}
             mB="24px"
           >
-            Frontend Developer
+            Senior Full-Stack Developer
           </Typography>
           <ProfilePicWrapper>
             <SideNote>
@@ -289,7 +289,7 @@ function Introduction(props: IIntorductionProps) {
                   }
                 `}
               >
-                I'm a Senior Frontend Developer. I'm a good fit if you look for
+                I'm a Senior Full-Stack Developer. I'm a good fit if you look for
                 a person who can write clean code (using best practices ex.
                 SOLID, DRY), demo work to clients, responsible, review others
                 code, brainstorm problems.
